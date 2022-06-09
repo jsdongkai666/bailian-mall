@@ -27,6 +27,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.cuning</groupId>
+            <artifactId>bailian-comm</artifactId>
+        </dependency>
         <!-- eureka依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
