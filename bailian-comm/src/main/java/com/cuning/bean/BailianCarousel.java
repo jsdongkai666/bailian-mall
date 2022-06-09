@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @ApiModel(value = "轮播图",description = "对应数据库bailianmall中的bailianCarousel")
-public class bailianCarousel {
+public class BailianCarousel {
 
     /**
      * id
