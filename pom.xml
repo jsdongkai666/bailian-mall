@@ -24,6 +24,7 @@
         <module>bailian-homepage</module>
         <module>bailian-order</module>
         <module>bailian-user</module>
+        <module>bailian-web</module>
     </modules>
 
     <dependencyManagement>
