@@ -1,6 +1,10 @@
 package com.cuning.bean.logistics;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -12,6 +16,9 @@ import java.util.List;
  * @date 2022/6/9
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LogisticsInfo {
 
     /**
@@ -32,7 +39,12 @@ public class LogisticsInfo {
     /**
      * 物流状态：2-在途中,3-签收,4-问题件
      */
-    private String State;
+    private String state;
+
+    /**
+     * 物流信息
+     */
+    private String stateMsg;
 
     /**
      * 是否查询成功

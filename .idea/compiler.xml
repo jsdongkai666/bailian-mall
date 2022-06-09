@@ -7,12 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bailian-comm" />
-        <module name="bailian-order" />
-        <module name="bailian-eureka" />
         <module name="bailian-user" />
         <module name="bailian-homepage" />
         <module name="bailian-web" />
+        <module name="bailian-comm" />
+        <module name="bailian-order" />
+        <module name="bailian-eureka" />
+        <module name="bailian-logistics" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +23,7 @@
       <module name="bailian-comm" options="" />
       <module name="bailian-eureka" options="" />
       <module name="bailian-homepage" options="" />
+      <module name="bailian-logistics" options="" />
       <module name="bailian-order" options="" />
       <module name="bailian-user" options="" />
       <module name="bailian-web" options="" />
