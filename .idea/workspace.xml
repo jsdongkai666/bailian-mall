@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/bailianCarousel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/CarouselController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/mapper/CarouselMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/CarouselService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/CarouselServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-homepage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,8 +132,16 @@
       <option name="presentableId" value="Default" />
       <updated>1654738865577</updated>
       <workItem from="1654738867573" duration="3806000" />
-      <workItem from="1654745088573" duration="7005000" />
+      <workItem from="1654745088573" duration="7534000" />
     </task>
+    <task id="LOCAL-00001" summary="轮播图的增删改查">
+      <created>1654761840320</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654761840320</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,5 +289,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="轮播图的增删改查" />
+    <option name="LAST_COMMIT_MESSAGE" value="轮播图的增删改查" />
   </component>
 </project>
