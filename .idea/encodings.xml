@@ -4,11 +4,17 @@
     <file url="file://$PROJECT_DIR$/bailian-comm/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bailian-comm/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bailian-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bailian-eureka/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bailian-goods/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bailian-homepage/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bailian-homepage/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bailian-logistics/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bailian-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bailian-order/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bailian-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bailian-user/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bailian-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bailian-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>
