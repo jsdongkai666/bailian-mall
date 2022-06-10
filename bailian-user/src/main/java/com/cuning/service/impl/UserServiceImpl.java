@@ -85,4 +85,69 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         log.info("登录成功");
         return resultMap;
     }
+
+    @Override
+    public Map<String, Object> executeTelLogin(String tel, String captcha) {
+        HashMap<String, Object> resultMap = new HashMap<>();
+        String openid = (String)redisUtils.get("openid");
+        // 获取手机验证码
+        String telCaptcha =(String) redisUtils.get("telCaptcha");
+        // openid存在 微信用户绑定手机号
+        // 为空 单纯手机号登录
+
+        if (StringUtils.isEmpty(openid)){
+            if (captcha.equalsIgnoreCase(telCaptcha)){
+                // 验证码正确
+                LambdaQueryWrapper<User> qw = new LambdaQueryWrapper<>();
+                // 查询是否存在tel 一个tel对应一个用户
+                qw.eq(User::getUserTel,tel);
+                User one = userMapper.selectOne(qw);
+                // 不存在这个手机 插入用户
+                if (one == null){
+                    User insert = User.builder().userId(Long.toString(snowFlake.nextId())).userTel(tel).build();
+                    int row = userMapper.insert(insert);
+                    // 插入成功
+                    if (row > 0){
+                        log.info("插入成功");
+                        resultMap.put(CommonConstant.UNIFY_RETURN_SUCCESS_CODE,insert);
+                    }else {
+                        log.info("插入失败");
+                        resultMap.put(CommonConstant.UNIFY_RETURN_FAIL_CODE,"登录失败");
+                    }
+
+                }
+                // 存在直接返回
+
+                resultMap.put(CommonConstant.UNIFY_RETURN_SUCCESS_CODE,one);
+            }else {
+                resultMap.put(CommonConstant.UNIFY_RETURN_FAIL_CODE,"验证码不正确，请重新输入");
+            }
+
+        }
+        // 微信用户绑定手机号
+        // 通过openid查询账号
+        else {
+            LambdaQueryWrapper<User> qw = new LambdaQueryWrapper<>();
+            qw.eq(User::getUserOpenid,openid);
+            User existedUser = userMapper.selectOne(qw);
+            // 判断验证码
+            if (captcha.equalsIgnoreCase(telCaptcha)){
+                // 判断微信用户之前是否绑定过此手机号
+                if (ObjectUtils.isEmpty(existedUser.getUserTel()) || !existedUser.getUserTel().equals(tel) ){
+                    existedUser.setUserTel(tel);
+                    // 更新用户
+                    int i = userMapper.updateUserById(existedUser);
+                    log.info("更新用户:{}",existedUser);
+                }
+                log.info("登录成功，无需更新");
+                resultMap.put(CommonConstant.UNIFY_RETURN_SUCCESS_CODE,existedUser);
+            }else {
+                resultMap.put(CommonConstant.UNIFY_RETURN_FAIL_CODE,"验证码不正确，请重新输入");
+            }
+            // 释放openid
+            redisUtils.del("openid");
+        }
+
+        return resultMap;
+    }
 }
