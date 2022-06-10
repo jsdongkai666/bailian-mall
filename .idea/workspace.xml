@@ -4,79 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/BailianCommApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/CommonConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RequestResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/ResultBuildUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/src/main/java/com/cuning/BailianEurekaApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-eureka/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/BailianWebApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="商品1">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_02__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_22__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="$USER_HOME$/usr/dev/apache-maven-3.8.4/home" />
-        <option name="mavenHome" value="$USER_HOME$/usr/dev/apache-maven-3.8.4" />
-        <option name="userSettingsFile" value="$USER_HOME$/usr/dev/apache-maven-3.8.4/conf/settings.xml" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../Download/apache-maven-3.5.3" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="E:\Download\apache-maven-3.5.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -87,11 +49,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util" />
+    <property name="last_opened_file_path" value="D:/360Downloads/springboot-dubbo" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="show.run.dashboard.notification" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -104,7 +81,14 @@
       <recent name="com.cuning.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianCommApplication">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BailianGoodsApplication">
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -116,6 +100,13 @@
     <configuration name="BailianEurekaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-eureka" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianEurekaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BailianGoodsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="bailian-goods" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianGoodsApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,6 +142,7 @@
     <list>
       <item itemvalue="Spring Boot.BailianCommApplication" />
       <item itemvalue="Spring Boot.BailianEurekaApplication" />
+      <item itemvalue="Spring Boot.BailianGoodsApplication" />
       <item itemvalue="Spring Boot.BailianHomepageApplication" />
       <item itemvalue="Spring Boot.BailianOrderApplication" />
       <item itemvalue="Spring Boot.BailianUserApplication" />
@@ -166,7 +158,31 @@
       <option name="presentableId" value="Default" />
       <updated>1654738865577</updated>
       <workItem from="1654738867573" duration="3806000" />
+      <workItem from="1654744225782" duration="167000" />
+      <workItem from="1654744418892" duration="29580000" />
     </task>
+    <task id="LOCAL-00001" summary="商品">
+      <created>1654765586729</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654765586729</updated>
+    </task>
+    <task id="LOCAL-00002" summary="商品">
+      <created>1654826332657</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654826332658</updated>
+    </task>
+    <task id="LOCAL-00003" summary="商品1">
+      <created>1654826435436</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654826435436</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,5 +330,20 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="商品" />
+    <MESSAGE value="商品1" />
+    <option name="LAST_COMMIT_MESSAGE" value="商品1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="com.sun.jersey.api.client.ClientHandlerException" package="com.sun.jersey.api.client" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
