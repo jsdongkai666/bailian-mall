@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="修改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/bailianCarousel.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianCarousel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/CarouselController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/CarouselController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/mapper/CarouselMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/mapper/CarouselMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/CarouselService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/CarouselService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/CarouselServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/CarouselServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +140,8 @@
       <option name="presentableId" value="Default" />
       <updated>1654738865577</updated>
       <workItem from="1654738867573" duration="3806000" />
-      <workItem from="1654745088573" duration="11530000" />
+      <workItem from="1654745088573" duration="13183000" />
+      <workItem from="1654821789235" duration="1456000" />
     </task>
     <task id="LOCAL-00001" summary="轮播图的增删改查">
       <created>1654761840320</created>
@@ -162,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654762343547</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修改">
+      <created>1654767617004</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654767617004</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +316,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="轮播图的增删改查" />
     <MESSAGE value="添加mysql和mybatis-plus的依赖" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加mysql和mybatis-plus的依赖" />
+    <MESSAGE value="修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改" />
   </component>
 </project>
