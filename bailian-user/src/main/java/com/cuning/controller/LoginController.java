@@ -68,6 +68,23 @@ public class LoginController {
         return  resultMap;
     }
 
+    @GetMapping("/tel/login")
+    @ApiOperation("用户手机登录")
+    // @RequestParam String userName,@RequestParam String userPassword,@RequestParam String captcha
+    // @RequestBody UserVO userVO
+    public Map<String, Object> telLoginUser(@RequestParam String tel,@RequestParam String captcha){
+        HashMap<String, Object> resultMap = new HashMap<>();
+        Map<String, Object> resultSets = userService.executeTelLogin(tel,captcha);
+        // 判断是否登录成功
+        Object value = resultSets.get(CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        if (value != null){
+            resultMap.put(CommonConstant.UNIFY_RETURN_FAIL_MSG,value);
+            return resultMap;
+        }
+        resultMap.put(CommonConstant.UNIFY_RETURN_SUCCESS_MSG,resultSets.get(CommonConstant.UNIFY_RETURN_SUCCESS_CODE));
+        return  resultMap;
+    }
+
     @GetMapping("/test")
     @ApiOperation("测试")
     public String test(@RequestParam String test){
