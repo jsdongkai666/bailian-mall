@@ -4,3 +4,21 @@ server:
 spring:
   application:
     name: bailian-homepage
+
+  # ?????
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.78.163.160:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+
+# mybatis-plus??
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+# eureka????
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8093/eureka
