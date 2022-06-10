@@ -1,0 +1,252 @@
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <parent>\r\n        <groupId>org.springframework.boot</groupId>\r\n        <artifactId>spring-boot-starter-parent</artifactId>\r\n        <version>1.5.9.RELEASE</version>\r\n        <relativePath/> <!-- lookup parent from repository -->\r\n    </parent>\r\n    <groupId>com.cuning</groupId>\r\n    <artifactId>bailian</artifactId>\r\n    <version>0.0.1-SNAPSHOT</version>\r\n    <name>bailian</name>\r\n    <description>bailian</description>\r\n    <properties>\r\n        <java.version>1.8</java.version>\r\n        <scd.version>Dalston.SR4</scd.version>\r\n    </properties>\r\n    <packaging>pom</packaging>\r\n    <modules>\r\n        <module>bailian-comm</module>\r\n        <module>bailian-eureka</module>\r\n        <module>bailian-homepage</module>\r\n        <module>bailian-order</module>\r\n        <module>bailian-user</module>\r\n    </modules>\r\n\r\n    <dependencyManagement>\r\n        <dependencies>\r\n            <dependency>\r\n                <groupId>org.springframework.cloud</groupId>\r\n                <artifactId>spring-cloud-dependencies</artifactId>\r\n                <version>${scd.version}</version>\r\n                <type>pom</type>\r\n                <scope>import</scope>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>com.cuning</groupId>\r\n                <artifactId>bailian-comm</artifactId>\r\n                <version>0.0.1-SNAPSHOT</version>\r\n            </dependency>\r\n        </dependencies>\r\n    </dependencyManagement>\r\n\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-maven-plugin</artifactId>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision f73308a4a23b59c92ab972c134c2ffad28f90f12)
++++ b/pom.xml	(date 1654755106431)
+@@ -46,12 +46,7 @@
+ 
+ 
+     <build>
+-        <plugins>
+-            <plugin>
+-                <groupId>org.springframework.boot</groupId>
+-                <artifactId>spring-boot-maven-plugin</artifactId>
+-            </plugin>
+-        </plugins>
++
+     </build>
+ 
+ </project>
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/bailian-comm/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-comm/src/main/resources\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-eureka/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-homepage/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-homepage/src/main/resources\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-order/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-user/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-web/src/main/java\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+--- a/.idea/encodings.xml	(revision f73308a4a23b59c92ab972c134c2ffad28f90f12)
++++ b/.idea/encodings.xml	(date 1654745296701)
+@@ -9,5 +9,7 @@
+     <file url="file://$PROJECT_DIR$/bailian-order/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/bailian-user/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/bailian-web/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2a39463a-c57c-4c1c-aaf4-3ef1e3f72400\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/mvnw\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/mvnw.cmd\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/BailianCommApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/CommonConstant.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RequestResult.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/ResultBuildUtil.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-comm/src/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/mvnw\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/mvnw.cmd\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/src/main/java/com/cuning/BailianEurekaApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-eureka/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/mvnw\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/mvnw.cmd\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/mvnw\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/mvnw.cmd\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-order/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/mvnw\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/mvnw.cmd\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-user/src/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/mvnw\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/mvnw.cmd\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/BailianWebApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/bailian-web/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"localRepository\" value=\"$USER_HOME$/usr/dev/apache-maven-3.8.4/home\" />\r\n        <option name=\"mavenHome\" value=\"$USER_HOME$/usr/dev/apache-maven-3.8.4\" />\r\n        <option name=\"userSettingsFile\" value=\"$USER_HOME$/usr/dev/apache-maven-3.8.4/conf/settings.xml\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2AJs7se1KeLUdLJd3hoS1dJKsqZ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"foldersAlwaysOnTop\" value=\"false\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"jdk.selected.JAVA_MODULE\" value=\"1.8\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"MavenSettings\" />\r\n    <property name=\"show.run.dashboard.notification\" value=\"false\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.cuning.constant\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.BailianApplication\">\r\n    <configuration name=\"BailianApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"bailian\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.cuning.BailianApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BailianCommApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"bailian-comm\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.cuning.BailianCommApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BailianEurekaApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"bailian-eureka\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.cuning.BailianEurekaApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BailianHomepageApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"bailian-homepage\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.cuning.BailianHomepageApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BailianOrderApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"bailian-order\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.cuning.BailianOrderApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BailianUserApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"bailian-user\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.cuning.BailianUserApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BailianWebApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"bailian-web\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.cuning.BailianWebApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2a39463a-c57c-4c1c-aaf4-3ef1e3f72400\" name=\"Changes\" comment=\"\" />\r\n      <created>1654738865577</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1654738865577</updated>\r\n      <workItem from=\"1654738867573\" duration=\"3806000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"UnknownFeatures\">\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.sun.jersey:jersey-server\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.hystrix:hystrix-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.slf4j:jul-to-slf4j\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.ribbon:ribbon-loadbalancer\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.hamcrest:hamcrest-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-context\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.eureka:eureka-client\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-webmvc\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:net.minidev:accessors-smart\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.google.code.gson:gson\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:xpp3:xpp3_min\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.apache.tomcat.embed:tomcat-embed-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.fasterxml:classmate\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-test\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.netty:netty-transport\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:javax.ws.rs:jsr311-api\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.skyscreamer:jsonassert\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.apache.tomcat.embed:tomcat-embed-websocket\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.hamcrest:hamcrest-library\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:ch.qos.logback:logback-classic\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-netflix-eureka-server\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:commons-lang:commons-lang\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.slf4j:log4j-over-slf4j\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.freemarker:freemarker\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.objenesis:objenesis\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:junit:junit\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.security:spring-security-rsa\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.google.inject:guice\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-web\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.alibaba:fastjson\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-starter-logging\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-starter-ribbon\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.bouncycastle:bcprov-jdk15on\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.ribbon:ribbon\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.apache.httpcomponents:httpcore\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:ch.qos.logback:logback-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.fasterxml.jackson.core:jackson-databind\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.codehaus.jettison:jettison\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-starter\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.jboss.logging:jboss-logging\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:commons-collections:commons-collections\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.slf4j:slf4j-api\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.ow2.asm:asm\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-starter-freemarker\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-commons\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.google.guava:guava\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:antlr:antlr\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.yaml:snakeyaml\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:commons-configuration:commons-configuration\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-autoconfigure\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-test-autoconfigure\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.eureka:eureka-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-expression\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-starter-actuator\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.fasterxml.jackson.dataformat:jackson-dataformat-xml\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.projectlombok:lombok\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.reactivex:rxnetty-servo\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.apache.httpcomponents:httpclient\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.codehaus.woodstox:stax2-api\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.assertj:assertj-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.antlr:stringtemplate\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.vaadin.external.google:android-json\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.netflix-commons:netflix-statistics\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.mockito:mockito-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.hdrhistogram:HdrHistogram\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:javax.inject:javax.inject\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.netty:netty-transport-native-epoll\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:commons-codec:commons-codec\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.antlr:antlr-runtime\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.sun.jersey:jersey-client\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.netflix-commons:netflix-eventbus\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:javax.validation:validation-api\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-starter-test\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.servo:servo-internal\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.ribbon:ribbon-httpclient\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-beans\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.jayway.jsonpath:json-path\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.ribbon:ribbon-transport\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:stax:stax-api\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.netty:netty-codec-http\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:joda-time:joda-time\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-starter\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-actuator\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-starter-archaius\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.netty:netty-buffer\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.netty:netty-common\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.apache.tomcat:tomcat-annotations-api\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.fasterxml.jackson.module:jackson-module-jaxb-annotations\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.apache.commons:commons-math\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-netflix-eureka-client\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.sun.jersey.contribs:jersey-apache-client4\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.netty:netty-codec\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.security:spring-security-crypto\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-starter-tomcat\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.fasterxml.jackson.core:jackson-annotations\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.reactivex:rxnetty\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-test\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.fasterxml.jackson.core:jackson-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:xmlpull:xmlpull\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.sun.jersey:jersey-servlet\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.reactivex:rxnetty-contexts\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.slf4j:jcl-over-slf4j\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:aopalliance:aopalliance\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.ribbon:ribbon-eureka\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-netflix-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-context-support\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.archaius:archaius-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.google.code.findbugs:jsr305\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.codehaus.woodstox:woodstox-core-asl\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.thoughtworks.xstream:xstream\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:commons-jxpath:commons-jxpath\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-context\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.servo:servo-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.sun.jersey:jersey-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-aop\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.netty:netty-handler\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-starter-eureka-server\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.fasterxml.woodstox:woodstox-core\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:net.minidev:json-smart\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.hibernate:hibernate-validator\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.netflix-commons:netflix-infix\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.netflix-commons:netflix-commons-util\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.bouncycastle:bcpkix-jdk15on\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:javax.xml.stream:stax-api\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.reactivex:rxjava\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot-starter-web\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.apache.tomcat.embed:tomcat-embed-el\" />\r\n    <option featureType=\"dependencySupport\" implementationName=\"java:com.netflix.ribbon:ribbon-core\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f73308a4a23b59c92ab972c134c2ffad28f90f12)
++++ b/.idea/workspace.xml	(date 1654757995824)
+@@ -5,78 +5,35 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/mvnw" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/mvnw.cmd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/BailianCommApplication.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/CommonConstant.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RequestResult.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/ResultBuildUtil.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/resources/application.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/mvnw" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/mvnw.cmd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/src/main/java/com/cuning/BailianEurekaApplication.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-eureka/src/main/resources/application.yml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/mvnw" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/mvnw.cmd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/mvnw" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/mvnw.cmd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/mvnw" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/mvnw.cmd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/resources/application.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/mvnw" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/mvnw.cmd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/BailianWebApplication.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/resources/application.yml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+       <MavenGeneralSettings>
+-        <option name="localRepository" value="$USER_HOME$/usr/dev/apache-maven-3.8.4/home" />
+-        <option name="mavenHome" value="$USER_HOME$/usr/dev/apache-maven-3.8.4" />
+-        <option name="userSettingsFile" value="$USER_HOME$/usr/dev/apache-maven-3.8.4/conf/settings.xml" />
++        <option name="localRepository" value="E:\API" />
++        <option name="mavenHome" value="F:/develop_tool/maven" />
++        <option name="userSettingsFile" value="F:\develop_tool\maven\conf\settings.xml" />
+       </MavenGeneralSettings>
+     </option>
+   </component>
+@@ -104,10 +61,14 @@
+       <recent name="com.cuning.constant" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Spring Boot.BailianApplication">
+-    <configuration name="BailianApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+-      <module name="bailian" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianApplication" />
++  <component name="RunManager" selected="Spring Boot.BailianCommApplication">
++    <configuration default="true" type="JetRunConfigurationType">
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <option name="filePath" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -115,6 +76,7 @@
+     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+       <module name="bailian-comm" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
++      <option name="ALTERNATIVE_JRE_PATH" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -154,6 +116,14 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <list>
++      <item itemvalue="Spring Boot.BailianCommApplication" />
++      <item itemvalue="Spring Boot.BailianEurekaApplication" />
++      <item itemvalue="Spring Boot.BailianHomepageApplication" />
++      <item itemvalue="Spring Boot.BailianOrderApplication" />
++      <item itemvalue="Spring Boot.BailianUserApplication" />
++      <item itemvalue="Spring Boot.BailianWebApplication" />
++    </list>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -164,6 +134,9 @@
+       <option name="presentableId" value="Default" />
+       <updated>1654738865577</updated>
+       <workItem from="1654738867573" duration="3806000" />
++      <workItem from="1654744749338" duration="84000" />
++      <workItem from="1654744862270" duration="1696000" />
++      <workItem from="1654757221212" duration="767000" />
+     </task>
+     <servers />
+   </component>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-comm/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-eureka/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-order/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-user/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-homepage/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-web/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision f73308a4a23b59c92ab972c134c2ffad28f90f12)
++++ b/.idea/misc.xml	(date 1654744791485)
+@@ -1,6 +1,31 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="CheckstyleConfigurable">
++    <option name="suppFilterFilename" value="" />
++    <option name="suppCommentFilter" value="false" />
++    <option name="offComment" value="CHECKSTYLE\:OFF" />
++    <option name="onComment" value="CHECKSTYLE\:ON" />
++    <option name="checkFormat" value=".*" />
++    <option name="messageFormat" value="" />
++    <option name="checkCPP" value="true" />
++    <option name="checkC" value="true" />
++    <option name="suppNearbyCommentFilter" value="false" />
++    <option name="snCommentFormat" value="SUPPRESS CHECKSTYLE (\w+)" />
++    <option name="snCheckFormat" value="$1" />
++    <option name="snMessageFormat" value="" />
++    <option name="snInfluenceFormat" value="0" />
++    <option name="snCheckCPP" value="true" />
++    <option name="snCheckC" value="true" />
++    <option name="pathToUserRulesConfiguration" value="" />
++    <option name="pathToJarWithRules" value="" />
++  </component>
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="FindBugsConfigurable">
++    <option name="make" value="true" />
++    <option name="effort" value="default" />
++    <option name="priority" value="Medium" />
++    <option name="excludeFilter" value="" />
++  </component>
+   <component name="MavenProjectsManager">
+     <option name="originalFiles">
+       <list>
+@@ -17,4 +42,7 @@
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
++  <component name="SuppressionsComponent">
++    <option name="suppComments" value="[]" />
++  </component>
+ </project>
+\ No newline at end of file
