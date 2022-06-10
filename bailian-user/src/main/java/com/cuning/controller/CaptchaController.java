@@ -76,4 +76,18 @@ public class CaptchaController {
         //-------------------生成验证码 end --------------------------
 
     }
+
+
+    @ApiOperation("手机验证码")
+    @GetMapping(value = "/tel/captcha")
+    public String telCaptcha() {
+
+        //-------------------生成验证码 begin --------------------------
+        //获取验证码文本内容
+        String text = defaultKaptcha.createText();
+        log.info("手机验证码内容：{}" ,text);
+        //将验证码文本内容放入redis
+        redisUtils.set("telCaptcha",text,60);
+        return text;
+    }
 }
