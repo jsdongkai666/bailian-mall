@@ -7,9 +7,7 @@
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bailian-comm/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
@@ -61,7 +59,9 @@
       <change afterPath="$PROJECT_DIR$/bailian-web/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/BailianWebApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bailian-web/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,17 +104,11 @@
       <recent name="com.cuning.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianApplication">
-    <configuration name="BailianApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="bailian" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.BailianCommApplication">
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,6 +148,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.BailianCommApplication" />
+      <item itemvalue="Spring Boot.BailianEurekaApplication" />
+      <item itemvalue="Spring Boot.BailianHomepageApplication" />
+      <item itemvalue="Spring Boot.BailianOrderApplication" />
+      <item itemvalue="Spring Boot.BailianUserApplication" />
+      <item itemvalue="Spring Boot.BailianWebApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
