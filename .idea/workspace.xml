@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/cuning-bailian.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="订单增删改查">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +21,18 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../javakaifa/apache-maven-3.6.0-bin/apache-maven-3.6.0" />
+        <option name="mavenHome" value="D:\javakaifa\apache-maven-3.6.0-bin\apache-maven-3.6.0" />
         <option name="userSettingsFile" value="D:\javakaifa\apache-maven-3.6.0-bin\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -76,6 +75,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -140,7 +150,24 @@
       <workItem from="1654743571484" duration="11952000" />
       <workItem from="1654765813387" duration="4096000" />
       <workItem from="1654774428890" duration="1025000" />
+      <workItem from="1654775671428" duration="485000" />
+      <workItem from="1654821872228" duration="878000" />
     </task>
+    <task id="LOCAL-00001" summary="订单增删改查">
+      <created>1654775754656</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654775754657</updated>
+    </task>
+    <task id="LOCAL-00002" summary="订单增删改查">
+      <created>1654822027614</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654822027614</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,5 +316,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="订单增删改查" />
+    <option name="LAST_COMMIT_MESSAGE" value="订单增删改查" />
   </component>
 </project>
