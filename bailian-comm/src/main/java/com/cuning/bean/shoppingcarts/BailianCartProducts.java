@@ -8,24 +8,24 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
-/**
- * 购物车实体类
- */
 @ApiModel(description="购物车")
 @Data
-public class BailianCarts {
+public class BailianCartProducts {
+
     private Integer id;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
-    @ApiModelProperty("用户id")
-    private Integer userId;
+    @ApiModelProperty("购物车id")
+    private Integer cartId;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
-    @ApiModelProperty("店铺id")
-    private Integer shopId;
+    @ApiModelProperty("主商品id")
+    private Integer productId;
 
+    @TableField(updateStrategy = FieldStrategy.IGNORED)
+    @ApiModelProperty("购买数量")
+    private Integer buyNum;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
     @ApiModelProperty("创建时间")
@@ -36,8 +36,4 @@ public class BailianCarts {
     @ApiModelProperty("更新时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updatedAt;
-
-    @TableField(exist = false)
-    private List<BailianCartProducts> productsList;
-
 }
