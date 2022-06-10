@@ -33,6 +33,11 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.cuning</groupId>
+            <artifactId>bailian-comm</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
