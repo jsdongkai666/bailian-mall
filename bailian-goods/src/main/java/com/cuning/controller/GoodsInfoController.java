@@ -7,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /*
  * @Created on : 2022/6/9 0009
  * <p>
@@ -34,14 +32,17 @@ public class GoodsInfoController {
     }
 
 
-    @RequestMapping("/updateGoods")
-    public boolean updateGoodsInfo(@RequestBody Integer goodsId){
-        BailianGoodsInfo goodsInfo = goodsInfoService.queryGoodsInfoById(goodsId);
-        return goodsInfoService.updateGoodsInfo(goodsInfo);
+    @PostMapping("/updateGoods")
+    public BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo){
+        Boolean flag = goodsInfoService.updateGoodsInfo(goodsInfo);
+        if (flag){
+            return  goodsInfo;
+        }
+       return null;
     }
 
     @RequestMapping("/deleteGoods")
-    public boolean deleteGoodsInfo(@RequestBody Integer goodsId){
+    public boolean deleteGoodsInfo(@RequestParam Integer goodsId){
         return goodsInfoService.deleteGoodsInfo(goodsId);
     }
 }

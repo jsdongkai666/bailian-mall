@@ -15,7 +15,6 @@ import com.cuning.service.GoodsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGoodsInfo> implements GoodsInfoService {
@@ -25,7 +24,7 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
     @Override
     public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo) {
-        boolean insert = this.save(goodsInfo);
+        Integer insert = goodsInfoMapper.insert(goodsInfo);
         return goodsInfo;
     }
 
@@ -35,20 +34,10 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
         return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().like("goods_name",goodsName));
     }
 
-    @Override
-    public BailianGoodsInfo queryGoodsInfoById(Integer goodsId) {
-        return goodsInfoMapper.selectById(goodsId);
-    }
-
-//    @Override
-//    public List<BailianGoodsInfo> queryGoodsInfo(String goodsName) {
-//        List<BailianGoodsInfo> bailianGoodsInfoList = goodsInfoMapper.selectList(new QueryWrapper<BailianGoodsInfo>().like("goods_name",goodsName));
-//        return bailianGoodsInfoList;
-//    }
 
     @Override
     public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo) {
-        return this.updateById(goodsInfo);
+        return goodsInfoMapper.updateById(goodsInfo) > 0 ;
     }
 
     @Override
