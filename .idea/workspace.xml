@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/GoodsInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/GoodsInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="商品">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/GoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/GoodsInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/GoodsInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +48,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -76,7 +79,7 @@
       <recent name="com.cuning.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianCommApplication">
+  <component name="RunManager" selected="Spring Boot.BailianGoodsApplication">
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -147,8 +150,16 @@
       <updated>1654738865577</updated>
       <workItem from="1654738867573" duration="3806000" />
       <workItem from="1654744225782" duration="167000" />
-      <workItem from="1654744418892" duration="10709000" />
+      <workItem from="1654744418892" duration="22723000" />
     </task>
+    <task id="LOCAL-00001" summary="商品">
+      <created>1654765586729</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654765586729</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,5 +307,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="商品" />
+    <option name="LAST_COMMIT_MESSAGE" value="商品" />
   </component>
 </project>

@@ -8,7 +8,7 @@ package com.cuning.mapper;
  **/
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cuning.bean.GoodsInfo;
+import com.cuning.bean.BailianGoodsInfo;
 
-public interface GoodsInfoMapper extends BaseMapper<GoodsInfo>{
+public interface GoodsInfoMapper extends BaseMapper<BailianGoodsInfo>{
 }

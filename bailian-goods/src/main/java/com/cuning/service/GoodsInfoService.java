@@ -7,10 +7,21 @@ package com.cuning.service;
  * @Description: GoodsInfoService
  **/
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cuning.bean.GoodsInfo;
+import com.cuning.bean.BailianGoodsInfo;
 
-public interface GoodsInfoService extends IService<GoodsInfo> {
+import java.util.List;
 
-    GoodsInfo saveGoods (GoodsInfo goodsInfo);
+public interface GoodsInfoService extends IService<BailianGoodsInfo> {
+
+    BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo);
+
+    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName);
+
+    BailianGoodsInfo queryGoodsInfoById(Integer goodsId);
+
+    Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
+
+    Boolean deleteGoodsInfo(Integer goodsId);
 }

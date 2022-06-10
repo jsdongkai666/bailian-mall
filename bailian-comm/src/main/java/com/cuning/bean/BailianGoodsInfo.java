@@ -13,7 +13,7 @@ import java.util.Date;
  * @Description: 商品详情
  **/
 @Data
-public class GoodsInfo {
+public class BailianGoodsInfo {
     private Integer goodsId;
 
     /**
