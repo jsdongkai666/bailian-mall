@@ -1,5 +1,6 @@
 package com.cuning.bean;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ import java.util.Date;
  **/
 @Data
 public class BailianGoodsInfo {
+    @TableId
     private Integer goodsId;
 
     /**
