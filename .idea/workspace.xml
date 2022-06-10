@@ -4,8 +4,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/BailianCommApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/CommonConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RequestResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/ResultBuildUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/src/main/java/com/cuning/BailianEurekaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-eureka/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/BailianWebApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="修改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +135,7 @@
       <recent name="com.cuning.constant" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianHomepageApplication">
+  <component name="RunManager" selected="Spring Boot.BailianCommApplication">
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />

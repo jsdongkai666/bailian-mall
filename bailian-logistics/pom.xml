@@ -9,19 +9,14 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.cuning</groupId>
-    <artifactId>bailian-order</artifactId>
+    <artifactId>bailian-logistics</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bailian-order</name>
-    <description>bailian-order</description>
+    <name>bailian-logistics</name>
+    <description>bailian-logistics</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>com.cuning</groupId>
-            <artifactId>bailian-comm</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -30,16 +25,6 @@
         <dependency>
             <groupId>com.cuning</groupId>
             <artifactId>bailian-comm</artifactId>
-        </dependency>
-        <!-- eureka依赖 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-        <!--  feign依赖  -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
     </dependencies>
 
