@@ -2,8 +2,13 @@ package com.cuning.bean;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /*
@@ -14,7 +19,12 @@ import java.util.Date;
  * @Description: 商品详情
  **/
 @Data
-public class BailianGoodsInfo {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class BailianGoodsInfo implements Serializable {
+
+    private static final long serialVersionUID = 5473302609274012318L;
     @TableId
     private Integer goodsId;
 
