@@ -14,6 +14,7 @@ import com.cuning.vo.UserVO;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -21,9 +22,7 @@ import org.springframework.util.StringUtils;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author tengjiaozhai
@@ -42,6 +41,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private RedisUtils redisUtils;
+
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public User executeRegister(String userName, String userPassword) {
@@ -222,11 +224,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public boolean isChecked(String userId) {
+    public boolean isChecked(User user) {
 
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(User::getUserId,userId);
-        User user = this.getOne(queryWrapper);
         if (user.getCheckStatus() == 1) {
             return true;
         }
@@ -234,15 +233,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public User todayCheck(String userId) {
-
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(User::getUserId,userId);
-        User user = this.getOne(queryWrapper);
+    public boolean todayCheck(User user) {
 
         Date today = new Date();
+
+
         Date lastCheckDate = user.getLastCheckDate();
-        boolean isContinuous = dateIsContinuous(today, lastCheckDate);
+        boolean isContinuous = false;
+        if (lastCheckDate != null) {
+            isContinuous = dateIsContinuous(today, lastCheckDate);
+        }
 
         if (isContinuous) {
             user.setCheckCounts(user.getCheckCounts() + 1);
@@ -257,15 +257,47 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         boolean update = this.updateById(user);
 
         if (update) {
-            return user;
+            Calendar calendar = Calendar.getInstance();
+            String year = String.valueOf(calendar.get(Calendar.YEAR));
+            String month = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+            String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+            String key = year + month + day;
+            redisUtils.lSet(key,user.getUserId());
+            return true;
         }
 
-        return null;
+        return false;
     }
 
     @Override
     public boolean cronSetCheckStatus() {
         return userMapper.updateUserCheckStatus() > 0;
+    }
+
+    @Override
+    public List<String> getCheckDateList(User user) {
+
+        List<String> result = new ArrayList<>();
+
+        Date today = new Date();
+        int year = today.getYear();
+        int month = today.getMonth();
+        int days = getDays(year, month);
+
+
+        for (int i = 1; i <= days; i++) {
+            Calendar calendar = Calendar.getInstance();
+            String yearstr = String.valueOf(calendar.get(Calendar.YEAR));
+            String monthString = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+            String key = yearstr + "" + monthString + "" + i;
+            System.out.println(key);
+            List<Object> objects = redisUtils.lGet(key, 0, -1);
+            if (objects.contains(user.getUserId())) {
+                result.add(yearstr + "年" + monthString + "月" + i + "日");
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -291,6 +323,44 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         return  true;
+    }
+
+
+   /**
+   * @Param: [int, int]
+   * @return: int
+   * @Author: dengteng
+   * @Date: 2022/6/11
+   * @Description: 计算当前月有几天
+   */
+    public int getDays(int year, int month) {
+        int days = 0;
+        if (month != 2) {
+            switch (month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    days = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    days = 30;
+
+            }
+        } else {
+            // 闰年
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+                days = 29;
+            else
+                days = 28;
+        }
+        return days;
     }
 
 
