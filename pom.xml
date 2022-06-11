@@ -25,6 +25,7 @@
         <module>bailian-order</module>
         <module>bailian-user</module>
         <module>bailian-web</module>
+        <module>bailian-goods</module>
         <module>bailian-logistics</module>
     </modules>
 
