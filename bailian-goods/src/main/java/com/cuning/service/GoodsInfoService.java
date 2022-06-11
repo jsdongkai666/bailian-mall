@@ -27,4 +27,6 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     List<Integer>  selectGoodsCategoryIds();
 
+    BailianGoodsInfo queryGoodsInfoById(Integer goodsId);
+
 }
