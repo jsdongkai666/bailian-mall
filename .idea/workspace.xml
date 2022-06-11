@@ -4,26 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="订单中心支付功能">
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/PaymentConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/config/AlipayConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/config/WechatPayConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/constant/WechatPayConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/AliPayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/WeChatPayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/listener/TradeOrderPayListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/producer/AccountPayResultProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/AlipayService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/WechatPayService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/AlipayServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/WechatPayServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/util/WechatPayUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/util/WechatPayXmlUtil.java" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="暂存">
+      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/CheckInPointController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-logistics/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-logistics/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/BailianOrderApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/logistics/LogisticsCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/logistics/LogisticsCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/logistics/LogisticsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/logistics/LogisticsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/logistics/Trace.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/logistics/Trace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +59,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="show.run.dashboard.notification" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -93,7 +86,20 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
+  <component name="RunManager" selected="Spring Boot.BailianUserApplication">
+    <configuration name="UserServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cuning.service.impl.UserServiceImpl" />
+      <module name="bailian-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cuning.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -152,7 +158,13 @@
       <item itemvalue="Spring Boot.BailianUserApplication" />
       <item itemvalue="Spring Boot.BailianWebApplication" />
       <item itemvalue="Spring Boot.BailianLogisticsApplication" />
+      <item itemvalue="Application.UserServiceImpl" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.UserServiceImpl" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -165,6 +177,21 @@
       <workItem from="1654738867573" duration="3806000" />
       <workItem from="1654840128028" duration="6666000" />
     </task>
+    <task id="LOCAL-00001" summary="暂存">
+      <created>1654909273569</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654909273569</updated>
+    </task>
+    <task id="LOCAL-00002" summary="暂存">
+      <created>1654909276847</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654909276847</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +343,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="订单中心支付功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="订单中心支付功能" />
+    <MESSAGE value="暂存" />
+    <option name="LAST_COMMIT_MESSAGE" value="暂存" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
