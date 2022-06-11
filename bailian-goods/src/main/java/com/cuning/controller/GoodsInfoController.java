@@ -29,7 +29,7 @@ public class GoodsInfoController {
     }
 
     @GetMapping("/queryGoodsPage")
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam String goodsName){
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize, @RequestParam("goodsName") String goodsName){
         return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize,goodsName);
     }
 

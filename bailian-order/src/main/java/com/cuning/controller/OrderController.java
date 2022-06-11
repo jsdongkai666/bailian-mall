@@ -33,7 +33,7 @@ public class OrderController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "orderNo", value = "订单号",paramType = "query")
     })
-    public List<BailianOrder> selectOrder(@RequestParam(value = "orderNo",required = false) String orderNo){
+    public BailianOrder selectOrder(@RequestParam(value = "orderNo",required = false) String orderNo){
         return shoppingOrderService.selectOrderList(orderNo);
     }
 
