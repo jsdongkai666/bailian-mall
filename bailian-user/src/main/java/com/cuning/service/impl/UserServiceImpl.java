@@ -1,6 +1,8 @@
 package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
@@ -28,7 +30,7 @@ import java.util.Map;
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Autowired
+    @Autowired(required = false)
     private UserMapper userMapper;
 
     @Autowired
@@ -147,6 +149,44 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             // 释放openid
             redisUtils.del("openid");
         }
+
+        return resultMap;
+    }
+
+    @Override
+    public boolean modUserInfo(User user) {
+        return userMapper.updateById(user) > 0;
+    }
+
+
+
+    @Override
+    public Map<String,String> modPassword(User user, String password, String newPassword,String newPasswordAgain) {
+
+        // 返回结果map
+        Map<String,String> resultMap = new HashMap<>();
+
+        // 根据用户id，查询该用户的密码
+        User user1 = userMapper.selectById(user.getUserId());
+        String userOldPassword = user1.getUserPassword();
+        if (!(MD5Util.MD5Upper(password,"kgc")).equals(userOldPassword)) {
+            resultMap.put("errCode","200");
+            resultMap.put("errMsg","原密码不正确，请重新输入！");
+            return resultMap;
+        }
+        String newPassMD5 = MD5Util.MD5Upper(newPassword, "kgc");
+        if(newPassMD5.equals(userOldPassword)) {
+            resultMap.put("errCode","200");
+            resultMap.put("errMsg","新密码不能与原密码一样，请重新输入！");
+            return resultMap;
+        }
+
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.set("user_password",newPassMD5).eq("user_id",user.getUserId());
+        userMapper.update(user,updateWrapper);
+
+        resultMap.put("errCode","200");
+        resultMap.put("errMsg","密码修改成功！");
 
         return resultMap;
     }

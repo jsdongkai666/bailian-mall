@@ -1,6 +1,7 @@
 package com.cuning.bean.user;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -19,6 +20,7 @@ import lombok.*;
 @ToString
 public class User {
 
+    @TableId
     @ApiModelProperty("用户id")
     private String userId;
 

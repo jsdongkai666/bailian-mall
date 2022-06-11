@@ -20,4 +20,8 @@ public interface UserService extends IService<User> {
 
     Map<String, Object> executeTelLogin(String tel, String captcha);
 
+    boolean modUserInfo(User user);
+
+    Map<String,String> modPassword(User user,String password,String newPassword,String newPasswordAgain);
+
 }

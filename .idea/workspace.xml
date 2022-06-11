@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/PersonalInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Mapper File" />
       </list>
     </option>
   </component>
@@ -61,7 +66,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Program Files (x86)/IdeaWorkspace/stuinfo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -83,9 +88,11 @@
       <recent name="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cuning.resolver" />
+      <recent name="com.cuning.config" />
+      <recent name="com.cuning.interceptor" />
       <recent name="com.cuning.producer" />
       <recent name="com.cuning.controller" />
-      <recent name="com.cuning.constant" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -95,7 +102,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianGoodsApplication">
+  <component name="RunManager" selected="Spring Boot.BailianUserApplication">
     <configuration name="BailianEurekaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="bailian-eureka" />
       <extension name="coverage">
@@ -135,8 +142,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BailianUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="bailian-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cuning.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.BailianUserApplication" />
         <item itemvalue="Spring Boot.BailianGoodsApplication" />
         <item itemvalue="Spring Boot.BailianHomepageApplication" />
         <item itemvalue="Spring Boot.BailianEurekaApplication" />
@@ -158,9 +179,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654916360572</updated>
-      <workItem from="1654916365188" duration="342000" />
+      <workItem from="1654916365188" duration="12176000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="商品查询">
+      <created>1654917011490</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654917011490</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +343,8 @@
     <MESSAGE value="添加mysql和mybatis-plus的依赖" />
     <MESSAGE value="修改" />
     <MESSAGE value="依赖" />
-    <option name="LAST_COMMIT_MESSAGE" value="依赖" />
+    <MESSAGE value="商品查询" />
+    <option name="LAST_COMMIT_MESSAGE" value="商品查询" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
