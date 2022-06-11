@@ -64,4 +64,9 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
         List<BailianGoodsInfo> goodsInfoList = goodsInfoMapper.selectList(queryWrapper);
         return goodsInfoList.stream().map(BailianGoodsInfo::getGoodsCategoryId).collect(Collectors.toList());
     }
+
+    @Override
+    public BailianGoodsInfo queryGoodsInfoById(Integer goodsId) {
+        return goodsInfoMapper.selectById(goodsId);
+    }
 }
