@@ -1,6 +1,7 @@
 package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
@@ -10,12 +11,17 @@ import com.cuning.util.SnowFlake;
 import com.cuning.mapper.UserMapper;
 import com.cuning.service.UserService;
 import com.cuning.vo.UserVO;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +34,7 @@ import java.util.Map;
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Autowired
+    @Autowired(required = false)
     private UserMapper userMapper;
 
     @Autowired
@@ -150,4 +156,78 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         return resultMap;
     }
+
+    @Override
+    public boolean isChecked(String userId) {
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getUserId,userId);
+        User user = this.getOne(queryWrapper);
+        if (user.getCheckStatus() == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public User todayCheck(String userId) {
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getUserId,userId);
+        User user = this.getOne(queryWrapper);
+
+        Date today = new Date();
+        Date lastCheckDate = user.getLastCheckDate();
+        boolean isContinuous = dateIsContinuous(today, lastCheckDate);
+
+        if (isContinuous) {
+            user.setCheckCounts(user.getCheckCounts() + 1);
+        } else {
+            user.setCheckCounts( 1);
+        }
+
+        user.setCheckStatus(1);
+        user.setLastCheckDate(today);
+        user.setUserPoints(user.getUserPoints() + user.getCheckCounts());
+
+        boolean update = this.updateById(user);
+
+        if (update) {
+            return user;
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean cronSetCheckStatus() {
+        return userMapper.updateUserCheckStatus() > 0;
+    }
+
+    /**
+     * @Param: [java.util.Date, java.util.Date]
+     * @return: boolean
+     * @Author: dengteng
+     * @Date: 2022/6/11
+     * @Description: 判断两个日期是否连续（同一个月内是否连续，不同月默认为不连续）
+     */
+    private boolean dateIsContinuous(Date today, Date lastDay) {
+
+        // 年
+        if (today.getYear() != lastDay.getYear()) {
+            return false;
+        }
+        // 月
+        if (today.getMonth() != lastDay.getMonth()) {
+            return false;
+        }
+        // 日
+        if ((today.getDay() - lastDay.getDay()) != 1) {
+            return false;
+        }
+
+        return  true;
+    }
+
+
 }
