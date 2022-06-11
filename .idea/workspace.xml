@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsFootPrintController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/RelatedService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/RelatedServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianCarousel.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianCarousel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/BailianGoodsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/BailianGoodsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
