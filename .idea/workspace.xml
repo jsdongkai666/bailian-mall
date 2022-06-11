@@ -26,6 +26,7 @@
       <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="订单中心支付功能">
       <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/PaymentConstant.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/config/AlipayConfig.java" afterDir="false" />
@@ -81,6 +82,9 @@
         <option name="mavenHome" value="$PROJECT_DIR$/../../Program Files/apache-maven-3.8.3" />
         <option name="useMavenConfig" value="true" />
         <option name="userSettingsFile" value="D:\Program Files\apache-maven-3.8.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -250,7 +254,7 @@
     </task>
     <option name="localTasksCounter" value="4" />
       <workItem from="1654840128028" duration="6666000" />
-    </task>
+    </component>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
