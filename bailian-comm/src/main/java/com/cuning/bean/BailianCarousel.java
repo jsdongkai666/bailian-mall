@@ -2,9 +2,13 @@ package com.cuning.bean;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,9 +19,12 @@ import java.util.Date;
  * Description: 轮播图实体类
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @ApiModel(value = "轮播图",description = "对应数据库bailianmall中的bailianCarousel")
-public class BailianCarousel {
+public class BailianCarousel implements Serializable {
 
+    private static final long serialVersionUID = -7771537176974371148L;
     /**
      * id
      */

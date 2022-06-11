@@ -604,4 +604,56 @@ public class RedisUtils {
         }
         return value <= count;
     }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/10
+     * @param  : [java.lang.String, java.lang.String, double]
+     * @return : void
+     * @description : 添加一个元素,zset方法
+     */
+    public void zadd(String key, String value, double score) {
+        try {
+            redisTemplate.opsForZSet().add(key, value, score);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/10
+     * @param  : [java.lang.String, java.lang.String, double]
+     * @return : void
+     * @description : 删除元素，zrem
+     */
+    public void zrem(String key, String value) {
+        try {
+            redisTemplate.opsForZSet().remove(key, value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/10
+     * @param  : [java.lang.String, java.lang.String, double]
+     * @return : void
+     * @description : 返回有序的集合，score小的在前面
+     */
+    public Set<Object> zrange(String key, long start, long end) {
+            return redisTemplate.opsForZSet().range(key, start, end);
+    }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/10
+     * @param  : [java.lang.String, java.lang.String, double]
+     * @return : void
+     * @description : 返回有序的集合，score大的在前面
+     */
+    public Set<Object> zrevrange(String key, int start, int end) {
+        return redisTemplate.opsForZSet().reverseRange(key, start, end);
+    }
 }

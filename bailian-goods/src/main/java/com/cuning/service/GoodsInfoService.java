@@ -24,4 +24,9 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
     Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
 
     Boolean deleteGoodsInfo(Integer goodsId);
+
+    List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId);
+
+    List<Integer>  selectGoodsCategoryIds();
+
 }

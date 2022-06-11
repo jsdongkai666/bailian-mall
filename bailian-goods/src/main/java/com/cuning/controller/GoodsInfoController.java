@@ -44,4 +44,20 @@ public class GoodsInfoController {
     public boolean deleteGoodsInfo(@RequestBody Integer goodsId){
         return goodsInfoService.deleteGoodsInfo(goodsId);
     }
+
+    @GetMapping("/queryGoodsByGoodsCategoryId")
+    public List<BailianGoodsInfo> queryGoodsByGoodCategoryId(@RequestParam Integer categoryId){
+        return goodsInfoService.selectGoodsByGoodsCategoryId(categoryId);
+    }
+
+    @GetMapping("/queryGoodsCategoryIds")
+    public List<Integer> queryGoodsCategoryIds(){
+        return goodsInfoService.selectGoodsCategoryIds();
+    }
+
+    @GetMapping("/queryGoodsById")
+    public BailianGoodsInfo queryGoodsById(@RequestParam Integer goodsId){
+       return goodsInfoService.queryGoodsInfoById(goodsId);
+    }
+
 }
