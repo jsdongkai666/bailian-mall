@@ -19,8 +19,6 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName);
 
-    BailianGoodsInfo queryGoodsInfoById(Integer goodsId);
-
     Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
 
     Boolean deleteGoodsInfo(Integer goodsId);

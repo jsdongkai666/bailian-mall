@@ -18,4 +18,6 @@ public interface UserService extends IService<User> {
 
     Map<String,Object> executeLogin(UserVO user);
 
+    Map<String, Object> executeTelLogin(String tel, String captcha);
+
 }
