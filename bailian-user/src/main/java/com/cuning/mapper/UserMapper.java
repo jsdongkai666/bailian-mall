@@ -11,4 +11,15 @@ import org.apache.ibatis.annotations.Mapper;
  */
 
 public interface UserMapper extends BaseMapper<User> {
+
+    int updateUserById(User user);
+    
+    /** 
+    * @Param: [] 
+    * @return: int 
+    * @Author: dengteng
+    * @Date: 2022/6/11 
+    * @Description: 设置所有用户的签到状态为0--未签到 
+    */
+    int updateUserCheckStatus();
 }
