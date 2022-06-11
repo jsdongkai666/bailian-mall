@@ -1,6 +1,7 @@
 package com.cuning.controller;
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.bean.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class GoodsInfoController {
      * @date   : 2022/6/10 0010
      * @param  : [com.cuning.bean.goods.BailianGoodsInfo]
      * @return : com.cuning.bean.goods.BailianGoodsInfo
-     * @description : 修改商品详情 
+     * @description : 修改商品详情
      */
     @PostMapping("/updateGoods")
     public BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo){
@@ -70,6 +71,21 @@ public class GoodsInfoController {
     @RequestMapping("/deleteGoods")
     public boolean deleteGoodsInfo(@RequestParam Integer goodsId){
         return goodsInfoService.deleteGoodsInfo(goodsId);
+    }
+
+    @GetMapping("/queryGoodsByGoodsCategoryId")
+    public List<BailianGoodsInfo> queryGoodsByGoodCategoryId(@RequestParam Integer categoryId){
+        return goodsInfoService.selectGoodsByGoodsCategoryId(categoryId);
+    }
+
+    @GetMapping("/queryGoodsCategoryIds")
+    public List<Integer> queryGoodsCategoryIds(){
+        return goodsInfoService.selectGoodsCategoryIds();
+    }
+
+    @GetMapping("/queryGoodsById")
+    public BailianGoodsInfo queryGoodsById(@RequestParam Integer goodsId){
+       return goodsInfoService.queryGoodsInfoById(goodsId);
     }
 
 }

@@ -1,0 +1,9 @@
+server:
+  port: 8097
+spring:
+  application:
+    name: bailian-logistics
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8093/eureka

@@ -6,6 +6,8 @@ package com.cuning.service.impl;
  * <p>
  * @Description: GoodsInfoServiceImpl
  **/
+
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,6 +16,10 @@ import com.cuning.mapper.GoodsInfoMapper;
 import com.cuning.service.GoodsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGoodsInfo> implements GoodsInfoService {
@@ -45,5 +51,25 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     @Override
     public Boolean deleteGoodsInfo(Integer goodsId) {
         return this.removeById(goodsId);
+    }
+
+    @Override
+    public List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId) {
+        QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("goods_category_id",categoryId);
+        return goodsInfoMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public List<Integer> selectGoodsCategoryIds() {
+        QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("goods_category_id");
+        List<BailianGoodsInfo> goodsInfoList = goodsInfoMapper.selectList(queryWrapper);
+        return goodsInfoList.stream().map(BailianGoodsInfo::getGoodsCategoryId).collect(Collectors.toList());
+    }
+
+    @Override
+    public BailianGoodsInfo queryGoodsInfoById(Integer goodsId) {
+        return goodsInfoMapper.selectById(goodsId);
     }
 }
