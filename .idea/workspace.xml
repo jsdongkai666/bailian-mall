@@ -4,6 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsFootPrintController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/RelatedService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/RelatedServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianCarousel.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianCarousel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/BailianGoodsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/BailianGoodsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/BailianHomepageApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="订单中心支付功能">
       <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/PaymentConstant.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/config/AlipayConfig.java" afterDir="false" />
@@ -40,6 +62,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Program Files\apache-maven-3.8.3\maven-repo" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../Program Files/apache-maven-3.8.3" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\Program Files\apache-maven-3.8.3\conf\settings.xml" />
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -52,7 +92,6 @@
   <component name="ProjectId" id="2AJs7se1KeLUdLJd3hoS1dJKsqZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="foldersAlwaysOnTop" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -66,6 +105,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Program Files (x86)/IdeaWorkspace/springcloud" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.3137931" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="show.run.dashboard.notification" value="false" />
@@ -93,6 +140,7 @@
       </set>
     </option>
   </component>
+  <component name="RunManager" selected="Spring Boot.BailianHomepageApplication">
   <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
@@ -112,6 +160,13 @@
     <configuration name="BailianHomepageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-homepage" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianHomepageApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BailianLogisticsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="bailian-logistics" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianLogisticsApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,6 +218,36 @@
       <option name="presentableId" value="Default" />
       <updated>1654738865577</updated>
       <workItem from="1654738867573" duration="3806000" />
+      <workItem from="1654745088573" duration="13183000" />
+      <workItem from="1654821789235" duration="1456000" />
+      <workItem from="1654744225782" duration="167000" />
+      <workItem from="1654744418892" duration="22723000" />
+      <workItem from="1654858680058" duration="15630000" />
+      <workItem from="1654877256558" duration="3337000" />
+      <workItem from="1654907786463" duration="5170000" />
+    </task>
+    <task id="LOCAL-00001" summary="商品">
+      <created>1654765586729</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654765586729</updated>
+    </task>
+    <task id="LOCAL-00002" summary="添加mysql和mybatis-plus的依赖">
+      <created>1654762343547</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654762343547</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修改">
+      <created>1654767617004</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654767617004</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
       <workItem from="1654840128028" duration="6666000" />
     </task>
     <servers />
@@ -315,6 +400,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="商品" />
+    <MESSAGE value="轮播图的增删改查" />
+    <MESSAGE value="添加mysql和mybatis-plus的依赖" />
+    <MESSAGE value="修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/RelatedController.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <MESSAGE value="订单中心支付功能" />
     <option name="LAST_COMMIT_MESSAGE" value="订单中心支付功能" />
   </component>
