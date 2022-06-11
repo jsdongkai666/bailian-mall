@@ -10,4 +10,10 @@ public interface CartsService {
      * 获取购物车列表
      */
     List<BailianCarts> getCartsList();
+
+    boolean addCarts(BailianCarts bailianCarts);
+
+    boolean deleteCartsById(List<String> id);
+
+    boolean modifyCarts(BailianCarts bailianCarts);
 }
