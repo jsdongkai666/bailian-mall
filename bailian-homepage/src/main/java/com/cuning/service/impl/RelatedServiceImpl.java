@@ -1,6 +1,7 @@
 package com.cuning.service.impl;
 
-import com.cuning.bean.BailianGoodsInfo;
+
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.RelatedService;
 import org.springframework.stereotype.Service;
 

@@ -57,7 +57,7 @@ public class OrderController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "orderNo", value = "订单编号",allowMultiple = true,required = true,paramType = "query")
     })
-    public Boolean updateOrder(@RequestParam("orderNo")List<Integer> orderNos){
+    public Boolean updateOrder(@RequestParam("orderNo")List<String> orderNos){
         return shoppingOrderService.deleteListOrder(orderNos);
     }
 

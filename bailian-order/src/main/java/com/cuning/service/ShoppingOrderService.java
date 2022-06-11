@@ -30,7 +30,7 @@ public interface ShoppingOrderService {
      * @return : java.lang.Boolean
      * @description : 批量删除订单
      */
-    Boolean deleteListOrder(List<Integer> orderNos);
+    Boolean deleteListOrder(List<String> orderNos);
 
 
     /**

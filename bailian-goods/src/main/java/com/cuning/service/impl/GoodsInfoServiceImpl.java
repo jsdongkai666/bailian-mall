@@ -39,10 +39,7 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
         return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().like("goods_name",goodsName));
     }
 
-    @Override
-    public BailianGoodsInfo queryGoodsInfoById(Integer goodsId) {
-        return goodsInfoMapper.selectById(goodsId);
-    }
+
 
 
     @Override
