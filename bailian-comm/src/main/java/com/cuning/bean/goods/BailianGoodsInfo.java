@@ -1,4 +1,4 @@
-package com.cuning.bean;
+package com.cuning.bean.goods;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;

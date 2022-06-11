@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="商品1">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_02__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_22__Changes_.xml" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="商品增删改">
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/vo/GoodsCategorySecondVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/vo/GoodsCategoryThirdVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/vo/GoodsCategoryVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsCagetoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/GoodsCategoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/BailianGoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/GoodsInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/GoodsInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +36,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -88,7 +103,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianGoodsApplication">
+  <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -141,10 +156,10 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.BailianCommApplication" />
-      <item itemvalue="Spring Boot.BailianEurekaApplication" />
-      <item itemvalue="Spring Boot.BailianGoodsApplication" />
-      <item itemvalue="Spring Boot.BailianHomepageApplication" />
       <item itemvalue="Spring Boot.BailianOrderApplication" />
+      <item itemvalue="Spring Boot.BailianGoodsApplication" />
+      <item itemvalue="Spring Boot.BailianEurekaApplication" />
+      <item itemvalue="Spring Boot.BailianHomepageApplication" />
       <item itemvalue="Spring Boot.BailianUserApplication" />
       <item itemvalue="Spring Boot.BailianWebApplication" />
     </list>
@@ -159,7 +174,8 @@
       <updated>1654738865577</updated>
       <workItem from="1654738867573" duration="3806000" />
       <workItem from="1654744225782" duration="167000" />
-      <workItem from="1654744418892" duration="29580000" />
+      <workItem from="1654744418892" duration="69825000" />
+      <workItem from="1654937705380" duration="295000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -182,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654826435436</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="商品增删改">
+      <created>1654833341978</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654833341978</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +357,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="商品" />
     <MESSAGE value="商品1" />
-    <option name="LAST_COMMIT_MESSAGE" value="商品1" />
+    <MESSAGE value="商品增删改" />
+    <option name="LAST_COMMIT_MESSAGE" value="商品增删改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
