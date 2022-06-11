@@ -26,7 +26,7 @@ wechat:
     mchId: 11473623 # \u5546\u6237id
     mchkey: 2ab9071b06b9f739b950ddb41db2690d # \u5546\u6237\u79D8\u94A5
     orderUri: https://api.mch.weixin.qq.com/pay/unifiedorder #\u5FAE\u4FE1\u7EDF\u4E00\u4E0B\u5355\u63A5\u53E3
-    notifyUri: http://i38328.natappfree.cc/wxpayResultBack
+    notifyUri: http://w7589j.natappfree.cc/wxpayResultBack
     orderqueryUri: https://api.mch.weixin.qq.com/pay/orderquery
 
 alipay:
@@ -35,4 +35,4 @@ alipay:
   publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmZKGUQXRi6JNol/xktb21gSHcSuf/gprH9GoW0GYG4uf3TIPTUfZAS8PEQEdv27wg57U8wTSio6Fb5OxO0LCTLI+rRuTapWytbBsBiHwJXIH4KB/XMArW1G1s3aiJPjbNKhNKbphrqFcrUwJ3xx0f1lDm77FzcWwGuJ3zeUuhkxvfLIe7/OX/QhckK21jWPCkH0lcSAsi4LQYcyPaxYRUQ2+AK7/Pl52nliquG+OOeEd3b+Mr4o/SH1pQi8S2Qwnzu+k1/YSwYXOtM4jb2tFqL6SHGXA5da6fFaIqdzow7krniICTyR4902d1TcGdYmfeuLBdZSsFY/Q+Xf+vwkDHwIDAQAB
   gateway: openapi.alipaydev.com  # 不用修改
   returnUrl: http://127.0.0.1:8095/return # 支付成功后跳转的页面，可以为空，也可以根据回调接口的判断来返回信息
-  notifyUrl: http://i38328.natappfree.cc/notify  # 当支付成功后，支付宝的回调接口，是你本地的接口，如果没有域名的话要内网穿透
+  notifyUrl: http://w7589j.natappfree.cc/notify  # 当支付成功后，支付宝的回调接口，是你本地的接口，如果没有域名的话要内网穿透
