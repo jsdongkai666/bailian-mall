@@ -6,6 +6,7 @@ import com.cuning.service.RelatedService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,15 +18,17 @@ import java.util.List;
  */
 @Service
 public class RelatedServiceImpl implements RelatedService {
+
     @Override
     public List<BailianGoodsInfo> selectFootPrintGoods(String userId) {
         List<BailianGoodsInfo> bailianGoodsInfoList = new ArrayList<>();
         BailianGoodsInfo bailianGoodsInfo = BailianGoodsInfo.builder()
-                .goodsId(11111)
-                .goodsCategoryId(23)
-                .goodsDetailContent("触发熔断")
-                .goodsIntro("GG了")
-                .build();
+                .goodsId(10003).goodsName("无印良品 MUJI 基础润肤化妆水").goodsIntro("滋润型 400ml").goodsCategoryId(0)
+                .goodsCoverImg("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
+                .goodsCarousel("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
+                .goodsDetailContent("<p>商品介绍加载中...</p>").originalPrice(100).sellingPrice(100).stockNum(1007)
+                .goodsSellStatus(Byte.parseByte("1")).createUser(0).createTime(new Date("2019-09-18 13:18:47"))
+                .updateUser(0).updateTime(new Date("2020-10-13 10:41:59")).build();
         bailianGoodsInfoList.add(bailianGoodsInfo);
 
         return bailianGoodsInfoList;
@@ -35,11 +38,12 @@ public class RelatedServiceImpl implements RelatedService {
     public List<BailianGoodsInfo> selectGoodsByCategoryId(Integer categoryId) {
         List<BailianGoodsInfo> bailianGoodsInfoList = new ArrayList<>();
         BailianGoodsInfo bailianGoodsInfo = BailianGoodsInfo.builder()
-                .goodsId(11111)
-                .goodsCategoryId(23)
-                .goodsDetailContent("触发熔断")
-                .goodsIntro("GG了")
-                .build();
+                .goodsId(10003).goodsName("无印良品 MUJI 基础润肤化妆水").goodsIntro("滋润型 400ml").goodsCategoryId(0)
+                .goodsCoverImg("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
+                .goodsCarousel("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
+                .goodsDetailContent("<p>商品介绍加载中...</p>").originalPrice(100).sellingPrice(100).stockNum(1007)
+                .goodsSellStatus(Byte.parseByte("1")).createUser(0).createTime(new Date("2019-09-18 13:18:47"))
+                .updateUser(0).updateTime(new Date("2020-10-13 10:41:59")).build();
         bailianGoodsInfoList.add(bailianGoodsInfo);
 
         return bailianGoodsInfoList;
@@ -54,12 +58,12 @@ public class RelatedServiceImpl implements RelatedService {
 
     @Override
     public BailianGoodsInfo selectGoodsById(Integer goodsId) {
-        BailianGoodsInfo bailianGoodsInfo = BailianGoodsInfo.builder()
-                .goodsId(11111)
-                .goodsCategoryId(23)
-                .goodsDetailContent("触发熔断")
-                .goodsIntro("GG了")
-                .build();
-        return bailianGoodsInfo;
+        return BailianGoodsInfo.builder()
+                .goodsId(10003).goodsName("无印良品 MUJI 基础润肤化妆水").goodsIntro("滋润型 400ml").goodsCategoryId(0)
+                .goodsCoverImg("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
+                .goodsCarousel("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
+                .goodsDetailContent("<p>商品介绍加载中...</p>").originalPrice(100).sellingPrice(100).stockNum(1007)
+                .goodsSellStatus(Byte.parseByte("1")).createUser(0).createTime(new Date("2019-09-18 13:18:47"))
+                .updateUser(0).updateTime(new Date("2020-10-13 10:41:59")).build();
     }
 }

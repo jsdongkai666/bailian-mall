@@ -625,7 +625,7 @@ public class RedisUtils {
      * @date   : 2022/06/10
      * @param  : [java.lang.String, java.lang.String, double]
      * @return : void
-     * @description : 删除元素，zrem
+     * @description : zset方法，根据key值和value值，删除
      */
     public void zrem(String key, String value) {
         try {
@@ -635,12 +635,24 @@ public class RedisUtils {
         }
     }
 
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/13
+     * @param  : [java.lang.String, long, long]
+     * @return : java.lang.Long
+     * @description : zset方法，根据区间，删除对应key的一个或多个值
+     */
+    public Long zremoveRange(String key, long start, long end) {
+        return redisTemplate.opsForZSet().removeRange(key,start,end);
+    }
+
     /**
      * @author : lixu
      * @date   : 2022/06/10
      * @param  : [java.lang.String, java.lang.String, double]
      * @return : void
-     * @description : 返回有序的集合，score小的在前面
+     * @description : zset方法，返回有序的集合，score值升序
      */
     public Set<Object> zrange(String key, long start, long end) {
             return redisTemplate.opsForZSet().range(key, start, end);
@@ -651,9 +663,21 @@ public class RedisUtils {
      * @date   : 2022/06/10
      * @param  : [java.lang.String, java.lang.String, double]
      * @return : void
-     * @description : 返回有序的集合，score大的在前面
+     * @description : zset方法，返回有序的集合，score值降序
      */
     public Set<Object> zrevrange(String key, int start, int end) {
         return redisTemplate.opsForZSet().reverseRange(key, start, end);
     }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/13
+     * @param  : [java.lang.String]
+     * @return : java.lang.Long
+     * @description : zset方法，返回key对应的value的个数
+     */
+    public Long zcard(String key){
+        return redisTemplate.opsForZSet().size(key);
+    }
+
 }
