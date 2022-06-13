@@ -1,11 +1,14 @@
 package com.cuning.controller;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cuning.bean.BailianGoodsInfo;
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /*
  * @Created on : 2022/6/9 0009
@@ -41,8 +44,8 @@ public class GoodsInfoController {
      * @description : 后台分页查询
      */
     @GetMapping("/queryGoodsPage")
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam Integer pageNo, @RequestParam Integer pageSize,@RequestParam Boolean flag){
-        return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize,flag);
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize, @RequestParam("goodsName") String goodsName){
+        return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize,goodsName);
     }
 
     /***
