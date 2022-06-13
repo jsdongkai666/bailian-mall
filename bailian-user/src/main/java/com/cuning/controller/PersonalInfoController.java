@@ -47,11 +47,11 @@ public class PersonalInfoController {
         // 返回结果map
         Map<String,String> resultMap = new HashMap<>();
 
-        if (StringUtils.isEmpty(password) || StringUtils.isEmpty(newPassword) || StringUtils.isEmpty(newPasswordAgain)) {
-            resultMap.put("errCode","200");
-            resultMap.put("errMsg","密码不能为空！");
-            return resultMap;
-        }
+//        if (StringUtils.isEmpty(password) || StringUtils.isEmpty(newPassword) || StringUtils.isEmpty(newPasswordAgain)) {
+//            resultMap.put("errCode","200");
+//            resultMap.put("errMsg","密码不能为空！");
+//            return resultMap;
+//        }
 
         if (!newPasswordAgain.equals(newPassword)) {
             resultMap.put("errCode","200");

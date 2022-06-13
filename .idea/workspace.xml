@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/PersonalInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/PersonalInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/PersonalInfoController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,10 +154,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.BailianUserApplication" />
         <item itemvalue="Spring Boot.BailianGoodsApplication" />
         <item itemvalue="Spring Boot.BailianHomepageApplication" />
         <item itemvalue="Spring Boot.BailianEurekaApplication" />
+        <item itemvalue="Spring Boot.BailianUserApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +176,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654916360572</updated>
-      <workItem from="1654916365188" duration="12176000" />
+      <workItem from="1654916365188" duration="14541000" />
+      <workItem from="1655080759147" duration="2379000" />
     </task>
     <task id="LOCAL-00002" summary="商品查询">
       <created>1654917011490</created>
@@ -188,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654917011490</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="个人信息和密码的修改">
+      <created>1654934948954</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654934948954</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +349,8 @@
     <MESSAGE value="修改" />
     <MESSAGE value="依赖" />
     <MESSAGE value="商品查询" />
-    <option name="LAST_COMMIT_MESSAGE" value="商品查询" />
+    <MESSAGE value="个人信息和密码的修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="个人信息和密码的修改" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
