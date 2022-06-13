@@ -34,13 +34,12 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,Boolean flag) {
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName) {
         Page<BailianGoodsInfo> page = new Page<>(pageNo,pageSize);
-        if (flag){
-            return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().orderByAsc("selling_price"));
-        }
-        return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().orderByDesc("selling_price"));
+        return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().like("goods_name",goodsName));
     }
+
+
 
 
     @Override
