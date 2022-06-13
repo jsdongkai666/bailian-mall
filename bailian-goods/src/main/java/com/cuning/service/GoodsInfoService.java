@@ -10,7 +10,6 @@ package com.cuning.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.goods.BailianGoodsInfo;
-import com.cuning.bean.BailianGoodsInfo;
 import io.swagger.models.auth.In;
 
 import java.util.List;
