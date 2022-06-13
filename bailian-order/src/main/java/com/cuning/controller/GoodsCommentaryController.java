@@ -55,15 +55,15 @@ public class GoodsCommentaryController {
      * @description : 对已完成订单中的商品进行评论或者追评
      */
     @PostMapping("/saveGoodsCommentary")
-    public BailianGoodsCommentary saveGoodsCommentary(HttpServletRequest request,@RequestParam String orderNo,@RequestParam Integer goodsId,
+    public BailianGoodsCommentary saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam Integer goodsId,
                                                       @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl){
         BailianGoodsCommentary bailianGoodsCommentary = new BailianGoodsCommentary();
-        BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",request.getParameter("userId")).eq("order_no",orderNo));
+        BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         if ("4".equals(bailianOrder.getOrderStatus())){
             BailianOrderItem bailianOrderItem = orderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
             if (bailianOrderItem.getOrderItemId()!=null){
-                bailianGoodsCommentary.setUserName(request.getParameter("userName"));
-                bailianGoodsCommentary.setUserImg(request.getParameter("userHeadImg"));
+                bailianGoodsCommentary.setUserName(userName);
+                bailianGoodsCommentary.setUserImg(userHeadImg);
                 return goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl);
             }
         }
@@ -91,7 +91,7 @@ public class GoodsCommentaryController {
      * @description :  分页查看待评价和已评价
      */
     @GetMapping("/queryGoodsCommentaryType")
-    public Page<BailianOrderItem> queryGoodsCommentaryType(HttpServletRequest request,@RequestParam Integer pageNo,@RequestParam Integer pageSize,@RequestParam Integer commentaryType){
-        return goodsCommentaryService.queryGoodsCommentaryType(pageNo,pageSize,commentaryType,request.getParameter("userId"));
+    public Page<BailianOrderItem> queryGoodsCommentaryType(@RequestParam String userId,@RequestParam Integer pageNo,@RequestParam Integer pageSize,@RequestParam Integer commentaryType){
+        return goodsCommentaryService.queryGoodsCommentaryType(pageNo,pageSize,commentaryType,userId);
     }
 }
