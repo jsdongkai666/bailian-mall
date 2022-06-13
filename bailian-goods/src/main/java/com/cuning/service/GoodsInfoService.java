@@ -11,6 +11,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.goods.BailianGoodsInfo;
 
+import java.util.List;
+
 public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo);
@@ -23,7 +25,7 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId);
 
-    List<Integer>  selectGoodsCategoryIds();
+    List<Integer> selectGoodsCategoryIds();
 
     BailianGoodsInfo queryGoodsInfoById(Integer goodsId);
 

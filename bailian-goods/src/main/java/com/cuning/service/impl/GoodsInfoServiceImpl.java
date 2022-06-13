@@ -7,7 +7,6 @@ package com.cuning.service.impl;
  * @Description: GoodsInfoServiceImpl
  **/
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -16,8 +15,6 @@ import com.cuning.mapper.GoodsInfoMapper;
 import com.cuning.service.GoodsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
