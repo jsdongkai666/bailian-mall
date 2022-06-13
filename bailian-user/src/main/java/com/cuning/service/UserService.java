@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.user.User;
 import com.cuning.vo.UserVO;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,5 +20,41 @@ public interface UserService extends IService<User> {
     Map<String,Object> executeLogin(UserVO user);
 
     Map<String, Object> executeTelLogin(String tel, String captcha);
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: boolean
+    * @Author: dengteng
+    * @Date: 2022/6/11
+    * @Description: 判断用户今日是否已经签到
+    */
+    boolean isChecked(User user);
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: com.cuning.bean.user.User
+    * @Author: dengteng
+    * @Date: 2022/6/11
+    * @Description: 今日签到
+    */
+    boolean todayCheck(User user);
+
+    /**
+    * @Param: []
+    * @return: void
+    * @Author: dengteng
+    * @Date: 2022/6/11
+    * @Description:  定时任务设置用户签到状态为未签到
+    */
+    boolean cronSetCheckStatus();
+    
+    /** 
+    * @Param: [com.cuning.bean.user.User] 
+    * @return: java.util.List<java.lang.String> 
+    * @Author: dengteng
+    * @Date: 2022/6/11 
+    * @Description: 获取用户当月签到记录 
+    */
+    List<String > getCheckDateList(User user);
 
 }
