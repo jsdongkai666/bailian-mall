@@ -19,8 +19,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
 
+
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8093/eureka
-

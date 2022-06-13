@@ -656,4 +656,14 @@ public class RedisUtils {
     public Set<Object> zrevrange(String key, int start, int end) {
         return redisTemplate.opsForZSet().reverseRange(key, start, end);
     }
+
+
+    public Long zremoveRange(String key, long start, long end) {
+        return redisTemplate.opsForZSet().removeRange(key,start,end);
+    }
+
+    public Long zcard(String key){
+        return redisTemplate.opsForZSet().size(key);
+    }
+
 }

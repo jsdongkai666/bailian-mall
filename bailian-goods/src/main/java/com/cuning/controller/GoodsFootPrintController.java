@@ -1,6 +1,7 @@
 package com.cuning.controller;
 
-import com.cuning.bean.BailianGoodsInfo;
+
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
 import com.cuning.util.RedisUtils;
 import io.swagger.annotations.Api;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created On : 2022/06/10.
@@ -49,21 +51,19 @@ public class GoodsFootPrintController {
         // 获取当前用户名
         //String userId = request.getParameter("userId");
 
-        // 从redis中获取当前用户浏览过的商品
-        Set<Object> zrevrange = redisUtils.zrevrange(userId, 0, -1);
-
+        // 从redis中获取当前用户浏览过的商品id
+        List<Object> list = new ArrayList<>(redisUtils.zrevrange(userId, 0, -1));
 
         // list集合，存放用户浏览过的商品详情
         List<BailianGoodsInfo> bailianGoodsInfoList = new ArrayList<>();
-
-        // 获取id的set集合，并遍历
-        Object[] objects = zrevrange.toArray();
-        for (int i = 0; i < objects.length; i++) {
+        // 获取id的list集合，并遍历
+        for (int i = 0; i < list.size(); i++) {
             // 通过id，查询商品详情
-            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(Integer.valueOf(objects[i].toString()));
+            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(Integer.valueOf(list.get(i).toString()));
             bailianGoodsInfoList.add(i,bailianGoodsInfo);
-            log.info("------ 商品足迹：{} ------",bailianGoodsInfo);
+
         }
+        log.info("------ 用户：{}，商品足迹：{} ------",userId,bailianGoodsInfoList);
 
         return bailianGoodsInfoList;
     }
