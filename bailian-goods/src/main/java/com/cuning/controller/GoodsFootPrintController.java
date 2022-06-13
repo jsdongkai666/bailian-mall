@@ -50,10 +50,11 @@ public class GoodsFootPrintController {
         //String userId = request.getParameter("userId");
 
         // 从redis中获取当前用户浏览过的商品id
-        List<Object> list = new ArrayList<>(redisUtils.zrevrange(userId, 0, -1));
+        List<Object> list = new ArrayList<>(redisUtils.zrevrange(userId + "_foot", 0, -1));
 
         // list集合，存放用户浏览过的商品详情
         List<BailianGoodsInfo> bailianGoodsInfoList = new ArrayList<>();
+
         // 获取id的list集合，并遍历
         for (int i = 0; i < list.size(); i++) {
             // 通过id，查询商品详情
@@ -61,6 +62,7 @@ public class GoodsFootPrintController {
             bailianGoodsInfoList.add(i,bailianGoodsInfo);
 
         }
+
         log.info("------ 用户：{}，商品足迹：{} ------",userId,bailianGoodsInfoList);
 
         return bailianGoodsInfoList;
@@ -73,7 +75,7 @@ public class GoodsFootPrintController {
      * @return : java.util.List<com.cuning.bean.BailianGoodsInfo>
      * @description : 删除用户足迹
      */
-    @PostMapping("/delGoodsHistory")
+    @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
     public String delGoodsFootPrint(HttpServletRequest request, @RequestParam List<Integer> goodsId){
 
@@ -82,10 +84,12 @@ public class GoodsFootPrintController {
 
         // 删除商品足迹
         try {
-            goodsId.forEach(id -> redisUtils.zrem(userId,id.toString()));
+            goodsId.forEach(id -> redisUtils.zrem(userId + "_foot",id.toString()));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        log.info("------ 用户足迹删除成功 ------");
 
         return "删除成功！";
     }
