@@ -17,7 +17,7 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo);
 
-    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,Boolean flag);
+    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName);
 
     Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
 
