@@ -56,8 +56,12 @@ public class GoodsDetailsController {
         String score = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
         //log.info("------ 当前时间 ------：{}",score);
         // 当前用户浏览过的商品的id存入redis中，并设置权重
-        redisUtils.zadd(userId,goodsDetail.getGoodsId().toString(),Double.parseDouble(score));
 
+        redisUtils.zadd(userId,goodsDetail.getGoodsId().toString(),Double.parseDouble(score));
+        // zcard返回成员个数
+        if(redisUtils.zcard(userId) > 20) {
+            redisUtils.zremoveRange(userId,0, 0);
+        }
         // 商品详情
         log.info("------ 商品详情：{} ------",goodsDetail);
 

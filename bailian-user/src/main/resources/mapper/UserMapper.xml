@@ -35,6 +35,7 @@
         where user_id = #{userId}
     </update>
 
+</mapper>
     <update id="updateUserCheckStatus">
         update bailian_user set check_status = 0;
     </update>
