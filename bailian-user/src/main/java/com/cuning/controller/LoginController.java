@@ -51,9 +51,9 @@ public class LoginController {
 
     @GetMapping("/login")
     @ApiOperation("用户登录")
-    // @RequestParam String userName,@RequestParam String userPassword,@RequestParam String captcha
-    // @RequestBody UserVO userVO
-    public Map<String, Object> LoginUser(@RequestParam String userName,@RequestParam String userPassword,@RequestParam String captcha){
+    public Map<String, Object> LoginUser(@RequestParam String userName,
+                                         @RequestParam String userPassword,
+                                         @RequestParam String captcha){
         HashMap<String, Object> resultMap = new HashMap<>();
         UserVO userVO = new UserVO();
         UserVO build = userVO.builder().userName(userName).userPassword(userPassword).code(captcha).build();
@@ -70,8 +70,6 @@ public class LoginController {
 
     @GetMapping("/tel/login")
     @ApiOperation("用户手机登录")
-    // @RequestParam String userName,@RequestParam String userPassword,@RequestParam String captcha
-    // @RequestBody UserVO userVO
     public Map<String, Object> telLoginUser(@RequestParam String tel,@RequestParam String captcha){
         HashMap<String, Object> resultMap = new HashMap<>();
         Map<String, Object> resultSets = userService.executeTelLogin(tel,captcha);
