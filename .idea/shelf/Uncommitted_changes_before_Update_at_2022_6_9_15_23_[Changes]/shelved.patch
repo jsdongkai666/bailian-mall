@@ -1,43 +1,58 @@
-Index: bailian-user/src/main/java/com/cuning/BailianUserApplication.java
+Index: bailian-order/pom.xml
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
-<+>package com.cuning;\r\n\r\nimport org.springframework.boot.SpringApplication;\r\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\r\n\r\n@SpringBootApplication\r\npublic class BailianUserApplication {\r\n\r\n    public static void main(String[] args) {\r\n        SpringApplication.run(BailianUserApplication.class, args);\r\n    }\r\n\r\n}\r\n
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <parent>\r\n        <groupId>com.cuning</groupId>\r\n        <artifactId>bailian</artifactId>\r\n        <version>0.0.1-SNAPSHOT</version>\r\n        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->\r\n    </parent>\r\n    <groupId>com.cuning</groupId>\r\n    <artifactId>bailian-order</artifactId>\r\n    <version>0.0.1-SNAPSHOT</version>\r\n    <name>bailian-order</name>\r\n    <description>bailian-order</description>\r\n    <properties>\r\n        <java.version>1.8</java.version>\r\n    </properties>\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>com.cuning</groupId>\r\n            <artifactId>bailian-comm</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-web</artifactId>\r\n        </dependency>\r\n\r\n        <!-- eureka依赖 -->\r\n        <dependency>\r\n            <groupId>org.springframework.cloud</groupId>\r\n            <artifactId>spring-cloud-starter-eureka</artifactId>\r\n        </dependency>\r\n        <!--  feign依赖  -->\r\n        <dependency>\r\n            <groupId>org.springframework.cloud</groupId>\r\n            <artifactId>spring-cloud-starter-feign</artifactId>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-maven-plugin</artifactId>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n</project>\r\n
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/bailian-user/src/main/java/com/cuning/BailianUserApplication.java b/bailian-user/src/main/java/com/cuning/BailianUserApplication.java
---- a/bailian-user/src/main/java/com/cuning/BailianUserApplication.java	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
-+++ b/bailian-user/src/main/java/com/cuning/BailianUserApplication.java	(date 1654758782854)
-@@ -1,9 +1,11 @@
- package com.cuning;
+diff --git a/bailian-order/pom.xml b/bailian-order/pom.xml
+--- a/bailian-order/pom.xml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
++++ b/bailian-order/pom.xml	(date 1654758199163)
+@@ -37,6 +37,16 @@
+             <groupId>org.springframework.cloud</groupId>
+             <artifactId>spring-cloud-starter-feign</artifactId>
+         </dependency>
++        <dependency>
++            <groupId>com.baomidou</groupId>
++            <artifactId>mybatis-plus-boot-starter</artifactId>
++            <version>3.2.0</version>
++        </dependency>
++
++        <dependency>
++            <groupId>mysql</groupId>
++            <artifactId>mysql-connector-java</artifactId>
++        </dependency>
+     </dependencies>
  
-+import org.mybatis.spring.annotation.MapperScan;
- import org.springframework.boot.SpringApplication;
- import org.springframework.boot.autoconfigure.SpringBootApplication;
- 
- @SpringBootApplication
-+@MapperScan("com.cuning.mapper")
- public class BailianUserApplication {
- 
-     public static void main(String[] args) {
-Index: .idea/encodings.xml
+     <build>
+Index: bailian-order/src/main/java/com/cuning/controller/CartsController.java
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/bailian-comm/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-comm/src/main/resources\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-eureka/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-homepage/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-homepage/src/main/resources\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-order/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-user/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/bailian-web/src/main/java\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+<+>package com.cuning.controller;\r\n\r\nimport io.swagger.annotations.Api;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\n@RestController\r\n@Api(tags = \"购物车模块\")\r\npublic class CartsController {\r\n\r\n    @GetMapping(\"/\")\r\n}\r\n
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/.idea/encodings.xml b/.idea/encodings.xml
---- a/.idea/encodings.xml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
-+++ b/.idea/encodings.xml	(date 1654758179718)
-@@ -9,5 +9,7 @@
-     <file url="file://$PROJECT_DIR$/bailian-order/src/main/java" charset="UTF-8" />
-     <file url="file://$PROJECT_DIR$/bailian-user/src/main/java" charset="UTF-8" />
-     <file url="file://$PROJECT_DIR$/bailian-web/src/main/java" charset="UTF-8" />
-+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
-+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
-   </component>
- </project>
+diff --git a/bailian-order/src/main/java/com/cuning/controller/CartsController.java b/bailian-order/src/main/java/com/cuning/controller/CartsController.java
+--- a/bailian-order/src/main/java/com/cuning/controller/CartsController.java	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
++++ b/bailian-order/src/main/java/com/cuning/controller/CartsController.java	(date 1654759380465)
+@@ -8,5 +8,4 @@
+ @Api(tags = "购物车模块")
+ public class CartsController {
+ 
+-    @GetMapping("/")
+ }
+Index: .idea/cuning-bailian.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/cuning-bailian.iml b/.idea/cuning-bailian.iml
+new file mode 100644
+--- /dev/null	(date 1654758199304)
++++ b/.idea/cuning-bailian.iml	(date 1654758199304)
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4" />
 \ No newline at end of file
 Index: .idea/workspace.xml
 IDEA additional info:
@@ -48,8 +63,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/.idea/workspace.xml b/.idea/workspace.xml
 --- a/.idea/workspace.xml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
-+++ b/.idea/workspace.xml	(date 1654759325649)
-@@ -5,78 +5,40 @@
++++ b/.idea/workspace.xml	(date 1654759380543)
+@@ -5,68 +5,25 @@
    </component>
    <component name="ChangeListManager">
      <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="">
@@ -110,20 +125,18 @@ diff --git a/.idea/workspace.xml b/.idea/workspace.xml
 -      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/BailianWebApplication.java" afterDir="false" />
 -      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/resources/application.yml" afterDir="false" />
 -      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/cuning-bailian.iml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
 +      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-+      <change beforePath="$PROJECT_DIR$/bailian-comm/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/pom.xml" afterDir="false" />
-+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/resources/application.yml" afterDir="false" />
-+      <change beforePath="$PROJECT_DIR$/bailian-user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/pom.xml" afterDir="false" />
-+      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/BailianUserApplication.java" afterDir="false" />
-+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/bailian-order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
      </list>
      <option name="SHOW_DIALOG" value="false" />
      <option name="HIGHLIGHT_CONFLICTS" value="true" />
      <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
      <option name="LAST_RESOLUTION" value="IGNORE" />
-   </component>
++  </component>
 +  <component name="FileTemplateManagerImpl">
 +    <option name="RECENT_TEMPLATES">
 +      <list>
@@ -131,36 +144,42 @@ diff --git a/.idea/workspace.xml b/.idea/workspace.xml
 +        <option value="Interface" />
 +      </list>
 +    </option>
-+  </component>
+   </component>
    <component name="Git.Settings">
      <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-   </component>
-+  <component name="MarkdownSettingsMigration">
-+    <option name="stateVersion" value="1" />
-+  </component>
+@@ -74,9 +31,8 @@
    <component name="MavenImportPreferences">
      <option name="generalSettings">
        <MavenGeneralSettings>
 -        <option name="localRepository" value="$USER_HOME$/usr/dev/apache-maven-3.8.4/home" />
 -        <option name="mavenHome" value="$USER_HOME$/usr/dev/apache-maven-3.8.4" />
 -        <option name="userSettingsFile" value="$USER_HOME$/usr/dev/apache-maven-3.8.4/conf/settings.xml" />
-+        <option name="localRepository" value="E:\API" />
-+        <option name="mavenHome" value="F:/develop_tool/maven" />
-+        <option name="userSettingsFile" value="F:\develop_tool\maven\conf\settings.xml" />
++        <option name="mavenHome" value="$PROJECT_DIR$/../../javakaifa/apache-maven-3.6.0-bin/apache-maven-3.6.0" />
++        <option name="userSettingsFile" value="D:\javakaifa\apache-maven-3.6.0-bin\apache-maven-3.6.0\conf\settings.xml" />
        </MavenGeneralSettings>
      </option>
    </component>
-@@ -97,6 +59,9 @@
+@@ -89,9 +45,14 @@
+   <component name="PropertiesComponent">
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
++    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="aspect.path.notification.shown" value="true" />
+     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+     <property name="last_opened_file_path" value="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util" />
++    <property name="project.structure.last.edited" value="Project" />
++    <property name="project.structure.proportion" value="0.15" />
++    <property name="project.structure.side.proportion" value="0.2" />
+     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+     <property name="show.run.dashboard.notification" value="false" />
      <property name="vue.rearranger.settings.migration" value="true" />
-   </component>
-   <component name="RecentsManager">
-+    <key name="CreateClassDialog.RecentsKey">
-+      <recent name="com.service.impl" />
-+    </key>
-     <key name="CopyFile.RECENT_KEYS">
+@@ -101,13 +62,19 @@
        <recent name="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util" />
      </key>
-@@ -104,10 +69,14 @@
+     <key name="CopyClassDialog.RECENTS_KEY">
++      <recent name="com.cuning.bean.shoppingOrder" />
++      <recent name="com.cuning.bean.shoppingcarts" />
        <recent name="com.cuning.constant" />
      </key>
    </component>
@@ -169,25 +188,17 @@ diff --git a/.idea/workspace.xml b/.idea/workspace.xml
 -      <module name="bailian" />
 -      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianApplication" />
 +  <component name="RunManager" selected="Spring Boot.BailianCommApplication">
-+    <configuration default="true" type="JetRunConfigurationType">
-+      <method v="2">
-+        <option name="Make" enabled="true" />
-+      </method>
-+    </configuration>
-+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-+      <option name="filePath" />
++    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++      <option name="arquillianRunConfiguration">
++        <value>
++          <option name="containerStateName" value="" />
++        </value>
++      </option>
++      <option name="TEST_OBJECT" value="class" />
        <method v="2">
          <option name="Make" enabled="true" />
        </method>
-@@ -115,6 +84,7 @@
-     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-       <module name="bailian-comm" />
-       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
-+      <option name="ALTERNATIVE_JRE_PATH" />
-       <method v="2">
-         <option name="Make" enabled="true" />
-       </method>
-@@ -154,6 +124,14 @@
+@@ -154,6 +121,14 @@
          <option name="Make" enabled="true" />
        </method>
      </configuration>
@@ -202,146 +213,69 @@ diff --git a/.idea/workspace.xml b/.idea/workspace.xml
    </component>
    <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
    <component name="TaskManager">
-@@ -164,6 +142,9 @@
+@@ -164,6 +139,8 @@
        <option name="presentableId" value="Default" />
        <updated>1654738865577</updated>
        <workItem from="1654738867573" duration="3806000" />
-+      <workItem from="1654744749338" duration="84000" />
-+      <workItem from="1654744862270" duration="1696000" />
-+      <workItem from="1654757221212" duration="2084000" />
++      <workItem from="1654743540554" duration="23000" />
++      <workItem from="1654743571484" duration="6037000" />
      </task>
      <servers />
    </component>
-Index: pom.xml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <parent>\r\n        <groupId>org.springframework.boot</groupId>\r\n        <artifactId>spring-boot-starter-parent</artifactId>\r\n        <version>1.5.9.RELEASE</version>\r\n        <relativePath/> <!-- lookup parent from repository -->\r\n    </parent>\r\n    <groupId>com.cuning</groupId>\r\n    <artifactId>bailian</artifactId>\r\n    <version>0.0.1-SNAPSHOT</version>\r\n    <name>bailian</name>\r\n    <description>bailian</description>\r\n    <properties>\r\n        <java.version>1.8</java.version>\r\n        <scd.version>Dalston.SR4</scd.version>\r\n    </properties>\r\n    <packaging>pom</packaging>\r\n    <modules>\r\n        <module>bailian-comm</module>\r\n        <module>bailian-eureka</module>\r\n        <module>bailian-homepage</module>\r\n        <module>bailian-order</module>\r\n        <module>bailian-user</module>\r\n        <module>bailian-web</module>\r\n    </modules>\r\n\r\n    <dependencyManagement>\r\n        <dependencies>\r\n            <dependency>\r\n                <groupId>org.springframework.cloud</groupId>\r\n                <artifactId>spring-cloud-dependencies</artifactId>\r\n                <version>${scd.version}</version>\r\n                <type>pom</type>\r\n                <scope>import</scope>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>com.cuning</groupId>\r\n                <artifactId>bailian-comm</artifactId>\r\n                <version>0.0.1-SNAPSHOT</version>\r\n            </dependency>\r\n        </dependencies>\r\n    </dependencyManagement>\r\n\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-maven-plugin</artifactId>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n</project>\r\n
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/pom.xml b/pom.xml
---- a/pom.xml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
-+++ b/pom.xml	(date 1654758179707)
-@@ -47,12 +47,7 @@
- 
- 
-     <build>
--        <plugins>
--            <plugin>
--                <groupId>org.springframework.boot</groupId>
--                <artifactId>spring-boot-maven-plugin</artifactId>
--            </plugin>
--        </plugins>
-+
-     </build>
- 
- </project>
-Index: bailian-comm/pom.xml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <parent>\r\n        <groupId>com.cuning</groupId>\r\n        <artifactId>bailian</artifactId>\r\n        <version>0.0.1-SNAPSHOT</version>\r\n        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->\r\n    </parent>\r\n    <groupId>com.cuning</groupId>\r\n    <artifactId>bailian-comm</artifactId>\r\n    <version>0.0.1-SNAPSHOT</version>\r\n    <name>bailian-comm</name>\r\n    <description>bailian-comm</description>\r\n    <properties>\r\n        <java.version>1.8</java.version>\r\n    </properties>\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.projectlombok</groupId>\r\n            <artifactId>lombok</artifactId>\r\n        </dependency>\r\n\r\n\r\n        <!--  fastjson  -->\r\n        <dependency>\r\n            <groupId>com.alibaba</groupId>\r\n            <artifactId>fastjson</artifactId>\r\n            <version>1.2.62</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>com.fasterxml.jackson.core</groupId>\r\n            <artifactId>jackson-annotations</artifactId>\r\n        </dependency>\r\n\r\n\r\n    <dependency>\r\n        <groupId>io.springfox</groupId>\r\n        <artifactId>springfox-swagger-ui</artifactId>\r\n        <version>2.5.0</version>\r\n    </dependency>\r\n    <!-- swagger -->\r\n    <dependency>\r\n        <groupId>io.springfox</groupId>\r\n        <artifactId>springfox-swagger2</artifactId>\r\n        <version>2.5.0</version>\r\n    </dependency>\r\n    <dependency>\r\n        <groupId>com.github.xiaoymin</groupId>\r\n        <artifactId>swagger-bootstrap-ui</artifactId>\r\n        <version>1.9.3</version>\r\n    </dependency>\r\n\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-maven-plugin</artifactId>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n</project>\r\n
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/bailian-comm/pom.xml b/bailian-comm/pom.xml
---- a/bailian-comm/pom.xml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
-+++ b/bailian-comm/pom.xml	(date 1654758291219)
-@@ -57,6 +57,12 @@
-         <version>1.9.3</version>
-     </dependency>
- 
-+        <dependency>
-+            <groupId>repository.com.baomidou</groupId>
-+            <artifactId>mybatis-plus-extension</artifactId>
-+            <version>3.4.2</version>
-+        </dependency>
-+
-     </dependencies>
- 
-     <build>
-Index: .idea/misc.xml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-comm/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-eureka/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-order/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-user/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-homepage/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/bailian-web/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/.idea/misc.xml b/.idea/misc.xml
---- a/.idea/misc.xml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
-+++ b/.idea/misc.xml	(date 1654758179738)
-@@ -1,6 +1,31 @@
- <?xml version="1.0" encoding="UTF-8"?>
- <project version="4">
-+  <component name="CheckstyleConfigurable">
-+    <option name="suppFilterFilename" value="" />
-+    <option name="suppCommentFilter" value="false" />
-+    <option name="offComment" value="CHECKSTYLE\:OFF" />
-+    <option name="onComment" value="CHECKSTYLE\:ON" />
-+    <option name="checkFormat" value=".*" />
-+    <option name="messageFormat" value="" />
-+    <option name="checkCPP" value="true" />
-+    <option name="checkC" value="true" />
-+    <option name="suppNearbyCommentFilter" value="false" />
-+    <option name="snCommentFormat" value="SUPPRESS CHECKSTYLE (\w+)" />
-+    <option name="snCheckFormat" value="$1" />
-+    <option name="snMessageFormat" value="" />
-+    <option name="snInfluenceFormat" value="0" />
-+    <option name="snCheckCPP" value="true" />
-+    <option name="snCheckC" value="true" />
-+    <option name="pathToUserRulesConfiguration" value="" />
-+    <option name="pathToJarWithRules" value="" />
-+  </component>
-   <component name="ExternalStorageConfigurationManager" enabled="true" />
-+  <component name="FindBugsConfigurable">
-+    <option name="make" value="true" />
-+    <option name="effort" value="default" />
-+    <option name="priority" value="Medium" />
-+    <option name="excludeFilter" value="" />
-+  </component>
-   <component name="MavenProjectsManager">
-     <option name="originalFiles">
-       <list>
-@@ -17,4 +42,7 @@
-   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-     <output url="file://$PROJECT_DIR$/out" />
+@@ -312,5 +289,6 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
    </component>
-+  <component name="SuppressionsComponent">
-+    <option name="suppComments" value="[]" />
-+  </component>
  </project>
 \ No newline at end of file
-Index: bailian-user/pom.xml
+Index: .idea/jarRepositories.xml
 IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <parent>\r\n        <groupId>com.cuning</groupId>\r\n        <artifactId>bailian</artifactId>\r\n        <version>0.0.1-SNAPSHOT</version>\r\n        <relativePath>../pom.xml</relativePath>  <!-- lookup parent from repository -->\r\n    </parent>\r\n    <groupId>com.cuning</groupId>\r\n    <artifactId>bailian-user</artifactId>\r\n    <version>0.0.1-SNAPSHOT</version>\r\n    <name>bailian-user</name>\r\n    <description>bailian-user</description>\r\n    <properties>\r\n        <java.version>1.8</java.version>\r\n    </properties>\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-web</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>com.cuning</groupId>\r\n            <artifactId>bailian-comm</artifactId>\r\n        </dependency>\r\n\r\n        <!-- eureka依赖 -->\r\n        <dependency>\r\n            <groupId>org.springframework.cloud</groupId>\r\n            <artifactId>spring-cloud-starter-eureka</artifactId>\r\n        </dependency>\r\n        <!--  feign依赖  -->\r\n        <dependency>\r\n            <groupId>org.springframework.cloud</groupId>\r\n            <artifactId>spring-cloud-starter-feign</artifactId>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-maven-plugin</artifactId>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n</project>\r\n
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
-diff --git a/bailian-user/pom.xml b/bailian-user/pom.xml
---- a/bailian-user/pom.xml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
-+++ b/bailian-user/pom.xml	(date 1654758782843)
-@@ -37,14 +37,17 @@
-             <groupId>org.springframework.cloud</groupId>
-             <artifactId>spring-cloud-starter-feign</artifactId>
-         </dependency>
-+
-+        <dependency>
-+            <groupId>com.baomidou</groupId>
-+            <artifactId>mybatis-plus-boot-starter</artifactId>
-+            <version>3.4.2</version>
-+        </dependency>
-     </dependencies>
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1654758199321)
++++ b/.idea/jarRepositories.xml	(date 1654758199321)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://maven.aliyun.com/repository/public" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: bailian-order/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8095\r\n\r\n\r\nspring:\r\n  application:\r\n    name: bailian-order
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/bailian-order/src/main/resources/application.yml b/bailian-order/src/main/resources/application.yml
+--- a/bailian-order/src/main/resources/application.yml	(revision 4936fe32af39c886ce1cd02ddb8da34d183d7ad5)
++++ b/bailian-order/src/main/resources/application.yml	(date 1654758199231)
+@@ -4,4 +4,5 @@
  
-     <build>
-         <plugins>
--            <plugin>
--                <groupId>org.springframework.boot</groupId>
--                <artifactId>spring-boot-maven-plugin</artifactId>
--            </plugin>
+ spring:
+   application:
+-    name: bailian-order
+\ No newline at end of file
++    name: bailian-order
 +
-         </plugins>
-     </build>
- 
-diff --git a/bailian-comm/src/main/resources/application.properties b/bailian-comm/src/main/resources/application.yml
-rename from bailian-comm/src/main/resources/application.properties
-rename to bailian-comm/src/main/resources/application.yml

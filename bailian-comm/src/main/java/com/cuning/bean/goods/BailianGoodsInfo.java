@@ -1,4 +1,4 @@
-package com.cuning.bean;
+package com.cuning.bean.goods;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /*
  * @Created on : 2022/6/9 0009
@@ -82,4 +83,5 @@ public class BailianGoodsInfo implements Serializable {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
+
 }

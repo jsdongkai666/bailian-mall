@@ -1,6 +1,7 @@
 package com.cuning.controller;
 
-import com.cuning.bean.BailianGoodsInfo;
+
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
 import com.cuning.util.RedisUtils;
 import io.swagger.annotations.Api;

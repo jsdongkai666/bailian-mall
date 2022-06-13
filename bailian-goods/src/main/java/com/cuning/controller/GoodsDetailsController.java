@@ -1,6 +1,7 @@
 package com.cuning.controller;
 
-import com.cuning.bean.BailianGoodsInfo;
+
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
 import com.cuning.util.RedisUtils;
 import io.swagger.annotations.Api;
@@ -43,7 +44,7 @@ public class GoodsDetailsController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
-    public BailianGoodsInfo goodsDetailsMap(HttpServletRequest request,@RequestParam Integer goodsId){
+    public BailianGoodsInfo goodsDetailsMap(HttpServletRequest request, @RequestParam Integer goodsId){
 
         // 获取session用户
         String userId = request.getParameter("userId");
