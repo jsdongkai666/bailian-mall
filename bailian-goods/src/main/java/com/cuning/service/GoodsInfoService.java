@@ -10,8 +10,10 @@ package com.cuning.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.BailianGoodsInfo;
+import io.swagger.models.auth.In;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
@@ -28,5 +30,51 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
     List<Integer>  selectGoodsCategoryIds();
 
     BailianGoodsInfo queryGoodsInfoById(Integer goodsId);
+
+    /**
+    * @Param: [java.lang.String, java.lang.String]
+    * @return: java.lang.Boolean
+    * @Author: dengteng
+    * @Date: 2022/6/13
+    * @Description: 设置到货提醒
+    */
+    Map<String, String> setArrivalReminders(String userId, String goodsId);
+
+    /**
+    * @Param: [java.lang.String, java.lang.String]
+    * @return: java.lang.Boolean
+    * @Author: dengteng
+    * @Date: 2022/6/13
+    * @Description: 取消到货提醒
+    */
+    Boolean cancelArrivalReminders(String userId,String goodsId);
+
+    /**
+    * @Param: [java.lang.String, java.lang.Integer]
+    * @return: java.lang.Boolean
+    * @Author: dengteng
+    * @Date: 2022/6/13
+    * @Description: 商品补货
+    */
+    Boolean replenishment(String goodsId, Integer stockNum);
+
+    /**
+    * @Param: [java.lang.String, java.lang.String]
+    * @return: java.util.Map<java.lang.String,java.lang.String>
+    * @Author: dengteng
+    * @Date: 2022/6/13
+    * @Description: 收藏商品
+    */
+    Map<String, String> collectGoods(String userId, String goodsId);
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: java.util.List<java.lang.String>
+    * @Author: dengteng
+    * @Date: 2022/6/13
+    * @Description: 根据用户编号获取用户的收藏列表
+    */
+    List<Object> getCollectListByUserId(String userId);
+
 
 }
