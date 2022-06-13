@@ -16,19 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Created On : 2022/06/10.
  * <p>
  * Author     : lixu
  * <p>
- * Description: 商品足迹操作入口
+ * Description: 用户足迹操作入口
  */
 @Slf4j
 @RestController
-@Api(tags = "商品足迹操作入口")
+@Api(tags = "用户足迹操作入口")
 public class GoodsFootPrintController {
 
     @Autowired
@@ -45,17 +43,18 @@ public class GoodsFootPrintController {
      * @description : 查询用户足迹
      */
     @GetMapping("/queryGoodsFootPrint")
-    @ApiOperation(value = "商品足迹查询",notes = "根据用户名，查询该用户的足迹")
+    @ApiOperation(value = "用户足迹查询",notes = "根据用户名，查询该用户的足迹")
     public List<BailianGoodsInfo> queryGoodsFootPrint(@RequestParam("userId") String userId){
 
         // 获取当前用户名
         //String userId = request.getParameter("userId");
 
         // 从redis中获取当前用户浏览过的商品id
-        List<Object> list = new ArrayList<>(redisUtils.zrevrange(userId, 0, -1));
+        List<Object> list = new ArrayList<>(redisUtils.zrevrange(userId + "_foot", 0, -1));
 
         // list集合，存放用户浏览过的商品详情
         List<BailianGoodsInfo> bailianGoodsInfoList = new ArrayList<>();
+
         // 获取id的list集合，并遍历
         for (int i = 0; i < list.size(); i++) {
             // 通过id，查询商品详情
@@ -63,6 +62,7 @@ public class GoodsFootPrintController {
             bailianGoodsInfoList.add(i,bailianGoodsInfo);
 
         }
+
         log.info("------ 用户：{}，商品足迹：{} ------",userId,bailianGoodsInfoList);
 
         return bailianGoodsInfoList;
@@ -73,10 +73,10 @@ public class GoodsFootPrintController {
      * @date   : 2022/06/10
      * @param  : [javax.servlet.http.HttpServletRequest]
      * @return : java.util.List<com.cuning.bean.BailianGoodsInfo>
-     * @description : 删除商品足迹
+     * @description : 删除用户足迹
      */
-    @PostMapping("/delGoodsHistory")
-    @ApiOperation(value = "删除商品足迹",notes = "根据用户以及商品id，删除相关商品足迹")
+    @PostMapping("/delGoodsFootPrint")
+    @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
     public String delGoodsFootPrint(HttpServletRequest request, @RequestParam List<Integer> goodsId){
 
         // 获取当前用户名
@@ -84,10 +84,12 @@ public class GoodsFootPrintController {
 
         // 删除商品足迹
         try {
-            goodsId.forEach(id -> redisUtils.zrem(userId,id.toString()));
+            goodsId.forEach(id -> redisUtils.zrem(userId + "_foot",id.toString()));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        log.info("------ 用户足迹删除成功 ------");
 
         return "删除成功！";
     }

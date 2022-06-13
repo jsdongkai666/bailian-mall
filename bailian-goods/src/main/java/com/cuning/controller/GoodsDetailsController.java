@@ -57,13 +57,14 @@ public class GoodsDetailsController {
         //log.info("------ 当前时间 ------：{}",score);
 
         // 当前用户浏览过的商品的id存入redis中，并设置权重
-        redisUtils.zadd(userId,goodsDetail.getGoodsId().toString(),Double.parseDouble(score));
+        redisUtils.zadd(userId + "_foot",goodsDetail.getGoodsId().toString(),Double.parseDouble(score));
 
         // zcard返回成员个数
-        if(redisUtils.zcard(userId) > 20) {
+        if(redisUtils.zcard(userId + "_foot") > 20) {
             // 数量满20，将权重值最低的删除
-            redisUtils.zremoveRange(userId,0, 0);
+            redisUtils.zremoveRange(userId + "_foot",0, 0);
         }
+
         // 商品详情
         log.info("------ 商品详情：{} ------",goodsDetail);
 
