@@ -1,5 +1,6 @@
 package com.cuning.bean.goods;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -15,7 +16,7 @@ import java.util.Date;
  **/
 @Data
 public class BailianGoodsCategory {
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer categoryId;
 
     private Integer categoryLevel;

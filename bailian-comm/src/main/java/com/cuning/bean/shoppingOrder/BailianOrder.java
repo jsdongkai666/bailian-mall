@@ -5,12 +5,11 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.models.auth.In;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * Created On : 2022/6/11.
@@ -30,7 +29,7 @@ public class BailianOrder {
     private String orderNo;
 
     @ApiModelProperty("用户主键")
-    private Integer userId;
+    private String userId;
 
     @ApiModelProperty("订单总价")
     private Integer totalPrice;

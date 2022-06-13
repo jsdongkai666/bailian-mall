@@ -1,5 +1,6 @@
 package com.cuning.bean.goods;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,7 +27,7 @@ import java.util.List;
 public class BailianGoodsInfo implements Serializable {
 
     private static final long serialVersionUID = 5473302609274012318L;
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer goodsId;
 
     /**
