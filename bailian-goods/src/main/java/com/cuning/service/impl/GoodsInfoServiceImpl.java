@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.BailianGoodsInfo;
 import com.cuning.constant.CommonConstant;
 import com.cuning.mapper.GoodsInfoMapper;
@@ -42,10 +43,12 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize, String goodsName) {
-        Page<BailianGoodsInfo> page = new Page<>(pageNo, pageSize);
-        return goodsInfoMapper.selectPage(page, new QueryWrapper<BailianGoodsInfo>().like("goods_name", goodsName));
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName) {
+        Page<BailianGoodsInfo> page = new Page<>(pageNo,pageSize);
+        return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().like("goods_name",goodsName));
     }
+
+
 
 
     @Override

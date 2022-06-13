@@ -1,6 +1,7 @@
 package com.cuning.service;
 
-import com.cuning.bean.BailianGoodsInfo;
+
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.impl.RelatedServiceImpl;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

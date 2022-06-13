@@ -1,12 +1,13 @@
 package com.cuning.controller;
 
-import com.cuning.bean.BailianGoodsInfo;
+
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.RelatedService;
+import com.cuning.util.RedisUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +45,7 @@ public class RelatedController {
 
         // 查询足迹中的商品
         List<BailianGoodsInfo> bailianGoodsInfoList = relatedService.selectFootPrintGoods(userId);
-        log.info("------ 足迹中的商品：{} ------",bailianGoodsInfoList);
+        log.info("------ 用户：{}，足迹中的商品：{} ------",userId,bailianGoodsInfoList);
 
         // 猜你喜欢的商品列表
         List<BailianGoodsInfo> relatedInfos = new ArrayList<>();
@@ -71,7 +72,7 @@ public class RelatedController {
                     i++;
                 }
             }
-            log.info("------ 猜你喜欢：{} ------",relatedInfos);
+            log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
             return relatedInfos;
         }
 
@@ -86,7 +87,7 @@ public class RelatedController {
                     i++;
                 }
             }
-            log.info("------ 猜你喜欢：{} ------",relatedInfos);
+            log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
             return relatedInfos;
         }
 
@@ -122,7 +123,7 @@ public class RelatedController {
                 i++;
             }
         }
-        log.info("------ 猜你喜欢：{} ------",relatedInfos);
+        log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
         return relatedInfos;
     }
 
