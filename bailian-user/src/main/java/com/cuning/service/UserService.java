@@ -50,13 +50,13 @@ public interface UserService extends IService<User> {
     * @Description:  定时任务设置用户签到状态为未签到
     */
     boolean cronSetCheckStatus();
-    
-    /** 
-    * @Param: [com.cuning.bean.user.User] 
-    * @return: java.util.List<java.lang.String> 
+
+    /**
+    * @Param: [com.cuning.bean.user.User]
+    * @return: java.util.List<java.lang.String>
     * @Author: dengteng
-    * @Date: 2022/6/11 
-    * @Description: 获取用户当月签到记录 
+    * @Date: 2022/6/11
+    * @Description: 获取用户当月签到记录
     */
     List<String > getCheckDateList(User user);
 
