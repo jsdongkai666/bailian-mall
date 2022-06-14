@@ -1,16 +1,21 @@
 package com.cuning.controller.homepage;
 
+import com.cuning.annotation.CheckToken;
 import com.cuning.bean.BailianCarousel;
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.bean.user.User;
 import com.cuning.service.goods.GoodsFeignService;
 import com.cuning.service.homePage.HomePageFeignService;
+import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -40,7 +45,7 @@ public class HomePageWebController {
      */
     @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
-    public RequestResult<List<BailianCarousel>> queryCarouselList(@RequestParam(required = false,defaultValue = "0") Integer rank){
+    public RequestResult<List<BailianCarousel>> queryCarouselList(@ApiParam(name = "rank",value = "排序",defaultValue = "0")@RequestParam(name = "rank",required = false,defaultValue = "0") Integer rank){
         return homePageFeignService.queryCarousel(rank);
     }
 
@@ -66,7 +71,7 @@ public class HomePageWebController {
      */
     @PostMapping("/delCarousel")
     @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
-    public RequestResult<String> delCarousel(@RequestParam List<String> ids){
+    public RequestResult<String> delCarousel(@ApiParam(name = "ids",value = "轮播图id")@RequestParam("ids") List<String> ids){
         return homePageFeignService.delCarousel(ids);
     }
 
@@ -92,7 +97,12 @@ public class HomePageWebController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
-    public RequestResult<BailianGoodsInfo> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") Integer goodsId){
+    @CheckToken
+    public RequestResult<BailianGoodsInfo> goodsDetailsMap(HttpServletRequest request,
+                                                           @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") Integer goodsId) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
         return goodsFeignService.goodsDetailsMap(userId,goodsId);
     }
 
@@ -105,7 +115,11 @@ public class HomePageWebController {
      */
     @GetMapping("/queryGoodsFootPrint")
     @ApiOperation(value = "用户足迹查询",notes = "根据用户名，查询该用户的足迹")
-    public List<BailianGoodsInfo> queryGoodsFootPrint(@RequestParam("userId") String userId){
+    @CheckToken
+    public List<BailianGoodsInfo> queryGoodsFootPrint(HttpServletRequest request) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
         return goodsFeignService.queryGoodsFootPrint(userId);
     }
 
@@ -118,7 +132,12 @@ public class HomePageWebController {
      */
     @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
-    public RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<Integer> goodsId){
+    @CheckToken
+    public RequestResult<String> delGoodsFootPrint(HttpServletRequest request,
+                                                   @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") List<Integer> goodsId) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
         return goodsFeignService.delGoodsFootPrint(userId, goodsId);
     }
 
@@ -132,7 +151,11 @@ public class HomePageWebController {
      */
     @GetMapping("/goodsRelated")
     @ApiOperation(value = "猜你喜欢",notes = "根据用户的足迹，猜你喜欢")
-    public RequestResult<List<BailianGoodsInfo>> GoodsRelated(@RequestParam("userId")String userId){
+    @CheckToken
+    public RequestResult<List<BailianGoodsInfo>> GoodsRelated(HttpServletRequest request) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
         return homePageFeignService.GoodsRelated(userId);
     }
 
@@ -145,7 +168,12 @@ public class HomePageWebController {
      */
     @GetMapping("/SearchHistory")
     @ApiOperation(value = "商品搜索记录",notes = "将商品搜索记录存入redis中，再次搜索将靠前显示，一共展示十条数据")
-    public RequestResult<List<Object>> searchHistory(@RequestParam("userId") String userId,@RequestParam("searchKey") String searchKey){
+    @CheckToken
+    public RequestResult<List<Object>> searchHistory(HttpServletRequest request,
+                                                     @ApiParam(name = "searchKey",value = "搜索关键字")@RequestParam("searchKey") String searchKey) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
         return goodsFeignService.searchHistory(userId, searchKey);
     }
 
@@ -158,7 +186,11 @@ public class HomePageWebController {
      */
     @PostMapping("/delSearchHistory")
     @ApiOperation(value = "删除搜索记录",notes = "将搜索记录清空")
-    public RequestResult<String> delSearchHistory(@RequestParam("userId")String userId){
+    @CheckToken
+    public RequestResult<String> delSearchHistory(HttpServletRequest request) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
         return goodsFeignService.delSearchHistory(userId);
     }
 

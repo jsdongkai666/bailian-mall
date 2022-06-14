@@ -1,5 +1,6 @@
 package com.cuning.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.BailianConsignee;
 import com.cuning.util.RequestResult;
@@ -23,7 +24,7 @@ public interface AddressService extends IService<BailianConsignee> {
      * @return : java.util.List<com.cuning.bean.BailianConsignee>
      * @description : 根据用户id,查询用户的收货地址
      */
-    List<BailianConsignee> selectAddressList(String userId);
+    Page<BailianConsignee> selectAddressListByPage(Integer pageNo, Integer pageSize, String userId);
 
     /**
      * @author : lixu

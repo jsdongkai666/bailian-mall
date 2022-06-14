@@ -1,5 +1,6 @@
 package com.cuning.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.BailianConsignee;
 import com.cuning.constant.CommonConstant;
 import com.cuning.service.AddressService;
@@ -32,14 +33,16 @@ public class ConsigneeAddressController {
 
     @GetMapping("/queryAddress")
     @ApiOperation(value = "收货人地址查询",notes = "根据用户id，查询收货人的地址")
-    public RequestResult<List<BailianConsignee>> queryConsigneeAddress(@RequestParam("userId") String userId){
+    public RequestResult<Page<BailianConsignee>> queryConsigneeAddress(@RequestParam("pageNo") Integer pageNo,
+                                                                       @RequestParam("pageSize") Integer pageSize,
+                                                                       @RequestParam("userId") String userId){
 
         // 根据用户id，调用查询用户收货地址的个数
         int addressCount = addressService.searchAddressCount(userId);
         log.info("------ 用户：{}，收货地址的个数：{}",userId,addressCount);
 
         // 根据用户id，调用查询收货人信息业务接口
-        List<BailianConsignee> bailianConsigneeList = addressService.selectAddressList(userId);
+        Page<BailianConsignee> bailianConsigneeList = addressService.selectAddressListByPage(pageNo,pageSize,userId);
         log.info("------ 用户：{}，收货地址有：{}",userId,bailianConsigneeList);
 
         // 返回用户地址列表

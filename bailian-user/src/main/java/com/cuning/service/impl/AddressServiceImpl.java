@@ -1,6 +1,7 @@
 package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.BailianConsignee;
 import com.cuning.constant.CommonConstant;
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,12 +31,13 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
     private AddressMapper addressMapper;
 
     @Override
-    public List<BailianConsignee> selectAddressList(String userId) {
+    public Page<BailianConsignee> selectAddressListByPage(Integer pageNo,Integer pageSize,String userId) {
 
-        // 根据用户的id，查询该用户所有地址信息
+        // 根据用户的id，分页查询该用户所有地址信息
+        Page<BailianConsignee> page = new Page<>(pageNo,pageSize);
         QueryWrapper<BailianConsignee> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",userId);
-        return addressMapper.selectList(queryWrapper);
+        return addressMapper.selectPage(page,queryWrapper);
     }
 
     @Override

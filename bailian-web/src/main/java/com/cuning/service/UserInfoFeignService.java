@@ -13,7 +13,7 @@ import java.util.Map;
  * @description: TODO
  * @date 2022/6/14
  */
-@FeignClient(value = "balian-user")
+@FeignClient(value = "bailian-user")
 public interface UserInfoFeignService {
 
     /**
