@@ -102,7 +102,7 @@ public class CheckInPointController {
 
         List<String> checkDateList = userService.getCheckDateList(user);
 
-        result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
         result.put("msg","查询成功");
         result.put("data",checkDateList);
         return result;

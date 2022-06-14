@@ -2,6 +2,7 @@ package com.cuning.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.user.User;
+import com.cuning.util.RequestResult;
 import com.cuning.vo.UserVO;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface UserService extends IService<User> {
 
     boolean modUserInfo(User user);
 
-    Map<String,String> modPassword(User user,String password,String newPassword,String newPasswordAgain);
+    RequestResult<String> modPassword(User user, String password, String newPassword, String newPasswordAgain);
     /**
     * @Param: [java.lang.String]
     * @return: boolean

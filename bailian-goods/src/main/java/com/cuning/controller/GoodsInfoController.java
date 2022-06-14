@@ -4,6 +4,9 @@ package com.cuning.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
+import com.cuning.util.RequestResult;
+import com.cuning.util.ResultBuildUtil;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -77,17 +80,41 @@ public class GoodsInfoController {
         return goodsInfoService.deleteGoodsInfo(goodsId);
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/14
+     * @param  : [java.lang.Integer]
+     * @return : java.util.List<com.cuning.bean.goods.BailianGoodsInfo>
+     * @description : 根据分类id，查询商品
+     */
     @GetMapping("/queryGoodsByGoodsCategoryId")
+    @ApiOperation(value = "查询商品",notes = "根据分类id，查询商品")
     public List<BailianGoodsInfo> queryGoodsByGoodCategoryId(@RequestParam Integer categoryId){
         return goodsInfoService.selectGoodsByGoodsCategoryId(categoryId);
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/14
+     * @param  : []
+     * @return : java.util.List<java.lang.Integer>
+     * @description : 查询商品的所有分类id
+     */
     @GetMapping("/queryGoodsCategoryIds")
+    @ApiOperation(value = "查询分类id",notes = "查询商品的所有分类id")
     public List<Integer> queryGoodsCategoryIds(){
         return goodsInfoService.selectGoodsCategoryIds();
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/14
+     * @param  : [java.lang.Integer]
+     * @return : com.cuning.bean.goods.BailianGoodsInfo
+     * @description : 根据id查询商品
+     */
     @GetMapping("/queryGoodsById")
+    @ApiOperation(value = "查询商品",notes = "根据id查询商品")
     public BailianGoodsInfo queryGoodsById(@RequestParam Integer goodsId){
        return goodsInfoService.queryGoodsInfoById(goodsId);
     }

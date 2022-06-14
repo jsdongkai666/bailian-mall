@@ -2,12 +2,16 @@ package com.cuning.controller;
 
 
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.constant.GoodsConstant;
 import com.cuning.service.RelatedService;
 import com.cuning.util.RedisUtils;
+import com.cuning.util.RequestResult;
+import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +45,7 @@ public class RelatedController {
      */
     @GetMapping("/goodsRelated")
     @ApiOperation(value = "猜你喜欢",notes = "根据用户的足迹，猜你喜欢")
-    public List<BailianGoodsInfo> GoodsRelated(@RequestParam("userId") String userId){
+    public RequestResult<List<BailianGoodsInfo>> GoodsRelated(@RequestParam("userId") String userId){
 
         // 查询足迹中的商品
         List<BailianGoodsInfo> bailianGoodsInfoList = relatedService.selectFootPrintGoods(userId);
@@ -73,7 +77,8 @@ public class RelatedController {
                 }
             }
             log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
-            return relatedInfos;
+
+            return ResultBuildUtil.success(relatedInfos);
         }
 
         // 当足迹为1时
@@ -88,7 +93,7 @@ public class RelatedController {
                 }
             }
             log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
-            return relatedInfos;
+            return ResultBuildUtil.success(relatedInfos);
         }
 
         // 当足迹大于1时
@@ -124,7 +129,7 @@ public class RelatedController {
             }
         }
         log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
-        return relatedInfos;
+        return ResultBuildUtil.success(relatedInfos);
     }
 
 

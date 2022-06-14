@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.cuning.annotation.CheckToken;
 import com.cuning.util.JwtUtil;
+import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
@@ -27,24 +28,35 @@ public class JWTInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("token");
         log.info("token：" + token);
-
+        response.setContentType("text/html;charset=utf-8");
         if(this.checkTargetMethodHasCheckToken(handler)){
             if (token == null) {
                 log.error("token为空");
+                RequestResult<String> message = ResultBuildUtil.fail("token为空");
+                response.getWriter().write(JSON.toJSONString(message));
+                return false;
             }
             try {
                 JwtUtil.verifyToken(token);
             } catch (SignatureVerificationException e) {
                 log.error("无效签名");
+                RequestResult<String> message = ResultBuildUtil.fail("无效签名");
+                response.getWriter().write(JSON.toJSONString(message));
                 return false;
             } catch (TokenExpiredException e) {
                 log.error("token过期");
+                RequestResult<String> message = ResultBuildUtil.fail("token过期");
+                response.getWriter().write(JSON.toJSONString(message));
                 return false;
             } catch (AlgorithmMismatchException e) {
                 log.error("token算法不一致");
+                RequestResult<String> message = ResultBuildUtil.fail("token算法不一致");
+                response.getWriter().write(JSON.toJSONString(message));
                 return false;
             } catch (Exception e) {
                 log.error("token无效");
+                RequestResult<String> message = ResultBuildUtil.fail("token无效");
+                response.getWriter().write(JSON.toJSONString(message));
                 return false;
             }
         }

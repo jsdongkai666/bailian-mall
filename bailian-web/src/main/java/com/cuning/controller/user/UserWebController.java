@@ -1,4 +1,4 @@
-package com.cuning.controller;
+package com.cuning.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.auth0.jwt.JWT;
@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * @author tengjiaozhai
@@ -66,11 +67,33 @@ public class UserWebController {
         Map<String, Object> map = userWebService.LoginUser(userName, userPassword, captcha);
         if (map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG) != null){
             LinkedHashMap user = (LinkedHashMap) map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
-            User build = User.builder().userId(user.get("userId").toString()).userName(user.get("userName").toString())
-                    .userPassword(user.get("userPassword").toString()).userTel(user.get("userTel").toString())
-                    .userOpenid(user.get("userOpenid").toString()).userMail(user.get("userMail").toString())
-                    .userSex(user.get("userSex").toString()).userHeadImg(user.get("userHeadImg").toString())
+            User build = User.builder().userId(user.get("userId").toString())
                     .userPoints((Integer) user.get("userPoints")).vipLevel((Integer) user.get("vipLevel")).build();
+//            .userName(user.get("userName").toString())
+//                    .userPassword(user.get("userPassword").toString()).userTel(user.get("userTel").toString())
+//                    .userOpenid(user.get("userOpenid").toString()).userMail(user.get("userMail").toString())
+//                    .userSex(user.get("userSex").toString()).userHeadImg(user.get("userHeadImg").toString())
+            if (user.get("userName") != null){
+                build.setUserName(user.get("userName").toString());
+            }
+            if (user.get("userPassword") != null){
+                build.setUserPassword(user.get("userPassword").toString());
+            }
+            if (user.get("userTel") != null){
+                build.setUserTel(user.get("userTel").toString());
+            }
+            if (user.get("userOpenid") != null){
+                build.setUserOpenid(user.get("userOpenid").toString());
+            }
+            if (user.get("userMail") != null){
+                build.setUserMail(user.get("userMail").toString());
+            }
+            if (user.get("userSex") != null){
+                build.setUserSex(user.get("userSex").toString());
+            }
+            if (user.get("userHeadImg") != null){
+                build.setUserHeadImg(user.get("userHeadImg").toString());
+            }
             String token = JwtUtil.createToken(build);
             log.info("create-token:{}",token);
             redisUtils.set("token", token);
@@ -78,7 +101,7 @@ public class UserWebController {
             log.info("token--{}",request.getSession().getAttribute("token"));
             return ResultBuildUtil.success(token);
         }
-        return ResultBuildUtil.fail("登录失败");
+        return ResultBuildUtil.fail(map.get(CommonConstant.UNIFY_RETURN_FAIL_MSG).toString());
     }
 
     @GetMapping("/user/tel/login")
@@ -86,29 +109,52 @@ public class UserWebController {
     public RequestResult<String> telLoginUser(@RequestParam("tel") String tel,
                                             @RequestParam("captcha") String captcha,
                                               HttpServletRequest request){
+
+        // 用正则判断手机号
+        if (!Pattern.matches("^1[3-9]\\d{9}$",tel)){
+            return ResultBuildUtil.fail("手机号格式不正确，请重新输入");
+        }
+
         Map<String, Object> map = userWebService.telLoginUser(tel,  captcha);
         if (map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG) != null){
             LinkedHashMap user = (LinkedHashMap) map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
-            User build = User.builder().userId(user.get("userId").toString()).userName(user.get("userName").toString())
-                    .userPassword(user.get("userPassword").toString()).userTel(user.get("userTel").toString())
-                    .userOpenid(user.get("userOpenid").toString()).userMail(user.get("userMail").toString())
-                    .userSex(user.get("userSex").toString()).userHeadImg(user.get("userHeadImg").toString())
+            User build = User.builder().userId(user.get("userId").toString())
                     .userPoints((Integer) user.get("userPoints")).vipLevel((Integer) user.get("vipLevel")).build();
+//            .userName(user.get("userName").toString())
+//                    .userPassword(user.get("userPassword").toString()).userTel(user.get("userTel").toString())
+//                    .userOpenid(user.get("userOpenid").toString()).userMail(user.get("userMail").toString())
+//                    .userSex(user.get("userSex").toString()).userHeadImg(user.get("userHeadImg").toString())
+            if (user.get("userName") != null){
+                build.setUserName(user.get("userName").toString());
+            }
+            if (user.get("userPassword") != null){
+                build.setUserPassword(user.get("userPassword").toString());
+            }
+            if (user.get("userTel") != null){
+                build.setUserTel(user.get("userTel").toString());
+            }
+            if (user.get("userOpenid") != null){
+                build.setUserOpenid(user.get("userOpenid").toString());
+            }
+            if (user.get("userMail") != null){
+                build.setUserMail(user.get("userMail").toString());
+            }
+            if (user.get("userSex") != null){
+                build.setUserSex(user.get("userSex").toString());
+            }
+            if (user.get("userHeadImg") != null){
+                build.setUserHeadImg(user.get("userHeadImg").toString());
+            }
             String token = JwtUtil.createToken(build);
             request.setAttribute("token",token);
             redisUtils.set("token",token);
             return ResultBuildUtil.success(token);
         }
-        return ResultBuildUtil.fail("登录失败");
+        return ResultBuildUtil.fail(map.get(CommonConstant.UNIFY_RETURN_FAIL_MSG).toString());
     }
 
 
 
-    @ApiOperation("手机验证码")
-    @GetMapping(value = "/tel/captcha")
-    public String telCaptcha(){
-        return userWebService.telCaptcha();
-    }
 
     @GetMapping("/weChatAuthCodeUrl")
     @ApiOperation("请求回调地址")
@@ -121,37 +167,21 @@ public class UserWebController {
     @ApiOperation("测试用例 - 解析token")
     public User parseJWT(HttpServletRequest request) throws Exception {
 
-//        try {
-//            DecodedJWT jwt = JWT.decode(request.getParameter("token"));
-//            Map<String, Claim> claims =(Collections.unmodifiableMap(jwt.getClaims()));
-//            User user = User.builder().userId(claims.get("userId").asString()+"").userName(claims.get("userName").asString())
-//                    .userPoints(claims.get("userPoints").asInt()).vipLevel( claims.get("vipLevel").asInt()).build();
-//
-//            if (claims.get("userTel")!=null){
-//                user.setUserTel(claims.get("userTel").asString());
-//            }
-//            if (claims.get("userOpenid")!=null){
-//                user.setUserOpenid(claims.get("userOpenid").asString());
-//            }
-//            if (claims.get("userMail")!=null){
-//                user.setUserMail(claims.get("userMail").asString());
-//            }
-//            if (claims.get("userSex")!=null){
-//                user.setUserSex(claims.get("userSex").asString());
-//            }
-//            if (claims.get("userHeadImg")!=null){
-//                user.setUserHeadImg(claims.get("userHeadImg").asString());
-//            }
-//            return user;
-//        } catch (JWTDecodeException e) {
-//            return null;
-//        }
-        String token = request.getSession().getAttribute("token").toString();
-
-        return JwtUtil.parseJWT(token);
+        return JwtUtil.parseJWT(request.getHeader("token"));
     }
 
 
+    @GetMapping("/toggleTel")
+    @ApiOperation("测试微信登录后是否需要转手机登录 false-需要 true-不需要")
+    public String toggleTel(){
+        return redisUtils.hmget("resultMap").get("existTel").toString();
+    }
 
+    @GetMapping("/logout")
+    @ApiOperation("退出登录")
+    public RequestResult<String> logout(HttpServletRequest request){
+        redisUtils.del("token");
+        return ResultBuildUtil.success("退出登录成功");
+    }
 
 }

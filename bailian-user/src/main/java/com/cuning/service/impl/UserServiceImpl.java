@@ -6,9 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
-import com.cuning.util.MD5Util;
-import com.cuning.util.RedisUtils;
-import com.cuning.util.SnowFlake;
+import com.cuning.util.*;
 import com.cuning.mapper.UserMapper;
 import com.cuning.service.UserService;
 import com.cuning.vo.UserVO;
@@ -43,8 +41,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Autowired
     private RedisUtils redisUtils;
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public User executeRegister(String userName, String userPassword) {
@@ -105,9 +101,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String telCaptcha =(String) redisUtils.get("telCaptcha");
         // openid存在 微信用户绑定手机号
         // 为空 单纯手机号登录
-
-        // 把手机和验证码绑定起来
-        redisUtils.set(telCaptcha,tel,60);
 
         if (StringUtils.isEmpty(openid)){
             if (captcha.equalsIgnoreCase(telCaptcha)){
@@ -234,34 +227,27 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
     @Override
-    public Map<String,String> modPassword(User user, String password, String newPassword,String newPasswordAgain) {
+    public RequestResult<String> modPassword(User user, String password, String newPassword, String newPasswordAgain) {
 
-        // 返回结果map
-        Map<String,String> resultMap = new HashMap<>();
 
         // 根据用户id，查询该用户的密码
         User user1 = userMapper.selectById(user.getUserId());
         String userOldPassword = user1.getUserPassword();
-        if (!(MD5Util.MD5Upper(password,"kgc")).equals(userOldPassword)) {
-            resultMap.put("errCode","200");
-            resultMap.put("errMsg","原密码不正确，请重新输入！");
-            return resultMap;
+        if (!Objects.equals(MD5Util.MD5Upper(password, "kgc"), userOldPassword)) {
+            return ResultBuildUtil.fail("原密码不正确，请重新输入！");
         }
         String newPassMD5 = MD5Util.MD5Upper(newPassword, "kgc");
+        assert newPassMD5 != null;
         if(newPassMD5.equals(userOldPassword)) {
-            resultMap.put("errCode","200");
-            resultMap.put("errMsg","新密码不能与原密码一样，请重新输入！");
-            return resultMap;
+            return  ResultBuildUtil.fail("新密码不能与原密码一样，请重新输入！");
         }
 
         UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
         updateWrapper.set("user_password",newPassMD5).eq("user_id",user.getUserId());
         userMapper.update(user,updateWrapper);
 
-        resultMap.put("errCode","200");
-        resultMap.put("errMsg","密码修改成功！");
 
-        return resultMap;
+        return ResultBuildUtil.success("密码修改成功！");
     }
     public boolean isChecked(User user) {
 
@@ -329,7 +315,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             String yearstr = String.valueOf(calendar.get(Calendar.YEAR));
             String monthString = String.valueOf(calendar.get(Calendar.MONTH) + 1);
             String key = yearstr + "" + monthString + "" + i;
-            System.out.println(key);
             List<Object> objects = redisUtils.lGet(key, 0, -1);
             if (objects.contains(user.getUserId())) {
                 result.add(yearstr + "年" + monthString + "月" + i + "日");
