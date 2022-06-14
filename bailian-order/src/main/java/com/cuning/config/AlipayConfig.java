@@ -1,5 +1,6 @@
 package com.cuning.config;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
  * @description: TODO
  * @date 2022/6/10
  */
+@Data
 @Component
 public class AlipayConfig implements ApplicationRunner {
 
@@ -31,6 +33,10 @@ public class AlipayConfig implements ApplicationRunner {
     //公钥
     @Value("${alipay.publicKey}")
     private String publicKey;
+
+    //支付宝公钥
+    @Value("${alipay.alipublickey}")
+    private String alipublicKey;
 
     //支付宝网关
     @Value("${alipay.gateway}")

@@ -4,14 +4,12 @@ import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
 import com.cuning.service.UserService;
 import com.cuning.vo.UserVO;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,9 +49,9 @@ public class LoginController {
 
     @GetMapping("/login")
     @ApiOperation("用户登录")
-    // @RequestParam String userName,@RequestParam String userPassword,@RequestParam String captcha
-    // @RequestBody UserVO userVO
-    public Map<String, Object> LoginUser(@RequestParam String userName,@RequestParam String userPassword,@RequestParam String captcha){
+    public Map<String, Object> LoginUser(@RequestParam String userName,
+                                         @RequestParam String userPassword,
+                                         @RequestParam String captcha){
         HashMap<String, Object> resultMap = new HashMap<>();
         UserVO userVO = new UserVO();
         UserVO build = userVO.builder().userName(userName).userPassword(userPassword).code(captcha).build();
@@ -70,8 +68,6 @@ public class LoginController {
 
     @GetMapping("/tel/login")
     @ApiOperation("用户手机登录")
-    // @RequestParam String userName,@RequestParam String userPassword,@RequestParam String captcha
-    // @RequestBody UserVO userVO
     public Map<String, Object> telLoginUser(@RequestParam String tel,@RequestParam String captcha){
         HashMap<String, Object> resultMap = new HashMap<>();
         Map<String, Object> resultSets = userService.executeTelLogin(tel,captcha);

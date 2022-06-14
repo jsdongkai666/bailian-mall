@@ -1,15 +1,41 @@
 
-#???
 server:
   port: 8096
 
-#???
 spring:
   application:
     name: bailian-web
+  redis:
+    host: 120.78.163.160
+    port: 6379
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.78.163.160:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+seckill:
+  buy:
+    prod_stock_count: 100
+    prod_stock_prefix: seckill-prod-stock
+    lock_user_prefix: seckill-lock-user
+    lock_user_time: 3600
+    prod_stock_lock_prefix: seckill-lock-user
+    prod_stock_lock_time: 60
+
+
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.78.163.160:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+
+  redis:
+    port: 6379
+    host: 120.78.163.160
 
 #eureka??
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8095/eureka
+      defaultZone: http://127.0.0.1:8093/eureka
