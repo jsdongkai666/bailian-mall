@@ -68,6 +68,11 @@
             <version>3.7.4.ALL</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.cuning</groupId>
+            <artifactId>bailian-search</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
