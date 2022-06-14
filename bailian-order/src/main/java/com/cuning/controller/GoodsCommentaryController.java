@@ -8,8 +8,8 @@ import com.cuning.bean.shoppingOrder.BailianOrderItem;
 import com.cuning.mapper.ShoppingOrderItemMapper;
 import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
-import com.cuning.service.SensitiveWordFeignService;
-import com.cuning.util.SensitiveWordFilterUtil;
+//import com.cuning.service.SensitiveWordFeignService;
+//import com.cuning.util.SensitiveWordFilterUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GoodsCommentaryController {
 
-    @Autowired
-    private SensitiveWordFeignService sensitiveWordFeignService;
+//    @Autowired
+//    private SensitiveWordFeignService sensitiveWordFeignService;
 
     @Autowired
     private GoodsCommentaryService goodsCommentaryService;
