@@ -106,9 +106,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // openid存在 微信用户绑定手机号
         // 为空 单纯手机号登录
 
-        // 把手机和验证码绑定起来
-        redisUtils.set(telCaptcha,tel,60);
-
         if (StringUtils.isEmpty(openid)){
             if (captcha.equalsIgnoreCase(telCaptcha)){
                 // 验证码正确

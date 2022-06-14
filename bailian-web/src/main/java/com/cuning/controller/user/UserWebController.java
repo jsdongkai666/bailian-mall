@@ -1,4 +1,4 @@
-package com.cuning.controller;
+package com.cuning.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.auth0.jwt.JWT;
@@ -167,10 +167,7 @@ public class UserWebController {
     @ApiOperation("测试用例 - 解析token")
     public User parseJWT(HttpServletRequest request) throws Exception {
 
-
-        String token = request.getSession().getAttribute("token").toString();
-
-        return JwtUtil.parseJWT(token);
+        return JwtUtil.parseJWT(request.getHeader("token"));
     }
 
 
@@ -182,7 +179,7 @@ public class UserWebController {
 
     @GetMapping("/logout")
     @ApiOperation("退出登录")
-    public RequestResult<String> logout(){
+    public RequestResult<String> logout(HttpServletRequest request){
         redisUtils.del("token");
         return ResultBuildUtil.success("退出登录成功");
     }
