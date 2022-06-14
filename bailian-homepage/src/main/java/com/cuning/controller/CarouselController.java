@@ -1,16 +1,22 @@
 package com.cuning.controller;
 
-import com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator;
-import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
+
 import com.cuning.bean.BailianCarousel;
+import com.cuning.constant.CommonConstant;
 import com.cuning.service.CarouselService;
+import com.cuning.util.RequestResult;
+import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+
 
 /**
  * Created On : 2022/06/09.
@@ -36,13 +42,13 @@ public class CarouselController {
      */
     @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
-    public List<BailianCarousel> queryCarousel(@RequestParam(required = false,defaultValue = "0") Integer rank){
+    public RequestResult<List<BailianCarousel>> queryCarousel(@RequestParam(required = false,defaultValue = "0") Integer rank){
 
         // 调用接口查询轮播图详情
         List<BailianCarousel> carouselList = carouselService.selectCarouselList(rank);
         log.info("------ 轮播图详情：{} ------",carouselList);
 
-        return carouselList;
+        return ResultBuildUtil.success(carouselList);
     }
 
     /**
@@ -54,14 +60,20 @@ public class CarouselController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
-    public String addCarousel(@RequestBody BailianCarousel bailianCarousel){
+    public RequestResult<Map<String,String>> addCarousel(@RequestBody BailianCarousel bailianCarousel){
+
+        // 返回结果Map集合
+        Map<String,String> resultMap = new HashMap<>();
 
         // 调用接口添加轮播图
         if (carouselService.addCarousel(bailianCarousel)){
-            return "添加成功";
+            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            resultMap.put("Msg",CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
+            return ResultBuildUtil.success(resultMap);
         }
-
-        return "添加失败";
+        resultMap.put("code",CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        resultMap.put("Msg",CommonConstant.UNIFY_RETURN_FAIL_MSG);
+        return ResultBuildUtil.fail(resultMap);
     }
 
     /**
@@ -73,14 +85,21 @@ public class CarouselController {
      */
     @PostMapping("/delCarousel")
     @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
-    public String delCarousel(@RequestParam List<Integer> ids){
+    public RequestResult<Map<String,String>> delCarousel(@RequestParam List<Integer> ids){
+
+        // 返回结果Map集合
+        Map<String,String> resultMap = new HashMap<>();
 
         // 调用接口删除轮播图
         if (carouselService.deleteCarousel(ids)){
-            return "删除成功";
+            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            resultMap.put("Msg",CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
+            return ResultBuildUtil.success(resultMap);
         }
 
-        return "删除失败";
+        resultMap.put("code",CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        resultMap.put("Msg",CommonConstant.UNIFY_RETURN_FAIL_MSG);
+        return ResultBuildUtil.fail(resultMap);
     }
 
     /**
@@ -92,14 +111,21 @@ public class CarouselController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
-    public String modCarousel(@RequestBody BailianCarousel bailianCarousel){
+    public RequestResult<Map<String,String>> modCarousel(@RequestBody BailianCarousel bailianCarousel){
+
+        // 返回结果Map集合
+        Map<String,String> resultMap = new HashMap<>();
 
         // 调用接口修改轮播图
         if (carouselService.updateCarousel(bailianCarousel)){
-            return "修改成功";
+            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            resultMap.put("Msg",CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
+            return ResultBuildUtil.success(resultMap);
         }
 
-        return "修改失败";
+        resultMap.put("code",CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        resultMap.put("Msg",CommonConstant.UNIFY_RETURN_FAIL_MSG);
+        return ResultBuildUtil.fail(resultMap);
     }
 
 }
