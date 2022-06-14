@@ -44,9 +44,10 @@ public class GoodsInfoController {
      * @description : 后台分页查询
      */
     @GetMapping("/queryGoodsPage")
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize, @RequestParam("goodsName") String goodsName){
-        return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize,goodsName);
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize){
+        return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize);
     }
+
 
     /***
      * @author : Administrator
@@ -71,7 +72,7 @@ public class GoodsInfoController {
      * @return : boolean
      * @description :删除商品
      */
-    @RequestMapping("/deleteGoods")
+    @GetMapping("/deleteGoods")
     public boolean deleteGoodsInfo(@RequestParam Integer goodsId){
         return goodsInfoService.deleteGoodsInfo(goodsId);
     }

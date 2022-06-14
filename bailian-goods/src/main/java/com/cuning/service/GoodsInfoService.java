@@ -10,7 +10,6 @@ package com.cuning.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.goods.BailianGoodsInfo;
-import io.swagger.models.auth.In;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo);
 
-    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName);
+    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize);
 
     Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
 
