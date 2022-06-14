@@ -2,7 +2,6 @@ package com.cuning.controller;
 
 
 import com.cuning.bean.BailianCarousel;
-import com.cuning.constant.CommonConstant;
 import com.cuning.service.CarouselService;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
@@ -60,20 +59,15 @@ public class CarouselController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
-    public RequestResult<Map<String,String>> addCarousel(@RequestBody BailianCarousel bailianCarousel){
+    public RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel){
 
-        // 返回结果Map集合
-        Map<String,String> resultMap = new HashMap<>();
 
         // 调用接口添加轮播图
         if (carouselService.addCarousel(bailianCarousel)){
-            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
-            resultMap.put("Msg",CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
-            return ResultBuildUtil.success(resultMap);
+            return ResultBuildUtil.success("添加成功！");
         }
-        resultMap.put("code",CommonConstant.UNIFY_RETURN_FAIL_CODE);
-        resultMap.put("Msg",CommonConstant.UNIFY_RETURN_FAIL_MSG);
-        return ResultBuildUtil.fail(resultMap);
+
+        return ResultBuildUtil.fail("添加失败！");
     }
 
     /**
@@ -85,21 +79,17 @@ public class CarouselController {
      */
     @PostMapping("/delCarousel")
     @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
-    public RequestResult<Map<String,String>> delCarousel(@RequestParam List<Integer> ids){
+    public RequestResult<String> delCarousel(@RequestParam List<String> ids){
 
         // 返回结果Map集合
         Map<String,String> resultMap = new HashMap<>();
 
         // 调用接口删除轮播图
         if (carouselService.deleteCarousel(ids)){
-            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
-            resultMap.put("Msg",CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
-            return ResultBuildUtil.success(resultMap);
+            return ResultBuildUtil.success("删除成功！");
         }
 
-        resultMap.put("code",CommonConstant.UNIFY_RETURN_FAIL_CODE);
-        resultMap.put("Msg",CommonConstant.UNIFY_RETURN_FAIL_MSG);
-        return ResultBuildUtil.fail(resultMap);
+        return ResultBuildUtil.fail("删除失败！");
     }
 
     /**
@@ -111,21 +101,15 @@ public class CarouselController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
-    public RequestResult<Map<String,String>> modCarousel(@RequestBody BailianCarousel bailianCarousel){
-
-        // 返回结果Map集合
-        Map<String,String> resultMap = new HashMap<>();
+    public RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel){
 
         // 调用接口修改轮播图
         if (carouselService.updateCarousel(bailianCarousel)){
-            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
-            resultMap.put("Msg",CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
-            return ResultBuildUtil.success(resultMap);
+
+            return ResultBuildUtil.success("修改成功！");
         }
 
-        resultMap.put("code",CommonConstant.UNIFY_RETURN_FAIL_CODE);
-        resultMap.put("Msg",CommonConstant.UNIFY_RETURN_FAIL_MSG);
-        return ResultBuildUtil.fail(resultMap);
+        return ResultBuildUtil.fail("修改失败！");
     }
 
 }
