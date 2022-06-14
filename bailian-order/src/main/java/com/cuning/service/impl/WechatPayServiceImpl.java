@@ -32,7 +32,7 @@ public class WechatPayServiceImpl implements WechatPayService {
 
 
     @Override
-    public String wechatPayUnifieOrderParamsXml(String body, int totalFree, String productId) throws Exception {
+    public String wechatPayUnifieOrderParamsXml(String body, int totalFee, String productId) throws Exception {
 
         // 微信官方接口集合参数要求：非空参数值的参数按照参数名ASCII码从小到大排序（字典序），参数名区分大小写，sign参数不参与签名
 
@@ -60,7 +60,7 @@ public class WechatPayServiceImpl implements WechatPayService {
         paramsMap.put("out_trade_no", body);
 
         // 标价金额,单位是fen
-        paramsMap.put("total_fee", String.valueOf(totalFree));
+        paramsMap.put("total_fee", String.valueOf(totalFee));
         // 终端ip
         paramsMap.put("spbill_create_ip", "127.0.0.1");
 
