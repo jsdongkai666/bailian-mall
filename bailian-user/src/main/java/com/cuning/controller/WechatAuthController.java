@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author tengjiaozhai
@@ -161,7 +162,7 @@ public class WechatAuthController {
         }
         log.info("用户信息{}，",userInfo);
         // 存入redis openid
-        redisTemplate.opsForValue().set("openid",userInfo.get("openid"));
+        redisTemplate.opsForValue().set("openid",userInfo.get("openid"),5, TimeUnit.MINUTES);
 
         User insert = User.builder().userOpenid(userInfo.get("openid"))
                 .userHeadImg(userInfo.get("headimgurl"))
@@ -182,9 +183,18 @@ public class WechatAuthController {
             }
         }
 
-        // 返回拉取的用户详情信息
-        resultMap.put("userInfo",userInfoResultJson);
 
+
+        // 返回拉取的用户详情信息
+        resultMap.put("userInfo",userInfo);
+
+        // 判断微信已经登陆过 不需要再调用手机登录接口
+        if (one.getUserTel()!=null){
+            resultMap.put("existTel",true);
+        }else {
+            resultMap.put("existTel",false);
+        }
+        redisTemplate.opsForHash().putAll("resultMap",resultMap);
         // 接口返回
         return resultMap;
 
