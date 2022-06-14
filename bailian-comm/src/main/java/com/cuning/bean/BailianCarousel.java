@@ -22,7 +22,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "轮播图",description = "对应数据库bailianmall中的bailianCarousel")
+@ApiModel(value = "轮播图",description = "对应数据库bailianmall中的bailian_carousel")
 public class BailianCarousel implements Serializable {
 
     private static final long serialVersionUID = -7771537176974371148L;
