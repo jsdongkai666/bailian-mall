@@ -1,0 +1,12 @@
+server:
+  port: 8100
+
+elasticsearch:    #ES的地址及端口
+  host: 127.0.0.1
+  port: 9200
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.78.163.160:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
