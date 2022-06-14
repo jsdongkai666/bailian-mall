@@ -38,8 +38,8 @@ spring:
         debug: true
 
   redis:
-    host: 127.0.0.1
     port: 6379
+    host: 120.78.163.160
 
 mybatis-plus:
   configuration:

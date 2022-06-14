@@ -1,7 +1,10 @@
 package com.cuning.controller;
 
 import com.cuning.bean.user.User;
+import com.cuning.constant.CommonConstant;
 import com.cuning.service.UserService;
+import com.cuning.util.RequestResult;
+import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -39,32 +42,28 @@ public class PersonalInfoController {
      */
     @PostMapping("/modPersonInfo")
     @ApiOperation(value = "修改个人资料",notes = "用户个人资料修改，性别，生日，昵称等")
-    public String modPersonInfo(@RequestBody User user){
+    public RequestResult<String> modPersonInfo(@RequestBody User user){
+
+
         if (userService.modUserInfo(user)) {
-            return "修改成功！";
+            return ResultBuildUtil.success("修改成功！");
         }
-        return "修改失败！";
+
+        return ResultBuildUtil.fail("修改失败！");
     }
 
     @PostMapping("/modPwd")
     @ApiOperation(value = "修改密码",notes = "用户修改密码，必须有旧密码，新密码和确认新密码")
-    public Map<String,String> modPassword(@RequestBody User user, @RequestParam String password, @RequestParam String newPassword,@RequestParam String newPasswordAgain) {
-        // 返回结果map
-        Map<String,String> resultMap = new HashMap<>();
+    public RequestResult<String> modPassword(@RequestBody User user,
+                                                         @RequestParam("password") String password,
+                                                         @RequestParam("newPassword") String newPassword,
+                                                         @RequestParam("newPasswordAgain") String newPasswordAgain) {
 
-//        if (StringUtils.isEmpty(password) || StringUtils.isEmpty(newPassword) || StringUtils.isEmpty(newPasswordAgain)) {
-//            resultMap.put("errCode","200");
-//            resultMap.put("errMsg","密码不能为空！");
-//            return resultMap;
-//        }
 
         if (!newPasswordAgain.equals(newPassword)) {
-            resultMap.put("errCode","200");
-            resultMap.put("errMsg","两次输入的新密码不一致！");
-            return resultMap;
+            return ResultBuildUtil.fail("两次输入的新密码不一致！");
         }
-        resultMap = userService.modPassword(user, password, newPassword,newPasswordAgain);
 
-        return resultMap;
+        return userService.modPassword(user, password, newPassword, newPasswordAgain);
     }
 }

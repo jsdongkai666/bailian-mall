@@ -40,12 +40,12 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, BailianCaro
     @Override
     public boolean addCarousel(BailianCarousel bailianCarousel) {
         // 生成ID
-        bailianCarousel.setCarouselId("C" + Long.toString(snowFlake.nextId()));
+        bailianCarousel.setCarouselId(Long.toString(snowFlake.nextId()));
         return carouselMapper.insert(bailianCarousel) > 0;
     }
 
     @Override
-    public boolean deleteCarousel(List<Integer> ids) {
+    public boolean deleteCarousel(List<String> ids) {
         return carouselMapper.deleteBatchIds(ids) > 0;
     }
 

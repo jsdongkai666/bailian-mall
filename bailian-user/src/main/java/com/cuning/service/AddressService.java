@@ -2,8 +2,10 @@ package com.cuning.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.BailianConsignee;
+import com.cuning.util.RequestResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created On : 2022/06/13.
@@ -39,7 +41,7 @@ public interface AddressService extends IService<BailianConsignee> {
      * @return : boolean
      * @description : 根据地址id，删除收货地址
      */
-    String delAddress(String consigneeId);
+    RequestResult<Map<String,String>> delAddress(String consigneeId);
 
 
     /**
