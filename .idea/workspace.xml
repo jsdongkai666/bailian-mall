@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="订单和敏感词">
-      <change beforePath="$PROJECT_DIR$/.idea/cuning-bailian.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cuning-bailian.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/ShoppingOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/ShoppingOrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/SensitiveWord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/config/MybatisPlusConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/config/MybatisPlusConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisKeyUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/config/SensitiveWordCache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/SensitiveWordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/mapper/SensitiveWordMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/BalianGoodsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/SensitiveWordService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/SensitiveWordServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/util/SensitiveWordFilterUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/EsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/EsUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +65,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -74,17 +79,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\kh93\cuning-bailian\bailian-search\src\main\java\com\cuning\controller" />
       <recent name="D:\kh93\cuning-bailian\bailian-homepage\src\main\java\com\cuning\controller" />
       <recent name="D:\kh93\cuning-bailian\bailian-homepage\src\main\java\com\cuning\mapper" />
       <recent name="D:\kh93\cuning-bailian\bailian-homepage\src\main\java\com\cuning\service\impl" />
       <recent name="D:\kh93\cuning-bailian\bailian-homepage\src\main\java\com\cuning\service" />
-      <recent name="D:\kh93\cuning-bailian\bailian-comm\src\main\java\com\cuning\util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\kh93\cuning-bailian\bailian-search\src\main\java\com\cuning\config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.cuning.bean" />
-      <recent name="com.cuning.mapper" />
       <recent name="com.cuning.config" />
-      <recent name="com.cuning.constant" />
+      <recent name="com.cuning.util" />
+      <recent name="com.cuning.controller" />
+      <recent name="com.cuning.mapper" />
+      <recent name="com.cuning.service.Impl" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -95,6 +104,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BailianSearchApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -187,6 +207,7 @@
       <workItem from="1654959366386" duration="1670000" />
       <workItem from="1655028565520" duration="4376000" />
       <workItem from="1655033499938" duration="12253000" />
+      <workItem from="1655166552786" duration="6778000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -223,7 +244,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654960970774</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="11">
+      <created>1655166640279</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655166640279</updated>
+    </task>
+    <task id="LOCAL-00007" summary="11">
+      <created>1655166958341</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655166958341</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,18 +411,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="商品" />
     <MESSAGE value="订单和敏感词" />
-    <option name="LAST_COMMIT_MESSAGE" value="订单和敏感词" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/SensitiveWordService.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="11" />
+    <option name="LAST_COMMIT_MESSAGE" value="11" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

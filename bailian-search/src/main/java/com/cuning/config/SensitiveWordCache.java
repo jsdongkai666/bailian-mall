@@ -1,7 +1,6 @@
 package com.cuning.config;
 
 import com.alibaba.fastjson.JSON;
-
 import com.cuning.bean.SensitiveWord;
 import com.cuning.service.SensitiveWordService;
 import com.cuning.util.RedisKeyUtils;

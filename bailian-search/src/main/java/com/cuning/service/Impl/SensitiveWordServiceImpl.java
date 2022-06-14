@@ -1,6 +1,4 @@
-package com.cuning.service.impl;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+package com.cuning.service.Impl;
 
 import com.cuning.bean.SensitiveWord;
 import com.cuning.mapper.SensitiveWordMapper;
@@ -9,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Created On : 2022/4/28.
