@@ -8,6 +8,7 @@ import com.cuning.bean.shoppingOrder.BailianOrderItem;
 import com.cuning.mapper.ShoppingOrderItemMapper;
 import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
+import com.cuning.service.SensitiveWordFeignService;
 import com.cuning.util.SensitiveWordFilterUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GoodsCommentaryController {
 
     @Autowired
-    private SensitiveWordFilterUtil sensitiveWordFilterUtil;
+    private SensitiveWordFeignService sensitiveWordFeignService;
 
     @Autowired
     private GoodsCommentaryService goodsCommentaryService;
@@ -62,7 +63,7 @@ public class GoodsCommentaryController {
     public BailianGoodsCommentary saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam Integer goodsId,
                                                       @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl){
         BailianGoodsCommentary bailianGoodsCommentary = new BailianGoodsCommentary();
-        if(!sensitiveWordFilterUtil.isContainSensitiveWord(goodsCommentary)){
+//        if(sensitiveWordFeignService.testSensitiveWord(goodsCommentary) != null){
             BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
             if ("4".equals(bailianOrder.getOrderStatus())){
                 BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
@@ -72,7 +73,7 @@ public class GoodsCommentaryController {
                     return goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl);
                 }
             }
-        }
+//        }
         return null;
     }
 

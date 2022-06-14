@@ -8,13 +8,17 @@ package com.cuning.service;
  **/
 
 import com.cuning.bean.SensitiveWord;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 
 @FeignClient(value = "bailian-search")
 public interface SensitiveWordFeignService {
 
-    @PostMapping("/saveGoodsCommentary")
-    List<SensitiveWord> getSensitiveWords();
+    @GetMapping("/testSensitiveWord")
+    String testSensitiveWord(@RequestParam("searchKey") String searchKey);
 }
