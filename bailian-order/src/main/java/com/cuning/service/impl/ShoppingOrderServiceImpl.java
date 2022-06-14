@@ -1,4 +1,4 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -85,7 +85,7 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
 
         UpdateWrapper<BailianOrder> updateWrapper = new UpdateWrapper<>();
         if (!bailianOrder.getOrderNo().isEmpty()) updateWrapper.set("order_no",bailianOrder.getOrderNo());
-        if (bailianOrder.getUserId() !=0) updateWrapper.set("user_id",bailianOrder.getUserId());
+        if (bailianOrder.getUserId()!= null) updateWrapper.set("user_id",bailianOrder.getUserId());
         if (bailianOrder.getTotalPrice()!=0) updateWrapper.set("total_price",bailianOrder.getTotalPrice());
         if (bailianOrder.getPayStatus()!=0) updateWrapper.set("pay_status",bailianOrder.getPayStatus());
         if (bailianOrder.getPayType()!=0) updateWrapper.set("pay_type",bailianOrder.getPayType());

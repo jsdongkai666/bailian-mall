@@ -73,6 +73,6 @@ public class BailianOrder {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date updateTime;
 
-//    @TableField(exist = false)
-//    private List<BailianOrderItem> bailianOrders;
+    @TableField(exist = false)
+    private List<BailianOrderItem> bailianOrders;
 }
