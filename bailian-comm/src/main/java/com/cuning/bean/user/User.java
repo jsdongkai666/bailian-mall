@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -22,7 +23,7 @@ import java.util.Date;
 @Builder
 @TableName("bailian_user")
 @ToString
-public class User {
+public class User implements Serializable {
 
     @TableId
     @ApiModelProperty("用户id")

@@ -1,5 +1,7 @@
 package com.cuning.controller;
 
+import com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator;
+import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.cuning.bean.BailianCarousel;
 import com.cuning.service.CarouselService;
 import io.swagger.annotations.Api;
@@ -34,13 +36,13 @@ public class CarouselController {
      */
     @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
-    public BailianCarousel queryCarouselById(@RequestParam Integer carouselId){
+    public List<BailianCarousel> queryCarousel(@RequestParam(required = false,defaultValue = "0") Integer rank){
 
         // 调用接口查询轮播图详情
-        BailianCarousel carousel = carouselService.selectCarouselById(carouselId);
-        log.info("------ 轮播图详情：{} ------",carousel);
+        List<BailianCarousel> carouselList = carouselService.selectCarouselList(rank);
+        log.info("------ 轮播图详情：{} ------",carouselList);
 
-        return carousel;
+        return carouselList;
     }
 
     /**
@@ -99,4 +101,5 @@ public class CarouselController {
 
         return "修改失败";
     }
+
 }
