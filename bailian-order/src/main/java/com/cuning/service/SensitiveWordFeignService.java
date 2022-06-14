@@ -1,4 +1,5 @@
-package com.cuning.service; /*
+package com.cuning.service;
+/*
  * @Created on : 2022/6/14 0014
  * <p>
  * @Author     : Administrator
@@ -9,7 +10,6 @@ package com.cuning.service; /*
 import com.cuning.bean.SensitiveWord;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.List;
 
 @FeignClient(value = "bailian-search")
