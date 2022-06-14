@@ -7,7 +7,7 @@ import com.cuning.bean.goods.BailianGoodsCommentary;
 import com.cuning.bean.shoppingOrder.BailianOrder;
 import com.cuning.bean.shoppingOrder.BailianOrderItem;
 import com.cuning.mapper.GoodsCommentaryMapper;
-import com.cuning.mapper.OrderItemMapper;
+import com.cuning.mapper.ShoppingOrderItemMapper;
 import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     private ShoppingOrderMapper shoppingOrderMapper;
 
     @Autowired(required = false)
-    private OrderItemMapper orderItemMapper;
+    private ShoppingOrderItemMapper shoppingOrderItemMapper;
 
     @Override
     public Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo, Integer pageSize, Integer goodsId, Integer commentaryType) {
@@ -82,12 +82,12 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
             bailianOrders.stream().forEach(item -> {
                 QueryWrapper<BailianOrderItem> wrapper = new QueryWrapper<>();
                 wrapper.eq("order_id", item.getOrderId());
-                List<BailianOrderItem> bailianOrderItems = orderItemMapper.selectList(wrapper);
+                List<BailianOrderItem> bailianOrderItems = shoppingOrderItemMapper.selectList(wrapper);
                 bailianOrderItemList.addAll(bailianOrderItems);
             });
             List<Integer> idList = bailianOrderItemList.stream().map(item -> item.getGoodsId()).collect(Collectors.toList());
             QueryWrapper<BailianOrderItem> orderItemQueryWrapper = new QueryWrapper<>();
-            return orderItemMapper.selectPage(page, orderItemQueryWrapper.in("goods_id", idList).eq("commentary_type", commentaryType).orderByDesc("create_time"));
+            return shoppingOrderItemMapper.selectPage(page, orderItemQueryWrapper.in("goods_id", idList).eq("commentary_type", commentaryType).orderByDesc("create_time"));
         }
         return null;
     }

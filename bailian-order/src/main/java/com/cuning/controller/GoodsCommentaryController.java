@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsCommentary;
 import com.cuning.bean.shoppingOrder.BailianOrder;
 import com.cuning.bean.shoppingOrder.BailianOrderItem;
-import com.cuning.mapper.OrderItemMapper;
+import com.cuning.mapper.ShoppingOrderItemMapper;
 import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import javax.servlet.http.HttpServletRequest;
+
 /*
  * @Created on : 2022/6/13 0013
  * <p>
@@ -33,7 +33,7 @@ public class GoodsCommentaryController {
     private ShoppingOrderMapper shoppingOrderMapper;
 
     @Autowired(required = false)
-    private OrderItemMapper orderItemMapper;
+    private ShoppingOrderItemMapper shoppingOrderItemMapper;
 
     /***
      * @author : Administrator
@@ -60,7 +60,7 @@ public class GoodsCommentaryController {
         BailianGoodsCommentary bailianGoodsCommentary = new BailianGoodsCommentary();
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         if ("4".equals(bailianOrder.getOrderStatus())){
-            BailianOrderItem bailianOrderItem = orderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
+            BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
             if (bailianOrderItem.getOrderItemId()!=null){
                 bailianGoodsCommentary.setUserName(userName);
                 bailianGoodsCommentary.setUserImg(userHeadImg);
