@@ -2,6 +2,7 @@ package com.cuning.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cuning.bean.shoppingOrder.BailianOrder;
+import com.cuning.bean.shoppingOrder.BailianOrderItem;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -12,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * Description: shoppingOrderMapper
  */
 @Mapper
-public interface ShoppingOrderMapper extends BaseMapper<BailianOrder> {
+public interface ShoppingOrderItemMapper extends BaseMapper<BailianOrderItem> {
 
 }

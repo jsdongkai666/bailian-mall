@@ -1,37 +1,48 @@
 package com.cuning.bean.shoppingOrder;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-/*
- * @Created on : 2022/6/13 0013
+/**
+ * Created On : 2022/6/11.
  * <p>
- * @Author     : Administrator
+ * Author     : WangDeFeng
  * <p>
- * @Description: BailianOrderItem
- **/
+ * Description: 订单详细实体类
+ */
+@ApiModel(description="订单详细")
 @Data
 public class BailianOrderItem {
-    @TableId(type = IdType.AUTO)
+
+    @ApiModelProperty("订单关联购物项主键id")
     private Integer orderItemId;
 
+    @ApiModelProperty("订单主键id")
     private Integer orderId;
 
+    @ApiModelProperty("关联商品id")
     private Integer goodsId;
 
+    @ApiModelProperty("下单时商品的名称")
     private String goodsName;
 
+    @ApiModelProperty("下单时商品的主图")
     private String goodsCoverImg;
 
+    @ApiModelProperty("下单时商品的价格")
     private Integer sellingPrice;
 
+    @ApiModelProperty("数量")
     private Integer goodsCount;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @ApiModelProperty("创建时间")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createTime;
 
     private Integer commentaryType;

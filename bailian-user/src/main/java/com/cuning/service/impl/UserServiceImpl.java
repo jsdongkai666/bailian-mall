@@ -73,7 +73,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // 从redis获取验证码
         String code = (String)redisUtils.get("captcha");
         // 验证码错误
-        if (!code.equalsIgnoreCase(user.getCode()) || StringUtils.isEmpty(user.getCode())){
+        if (!code.equalsIgnoreCase(user.getCode()) ||
+                StringUtils.isEmpty(user.getCode()) ||
+                StringUtils.isEmpty(code)){
             resultMap.put(CommonConstant.UNIFY_RETURN_FAIL_CODE,"验证码不正确，请重新输入！");
             log.info("验证码不正确");
             return  resultMap;
