@@ -1,7 +1,7 @@
 package com.cuning.listener;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.cuning.bean.BailianGoodsInfo;
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.user.User;
 import com.cuning.constant.GoodsConstant;
 import com.cuning.service.GoodsInfoService;

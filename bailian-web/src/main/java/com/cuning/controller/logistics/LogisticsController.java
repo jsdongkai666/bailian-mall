@@ -29,10 +29,10 @@ public class LogisticsController {
     @Autowired(required = false)
     private LogisticsFeignService logisticsFeignService;
 
-    @ApiOperation("通过快递单号和快递公司编码获取快递信息")
+    @ApiOperation(value = "查询快递信息",notes = "通过快递单号和快递公司编码获取快递信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "logisticCode", value = "快递单号"),
-            @ApiImplicitParam(name = "shipperCode", value = "物流公司编码")
+            @ApiImplicitParam(name = "logisticCode", value = "快递单号",paramType = "query"),
+            @ApiImplicitParam(name = "shipperCode", value = "物流公司编码",paramType = "query")
     })
     @GetMapping("/getLogisticsInfo")
     public RequestResult<LogisticsInfo> getLogisticsInfo(@RequestParam("logisticCode") String logisticCode, @RequestParam("shipperCode") String shipperCode){

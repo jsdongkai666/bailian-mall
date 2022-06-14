@@ -329,7 +329,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             String yearstr = String.valueOf(calendar.get(Calendar.YEAR));
             String monthString = String.valueOf(calendar.get(Calendar.MONTH) + 1);
             String key = yearstr + "" + monthString + "" + i;
-            System.out.println(key);
             List<Object> objects = redisUtils.lGet(key, 0, -1);
             if (objects.contains(user.getUserId())) {
                 result.add(yearstr + "年" + monthString + "月" + i + "日");
