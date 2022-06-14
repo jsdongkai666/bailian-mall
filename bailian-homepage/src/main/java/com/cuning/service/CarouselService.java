@@ -21,7 +21,7 @@ public interface CarouselService extends IService<BailianCarousel>{
      * @return : com.cuning.bean.bailianCarousel
      * @description : 根据id，查询轮播图详情
      */
-    BailianCarousel selectCarouselById(Integer carouselId);
+    List<BailianCarousel> selectCarouselList(Integer rank);
 
     /**
      * @author : lixu
