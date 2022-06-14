@@ -4,8 +4,6 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.easysdk.factory.Factory;
 import com.alipay.easysdk.payment.page.models.AlipayTradePagePayResponse;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.cuning.bean.shoppingcarts.BailianCarts;
 import com.cuning.config.AlipayConfig;
 import com.cuning.service.AlipayService;
 import lombok.SneakyThrows;
