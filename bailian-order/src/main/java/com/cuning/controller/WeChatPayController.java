@@ -50,10 +50,10 @@ public class WeChatPayController {
     @ApiOperation(value = "统一下单",notes = "请求微信官方，统一下单，返回支付链接")
     @PostMapping("/unifiedorder")
     public Map<String, String> wechatPayUnifiedorderOrder(@RequestParam String body,
-                                                                         @RequestParam Integer totalFree,
+                                                                         @RequestParam Integer totalFee,
                                                                          @RequestParam String prodId) throws Exception {
         // 调用业务接口，生成请求微信官方支付系统，统一下与支付订单完整接口参数（格式是xml字符串）
-        String unifiedOrderParamsXml = wechatPayService.wechatPayUnifieOrderParamsXml(body, totalFree, prodId);
+        String unifiedOrderParamsXml = wechatPayService.wechatPayUnifieOrderParamsXml(body, totalFee, prodId);
 
 
         log.info("----- 1 请求微信官方，进行统一下单，接口参数:{} ------", unifiedOrderParamsXml);
