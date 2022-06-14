@@ -106,14 +106,20 @@ public class AliPayController {
             String value = request.getParameter(key);
             map.put(key, value);
         }
+
+        alipayService.sendMsgToQueue();
+
         //验签
         try {
             if (Factory.Payment.Common().verifyNotify(map)) {
                 //验证用户的支付结果
                 String trade_status = request.getParameter("trade_status");
+                System.out.println("trade_status"+trade_status);
                 if ("TRADE_SUCCESS".equals(trade_status)) {
                     //这里可以更新订单的状态等等。。
                     alipayService.sendMsgToQueue();
+                }else {
+                    return "fail";
                 }
             } else {
                 return "fail";
