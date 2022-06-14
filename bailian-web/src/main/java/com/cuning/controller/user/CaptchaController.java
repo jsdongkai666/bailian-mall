@@ -1,4 +1,4 @@
-package com.cuning.controller;
+package com.cuning.controller.user;
 
 
 import com.cuning.util.RedisUtils;
@@ -81,7 +81,7 @@ public class CaptchaController {
 
     @ApiOperation("手机验证码")
     @GetMapping(value = "/tel/captcha")
-    public String telCaptcha() {
+    public String telCaptcha(String tel) {
 
         //-------------------生成验证码 begin --------------------------
         //获取验证码文本内容
@@ -89,6 +89,8 @@ public class CaptchaController {
         log.info("手机验证码内容：{}" ,text);
         //将验证码文本内容放入redis
         redisUtils.set("telCaptcha",text,60);
+        // 把手机和验证码绑定起来
+        redisUtils.set(text,tel,60);
         return text;
     }
 }
