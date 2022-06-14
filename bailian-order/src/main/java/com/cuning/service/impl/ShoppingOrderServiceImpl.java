@@ -44,12 +44,12 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
     }
 
     @Override
-    public Boolean deleteListOrder(List<Integer> orderNos) {
+    public Boolean deleteListOrder(List<String> orderNos) {
         if (!orderNos.isEmpty()&&orderNos.size()==0) {
             return false;
         }else{
             QueryWrapper<BailianOrderItem> orderItemQueryWrapper = new QueryWrapper<>();
-            for(Integer orderNo:orderNos){
+            for(String orderNo:orderNos){
                 System.out.println(orderNo);
                 QueryWrapper<BailianOrder> orderWrapper = new QueryWrapper<>();
                 orderWrapper.eq("order_no",orderNo);

@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="订单和敏感词">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cuning-bailian.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cuning-bailian.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_02__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_6_9_15_22__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/ShoppingOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/ShoppingOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -34,7 +36,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="userSettingsFile" value="E:\Download\apache-maven-3.5.3\conf\settings.xml" />
+        <option name="userSettingsFile" value="D:\javakaifa\apache-maven-3.6.0-bin\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -45,6 +47,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -62,9 +65,9 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="show.run.dashboard.notification" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -78,9 +81,9 @@
       <recent name="D:\kh93\cuning-bailian\bailian-comm\src\main\java\com\cuning\util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cuning.bean" />
       <recent name="com.cuning.mapper" />
       <recent name="com.cuning.config" />
-      <recent name="com.cuning.bean" />
       <recent name="com.cuning.constant" />
     </key>
   </component>
@@ -91,7 +94,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
+  <component name="RunManager" selected="Spring Boot.BailianSearchApplication">
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -121,9 +124,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BailianLogisticsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="bailian-logistics" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianLogisticsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BailianOrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-order" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianOrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BailianSearchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="bailian-search" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianSearchApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,6 +167,8 @@
       <item itemvalue="Spring Boot.BailianOrderApplication" />
       <item itemvalue="Spring Boot.BailianUserApplication" />
       <item itemvalue="Spring Boot.BailianWebApplication" />
+      <item itemvalue="Spring Boot.BailianLogisticsApplication" />
+      <item itemvalue="Spring Boot.BailianSearchApplication" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -164,7 +183,10 @@
       <workItem from="1654744225782" duration="167000" />
       <workItem from="1654744418892" duration="22723000" />
       <workItem from="1654921929350" duration="10253000" />
-      <workItem from="1654955915863" duration="1934000" />
+      <workItem from="1654955915863" duration="3415000" />
+      <workItem from="1654959366386" duration="1670000" />
+      <workItem from="1655028565520" duration="4376000" />
+      <workItem from="1655033499938" duration="12253000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -180,7 +202,28 @@
       <option name="project" value="LOCAL" />
       <updated>1654957646027</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="订单和敏感词">
+      <created>1654957897224</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654957897224</updated>
+    </task>
+    <task id="LOCAL-00004" summary="订单和敏感词">
+      <created>1654957963444</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654957963444</updated>
+    </task>
+    <task id="LOCAL-00005" summary="订单和敏感词">
+      <created>1654960970773</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654960970774</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,5 +388,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
