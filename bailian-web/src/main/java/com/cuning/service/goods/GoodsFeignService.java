@@ -22,10 +22,10 @@ import java.util.Map;
 public interface GoodsFeignService {
 
     @GetMapping("/goodsDetails")
-    RequestResult<BailianGoodsInfo> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") Integer goodsId);
+    RequestResult<BailianGoodsInfo> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId);
 
     @PostMapping("/delGoodsFootPrint")
-    RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<Integer> goodsId);
+    RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId);
 
     @GetMapping("/queryGoodsFootPrint")
     List<BailianGoodsInfo> queryGoodsFootPrint(@RequestParam("userId") String userId);

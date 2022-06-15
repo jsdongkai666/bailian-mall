@@ -61,7 +61,7 @@ public class GoodsFootPrintController {
         // 获取id的list集合，并遍历
         for (int i = 0; i < list.size(); i++) {
             // 通过id，查询商品详情
-            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(Integer.valueOf(list.get(i).toString()));
+            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(list.get(i).toString());
             bailianGoodsInfoList.add(i,bailianGoodsInfo);
 
         }
@@ -79,12 +79,12 @@ public class GoodsFootPrintController {
      */
     @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
-    public RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<Integer> goodsId) {
+    public RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId) {
 
 
         // 删除商品足迹
         try {
-            goodsId.forEach(id -> redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id.toString()));
+            goodsId.forEach(id -> redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id));
         } catch (Exception e) {
             e.printStackTrace();
         }
