@@ -17,7 +17,7 @@ import java.util.List;
  * <p>
  * @Author     : Administrator
  * <p>
- * @Description: 商品详情
+ * @Description: 商品详情，命名规则：10+
  **/
 @Data
 @AllArgsConstructor
@@ -27,7 +27,7 @@ public class BailianGoodsInfo implements Serializable {
 
     private static final long serialVersionUID = 5473302609274012318L;
     @TableId
-    private Integer goodsId;
+    private String goodsId;
 
     /**
      * 商品名称

@@ -680,4 +680,15 @@ public class RedisUtils {
         return redisTemplate.opsForZSet().size(key);
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/13
+     * @param  : [java.lang.String]
+     * @return : java.lang.Long
+     * @description : zset方法，给权值加一
+     */
+    public Double zincrby(String key,String value,long incr){
+        return redisTemplate.opsForZSet().incrementScore(key,value,incr);
+    }
+
 }

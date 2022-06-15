@@ -39,7 +39,7 @@ public interface CarouselService extends IService<BailianCarousel>{
      * @return : boolean
      * @description : 批量删除轮播图
      */
-    boolean deleteCarousel(List<Integer> ids);
+    boolean deleteCarousel(List<String> ids);
 
     /**
      * @author : lixu
@@ -49,4 +49,5 @@ public interface CarouselService extends IService<BailianCarousel>{
      * @description : 修改轮播图
      */
     boolean updateCarousel(BailianCarousel bailianCarousel);
+
 }
