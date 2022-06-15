@@ -79,12 +79,12 @@ public class GoodsFootPrintController {
      */
     @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
-    public RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<Integer> goodsId) {
+    public RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId) {
 
 
         // 删除商品足迹
         try {
-            goodsId.forEach(id -> redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id.toString()));
+            goodsId.forEach(id -> redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id));
         } catch (Exception e) {
             e.printStackTrace();
         }

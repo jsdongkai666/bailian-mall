@@ -56,7 +56,7 @@ public class GoodsDetailsController {
         //log.info("------ 当前时间 ------：{}",score);
 
         // 当前用户浏览过的商品的id存入redis中，并设置权重
-        redisUtils.zadd(GoodsConstant.USER_FOOT_PRINT + userId,goodsDetail.getGoodsId().toString(),Double.parseDouble(score));
+        redisUtils.zadd(GoodsConstant.USER_FOOT_PRINT + userId,goodsDetail.getGoodsId(),Double.parseDouble(score));
 
         // zcard返回成员个数
         if(redisUtils.zcard(GoodsConstant.USER_FOOT_PRINT + userId) > 20) {
