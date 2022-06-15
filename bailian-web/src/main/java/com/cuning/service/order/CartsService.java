@@ -19,4 +19,8 @@ public interface CartsService{
     boolean addCartsByUserId(BailianCarts bailianCarts);
 
     boolean addCartsDetail(BailianCartProducts bailianCartProducts);
+
+    boolean batchDeleteCarts(List<String> ids);
+
+    boolean updateCartsInfo(Integer buyCount,String id);
 }
