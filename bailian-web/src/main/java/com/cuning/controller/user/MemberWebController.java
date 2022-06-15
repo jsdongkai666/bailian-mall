@@ -2,7 +2,7 @@ package com.cuning.controller.user;
 
 import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
-import com.cuning.service.UserWebService;
+import com.cuning.service.user.UserWebService;
 import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
