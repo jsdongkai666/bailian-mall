@@ -87,4 +87,13 @@ public class ConsigneeAddressController {
 
         return ResultBuildUtil.fail("修改失败！");
     }
+
+    @PostMapping("/addAddresslList")
+    public String addAddresslList() {
+
+        if (addressService.insertAddressList()){
+            return "添加成功！";
+        }
+        return "添加失败！";
+    }
 }

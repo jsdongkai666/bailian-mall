@@ -75,8 +75,8 @@ public class GoodsInfoController {
      * @return : boolean
      * @description :删除商品
      */
-    @GetMapping("/deleteGoods")
-    public boolean deleteGoodsInfo(@RequestParam Integer goodsId){
+    @RequestMapping("/deleteGoods")
+    public boolean deleteGoodsInfo(@RequestParam String goodsId){
         return goodsInfoService.deleteGoodsInfo(goodsId);
     }
 
@@ -115,8 +115,9 @@ public class GoodsInfoController {
      */
     @GetMapping("/queryGoodsById")
     @ApiOperation(value = "查询商品",notes = "根据id查询商品")
-    public BailianGoodsInfo queryGoodsById(@RequestParam Integer goodsId){
+    public BailianGoodsInfo queryGoodsById(@RequestParam String goodsId){
        return goodsInfoService.queryGoodsInfoById(goodsId);
     }
+
 
 }

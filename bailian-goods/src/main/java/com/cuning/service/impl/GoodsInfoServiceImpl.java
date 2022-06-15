@@ -10,19 +10,18 @@ package com.cuning.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cuning.bean.BailianConsignee;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.constant.CommonConstant;
 import com.cuning.mapper.GoodsInfoMapper;
 import com.cuning.service.GoodsInfoService;
 import com.cuning.util.RedisUtils;
+import com.cuning.util.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,8 +33,12 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     @Autowired
     private RedisUtils redisUtils;
 
+    @Autowired
+    private SnowFlake snowFlake;
+
     @Override
     public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo) {
+        goodsInfo.setGoodsId("10" + Long.toString(snowFlake.nextId()).substring(9,19));
         Integer insert = goodsInfoMapper.insert(goodsInfo);
         return goodsInfo;
     }
@@ -55,7 +58,7 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
-    public Boolean deleteGoodsInfo(Integer goodsId) {
+    public Boolean deleteGoodsInfo(String goodsId) {
         return this.removeById(goodsId);
     }
 
@@ -75,7 +78,7 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
-    public BailianGoodsInfo queryGoodsInfoById(Integer goodsId) {
+    public BailianGoodsInfo queryGoodsInfoById(String goodsId) {
         return goodsInfoMapper.selectById(goodsId);
     }
 
@@ -155,4 +158,6 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
         List<Object> objects = redisUtils.lGet(userId + ":collect", 0, -1);
         return objects;
     }
+
+
 }

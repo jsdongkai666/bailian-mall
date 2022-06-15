@@ -1,6 +1,8 @@
 package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.shoppingcarts.BailianCartProducts;
 import com.cuning.bean.shoppingcarts.BailianCarts;
 import com.cuning.mapper.CartProductsMapper;
@@ -24,13 +26,15 @@ public class CartsServiceImpl  implements CartsService {
     CartProductsMapper cartProductsMapper;
 
     @Override
-    public List<BailianCarts> getCartsList() {
-        List<BailianCarts> carts = cartsMapper.selectList(null);
-        for (BailianCarts bailianCarts:carts){
-            List<BailianCartProducts> productsList = cartProductsMapper.selectList(new QueryWrapper<BailianCartProducts>().eq("cart_id",bailianCarts.getId()));
-            bailianCarts.setProductsList(productsList);
+    public List<BailianCarts> getCartsList(Integer pageNo,Integer pageSize,String userId) {
+        Page<BailianCarts> page = new Page<>(pageNo,pageSize);
+        Page<BailianCarts> bailianCarts = cartsMapper.selectPage(page, new QueryWrapper<BailianCarts>().eq("user_id", userId));
+        List<BailianCarts> bailianCartsList = bailianCarts.getRecords();
+        for (BailianCarts carts:bailianCartsList){
+            List<BailianCartProducts> productsList = cartProductsMapper.selectList(new QueryWrapper<BailianCartProducts>().eq("cart_id",carts.getId()));
+            carts.setProductsList(productsList);
         }
-        return carts;
+        return bailianCartsList;
     }
 
     @Override
@@ -71,5 +75,18 @@ public class CartsServiceImpl  implements CartsService {
         }
        return cartsMapper.updateById(bailianCarts)>0;
 
+    }
+
+    @Override
+    public BailianCarts getCartsDetailByUserId(String userId) {
+        BailianCarts carts = cartsMapper.selectOne(new QueryWrapper<BailianCarts>().eq("user_id", userId));
+        List<BailianCartProducts> productsList = cartProductsMapper.selectList(new QueryWrapper<BailianCartProducts>().eq("cart_id",carts.getId()));
+        carts.setProductsList(productsList);
+        return carts;
+    }
+
+    @Override
+    public boolean addCartsDetail(BailianCartProducts bailianCartProducts) {
+        return cartProductsMapper.insert(bailianCartProducts)>0;
     }
 }

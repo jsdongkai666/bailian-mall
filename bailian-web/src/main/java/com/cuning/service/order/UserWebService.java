@@ -1,4 +1,4 @@
-package com.cuning.service;
+package com.cuning.service.order;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.netflix.feign.FeignClient;
