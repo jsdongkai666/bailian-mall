@@ -59,6 +59,11 @@ public class User implements Serializable {
     @ApiModelProperty("会员等级")
     private Integer vipLevel;
 
+    @ApiModelProperty("会员到期时间")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date vipDate;
+
     @ApiModelProperty("上一次签到日期")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
