@@ -99,7 +99,7 @@ public class HomePageWebController {
     @GetMapping("/goodsDetails")
     @CheckToken
     public RequestResult<BailianGoodsInfo> goodsDetailsMap(HttpServletRequest request,
-                                                           @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") Integer goodsId) throws Exception {
+                                                           @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") String goodsId) throws Exception {
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
@@ -134,7 +134,7 @@ public class HomePageWebController {
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
     @CheckToken
     public RequestResult<String> delGoodsFootPrint(HttpServletRequest request,
-                                                   @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") List<Integer> goodsId) throws Exception {
+                                                   @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") List<String> goodsId) throws Exception {
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
