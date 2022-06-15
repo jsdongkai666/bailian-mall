@@ -5,6 +5,7 @@ import com.cuning.bean.shoppingOrder.BailianOrderItem;
 import com.cuning.mapper.ShoppingOrderItemMapper;
 import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
+import com.cuning.util.SensitiveWordFilterUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GoodsCommentaryController {
 
-
+    @Autowired
+    private SensitiveWordFilterUtil sensitiveWordFilterUtil;
 
     @Autowired
     private GoodsCommentaryService goodsCommentaryService;
@@ -83,4 +85,17 @@ public class GoodsCommentaryController {
     public Page<BailianOrderItem> queryGoodsCommentaryType(@RequestParam String userId,@RequestParam Integer pageNo,@RequestParam Integer pageSize,@RequestParam Integer commentaryType){
         return goodsCommentaryService.queryGoodsCommentaryType(pageNo,pageSize,commentaryType,userId);
     }
+
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/15 0015
+     * @param  : [java.lang.String]
+     * @return : java.lang.Boolean
+     * @description : 敏感词校验
+     */
+    @GetMapping("/SensitiveWord")
+    public Boolean seneitiveWord(@RequestParam String goodsCommentary) {
+        return sensitiveWordFilterUtil.isContainSensitiveWord(goodsCommentary);
+    }
+
 }

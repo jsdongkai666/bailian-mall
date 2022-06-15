@@ -50,6 +50,9 @@ public class GoodsCommentaryController {
     public RequestResult<String> saveGoodsCommentary(HttpServletRequest request, @RequestParam String orderNo, @RequestParam Integer goodsId,
                                                      @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl) throws Exception{
         User user = JwtUtil.parseJWT(request.getHeader("token"));
+        if (goodsCommentaryFeignService.seneitiveWord(goodsCommentary)){
+            return ResultBuildUtil.fail("评价内容包含敏感词，评论失败！");
+        }
         Boolean flag  = goodsCommentaryFeignService.saveGoodsCommentary(user.getUserId(), user.getUserName(), user.getUserHeadImg(), orderNo,goodsId,commentaryLevel,goodsCommentary,commentaryUrl);
         if (flag){
             return ResultBuildUtil.success("评论成功!");

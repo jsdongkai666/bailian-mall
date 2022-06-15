@@ -34,5 +34,6 @@ public interface GoodsCommentaryFeignService {
     @GetMapping("/queryGoodsCommentaryType")
     Page<BailianOrderItem> queryGoodsCommentaryType(@RequestParam("userId") String userId, @RequestParam("pageNo") Integer pageNo,
                                                     @RequestParam("pageSize") Integer pageSize, @RequestParam("commentaryType") Integer commentaryType);
-
+    @GetMapping("/SensitiveWord")
+    Boolean seneitiveWord(@RequestParam("goodsCommentary") String goodsCommentary);
 }
