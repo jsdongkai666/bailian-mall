@@ -54,8 +54,11 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
         if (bailianOrder.getOrderStatus() == 4){
             BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
             if (bailianOrderItem.getOrderItemId()!=null){
+                if (userHeadImg != null){
+                    goodsCommentary1.setUserImg(userHeadImg);
+                }
                 goodsCommentary1.setUserName(userName);
-                goodsCommentary1.setUserImg(userHeadImg);
+                goodsCommentary1.setUserImg("https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epBORvJHTictQOt1bUGW2os3MLrZRicNhoRvKUMlXycQhPyFYoRQuwL9pwtQO5nY6LgqSHN8obIUmlA/132");
                 goodsCommentary1.setGoodsId(goodsId);
             }
         }
