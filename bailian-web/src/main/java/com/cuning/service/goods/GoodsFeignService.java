@@ -31,7 +31,7 @@ public interface GoodsFeignService {
     List<BailianGoodsInfo> queryGoodsFootPrint(@RequestParam("userId") String userId);
 
     @GetMapping("/SearchHistory")
-    RequestResult<List<Object>> searchHistory(@RequestParam("userId") String userId,@RequestParam("searchKey") String searchKey);
+    RequestResult<List<Object>> searchHistory(@RequestParam("userId") String userId);
 
     @PostMapping("/delSearchHistory")
     RequestResult<String> delSearchHistory(@RequestParam("userId")String userId);

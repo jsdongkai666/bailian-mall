@@ -32,7 +32,7 @@ wechat:
     appId: wx5d1709d1caaba04b
     appSecret: 7427e4281ec8c11e357bfbb3652847f1
     codeUri: https://open.weixin.qq.com/connect/oauth2/authorize
-    redirectUri: http://ey3art.natappfree.cc/wxauthCodeBack
+    redirectUri: http://xdnasq.natappfree.cc/wxauthCodeBack
     accessTokenUri: https://api.weixin.qq.com/sns/oauth2/access_token
     userInfoUri: https://api.weixin.qq.com/sns/userinfo
     accessTokenRefresh: https://api.weixin.qq.com/sns/oauth2/refresh_token
