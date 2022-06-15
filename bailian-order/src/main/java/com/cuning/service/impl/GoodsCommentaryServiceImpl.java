@@ -49,7 +49,6 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     @Override
     public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, Integer goodsId,String userId,String orderNo) {
         BailianGoodsCommentary goodsCommentary1 = new BailianGoodsCommentary();
-//      if(sensitiveWordFeignService.testSensitiveWord(goodsCommentary) != null){
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         if (bailianOrder.getOrderStatus() == 4){
             BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
@@ -62,7 +61,6 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
                 goodsCommentary1.setGoodsId(goodsId);
             }
         }
-//      }
         if (commentaryLevel <= 0 || commentaryLevel >5){
             return false;
         }
