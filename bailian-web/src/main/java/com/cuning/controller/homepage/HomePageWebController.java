@@ -169,12 +169,11 @@ public class HomePageWebController {
     @GetMapping("/SearchHistory")
     @ApiOperation(value = "商品搜索记录",notes = "将商品搜索记录存入redis中，再次搜索将靠前显示，一共展示十条数据")
     @CheckToken
-    public RequestResult<List<Object>> searchHistory(HttpServletRequest request,
-                                                     @ApiParam(name = "searchKey",value = "搜索关键字")@RequestParam("searchKey") String searchKey) throws Exception {
+    public RequestResult<List<Object>> searchHistory(HttpServletRequest request) throws Exception {
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
-        return goodsFeignService.searchHistory(userId, searchKey);
+        return goodsFeignService.searchHistory(userId);
     }
 
     /**
