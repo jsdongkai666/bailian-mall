@@ -105,4 +105,16 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
         }
         return null;
     }
+
+    @Override
+    public Boolean updateOrderItemCommentaryType(String userId,String orderNo,Integer goodsId) {
+
+        BailianOrder bailianOrder1 = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
+        BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder1.getOrderId()).eq("goods_id",goodsId));
+        bailianOrderItem.setCommentaryType(bailianOrderItem.getCommentaryType()+1);
+
+        return shoppingOrderItemMapper.updateById(bailianOrderItem) > 0;
+    }
+
+
 }

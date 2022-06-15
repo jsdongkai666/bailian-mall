@@ -22,4 +22,5 @@ public interface GoodsCommentaryService extends IService<BailianGoodsCommentary>
 
     Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo,Integer pageSize,Integer commentaryType,String userId);
 
+    Boolean updateOrderItemCommentaryType(String userId,String orderNo,Integer goodsId);
 }
