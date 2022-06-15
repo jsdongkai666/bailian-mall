@@ -14,7 +14,7 @@ import com.cuning.vo.GoodsCategoryVO;
 
 
 import java.util.List;
-import java.util.Map;
+
 
 public interface GoodsCategoryService extends IService<BailianGoodsCategory> {
 
@@ -31,4 +31,5 @@ public interface GoodsCategoryService extends IService<BailianGoodsCategory> {
     List<GoodsCategoryVO> queryCategory();
 
     Page<BailianGoodsInfo> queryGoodsInfoByCategory(Integer pageNo,Integer pageSize,String categoryName,Boolean flag);
+
 }

@@ -14,6 +14,7 @@ import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.mapper.GoodsCategoryMapper;
 import com.cuning.mapper.GoodsInfoMapper;
 import com.cuning.service.GoodsCategoryService;
+import com.cuning.util.SnowFlake;
 import com.cuning.vo.GoodsCategorySecondVO;
 import com.cuning.vo.GoodsCategoryThirdVO;
 import com.cuning.vo.GoodsCategoryVO;
@@ -114,4 +115,5 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
         }
         return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().eq("goods_category_id",goodsCategory.getCategoryId()).orderByDesc("selling_price"));
     }
+
 }
