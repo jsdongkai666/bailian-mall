@@ -101,7 +101,7 @@ public class SensitiveWordController {
             return shopSearch;
             // return "搜索失败，命中敏感词";
         }
-        shopSearch = esUtil.search(searchKey, 1, 20);
+        //shopSearch = esUtil.search(searchKey, 1, 20);
 
         // 将时间设为权重值
         String score = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
