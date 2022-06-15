@@ -46,7 +46,7 @@ public class GoodsDetailsController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
-    public RequestResult<BailianGoodsInfo> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") Integer goodsId){
+    public RequestResult<BailianGoodsInfo> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
 
         // 调用接口查询商品详情
         BailianGoodsInfo goodsDetail = goodsInfoService.queryGoodsInfoById(goodsId);

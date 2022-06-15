@@ -61,7 +61,7 @@ public class GoodsFootPrintController {
         // 获取id的list集合，并遍历
         for (int i = 0; i < list.size(); i++) {
             // 通过id，查询商品详情
-            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(Integer.valueOf(list.get(i).toString()));
+            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(list.get(i).toString());
             bailianGoodsInfoList.add(i,bailianGoodsInfo);
 
         }
