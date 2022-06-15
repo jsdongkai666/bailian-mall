@@ -6,18 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/SensitiveWord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/config/MybatisPlusConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/config/MybatisPlusConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/RedisKeyUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/config/SensitiveWordCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/SensitiveWordController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/mapper/SensitiveWordMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/BalianGoodsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/SensitiveWordService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/SensitiveWordServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/util/SensitiveWordFilterUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/EsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/EsUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/EsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/EsUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +69,9 @@
     <property name="show.run.dashboard.notification" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\kh93\cuning-bailian\bailian-search\src\main\java\com\cuning\controller" />
@@ -104,17 +99,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BailianSearchApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -207,7 +191,8 @@
       <workItem from="1654959366386" duration="1670000" />
       <workItem from="1655028565520" duration="4376000" />
       <workItem from="1655033499938" duration="12253000" />
-      <workItem from="1655166552786" duration="6778000" />
+      <workItem from="1655166552786" duration="26759000" />
+      <workItem from="1655254051709" duration="2656000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -258,7 +243,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655166958341</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="11">
+      <created>1655173860399</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655173860400</updated>
+    </task>
+    <task id="LOCAL-00009" summary="11">
+      <created>1655173885900</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655173885900</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
