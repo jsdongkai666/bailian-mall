@@ -1,7 +1,7 @@
 package com.cuning.controller.order;
 
 
-import com.cuning.service.SeckillService;
+import com.cuning.service.order.SeckillService;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;

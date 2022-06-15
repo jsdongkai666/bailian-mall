@@ -1,30 +1,27 @@
 package com.cuning.controller.user;
 
 import com.alibaba.fastjson.JSON;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.impl.JWTParser;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.cuning.annotation.CheckToken;
 import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
-import com.cuning.service.UserWebService;
+
+
+import com.cuning.service.user.UserWebService;
 import com.cuning.util.JwtUtil;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -37,6 +34,7 @@ import java.util.regex.Pattern;
 @Slf4j
 @RestController
 @RequestMapping("/web")
+@Api(tags = "用户管理")
 public class UserWebController {
 
     @Autowired
@@ -63,7 +61,7 @@ public class UserWebController {
     public RequestResult<String> LoginUser(@RequestParam("userName") String userName,
                                          @RequestParam("userPassword") String userPassword,
                                          @RequestParam("captcha") String captcha,
-                                           HttpServletRequest request){
+                                           HttpServletRequest request) throws ParseException {
         Map<String, Object> map = userWebService.LoginUser(userName, userPassword, captcha);
         if (map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG) != null){
             LinkedHashMap user = (LinkedHashMap) map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
@@ -94,6 +92,9 @@ public class UserWebController {
             if (user.get("userHeadImg") != null){
                 build.setUserHeadImg(user.get("userHeadImg").toString());
             }
+            if (user.get("vipDate") != null){
+                build.setVipDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.get("vipDate").toString()));
+            }
             String token = JwtUtil.createToken(build);
             log.info("create-token:{}",token);
             redisUtils.set("token", token);
@@ -108,7 +109,7 @@ public class UserWebController {
     @ApiOperation("用户手机登录")
     public RequestResult<String> telLoginUser(@RequestParam("tel") String tel,
                                             @RequestParam("captcha") String captcha,
-                                              HttpServletRequest request){
+                                              HttpServletRequest request) throws ParseException {
 
         // 用正则判断手机号
         if (!Pattern.matches("^1[3-9]\\d{9}$",tel)){
@@ -145,6 +146,9 @@ public class UserWebController {
             if (user.get("userHeadImg") != null){
                 build.setUserHeadImg(user.get("userHeadImg").toString());
             }
+            if (user.get("vipDate") != null){
+                build.setVipDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.get("vipDate").toString()));
+            }
             String token = JwtUtil.createToken(build);
             request.setAttribute("token",token);
             redisUtils.set("token",token);
@@ -165,6 +169,7 @@ public class UserWebController {
 
     @GetMapping("/verifyToken")
     @ApiOperation("测试用例 - 解析token")
+
     public User parseJWT(HttpServletRequest request) throws Exception {
 
         return JwtUtil.parseJWT(request.getHeader("token"));

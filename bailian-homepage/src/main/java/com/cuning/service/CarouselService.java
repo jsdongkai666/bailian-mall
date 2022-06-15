@@ -49,4 +49,5 @@ public interface CarouselService extends IService<BailianCarousel>{
      * @description : 修改轮播图
      */
     boolean updateCarousel(BailianCarousel bailianCarousel);
+
 }

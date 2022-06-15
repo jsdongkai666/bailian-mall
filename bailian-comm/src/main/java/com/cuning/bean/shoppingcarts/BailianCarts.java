@@ -16,16 +16,11 @@ import java.util.List;
 @ApiModel(description="购物车")
 @Data
 public class BailianCarts {
-    private Integer id;
+    private String id;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
     @ApiModelProperty("用户id")
-    private Integer userId;
-
-    @TableField(updateStrategy = FieldStrategy.IGNORED)
-    @ApiModelProperty("店铺id")
-    private Integer shopId;
-
+    private String userId;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
     @ApiModelProperty("创建时间")

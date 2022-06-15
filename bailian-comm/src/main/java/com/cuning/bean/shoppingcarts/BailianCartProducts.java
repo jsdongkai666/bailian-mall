@@ -9,19 +9,26 @@ import lombok.Data;
 
 import java.util.Date;
 
+/***
+ * Created On : 2022/6/15.
+ * <p>
+ * Author     : kk
+ * <p>
+ * Description: 命名规则： 43+
+ */
 @ApiModel(description="购物车")
 @Data
 public class BailianCartProducts {
 
-    private Integer id;
+    private String id;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
     @ApiModelProperty("购物车id")
-    private Integer cartId;
+    private String cartId;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
     @ApiModelProperty("主商品id")
-    private Integer productId;
+    private String productId;
 
     @TableField(updateStrategy = FieldStrategy.IGNORED)
     @ApiModelProperty("购买数量")
