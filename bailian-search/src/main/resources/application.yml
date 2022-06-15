@@ -10,3 +10,6 @@ spring:
     url: jdbc:mysql://120.78.163.160:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: root
+  redis:
+    host: 120.78.163.160
+    port: 6379
