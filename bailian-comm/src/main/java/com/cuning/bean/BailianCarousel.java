@@ -17,7 +17,7 @@ import java.util.Date;
  * <p>
  * Author     : lixu
  * <p>
- * Description: 轮播图实体类
+ * Description: 轮播图实体类 ，命名规则：20+
  */
 @Data
 @AllArgsConstructor
@@ -68,7 +68,7 @@ public class BailianCarousel implements Serializable {
      * 创建人
      */
     @ApiModelProperty("创建人")
-    private Integer createUser;
+    private String createUser;
 
     /**
      * 更新时间
@@ -81,5 +81,5 @@ public class BailianCarousel implements Serializable {
      * 更新人
      */
     @ApiModelProperty("更新人")
-    private Integer updateUser;
+    private String updateUser;
 }

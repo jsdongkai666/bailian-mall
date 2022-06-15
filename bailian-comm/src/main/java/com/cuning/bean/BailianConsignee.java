@@ -10,7 +10,7 @@ import lombok.Data;
  * <p>
  * Author     : lixu
  * <p>
- * Description: 收货人信息实体类
+ * Description: 收货人信息实体类，命名规则：51+
  */
 @Data
 @ApiModel(value = "收货人信息",description = "对应数据库bailianmall中的bailian_consignee")
