@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: balian-user
+    name: bailian-user
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

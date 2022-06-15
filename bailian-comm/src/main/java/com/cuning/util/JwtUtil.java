@@ -69,8 +69,12 @@ public class JwtUtil {
         try {
             DecodedJWT jwt = JWT.decode(token);
             Map<String, Claim> claims =(Collections.unmodifiableMap(jwt.getClaims()));
-            User user = User.builder().userId(claims.get("userId").asString()+"").userName(claims.get("userName").asString())
+            User user = User.builder().userId(claims.get("userId").asString())
                     .userPoints(claims.get("userPoints").asInt()).vipLevel( claims.get("vipLevel").asInt()).build();
+
+            if (claims.get("userName")!=null){
+                user.setUserName(claims.get("userName").asString());
+            }
 
             if (claims.get("userTel")!=null){
                 user.setUserTel(claims.get("userTel").asString());

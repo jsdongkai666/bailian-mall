@@ -1,16 +1,21 @@
 package com.cuning.controller;
 
-import com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator;
-import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
+
 import com.cuning.bean.BailianCarousel;
 import com.cuning.service.CarouselService;
+import com.cuning.util.RequestResult;
+import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+
 
 /**
  * Created On : 2022/06/09.
@@ -36,13 +41,13 @@ public class CarouselController {
      */
     @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
-    public List<BailianCarousel> queryCarousel(@RequestParam(required = false,defaultValue = "0") Integer rank){
+    public RequestResult<List<BailianCarousel>> queryCarousel(@RequestParam(required = false,defaultValue = "0") Integer rank){
 
         // 调用接口查询轮播图详情
         List<BailianCarousel> carouselList = carouselService.selectCarouselList(rank);
         log.info("------ 轮播图详情：{} ------",carouselList);
 
-        return carouselList;
+        return ResultBuildUtil.success(carouselList);
     }
 
     /**
@@ -54,14 +59,15 @@ public class CarouselController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
-    public String addCarousel(@RequestBody BailianCarousel bailianCarousel){
+    public RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel){
+
 
         // 调用接口添加轮播图
         if (carouselService.addCarousel(bailianCarousel)){
-            return "添加成功";
+            return ResultBuildUtil.success("添加成功！");
         }
 
-        return "添加失败";
+        return ResultBuildUtil.fail("添加失败！");
     }
 
     /**
@@ -73,14 +79,17 @@ public class CarouselController {
      */
     @PostMapping("/delCarousel")
     @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
-    public String delCarousel(@RequestParam List<Integer> ids){
+    public RequestResult<String> delCarousel(@RequestParam List<String> ids){
+
+        // 返回结果Map集合
+        Map<String,String> resultMap = new HashMap<>();
 
         // 调用接口删除轮播图
         if (carouselService.deleteCarousel(ids)){
-            return "删除成功";
+            return ResultBuildUtil.success("删除成功！");
         }
 
-        return "删除失败";
+        return ResultBuildUtil.fail("删除失败！");
     }
 
     /**
@@ -92,14 +101,15 @@ public class CarouselController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
-    public String modCarousel(@RequestBody BailianCarousel bailianCarousel){
+    public RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel){
 
         // 调用接口修改轮播图
         if (carouselService.updateCarousel(bailianCarousel)){
-            return "修改成功";
+
+            return ResultBuildUtil.success("修改成功！");
         }
 
-        return "修改失败";
+        return ResultBuildUtil.fail("修改失败！");
     }
 
 }
