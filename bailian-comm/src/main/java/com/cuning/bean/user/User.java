@@ -35,17 +35,20 @@ public class User implements Serializable {
     @ApiModelProperty("用户密码")
     private String userPassword;
 
+    @ApiModelProperty("用户性别")
+    private String userSex;
+
     @ApiModelProperty("用户电话")
     private String userTel;
+
+    @ApiModelProperty("用户生日")
+    private String userBirth;
 
     @ApiModelProperty("用户唯一标识")
     private String userOpenid;
 
     @ApiModelProperty("用户邮箱")
     private String userMail;
-
-    @ApiModelProperty("用户性别")
-    private String userSex;
 
     @ApiModelProperty("用户头像")
     private String userHeadImg;

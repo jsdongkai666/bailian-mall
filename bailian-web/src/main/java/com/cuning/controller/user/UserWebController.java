@@ -9,7 +9,8 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.cuning.annotation.CheckToken;
 import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
-import com.cuning.service.UserWebService;
+
+import com.cuning.service.order.UserWebService;
 import com.cuning.util.JwtUtil;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.RequestResult;

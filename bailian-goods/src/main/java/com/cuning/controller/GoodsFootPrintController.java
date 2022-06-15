@@ -2,8 +2,12 @@ package com.cuning.controller;
 
 
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.constant.CommonConstant;
+import com.cuning.constant.GoodsConstant;
 import com.cuning.service.GoodsInfoService;
 import com.cuning.util.RedisUtils;
+import com.cuning.util.RequestResult;
+import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created On : 2022/06/10.
@@ -46,11 +52,8 @@ public class GoodsFootPrintController {
     @ApiOperation(value = "用户足迹查询",notes = "根据用户名，查询该用户的足迹")
     public List<BailianGoodsInfo> queryGoodsFootPrint(@RequestParam("userId") String userId){
 
-        // 获取当前用户名
-        //String userId = request.getParameter("userId");
-
         // 从redis中获取当前用户浏览过的商品id
-        List<Object> list = new ArrayList<>(redisUtils.zrevrange(userId + "_foot", 0, -1));
+        List<Object> list = new ArrayList<>(redisUtils.zrevrange(GoodsConstant.USER_FOOT_PRINT + userId , 0, -1));
 
         // list集合，存放用户浏览过的商品详情
         List<BailianGoodsInfo> bailianGoodsInfoList = new ArrayList<>();
@@ -58,13 +61,12 @@ public class GoodsFootPrintController {
         // 获取id的list集合，并遍历
         for (int i = 0; i < list.size(); i++) {
             // 通过id，查询商品详情
-            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(Integer.valueOf(list.get(i).toString()));
+            BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsInfoById(list.get(i).toString());
             bailianGoodsInfoList.add(i,bailianGoodsInfo);
 
         }
 
         log.info("------ 用户：{}，商品足迹：{} ------",userId,bailianGoodsInfoList);
-
         return bailianGoodsInfoList;
     }
 
@@ -77,20 +79,18 @@ public class GoodsFootPrintController {
      */
     @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
-    public String delGoodsFootPrint(HttpServletRequest request, @RequestParam List<Integer> goodsId){
+    public RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId) {
 
-        // 获取当前用户名
-        String userId = request.getParameter("userId");
 
         // 删除商品足迹
         try {
-            goodsId.forEach(id -> redisUtils.zrem(userId + "_foot",id.toString()));
+            goodsId.forEach(id -> redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         log.info("------ 用户足迹删除成功 ------");
 
-        return "删除成功！";
+        return ResultBuildUtil.success("删除成功！");
     }
 }
