@@ -23,26 +23,20 @@ import java.util.Map;
 @FeignClient(value = "bailian-homepage")
 public interface HomePageFeignService {
 
-    @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
     RequestResult<List<BailianCarousel>> queryCarousel(@RequestParam(name = "rank",required = false,defaultValue = "0") Integer rank);
 
     @PostMapping("/addCarousel")
-    @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
     RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel);
 
     @PostMapping("/delCarousel")
-    @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
     RequestResult<String> delCarousel(@RequestParam("ids") List<String> id);
 
     @PostMapping("/modCarousel")
-    @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
     RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel);
 
     @GetMapping("/goodsRelated")
-    @ApiOperation(value = "猜你喜欢",notes = "根据用户的足迹，猜你喜欢")
     RequestResult<List<BailianGoodsInfo>> GoodsRelated(@RequestParam("userId") String userId);
-
 
 
 }

@@ -11,8 +11,8 @@ spring:
     username: root
     password: root
   redis:
-    port: 6379
     host: 120.78.163.160
+    port: 6379
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
