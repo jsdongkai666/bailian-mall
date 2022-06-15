@@ -25,5 +25,5 @@ public interface GoodsInfoFeignService {
     Boolean updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo);
 
     @GetMapping("/deleteGoods")
-    Boolean deleteGoodsInfo(@RequestParam("goodsId") Integer goodsId);
+    Boolean deleteGoodsInfo(@RequestParam("goodsId") String goodsId);
 }

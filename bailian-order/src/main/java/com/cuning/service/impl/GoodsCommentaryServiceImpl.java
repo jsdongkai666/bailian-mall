@@ -38,7 +38,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     private ShoppingOrderItemMapper shoppingOrderItemMapper;
 
     @Override
-    public Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo, Integer pageSize, Integer goodsId, Integer commentaryType) {
+    public Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo, Integer pageSize, String goodsId, Integer commentaryType) {
         Page<BailianGoodsCommentary> page = new Page<>(pageNo,pageSize);
         if (commentaryType == 0){
             return goodsCommentaryMapper.selectPage(page,new QueryWrapper<BailianGoodsCommentary>().eq("goods_id",goodsId).orderByDesc("commentary_time"));
@@ -47,7 +47,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     }
 
     @Override
-    public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, Integer goodsId,String userId,String orderNo) {
+    public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, String goodsId,String userId,String orderNo) {
         BailianGoodsCommentary goodsCommentary1 = new BailianGoodsCommentary();
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         if (bailianOrder.getOrderStatus() == 4){
@@ -67,7 +67,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
         if (commentaryLevel <= 2){
             goodsCommentary1.setCommentaryType(1);
         } else if(commentaryLevel <4){
-            goodsCommentary1.setCommentaryId(2);
+            goodsCommentary1.setCommentaryType(2);
         } else {
             goodsCommentary1.setCommentaryType(3);
         }
@@ -79,7 +79,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     }
 
     @Override
-    public Boolean deleteGoodsCommentary(Integer commentaryId) {
+    public Boolean deleteGoodsCommentary(String commentaryId) {
         return this.removeById(commentaryId);
     }
 
@@ -105,12 +105,11 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     }
 
     @Override
-    public Boolean updateOrderItemCommentaryType(String userId,String orderNo,Integer goodsId) {
+    public Boolean updateOrderItemCommentaryType(String userId,String orderNo,String goodsId) {
 
         BailianOrder bailianOrder1 = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder1.getOrderId()).eq("goods_id",goodsId));
         bailianOrderItem.setCommentaryType(bailianOrderItem.getCommentaryType()+1);
-
         return shoppingOrderItemMapper.updateById(bailianOrderItem) > 0;
     }
 

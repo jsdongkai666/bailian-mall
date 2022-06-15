@@ -2,8 +2,6 @@ package com.cuning.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsCommentary;
 import com.cuning.bean.shoppingOrder.BailianOrderItem;
-import com.cuning.mapper.ShoppingOrderItemMapper;
-import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
 import com.cuning.util.SensitiveWordFilterUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +36,7 @@ public class GoodsCommentaryController {
      * @description : 根据商品id和评论类型对商品评论进行分页查询
      */
     @GetMapping("/queryGoodsCommentary")
-    public Page<BailianGoodsCommentary> queryGoodsCommentary(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam Integer goodsId, @RequestParam Integer commentaryType){
+    public Page<BailianGoodsCommentary> queryGoodsCommentary(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam String goodsId, @RequestParam Integer commentaryType){
         return goodsCommentaryService.queryGoodsCommentary(pageNo,pageSize,goodsId,commentaryType);
     }
 
@@ -50,7 +48,7 @@ public class GoodsCommentaryController {
      * @description : 对已完成订单中的商品进行评论或者追评
      */
     @PostMapping("/saveGoodsCommentary")
-    public boolean saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam Integer goodsId,
+    public boolean saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam String goodsId,
                                                       @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl){
         Boolean flag = goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl,userName,userHeadImg,goodsId,userId,orderNo);
         if (flag){
@@ -70,7 +68,7 @@ public class GoodsCommentaryController {
      * @description : 删除评论
      */
     @GetMapping("/deleteGoodsCommentary")
-    public boolean deleteGoodsCommentary(@RequestParam Integer commentaryId){
+    public boolean deleteGoodsCommentary(@RequestParam String commentaryId){
         return goodsCommentaryService.deleteGoodsCommentary(commentaryId);
     }
 

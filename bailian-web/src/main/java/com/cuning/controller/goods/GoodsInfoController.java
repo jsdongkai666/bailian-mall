@@ -47,7 +47,7 @@ public class GoodsInfoController {
 
     @GetMapping("/deleteGoods")
     @ApiOperation(value = "删除商品")
-    public RequestResult<String> deleteGoodsInfo(@RequestParam Integer goodsId){
+    public RequestResult<String> deleteGoodsInfo(@RequestParam String goodsId){
         if (goodsInfoService.deleteGoodsInfo(goodsId) != null){
             return ResultBuildUtil.success("商品删除成功！");
         }

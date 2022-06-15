@@ -37,7 +37,7 @@ public class GoodsCommentaryController {
 
     @GetMapping("/queryGoodsCommentary")
     @ApiOperation(value = "分页查询商品评价")
-    public RequestResult<Page<BailianGoodsCommentary>> queryGoodsCommentary(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam Integer goodsId, @RequestParam Integer commentaryType){
+    public RequestResult<Page<BailianGoodsCommentary>> queryGoodsCommentary(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam String goodsId, @RequestParam Integer commentaryType){
         Page<BailianGoodsCommentary> page = goodsCommentaryFeignService.queryGoodsCommentary(pageNo,pageSize,goodsId,commentaryType);
         if (page != null){
             return ResultBuildUtil.success(page);
@@ -47,7 +47,7 @@ public class GoodsCommentaryController {
 
     @PostMapping("/saveGoodsCommentary")
     @ApiOperation(value = "评价商品")
-    public RequestResult<String> saveGoodsCommentary(HttpServletRequest request, @RequestParam String orderNo, @RequestParam Integer goodsId,
+    public RequestResult<String> saveGoodsCommentary(HttpServletRequest request, @RequestParam String orderNo, @RequestParam String goodsId,
                                                      @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl) throws Exception{
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         if (goodsCommentaryFeignService.seneitiveWord(goodsCommentary)){
@@ -62,7 +62,7 @@ public class GoodsCommentaryController {
 
     @GetMapping("/deleteGoodsCommentary")
     @ApiOperation(value = "删除评价")
-    public RequestResult<String> deleteGoodsCommentary(@RequestParam Integer commentaryId){
+    public RequestResult<String> deleteGoodsCommentary(@RequestParam String commentaryId){
         if (goodsCommentaryFeignService.deleteGoodsCommentary(commentaryId)){
             return ResultBuildUtil.success("评论删除成功!");
         }

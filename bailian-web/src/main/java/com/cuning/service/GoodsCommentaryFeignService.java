@@ -20,16 +20,16 @@ public interface GoodsCommentaryFeignService {
 
     @GetMapping("/queryGoodsCommentary")
     Page<BailianGoodsCommentary> queryGoodsCommentary(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize,
-                                                      @RequestParam("goodsId") Integer goodsId, @RequestParam("commentaryType") Integer commentaryType);
+                                                      @RequestParam("goodsId") String goodsId, @RequestParam("commentaryType") Integer commentaryType);
 
     @PostMapping("/saveGoodsCommentary")
     boolean saveGoodsCommentary(@RequestParam("userId") String userId,@RequestParam("userName") String userName,
                                 @RequestParam("userHeadImg") String userHeadImg,@RequestParam("orderNo") String orderNo,
-                                @RequestParam("goodsId") Integer goodsId, @RequestParam("commentaryLevel") Integer commentaryLevel,
+                                @RequestParam("goodsId") String goodsId, @RequestParam("commentaryLevel") Integer commentaryLevel,
                                 @RequestParam("goodsCommentary") String goodsCommentary, @RequestParam("commentaryUrl") String commentaryUrl);
 
     @GetMapping("/deleteGoodsCommentary")
-    boolean deleteGoodsCommentary(@RequestParam("commentaryId") Integer commentaryId);
+    boolean deleteGoodsCommentary(@RequestParam("commentaryId") String commentaryId);
 
     @GetMapping("/queryGoodsCommentaryType")
     Page<BailianOrderItem> queryGoodsCommentaryType(@RequestParam("userId") String userId, @RequestParam("pageNo") Integer pageNo,

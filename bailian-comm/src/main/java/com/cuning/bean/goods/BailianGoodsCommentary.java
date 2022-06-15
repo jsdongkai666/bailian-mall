@@ -1,6 +1,5 @@
 package com.cuning.bean.goods;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -16,10 +15,10 @@ import java.util.Date;
  **/
 @Data
 public class BailianGoodsCommentary {
-    @TableId(type = IdType.AUTO)
-    private Integer commentaryId;
+    @TableId
+    private String commentaryId;
 
-    private Integer goodsId;
+    private String goodsId;
 
     private String userName;
 
