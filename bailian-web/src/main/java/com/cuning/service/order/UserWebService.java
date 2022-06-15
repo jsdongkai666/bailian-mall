@@ -1,4 +1,4 @@
-package com.cuning.service;
+package com.cuning.service.user;
 
 import com.cuning.bean.user.User;
 import io.swagger.annotations.ApiOperation;
