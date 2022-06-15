@@ -19,7 +19,7 @@ import java.util.List;
  * @Description: GoodsCategoryService
  **/
 @FeignClient(name="bailian-goods")
-public interface GoodsCategoryService {
+public interface GoodsCategoryFeignService {
 
     @PostMapping("/saveGoodsCategory")
     BailianGoodsCategory saveGoodsCategory(BailianGoodsCategory goodsCategory);

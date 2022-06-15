@@ -2,7 +2,7 @@ package com.cuning.controller.goods;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsInfo;
-import com.cuning.service.GoodsInfoService;
+import com.cuning.service.GoodsInfoFeignService;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 public class GoodsInfoController {
 
     @Autowired
-    private GoodsInfoService goodsInfoService;
+    private GoodsInfoFeignService goodsInfoService;
 
     @PostMapping("/addGoods")
     @ApiOperation(value = "新增商品")

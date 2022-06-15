@@ -10,7 +10,7 @@ package com.cuning.controller.goods;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsCategory;
 import com.cuning.bean.goods.BailianGoodsInfo;
-import com.cuning.service.GoodsCategoryService;
+import com.cuning.service.GoodsCategoryFeignService;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import com.cuning.vo.GoodsCategoryVO;
@@ -29,7 +29,7 @@ import java.util.List;
 public class GoodsCategoryController {
 
     @Autowired
-    private GoodsCategoryService goodsCategoryService;
+    private GoodsCategoryFeignService goodsCategoryService;
 
 
     @PostMapping("/saveGoodsCategory")

@@ -1,5 +1,4 @@
 package com.cuning.controller;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsCommentary;
@@ -58,8 +57,14 @@ public class GoodsCommentaryController {
     @PostMapping("/saveGoodsCommentary")
     public boolean saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam Integer goodsId,
                                                       @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl){
-
-        return goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl,userName,userHeadImg,goodsId,userId,orderNo);
+        Boolean flag = goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl,userName,userHeadImg,goodsId,userId,orderNo);
+        if (flag){
+            BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
+            BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId));
+            bailianOrderItem.setCommentaryType(bailianOrderItem.getCommentaryType()+1);
+            Integer insert = shoppingOrderItemMapper.updateById(bailianOrderItem);
+        }
+        return flag;
     }
 
     /***
@@ -70,7 +75,7 @@ public class GoodsCommentaryController {
      * @description : 删除评论
      */
     @GetMapping("/deleteGoodsCommentary")
-    public boolean deleteGoodsCommentary(Integer commentaryId){
+    public boolean deleteGoodsCommentary(@RequestParam Integer commentaryId){
         return goodsCommentaryService.deleteGoodsCommentary(commentaryId);
     }
 

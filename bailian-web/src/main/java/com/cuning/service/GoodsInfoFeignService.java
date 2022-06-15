@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * @Description: GoodsInfoService
  **/
 @FeignClient(name="bailian-goods")
-public interface GoodsInfoService {
+public interface GoodsInfoFeignService {
 
     @PostMapping("/addGoods")
     BailianGoodsInfo saveGoods (@RequestBody BailianGoodsInfo goodsInfo);
