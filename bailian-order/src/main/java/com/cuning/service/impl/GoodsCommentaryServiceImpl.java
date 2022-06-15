@@ -47,10 +47,21 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     }
 
     @Override
-    public BailianGoodsCommentary saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl) {
+    public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, Integer goodsId,String userId,String orderNo) {
         BailianGoodsCommentary goodsCommentary1 = new BailianGoodsCommentary();
+//      if(sensitiveWordFeignService.testSensitiveWord(goodsCommentary) != null){
+        BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
+        if (bailianOrder.getOrderStatus() == 4){
+            BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
+            if (bailianOrderItem.getOrderItemId()!=null){
+                goodsCommentary1.setUserName(userName);
+                goodsCommentary1.setUserImg(userHeadImg);
+                goodsCommentary1.setGoodsId(goodsId);
+            }
+        }
+//      }
         if (commentaryLevel <= 0 || commentaryLevel >5){
-            return null;
+            return false;
         }
         if (commentaryLevel <= 2){
             goodsCommentary1.setCommentaryType(1);
@@ -63,7 +74,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
         goodsCommentary1.setGoodsCommentary(goodsCommentary);
         goodsCommentary1.setCommentaryUrl(commentaryUrl);
         goodsCommentary1.setCommentaryTime(new Date());
-        return goodsCommentary1;
+        return goodsCommentaryMapper.insert(goodsCommentary1) > 0;
     }
 
     @Override

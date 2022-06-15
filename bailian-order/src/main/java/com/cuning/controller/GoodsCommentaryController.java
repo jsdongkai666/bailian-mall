@@ -56,21 +56,10 @@ public class GoodsCommentaryController {
      * @description : 对已完成订单中的商品进行评论或者追评
      */
     @PostMapping("/saveGoodsCommentary")
-    public BailianGoodsCommentary saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam Integer goodsId,
+    public boolean saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam Integer goodsId,
                                                       @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl){
-        BailianGoodsCommentary bailianGoodsCommentary = new BailianGoodsCommentary();
-//        if(sensitiveWordFeignService.testSensitiveWord(goodsCommentary) != null){
-            BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
-            if ("4".equals(bailianOrder.getOrderStatus())){
-                BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
-                if (bailianOrderItem.getOrderItemId()!=null){
-                    bailianGoodsCommentary.setUserName(userName);
-                    bailianGoodsCommentary.setUserImg(userHeadImg);
-                    return goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl);
-                }
-            }
-//        }
-        return null;
+
+        return goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl,userName,userHeadImg,goodsId,userId,orderNo);
     }
 
     /***

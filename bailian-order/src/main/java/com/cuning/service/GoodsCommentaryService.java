@@ -10,12 +10,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.goods.BailianGoodsCommentary;
 import com.cuning.bean.shoppingOrder.BailianOrderItem;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public interface GoodsCommentaryService extends IService<BailianGoodsCommentary> {
 
     Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo,Integer pageSize,Integer goodsId,Integer commentaryType);
 
-    BailianGoodsCommentary saveGoodsCommentary(Integer commentaryLevel,String goodsCommentary,String commentaryUrl);
+    boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary, String commentaryUrl, String userName, String userHeadImg, Integer goodsId,String userId,String orderNo);
 
     Boolean deleteGoodsCommentary(Integer commentaryId);
 
