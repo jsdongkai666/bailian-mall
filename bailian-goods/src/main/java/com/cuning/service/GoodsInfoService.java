@@ -23,13 +23,13 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
 
-    Boolean deleteGoodsInfo(Integer goodsId);
+    Boolean deleteGoodsInfo(String goodsId);
 
     List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId);
 
     List<Integer> selectGoodsCategoryIds();
 
-    BailianGoodsInfo queryGoodsInfoById(Integer goodsId);
+    BailianGoodsInfo queryGoodsInfoById(String goodsId);
 
     /**
     * @Param: [java.lang.String, java.lang.String]
@@ -75,6 +75,7 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
     * @Description: 根据用户编号获取用户的收藏列表
     */
     List<Object> getCollectListByUserId(String userId);
+
 
 
 }
