@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.*;
 public interface GoodsInfoFeignService {
 
     @PostMapping("/addGoods")
-    BailianGoodsInfo saveGoods (@RequestBody BailianGoodsInfo goodsInfo);
+    BailianGoodsInfo saveGoods (@RequestBody BailianGoodsInfo goodsInfo,@RequestParam("userId") String userId);
 
     @GetMapping("/queryGoodsPage")
     Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
 
     @PostMapping("/updateGoods")
-    Boolean updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo);
+    Boolean updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo,@RequestParam("userId") String userId);
 
     @GetMapping("/deleteGoods")
     Boolean deleteGoodsInfo(@RequestParam("goodsId") String goodsId);

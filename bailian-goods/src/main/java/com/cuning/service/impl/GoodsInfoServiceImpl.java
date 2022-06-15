@@ -37,8 +37,10 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     private SnowFlake snowFlake;
 
     @Override
-    public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo) {
+    public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo,String userId) {
         goodsInfo.setGoodsId("10" + Long.toString(snowFlake.nextId()).substring(9,19));
+        goodsInfo.setCreateTime(new Date());
+        goodsInfo.setCreateUser(userId);
         Integer insert = goodsInfoMapper.insert(goodsInfo);
         return goodsInfo;
     }
@@ -53,7 +55,9 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
 
     @Override
-    public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo) {
+    public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo,String usreId) {
+        goodsInfo.setUpdateTime(new Date());
+        goodsInfo.setUpdateUser(usreId);
         return goodsInfoMapper.updateById(goodsInfo) > 0 ;
     }
 

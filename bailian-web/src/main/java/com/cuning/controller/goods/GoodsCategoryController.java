@@ -10,7 +10,9 @@ package com.cuning.controller.goods;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsCategory;
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.bean.user.User;
 import com.cuning.service.GoodsCategoryFeignService;
+import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import com.cuning.vo.GoodsCategoryVO;
@@ -20,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +37,10 @@ public class GoodsCategoryController {
 
     @PostMapping("/saveGoodsCategory")
     @ApiOperation(value = "添加分类")
-    public RequestResult<String> saveGoodsCategory(@RequestBody BailianGoodsCategory goodsCategory){
-        if (goodsCategoryService.saveGoodsCategory(goodsCategory) != null){
+    public RequestResult<String> saveGoodsCategory(HttpServletRequest request, @RequestParam String categoryName, @RequestParam Integer categoryRank,
+                                                   @RequestParam Integer categoryLevel, @RequestParam Integer parentId) throws Exception{
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        if (goodsCategoryService.saveGoodsCategory(categoryName,categoryRank,categoryLevel,parentId,user.getUserId()) != null){
             return ResultBuildUtil.success("分类添加成功！");
         }
         return ResultBuildUtil.fail("分类添加失败！");
@@ -43,8 +48,10 @@ public class GoodsCategoryController {
 
     @PostMapping("/updateGoodsCategory")
     @ApiOperation(value = "修改分类")
-    public RequestResult<String> updateGoodsCategory(@RequestBody BailianGoodsCategory goodsCategory){
-        if (goodsCategoryService.updateGoodsCategory(goodsCategory) != null){
+    public RequestResult<String> updateGoodsCategory(HttpServletRequest request,@RequestParam Integer categoryId,
+                                                     @RequestParam String categoryName,@RequestParam Integer categoryRank) throws Exception{
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        if (goodsCategoryService.updateGoodsCategory(categoryId,categoryName,categoryRank, user.getUserId())){
             return ResultBuildUtil.success("分类修改成功！");
         }
         return ResultBuildUtil.fail("分类修改失败！");

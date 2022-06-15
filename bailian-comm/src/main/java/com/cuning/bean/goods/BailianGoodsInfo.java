@@ -76,12 +76,12 @@ public class BailianGoodsInfo implements Serializable {
      */
     private String goodsDetailContent;
 
-    private Integer createUser;
+    private String createUser;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
-    private Integer updateUser;
+    private String updateUser;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;

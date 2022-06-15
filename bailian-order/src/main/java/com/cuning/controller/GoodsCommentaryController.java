@@ -55,7 +55,6 @@ public class GoodsCommentaryController {
             if(goodsCommentaryService.updateOrderItemCommentaryType(userId,orderNo,goodsId)){
                 return true;
             }
-
         }
         return false;
     }

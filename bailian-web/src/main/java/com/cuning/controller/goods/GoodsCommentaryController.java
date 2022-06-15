@@ -79,5 +79,4 @@ public class GoodsCommentaryController {
         }
         return ResultBuildUtil.fail(page);
     }
-
 }

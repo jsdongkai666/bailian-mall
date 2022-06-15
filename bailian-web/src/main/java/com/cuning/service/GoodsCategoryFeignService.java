@@ -22,10 +22,13 @@ import java.util.List;
 public interface GoodsCategoryFeignService {
 
     @PostMapping("/saveGoodsCategory")
-    BailianGoodsCategory saveGoodsCategory(BailianGoodsCategory goodsCategory);
+    BailianGoodsCategory saveGoodsCategory(@RequestParam("categoryName") String categoryName,@RequestParam("categoryRank") Integer categoryRank,
+                                           @RequestParam("categoryLevel") Integer categoryLevel,@RequestParam("parentId") Integer parentId,
+                                           @RequestParam("userId") String userId);
 
     @PostMapping("/updateGoodsCategory")
-    Boolean updateGoodsCategory(BailianGoodsCategory goodsCategory);
+    Boolean updateGoodsCategory(@RequestParam("categoryId") Integer categoryId, @RequestParam("categoryName") String categoryName,
+                                @RequestParam("categoryRank") Integer categoryRank,@RequestParam("userId") String userId);
 
     @PostMapping("/deleteGoodsCategory")
     Boolean deleteGoodsCategory(@RequestParam("categoryId") Integer categoryId);

@@ -18,9 +18,9 @@ import java.util.List;
 
 public interface GoodsCategoryService extends IService<BailianGoodsCategory> {
 
-    BailianGoodsCategory saveGoodsCategory(BailianGoodsCategory goodsCategory);
+    BailianGoodsCategory saveGoodsCategory(String categoryName,Integer categoryRank,Integer categoryLevel,Integer parentId,String userId);
 
-    Boolean updateGoodsCategory(BailianGoodsCategory goodsCategory);
+    Boolean updateGoodsCategory(Integer categoryId,String categoryName,Integer categoryRank,String userId);
 
     Boolean deleteGoodsCategory(Integer categoryId);
 

@@ -2,7 +2,9 @@ package com.cuning.controller.goods;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.bean.user.User;
 import com.cuning.service.GoodsInfoFeignService;
+import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
@@ -10,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /*
  * @Created on : 2022/6/14 0014
@@ -28,8 +32,9 @@ public class GoodsInfoController {
 
     @PostMapping("/addGoods")
     @ApiOperation(value = "新增商品")
-    public RequestResult<String> saveGoods (@RequestBody BailianGoodsInfo goodsInfo){
-        if (goodsInfoService.saveGoods(goodsInfo) != null){
+    public RequestResult<String> saveGoods (HttpServletRequest request, @RequestBody BailianGoodsInfo goodsInfo) throws Exception{
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        if (goodsInfoService.saveGoods(goodsInfo, user.getUserId()) != null){
             return ResultBuildUtil.success("商品添加成功！");
         }
         return ResultBuildUtil.fail("商品添加失败！");
@@ -38,8 +43,9 @@ public class GoodsInfoController {
 
     @PostMapping("/updateGoods")
     @ApiOperation(value = "修改商品")
-    public RequestResult<String> updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo){
-        if (goodsInfoService.updateGoodsInfo(goodsInfo) != null){
+    public RequestResult<String> updateGoodsInfo(HttpServletRequest request,@RequestBody BailianGoodsInfo goodsInfo) throws Exception{
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        if (goodsInfoService.updateGoodsInfo(goodsInfo, user.getUserId()) != null){
             return ResultBuildUtil.success("商品修改成功！");
         }
         return ResultBuildUtil.fail("商品修改失败！");
