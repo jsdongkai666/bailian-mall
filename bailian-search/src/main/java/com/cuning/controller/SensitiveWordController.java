@@ -49,7 +49,7 @@ public class SensitiveWordController {
 
     @PostMapping("/delData")
     @ApiOperation(value = "删除数据")
-    public String delData(@RequestParam("id") Integer id) throws IOException {
+    public String delData(@RequestParam("id") String id) throws IOException {
         esUtil.deleteBulk(id);
         return "success";
     }
