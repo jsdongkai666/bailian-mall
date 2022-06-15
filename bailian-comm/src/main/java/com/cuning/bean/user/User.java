@@ -35,17 +35,20 @@ public class User implements Serializable {
     @ApiModelProperty("用户密码")
     private String userPassword;
 
+    @ApiModelProperty("用户性别")
+    private String userSex;
+
     @ApiModelProperty("用户电话")
     private String userTel;
+
+    @ApiModelProperty("用户生日")
+    private String userBirth;
 
     @ApiModelProperty("用户唯一标识")
     private String userOpenid;
 
     @ApiModelProperty("用户邮箱")
     private String userMail;
-
-    @ApiModelProperty("用户性别")
-    private String userSex;
 
     @ApiModelProperty("用户头像")
     private String userHeadImg;
@@ -55,6 +58,11 @@ public class User implements Serializable {
 
     @ApiModelProperty("会员等级")
     private Integer vipLevel;
+
+    @ApiModelProperty("会员到期时间")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date vipDate;
 
     @ApiModelProperty("上一次签到日期")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

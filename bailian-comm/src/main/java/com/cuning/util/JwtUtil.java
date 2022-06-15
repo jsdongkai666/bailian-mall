@@ -13,8 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -41,6 +43,7 @@ public class JwtUtil {
                 .withClaim("userSex",user.getUserSex())
                 .withClaim("userHeadImg",user.getUserHeadImg())
                 .withClaim("userPoints",user.getUserPoints())
+                .withClaim("vipDate",user.getVipDate())
                 .withClaim("vipLevel",user.getVipLevel());
 
         return builder.withExpiresAt(calendar.getTime())
@@ -90,6 +93,10 @@ public class JwtUtil {
             }
             if (claims.get("userHeadImg")!=null){
                 user.setUserHeadImg(claims.get("userHeadImg").asString());
+            }
+            if (claims.get("vipDate") != null){
+                Date vipDate = claims.get("vipDate").asDate();
+                user.setVipDate(vipDate);
             }
             return user;
         } catch (JWTDecodeException e) {
