@@ -25,4 +25,13 @@ public interface GoodsCommentaryService extends IService<BailianGoodsCommentary>
     Boolean updateOrderItemCommentaryType(String userId,String orderNo,String goodsId);
 
     Boolean queryOrderItem(String userId,String orderNo,String goodsId);
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/16
+     * @param  : [java.lang.String]
+     * @return : java.lang.Integer
+     * @description : 根据商品id，查询商品的评价数
+     */
+    Integer selectCommentaryCount(String goodsId);
 }

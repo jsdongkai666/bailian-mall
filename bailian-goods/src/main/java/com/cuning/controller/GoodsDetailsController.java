@@ -3,10 +3,12 @@ package com.cuning.controller;
 
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.constant.GoodsConstant;
+import com.cuning.service.OrderFeignService;
 import com.cuning.service.GoodsInfoService;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
+import com.cuning.vo.GoodsDetailsVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -37,6 +43,9 @@ public class GoodsDetailsController {
     @Autowired
     private RedisUtils redisUtils;
 
+    @Autowired
+    private OrderFeignService orderFeignService;
+
     /**
      * @author : lixu
      * @date   : 2022/06/10
@@ -46,7 +55,7 @@ public class GoodsDetailsController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
-    public RequestResult<BailianGoodsInfo> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
+    public RequestResult<GoodsDetailsVO> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
 
         // 调用接口查询商品详情
         BailianGoodsInfo goodsDetail = goodsInfoService.queryGoodsInfoById(goodsId);
@@ -64,10 +73,23 @@ public class GoodsDetailsController {
             redisUtils.zremoveRange(GoodsConstant.USER_FOOT_PRINT + userId,0, 0);
         }
 
+        // 商品的详细情况
+        GoodsDetailsVO goodsDetailsVO = new GoodsDetailsVO();
+        goodsDetailsVO.setBailianGoodsInfo(goodsDetail);
+
+        // 商品销量及商品的评价数
+        Map<String,Integer> salesMap = new HashMap<>();
+        salesMap.put("商品销量：",orderFeignService.selectOrderCount(goodsId));
+        salesMap.put("评价数：",orderFeignService.queryCommentaryCount(goodsId));
+        goodsDetailsVO.setSalesMap(salesMap);
+
+        // 调用接口，获取评价信息
+        goodsDetailsVO.setBailianGoodsCommentaryPage(orderFeignService.queryGoodsCommentary(1,3,goodsId,0));
+
         // 商品详情
-        log.info("------ 商品详情：{} ------",goodsDetail);
+        log.info("------ 商品详情：{} ------",goodsDetailsVO);
 
         // 返回商品详情实体
-        return ResultBuildUtil.success(goodsDetail);
+        return ResultBuildUtil.success(goodsDetailsVO);
     }
 }

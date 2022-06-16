@@ -127,5 +127,12 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
         return true;
     }
 
+    @Override
+    public Integer selectCommentaryCount(String goodsId) {
+        QueryWrapper<BailianGoodsCommentary> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("goods_id",goodsId);
+        return goodsCommentaryMapper.selectCount(queryWrapper);
+    }
+
 
 }
