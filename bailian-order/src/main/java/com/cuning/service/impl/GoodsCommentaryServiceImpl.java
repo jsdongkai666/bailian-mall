@@ -50,7 +50,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, String goodsId,String userId,String orderNo) {
         BailianGoodsCommentary goodsCommentary1 = new BailianGoodsCommentary();
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
-        if (bailianOrder.getOrderStatus() == 4){
+        if (bailianOrder.getOrderStatus() == 3){
             BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
             if (bailianOrderItem != null){
                 goodsCommentary1.setUserImg(userHeadImg);
@@ -66,6 +66,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
                 } else {
                     goodsCommentary1.setCommentaryType(3);
                 }
+                goodsCommentary1.setOrderId(bailianOrderItem.getOrderId());
                 goodsCommentary1.setCommentaryLevel(commentaryLevel);
                 goodsCommentary1.setGoodsCommentary(goodsCommentary);
                 goodsCommentary1.setCommentaryUrl(commentaryUrl);
@@ -76,19 +77,27 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     }
 
     @Override
-    public Boolean deleteGoodsCommentary(String userId,String orderNo,String goodsId,String commentaryId) {
+    public Boolean deleteGoodsCommentary(String userId,String orderNo,String goodsId) {
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId));
         bailianOrderItem.setCommentaryType(2);
         int tag = shoppingOrderItemMapper.updateById(bailianOrderItem);
-        return this.removeById(commentaryId);
+        List<BailianGoodsCommentary> list = goodsCommentaryMapper.selectList(new QueryWrapper<BailianGoodsCommentary>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId));
+        if (list.isEmpty()){
+            return false;
+        }
+        List<String> ids = new ArrayList<>();
+        list.stream().forEach(item ->{
+            ids.add(item.getCommentaryId());
+        });
+        return this.removeByIds(ids);
     }
 
     @Override
     public Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo, Integer pageSize, Integer commentaryType,String userId) {
         Page<BailianOrderItem> page = new Page<>(pageNo, pageSize);
         QueryWrapper<BailianOrder> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id", userId).eq("order_status", 4);
+        queryWrapper.eq("user_id", userId).eq("order_status", 3);
         List<BailianOrder> bailianOrders = shoppingOrderMapper.selectList(queryWrapper);
         if (!bailianOrders.isEmpty()) {
             List<BailianOrderItem> bailianOrderItemList = new ArrayList<>();

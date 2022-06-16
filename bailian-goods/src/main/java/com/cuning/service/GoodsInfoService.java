@@ -24,6 +24,8 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
     Boolean deleteGoodsInfo(String goodsId);
 
+    Boolean updateGoodsSellStatus(String goodsId,Byte goodsSellStatus);
+
     /**
      * @author : lixu
      * @date   : 2022/06/15

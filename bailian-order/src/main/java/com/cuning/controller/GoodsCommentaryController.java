@@ -71,8 +71,8 @@ public class GoodsCommentaryController {
      * @description : 删除评论
      */
     @GetMapping("/deleteGoodsCommentary")
-    public boolean deleteGoodsCommentary(@RequestParam String userId,@RequestParam String orderNo,@RequestParam String goodsId,@RequestParam String commentaryId){
-        return goodsCommentaryService.deleteGoodsCommentary(userId,orderNo,goodsId,commentaryId);
+    public boolean deleteGoodsCommentary(@RequestParam String userId,@RequestParam String orderNo,@RequestParam String goodsId){
+        return goodsCommentaryService.deleteGoodsCommentary(userId,orderNo,goodsId);
     }
 
     /***
