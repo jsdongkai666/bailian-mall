@@ -1,7 +1,9 @@
 package com.cuning.controller;
 
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.constant.CommonConstant;
 import com.cuning.service.GoodsInfoService;
+import com.cuning.util.PageSupport;
 import com.cuning.util.RedisUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,6 +48,14 @@ public class GoodsCollectController {
         redisUtils.incr(userId + ":" + goodsId, 1);
         redisUtils.expire(userId + ":" + goodsId, 60);
 
+        BailianGoodsInfo byId = goodsInfoService.getById(goodsId);
+
+        if (byId == null) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "商品信息不存在！");
+            return result;
+        }
+
         if (Integer.valueOf(redisUtils.get(userId + ":" + goodsId).toString()) > 4) {
             result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
             result.put("msg", "操作过于频繁，请稍后再试！");
@@ -66,10 +76,12 @@ public class GoodsCollectController {
     */
     @ApiOperation("获取用户收藏列表")
     @GetMapping("/getUserCollectList")
-    public Map<String, List<Object>> getUserCollectList(@RequestParam("userId") String userId){
-        Map<String,  List<Object>> result = new HashMap<>();
+    public Map<String, PageSupport> getUserCollectList(@RequestParam("userId") String userId,
+                                                       @RequestParam(name = "pageNo",required = false,defaultValue = "1")String pageNo,
+                                                       @RequestParam(name = "pageSize",required = false,defaultValue = "5")String pageSize){
+        Map<String,  PageSupport> result = new HashMap<>();
 
-        List<Object> collectListByUserId = goodsInfoService.getCollectListByUserId(userId);
+        PageSupport collectListByUserId = goodsInfoService.getCollectListByUserId(userId,pageNo,pageSize);
 
         result.put("data", collectListByUserId);
         return  result;
