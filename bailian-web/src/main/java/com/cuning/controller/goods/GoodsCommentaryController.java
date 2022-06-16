@@ -51,6 +51,9 @@ public class GoodsCommentaryController {
     public RequestResult<String> saveGoodsCommentary(HttpServletRequest request, @RequestParam String orderNo, @RequestParam String goodsId,
                                                      @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl) throws Exception{
         User user = JwtUtil.parseJWT(request.getHeader("token"));
+        if (user.getUserName().isEmpty()){
+            return ResultBuildUtil.fail("用户信息获取失败！");
+        }
         if (goodsCommentaryFeignService.seneitiveWord(goodsCommentary)){
             return ResultBuildUtil.fail("评价内容包含敏感词，评论失败！");
         }
@@ -72,7 +75,7 @@ public class GoodsCommentaryController {
         if (goodsCommentaryFeignService.deleteGoodsCommentary(user.getUserId(),orderNo,goodsId)){
             return ResultBuildUtil.success("评论删除成功!");
         }
-        return ResultBuildUtil.success("评论删失败!");
+        return ResultBuildUtil.success("评论删除失败!");
     }
 
     @GetMapping("/queryGoodsCommentaryType")
