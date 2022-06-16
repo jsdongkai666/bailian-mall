@@ -7,7 +7,6 @@ package com.cuning.util;
  */
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
