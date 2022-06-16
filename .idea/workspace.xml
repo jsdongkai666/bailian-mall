@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="优惠卷">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="更改订单字段">
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/AlipayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/AlipayServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/CartsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/CartsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/TradeOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/TradeOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/WechatPayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/Impl/WechatPayServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +207,7 @@
       <workItem from="1655254051709" duration="21239000" />
       <workItem from="1655284186486" duration="10731000" />
       <workItem from="1655304811603" duration="846000" />
-      <workItem from="1655339834230" duration="8112000" />
+      <workItem from="1655339834230" duration="8610000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -287,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655305567181</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="更改订单字段">
+      <created>1655352054687</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655352054687</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +449,8 @@
     <MESSAGE value="11" />
     <MESSAGE value="分词和敏感词" />
     <MESSAGE value="优惠卷" />
-    <option name="LAST_COMMIT_MESSAGE" value="优惠卷" />
+    <MESSAGE value="更改订单字段" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改订单字段" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
