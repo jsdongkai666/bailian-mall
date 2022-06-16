@@ -26,6 +26,10 @@ import java.util.List;
 @Service
 public class CouponServiceImpl extends ServiceImpl<CouponMapper, BailianCoupon> implements CouponService {
 
+
+    @Autowired(required = false)
+    private CouponMapper couponMapper;
+
     @Override
     public String couponIsEfficient(String couponId) {
 
@@ -60,8 +64,6 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, BailianCoupon> 
         return  this.updateById(coupon);
     }
 
-    @Autowired(required = false)
-    private CouponMapper couponMapper;
 
 
     @Override
