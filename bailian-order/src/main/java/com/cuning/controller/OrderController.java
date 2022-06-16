@@ -6,7 +6,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +25,6 @@ public class OrderController {
 
     @Autowired
     private ShoppingOrderService shoppingOrderService;
-
 
     @GetMapping("/selectOrder")
     @ApiOperation(value = "查询订单", notes = "订单号查询")
@@ -60,6 +58,7 @@ public class OrderController {
     public Boolean updateOrder(@RequestParam("orderNo")List<String> orderNos){
         return shoppingOrderService.deleteListOrder(orderNos);
     }
+
 
 
 }

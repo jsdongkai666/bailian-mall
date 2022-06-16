@@ -58,8 +58,13 @@ public class HomePageWebController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
-    public RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel){
-        return homePageFeignService.addCarousel(bailianCarousel);
+    public RequestResult<String> addCarousel(HttpServletRequest request,@RequestBody BailianCarousel bailianCarousel) throws Exception {
+
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
+
+        return homePageFeignService.addCarousel(bailianCarousel,userId);
     }
 
     /**
@@ -84,8 +89,13 @@ public class HomePageWebController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
-    public RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel){
-        return homePageFeignService.modCarousel(bailianCarousel);
+    public RequestResult<String> modCarousel(HttpServletRequest request,@RequestBody BailianCarousel bailianCarousel) throws Exception {
+
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
+
+        return homePageFeignService.modCarousel(bailianCarousel,userId);
     }
 
     /**

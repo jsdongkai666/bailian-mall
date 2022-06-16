@@ -48,10 +48,23 @@ public class CartsController {
         return cartsService.getCartsDetailByUserId(userId);
     }
 
-    @ApiOperation(("新增购物车详情"))
+    @ApiOperation("新增购物车详情")
     @PostMapping("/addCartsDetail")
     public boolean addCartsDetail(@RequestBody BailianCartProducts bailianCartProducts){
         return cartsService.addCartsDetail(bailianCartProducts);
     }
+
+    @ApiOperation("删除购物车")
+    @PostMapping("/deleteCartsByIds")
+    public boolean deleteCartsByIds(@RequestParam List<String> ids){
+        return cartsService.deleteCartsById(ids);
+    }
+
+    @ApiOperation("修改购物车")
+    @PostMapping("/updateCartsInfo")
+    public boolean updateCartsInfo(@RequestParam String id,@RequestParam Integer buyCount){
+        return cartsService.modifyCartsById(id,buyCount);
+    }
+
 
 }

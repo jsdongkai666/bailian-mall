@@ -15,6 +15,27 @@ import java.util.List;
 public interface CouponService extends IService<BailianCoupon> {
 
     /**
+     * @Param: [java.lang.String]
+     * @return: boolean
+     * @Author: dengteng
+     * @Date: 2022/6/15
+     * @Description: 判断优惠券是否有效
+     */
+    String couponIsEfficient(String couponId);
+
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: boolean
+    * @Author: dengteng
+    * @Date: 2022/6/15
+    * @Description: 减少优惠券库存
+    */
+    boolean subCouponAuantity(String couponId);
+
+
+
+    /**
      * @author : wangdefeng
      * @date   : 2022/6/15
      * @param  : [java.util.List<com.cuning.bean.coupon.BailianCoupon>]

@@ -22,4 +22,6 @@ public interface CartsService {
     BailianCarts getCartsDetailByUserId(String userId);
 
     boolean addCartsDetail(BailianCartProducts bailianCartProducts);
+
+    boolean modifyCartsById(String id,Integer buyCount);
 }

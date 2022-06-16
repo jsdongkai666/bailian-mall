@@ -121,4 +121,17 @@ public class CouponController {
         return map;
     }
 
+    /**
+    * @Param: []
+    * @return: java.util.List<com.cuning.bean.coupon.BailianCoupon>
+    * @Author: dengteng
+    * @Date: 2022/6/16
+    * @Description: 获取优惠券列表
+    */
+    @GetMapping("/getCouponList")
+    public List<BailianCoupon> getCouponList(){
+        List<BailianCoupon> list = couponService.list();
+        return list;
+    }
+
 }

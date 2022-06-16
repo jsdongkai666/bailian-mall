@@ -38,6 +38,7 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         bailianOrder.setCreateTime(new Date());
         for (BailianOrderItem bailianOrderItem : bailianOrder.getBailianOrders()) {
             bailianOrderItem.setCreateTime(new Date());
+            bailianOrderItem.setTotalPrice(Double.valueOf(bailianOrderItem.getSellingPrice() * bailianOrderItem.getGoodsCount()));
             shoppingOrderItemMapper.insert(bailianOrderItem);
         }
         return shoppingOrderMapper.insert(bailianOrder) > 0;
@@ -93,6 +94,7 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         if (!bailianOrder.getUserPhone().isEmpty()) updateWrapper.set("user_phone", bailianOrder.getUserPhone());
         if (!bailianOrder.getUserAddress().isEmpty()) updateWrapper.set("user_address", bailianOrder.getUserAddress());
         if (bailianOrder.getIsDeleted() != 0) updateWrapper.set("is_deleted", bailianOrder.getIsDeleted());
+
 
         updateWrapper.eq("order_id", bailianOrder.getOrderId());
         return shoppingOrderMapper.update(null, updateWrapper) > 0;

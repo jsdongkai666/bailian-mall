@@ -55,11 +55,7 @@ public class CartsServiceImpl  implements CartsService {
     @Override
     public boolean deleteCartsById(List<String> ids) {
         for (String id : ids) {
-            List<BailianCartProducts> productsList = cartsMapper.selectById(id).getProductsList();
-            for(int i = 0; i <productsList.size(); i++){
-                cartProductsMapper.deleteById(productsList.get(i).getId());
-            }
-            cartsMapper.deleteById(id);
+            cartProductsMapper.deleteById(id);
         }
         return true;
     }
@@ -88,5 +84,13 @@ public class CartsServiceImpl  implements CartsService {
     @Override
     public boolean addCartsDetail(BailianCartProducts bailianCartProducts) {
         return cartProductsMapper.insert(bailianCartProducts)>0;
+    }
+
+    @Override
+    public boolean modifyCartsById(String id, Integer buyCount) {
+        BailianCartProducts bailianCartProducts = cartProductsMapper.selectById(id);
+        bailianCartProducts.setUpdatedAt(new Date());
+        bailianCartProducts.setBuyNum(buyCount);
+        return cartProductsMapper.updateById(bailianCartProducts) > 0;
     }
 }

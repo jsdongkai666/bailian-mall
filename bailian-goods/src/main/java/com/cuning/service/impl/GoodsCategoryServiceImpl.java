@@ -14,6 +14,7 @@ import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.mapper.GoodsCategoryMapper;
 import com.cuning.mapper.GoodsInfoMapper;
 import com.cuning.service.GoodsCategoryService;
+import com.cuning.util.SnowFlake;
 import com.cuning.vo.GoodsCategorySecondVO;
 import com.cuning.vo.GoodsCategoryThirdVO;
 import com.cuning.vo.GoodsCategoryVO;
@@ -21,6 +22,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,14 +35,28 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
     private GoodsInfoMapper goodsInfoMapper;
 
     @Override
-    public BailianGoodsCategory saveGoodsCategory(BailianGoodsCategory goodsCategory) {
-        Integer insert = goodsCategoryMapper.insert(goodsCategory);
-        return goodsCategory;
+    public BailianGoodsCategory saveGoodsCategory(String categoryName,Integer categoryRank,Integer categoryLevel,Integer parentId,String userId) {
+        BailianGoodsCategory bailianGoodsCategory = new BailianGoodsCategory();
+
+        bailianGoodsCategory.setCategoryName(categoryName);
+        bailianGoodsCategory.setCategoryRank(categoryRank);
+        bailianGoodsCategory.setCreateTime(new Date());
+        bailianGoodsCategory.setCreateUser(userId);
+        bailianGoodsCategory.setCategoryLevel(categoryLevel);
+        bailianGoodsCategory.setParentId(parentId);
+        Integer insert = goodsCategoryMapper.insert(bailianGoodsCategory);
+
+        return bailianGoodsCategory;
     }
 
     @Override
-    public Boolean updateGoodsCategory(BailianGoodsCategory goodsCategory) {
-        return goodsCategoryMapper.updateById(goodsCategory) > 0;
+    public Boolean updateGoodsCategory(Integer categoryId,String categoryName,Integer categoryRank,String userId) {
+        BailianGoodsCategory bailianGoodsCategory = goodsCategoryMapper.selectById(categoryId);
+        bailianGoodsCategory.setCategoryName(categoryName);
+        bailianGoodsCategory.setCategoryRank(categoryRank);
+        bailianGoodsCategory.setUpdateTime(new Date());
+        bailianGoodsCategory.setUpdateUser(userId);
+        return goodsCategoryMapper.updateById(bailianGoodsCategory) > 0;
     }
 
     @Override
@@ -114,4 +130,5 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
         }
         return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().eq("goods_category_id",goodsCategory.getCategoryId()).orderByDesc("selling_price"));
     }
+
 }

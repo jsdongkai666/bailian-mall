@@ -9,6 +9,7 @@ import com.cuning.util.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,9 +39,13 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, BailianCaro
     }
 
     @Override
-    public boolean addCarousel(BailianCarousel bailianCarousel) {
+    public boolean addCarousel(BailianCarousel bailianCarousel,String userId) {
         // 生成ID
         bailianCarousel.setCarouselId("20" + Long.toString(snowFlake.nextId()).substring(9,19));
+        bailianCarousel.setCreateTime(new Date());
+        bailianCarousel.setCreateUser(userId);
+        bailianCarousel.setUpdateTime(new Date());
+        bailianCarousel.setUpdateUser(userId);
         return carouselMapper.insert(bailianCarousel) > 0;
     }
 
@@ -50,7 +55,10 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, BailianCaro
     }
 
     @Override
-    public boolean updateCarousel(BailianCarousel bailianCarousel) {
+    public boolean updateCarousel(BailianCarousel bailianCarousel,String userId) {
+
+        bailianCarousel.setUpdateTime(new Date());
+        bailianCarousel.setUpdateUser(userId);
         return carouselMapper.updateById(bailianCarousel) > 0;
     }
 
