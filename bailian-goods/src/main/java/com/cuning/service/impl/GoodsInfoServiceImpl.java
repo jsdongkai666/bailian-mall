@@ -179,10 +179,14 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
         List<Object> idListObj = redisUtils.lGet(userId + ":collect", (pageSupport.getPageNo() - 1) * pageSupport.getPageSize(), (pageSupport.getPageNo() * pageSupport.getPageSize()) - 1);
 
+
         List<String> collect = idListObj.stream().map(item -> item.toString()).collect(Collectors.toList());
 
-        pageSupport.setPageData(this.listByIds(collect));
-
+        if (collect.size() > 0) {
+            pageSupport.setPageData(this.listByIds(collect));
+        }else {
+            pageSupport.setPageData(new ArrayList<>());
+        }
 
 
         return pageSupport;

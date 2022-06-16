@@ -1,8 +1,11 @@
 package com.cuning.controller;
 
 import com.cuning.bean.coupon.BailianCouponUser;
+import com.cuning.bean.shoppingOrder.BailianOrderItem;
+import com.cuning.constant.CommonConstant;
 import com.cuning.service.CouponService;
 import com.cuning.service.CouponUserService;
+import com.cuning.service.OrderItemService;
 import com.cuning.util.RedisUtils;
 import com.netflix.discovery.converters.Auto;
 import io.swagger.annotations.Api;
@@ -39,6 +42,9 @@ public class CouponUserController {
 
     @Autowired
     private RedisUtils redisUtils;
+
+    @Autowired
+    private OrderItemService orderItemService;
 
     /**
     * @Param: [java.lang.String]
@@ -102,9 +108,23 @@ public class CouponUserController {
     */
     @ApiOperation(value = "获取当前商品可用优惠券列表",notes = "输入用户id和订单商品编号编获取可用优惠券列表信息")
     @GetMapping("/getGoodsCoupon")
-    public List<BailianCouponUser> getGoodsCoupon(@RequestParam("userId")String userId,@RequestParam("orderItemid")String orderItemid){
+    public Map<String, Object> getGoodsCoupon(@RequestParam("userId")String userId,@RequestParam("orderItemid")String orderItemid){
+        Map<String, Object> result = new HashMap<>();
+
+        BailianOrderItem byId = orderItemService.getById(orderItemid);
+        if (byId == null) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "订单商品信息不存在");
+            return result;
+        }
+
         List<BailianCouponUser> userCouponList = couponUserService.getUserCouponListByGoods(userId, orderItemid);
-        return userCouponList;
+
+        result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+        result.put("msg", "查询成功！！");
+        result.put("data", userCouponList);
+
+        return result;
     }
 
     /**
