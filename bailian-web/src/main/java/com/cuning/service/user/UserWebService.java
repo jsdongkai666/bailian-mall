@@ -1,4 +1,4 @@
-package com.cuning.service;
+package com.cuning.service.user;
 
 import com.cuning.bean.user.User;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +17,7 @@ import java.util.Map;
  * @Description TODO
  * @createTime 2022年06月11日 17:30:00
  */
-@FeignClient(value = "balian-user")
+@FeignClient(value = "bailian-user")
 public interface UserWebService {
 
     @GetMapping("/user/register")

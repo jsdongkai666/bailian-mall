@@ -1,9 +1,14 @@
 package com.cuning.bean.coupon;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.swing.*;
@@ -21,13 +26,14 @@ import java.util.Date;
 public class BailianCoupon {
 
     @ApiModelProperty("id")
+    @TableId
     private String id;
 
     @ApiModelProperty("优惠券名称")
     private String name;
 
     @ApiModelProperty("优惠券类型")
-    private String couponType;
+    private Integer couponType;
 
     @ApiModelProperty("优惠金额")
     private Double couponAmount;
@@ -63,4 +69,7 @@ public class BailianCoupon {
 
     @ApiModelProperty("每人可重复领取数量")
     private Integer repeatQuantity;
+
+    @ApiModelProperty("商品分类id")
+    private Integer categoryId;
 }
