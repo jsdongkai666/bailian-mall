@@ -51,6 +51,14 @@ public class GoodsInfoController {
         return ResultBuildUtil.fail("商品修改失败！");
     }
 
+    @PostMapping("/updateStatus")
+    public RequestResult<String > updateGoodsSellStatus(@RequestParam String  goodsId, @RequestParam Byte goodsSellStatus) {
+        if (goodsInfoService.updateGoodsSellStatus(goodsId,goodsSellStatus)){
+            return ResultBuildUtil.success("商品上架状态修改成功！");
+        }
+        return ResultBuildUtil.success("商品上架状态修改失败！");
+    }
+
     @GetMapping("/deleteGoods")
     @ApiOperation(value = "删除商品")
     public RequestResult<String> deleteGoodsInfo(@RequestParam String goodsId){

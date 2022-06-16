@@ -68,6 +68,18 @@ public class GoodsInfoController {
 
     /***
      * @author : Administrator
+     * @date   : 2022/6/16 0016
+     * @param  : [java.lang.String, java.lang.Byte]
+     * @return : java.lang.Boolean
+     * @description : 商品上下架
+     */
+    @PostMapping("/updateStatus")
+    public Boolean updateGoodsSellStatus(@RequestParam String  goodsId,@RequestParam Byte goodsSellStatus){
+        return goodsInfoService.updateGoodsSellStatus(goodsId,goodsSellStatus);
+    }
+
+    /***
+     * @author : Administrator
      * @date   : 2022/6/10 0010
      * @param  : [java.lang.Integer]
      * @return : boolean

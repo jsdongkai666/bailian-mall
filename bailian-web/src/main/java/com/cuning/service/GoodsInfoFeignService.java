@@ -26,4 +26,7 @@ public interface GoodsInfoFeignService {
 
     @GetMapping("/deleteGoods")
     Boolean deleteGoodsInfo(@RequestParam("goodsId") String goodsId);
+
+    @PostMapping("/updateStatus")
+    Boolean updateGoodsSellStatus(@RequestParam("goodsId") String  goodsId,@RequestParam("goodsSellStatus") Byte goodsSellStatus);
 }
