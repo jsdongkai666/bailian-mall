@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.BailianConsignee;
 import com.cuning.bean.user.User;
 import com.cuning.util.RequestResult;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,9 @@ public interface UserFeignService {
                                                                 @RequestParam("pageSize") Integer pageSize,
                                                                 @RequestParam("userId") String userId);
 
+    @GetMapping("/queryAddress")
+    BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId);
+
     @PostMapping("/delAddress")
     RequestResult<Map<String,String>> delConsigneeAddress(@RequestParam("consigneeId") String consigneeId);
 
@@ -44,4 +48,5 @@ public interface UserFeignService {
 
     @PostMapping("/modAddress")
     RequestResult<String> modConsigneeAddress(@RequestBody BailianConsignee bailianConsignee);
+
 }

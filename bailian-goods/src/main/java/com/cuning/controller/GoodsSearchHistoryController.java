@@ -32,7 +32,13 @@ public class GoodsSearchHistoryController {
     @Autowired
     private RedisUtils redisUtils;
 
-
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.util.List<java.lang.Object>>
+     * @description : 查询搜索记录
+     */
     @GetMapping("/SearchHistory")
     @ApiOperation(value = "查询搜索记录",notes = "从redis中取出存好的搜索记录，一共展示十条数据")
     public RequestResult<List<Object>> searchHistory(@RequestParam("userId") String userId){
@@ -45,6 +51,13 @@ public class GoodsSearchHistoryController {
         return ResultBuildUtil.success(searchHistoryList);
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 删除搜索记录
+     */
     @PostMapping("/delSearchHistory")
     @ApiOperation(value = "删除搜索记录",notes = "将搜索记录清空")
     public RequestResult<String> delSearchHistory(@RequestParam("userId")String userId){
