@@ -6,7 +6,6 @@ import com.cuning.service.ShoppingOrderService;
 import com.cuning.util.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
@@ -38,9 +37,9 @@ public class TradeOrderPayListener {
         // 模拟订单状态的改变，将redis中订单状态给为2，已支付
         //redisUtils.set(resultMap.get("out_trade_no"),2);
         BailianOrder order = new BailianOrder();
-        order.setOrderId(Integer.valueOf(resultMap.get("order_id")));
+        order.setOrderId(Integer.valueOf(resultMap.get("order_no")));
         order.setPayTime(new Date());
-        order.setPayType(resultMap.get("pay_type")=="alipay"?1:2);
+        order.setPayType(resultMap.get("pay_type")=="Alipay"?1:2);
         shoppingOrderService.updateOrder(order);
 
         log.info("+++++ 收到订单支付结果,更新订单状态成功 ++++++");

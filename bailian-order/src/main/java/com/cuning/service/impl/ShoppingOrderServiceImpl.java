@@ -100,5 +100,10 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         return shoppingOrderMapper.update(null,updateWrapper) > 0;
     }
 
+    @Override
+    public Integer selectCount(String goodsId) {
+        return null;
+    }
+
 
 }
