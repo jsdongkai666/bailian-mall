@@ -11,4 +11,7 @@ import com.cuning.bean.coupon.BailianCouponUser;
  * @date 2022/6/14
  */
 public interface CouponUserMapper extends BaseMapper<BailianCouponUser> {
+
+    int updateCouponUserStatus();
+
 }

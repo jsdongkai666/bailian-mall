@@ -2,19 +2,19 @@ package com.cuning.constant;
 
 /**
  * @author dengteng
- * @title: KdEnums
+ * @title: CouponEnums
  * @projectName cuning-bailian
- * @description: 物流状态枚举类
- * @date 2022/6/9
+ * @description: TODO
+ * @date 2022/6/15
  */
-public enum KdEnums {
+public enum CouponEnums {
+    EXPIRED("1","已过期"),UNUSED("2","未使用"),USED("3","已使用");
 
-    RECEIVED("1", "已揽收"), ON_THE_WAY("2", "在途中"), HAVE_BEEN_RECEIVED("3", "已签收"), PROBLEM_PIECE("4", "问题件");
 
     private String code;
     private String msg;
 
-    private KdEnums(String code, String msg) {
+    private CouponEnums(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }
@@ -34,7 +34,7 @@ public enum KdEnums {
      * @return
      */
     public static String getMsgByCode(String code) {
-        for (KdEnums value : KdEnums.values()) {
+        for (CouponEnums value : CouponEnums.values()) {
             if (value.getCode().equals(code)) {
                 return value.getMsg();
             }
@@ -49,7 +49,7 @@ public enum KdEnums {
      * @return
      */
     public static String getCodeByMsg(String msg) {
-        for (KdEnums value : KdEnums.values()) {
+        for (CouponEnums value : CouponEnums.values()) {
             if (value.getMsg().equals(msg)) {
                 return value.getCode();
             }
