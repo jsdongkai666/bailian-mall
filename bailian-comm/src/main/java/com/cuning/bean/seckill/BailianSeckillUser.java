@@ -28,4 +28,6 @@ public class BailianSeckillUser {
 
     @ApiModelProperty("抢购状态")
     private Boolean seckillStatus;
+
+
 }
