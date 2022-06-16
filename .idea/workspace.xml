@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="111">
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="抢购">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckill.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckillUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckillUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/RelatedFeignServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/RelatedFeignServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/SeckillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/SeckillService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SeckillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SeckillServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,17 +101,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -209,7 +197,9 @@
       <workItem from="1655254051709" duration="21239000" />
       <workItem from="1655284186486" duration="10731000" />
       <workItem from="1655304811603" duration="846000" />
-      <workItem from="1655339834230" duration="17628000" />
+      <workItem from="1655339834230" duration="17804000" />
+      <workItem from="1655380558012" duration="2104000" />
+      <workItem from="1655395693364" duration="463000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -316,7 +306,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655354354060</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="抢购">
+      <created>1655364305806</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1655364305806</updated>
+    </task>
+    <task id="LOCAL-00017" summary="抢购">
+      <created>1655364356110</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1655364356110</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +478,8 @@
     <MESSAGE value="优惠卷" />
     <MESSAGE value="更改订单字段" />
     <MESSAGE value="111" />
-    <option name="LAST_COMMIT_MESSAGE" value="111" />
+    <MESSAGE value="抢购" />
+    <option name="LAST_COMMIT_MESSAGE" value="抢购" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

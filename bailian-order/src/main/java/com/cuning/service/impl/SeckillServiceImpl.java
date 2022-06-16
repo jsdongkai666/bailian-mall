@@ -11,6 +11,10 @@ import com.cuning.service.SeckillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
  * Created On : 2022/6/16.
  * <p>
@@ -41,6 +45,13 @@ public class SeckillServiceImpl implements SeckillService {
         if (bailianSeckill.getGoodsName()=="") {
             return false;
         }
+        Calendar calendar = new GregorianCalendar();
+        bailianSeckill.setGoodsCreateTime(new Date());
+        calendar.setTime(bailianSeckill.getGoodsCreateTime());
+        calendar.add(calendar.DATE, 10);
+        bailianSeckill.setGoodsStartTime(calendar.getTime());
+        calendar.add(calendar.DATE, 30);
+        bailianSeckill.setGoodsEndTime(calendar.getTime());
         return seckillMappper.insert(bailianSeckill) > 0;
     }
 
@@ -63,6 +74,7 @@ public class SeckillServiceImpl implements SeckillService {
         if (!bailianSeckill.getGoodsName().isEmpty()) updateWrapper.set("category_id", bailianSeckill.getCategoryId());
         if (!bailianSeckill.getGoodsId().isEmpty()) {
             updateWrapper.eq("order_id", bailianSeckill.getGoodsId());
+            updateWrapper.eq("goods_update_time",new Date());
             return seckillMappper.update(null,updateWrapper)>0;
         }
         return false;
