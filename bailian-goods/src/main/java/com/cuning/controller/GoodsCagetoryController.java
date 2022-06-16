@@ -32,8 +32,10 @@ public class GoodsCagetoryController {
      * @description : 新增分类
      */
     @PostMapping("/saveGoodsCategory")
-    public BailianGoodsCategory saveGoodsCategory(@RequestBody BailianGoodsCategory goodsCategory){
-        return goodsCategoryService.saveGoodsCategory(goodsCategory);
+    public BailianGoodsCategory saveGoodsCategory(@RequestParam String categoryName,@RequestParam Integer categoryRank,
+                                                  @RequestParam Integer categoryLevel,@RequestParam Integer parentId,
+                                                  @RequestParam String userId){
+        return goodsCategoryService.saveGoodsCategory(categoryName,categoryRank,categoryLevel,parentId,userId);
     }
 
     /***
@@ -44,12 +46,9 @@ public class GoodsCagetoryController {
      * @description : 修改分类
      */
     @PostMapping("/updateGoodsCategory")
-    public BailianGoodsCategory updateGoodsCategory(@RequestBody BailianGoodsCategory goodsCategory){
-        boolean flag = goodsCategoryService.updateGoodsCategory(goodsCategory);
-        if (flag){
-            return goodsCategory;
-        }
-        return null;
+    public Boolean updateGoodsCategory(@RequestParam Integer categoryId,@RequestParam String categoryName,
+                                                    @RequestParam Integer categoryRank,@RequestParam String userId){
+        return goodsCategoryService.updateGoodsCategory(categoryId,categoryName,categoryRank,userId);
     }
 
     /***

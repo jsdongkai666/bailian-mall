@@ -7,7 +7,6 @@ package com.cuning.service.impl;
  * @Description: GoodsInfoServiceImpl
  **/
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -38,29 +37,40 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     private SnowFlake snowFlake;
 
     @Override
-    public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo) {
+    public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo,String userId) {
         goodsInfo.setGoodsId("10" + Long.toString(snowFlake.nextId()).substring(9,19));
+        goodsInfo.setCreateTime(new Date());
+        goodsInfo.setCreateUser(userId);
         Integer insert = goodsInfoMapper.insert(goodsInfo);
         return goodsInfo;
     }
 
     @Override
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName) {
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize) {
         Page<BailianGoodsInfo> page = new Page<>(pageNo,pageSize);
-        return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().like("goods_name",goodsName));
+        return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>());
     }
 
 
 
 
     @Override
-    public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo) {
+    public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo,String usreId) {
+        goodsInfo.setUpdateTime(new Date());
+        goodsInfo.setUpdateUser(usreId);
         return goodsInfoMapper.updateById(goodsInfo) > 0 ;
     }
 
     @Override
     public Boolean deleteGoodsInfo(String goodsId) {
         return this.removeById(goodsId);
+    }
+
+    @Override
+    public Boolean updateGoodsSellStatus(String goodsId, Byte goodsSellStatus) {
+        BailianGoodsInfo bailianGoodsInfo = goodsInfoMapper.selectById(goodsId);
+        bailianGoodsInfo.setGoodsSellStatus(goodsSellStatus);
+        return goodsInfoMapper.updateById(bailianGoodsInfo) > 0;
     }
 
     @Override

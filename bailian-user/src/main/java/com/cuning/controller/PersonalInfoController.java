@@ -5,17 +5,16 @@ import com.cuning.constant.CommonConstant;
 import com.cuning.service.UserService;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
+import com.cuning.util.SnowFlake;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,6 +32,25 @@ public class PersonalInfoController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SnowFlake snowFlake;
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/16
+     * @param  : [java.lang.String]
+     * @return : com.cuning.util.RequestResult<com.cuning.bean.user.User>
+     * @description : 查看个人资料
+     */
+    @GetMapping("/queryPersonInfo")
+    @ApiOperation(value = "查看个人资料",notes = "用户个人资料展示")
+    public RequestResult<User> queryPersonInfo(@RequestParam("userId") String userId){
+
+        User user = userService.selectPersonInfoByUserId(userId);
+        return ResultBuildUtil.success(user);
+
+    }
+
     /**
      * @author : lixu
      * @date   : 2022/06/11
@@ -45,13 +63,20 @@ public class PersonalInfoController {
     public RequestResult<String> modPersonInfo(@RequestBody User user){
 
 
-        if (userService.modUserInfo(user)) {
+        if (userService.updatePersonInfo(user)) {
             return ResultBuildUtil.success("修改成功！");
         }
 
         return ResultBuildUtil.fail("修改失败！");
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.user.User, java.lang.String, java.lang.String, java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 修改密码
+     */
     @PostMapping("/modPwd")
     @ApiOperation(value = "修改密码",notes = "用户修改密码，必须有旧密码，新密码和确认新密码")
     public RequestResult<String> modPassword(@RequestBody User user,
@@ -66,4 +91,5 @@ public class PersonalInfoController {
 
         return userService.modPassword(user, password, newPassword, newPasswordAgain);
     }
+
 }

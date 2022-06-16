@@ -1,7 +1,6 @@
 package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.user.User;
@@ -10,17 +9,12 @@ import com.cuning.util.*;
 import com.cuning.mapper.UserMapper;
 import com.cuning.service.UserService;
 import com.cuning.vo.UserVO;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -42,6 +36,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private RedisUtils redisUtils;
 
 
+
     @Override
     public User executeRegister(String userName, String userPassword) {
         // 查看是否注册过(用户名)
@@ -54,7 +49,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         User result = new User();
         // 生成ID
-        result.setUserId(Long.toString(snowFlake.nextId()));
+        result.setUserId("50" + Long.toString(snowFlake.nextId()).substring(9,19));
         // 设置用户名
         result.setUserName(userName);
         result.setUserPassword(MD5Util.MD5Upper(userPassword,"kgc"));
@@ -113,7 +108,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                    User one = userMapper.selectOne(qw);
                    // 不存在这个手机 插入用户
                    if (one == null){
-                       User insert = User.builder().userId(Long.toString(snowFlake.nextId())).userTel(tel).build();
+                       User insert = User.builder().userId("50" + Long.toString(snowFlake.nextId()).substring(9,19)).userTel(tel).build();
                        int row = userMapper.insert(insert);
                        // 插入成功
                        if (row > 0){
@@ -220,10 +215,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public boolean modUserInfo(User user) {
-        return userMapper.updateById(user) > 0;
+    public User selectPersonInfoByUserId(String userId) {
+
+        return userMapper.selectById(userId);
     }
 
+    @Override
+    public boolean updatePersonInfo(User user) {
+        return userMapper.updateById(user) > 0;
+    }
 
 
     @Override

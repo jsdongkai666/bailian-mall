@@ -1,5 +1,6 @@
 package com.cuning.bean.goods;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -15,7 +16,7 @@ import java.util.Date;
  **/
 @Data
 public class BailianGoodsCategory {
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer categoryId;
 
     private Integer categoryLevel;
@@ -26,14 +27,12 @@ public class BailianGoodsCategory {
 
     private Integer categoryRank;
 
-    private Integer isDeleted;
-
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
-    private Integer createUser;
+    private String createUser;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
 
-    private Integer updateUser;
+    private String updateUser;
 }

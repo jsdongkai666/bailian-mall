@@ -51,7 +51,7 @@ public class SensitiveWordController {
 
     @PostMapping("/delData")
     @ApiOperation(value = "删除数据")
-    public String delData(@RequestParam("id") Integer id) throws IOException {
+    public String delData(@RequestParam("id") String id) throws IOException {
         esUtil.deleteBulk(id);
         return "success";
     }
@@ -101,7 +101,7 @@ public class SensitiveWordController {
             return shopSearch;
             // return "搜索失败，命中敏感词";
         }
-        //shopSearch = esUtil.search(searchKey, 1, 20);
+        shopSearch = esUtil.search(searchKey, 1, 20);
 
         // 将时间设为权重值
         String score = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));

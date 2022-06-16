@@ -28,4 +28,10 @@ public interface CartsFeignService {
 
     @PostMapping("/addCartsDetail")
     boolean addCartsDetail(@RequestBody BailianCartProducts bailianCartProducts);
+
+    @PostMapping("/deleteCartsByIds")
+    boolean deleteCartsByIds(@RequestParam("ids") List<String> ids);
+
+    @PostMapping("/updateCartsInfo")
+    boolean updateCartsInfo(@RequestParam("id") String id,@RequestParam("buyCount") Integer buyCount);
 }
