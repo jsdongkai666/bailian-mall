@@ -1,5 +1,6 @@
 package com.cuning.bean.goods;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -28,6 +29,7 @@ public class BailianGoodsInfo implements Serializable {
     private static final long serialVersionUID = 5473302609274012318L;
     @TableId
     private String goodsId;
+
 
     /**
      * 商品名称
@@ -74,12 +76,12 @@ public class BailianGoodsInfo implements Serializable {
      */
     private String goodsDetailContent;
 
-    private Integer createUser;
+    private String createUser;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
-    private Integer updateUser;
+    private String updateUser;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
