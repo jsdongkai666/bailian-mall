@@ -1,4 +1,4 @@
-package com.cuning.service.impl;
+package com.cuning.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

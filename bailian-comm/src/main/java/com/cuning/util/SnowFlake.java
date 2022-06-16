@@ -5,9 +5,7 @@ package com.cuning.util;
  * @Description TODO
  * @createTime 2022年06月09日 15:23:00
  */
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.junit.jupiter.api.Test;
+
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;

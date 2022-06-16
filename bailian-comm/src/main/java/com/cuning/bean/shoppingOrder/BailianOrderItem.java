@@ -22,7 +22,7 @@ public class BailianOrderItem {
 
     @TableId
     @ApiModelProperty("订单关联购物项主键id")
-    private Integer orderItemId;
+    private String orderItemId;
 
     @ApiModelProperty("订单主键id")
     private Integer orderId;
