@@ -5,7 +5,7 @@ import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
 
 
-import com.cuning.service.UserWebService;
+import com.cuning.service.user.UserWebService;
 import com.cuning.util.JwtUtil;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.RequestResult;
@@ -49,7 +49,7 @@ public class UserWebController {
                                                           @RequestParam("userPassword") String userPassword){
         Map<String, Object> map = userWebService.RegisterUser(userName, userPassword);
         if (map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG) != null){
-            User user = (User) map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
+            //User user = (User) map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
 
             return ResultBuildUtil.success("注册成功");
         }

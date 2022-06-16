@@ -22,6 +22,8 @@ public interface UserService extends IService<User> {
 
     Map<String, Object> executeTelLogin(String tel, String captcha);
 
+    User selectPersonInfoByUserId(String userId);
+
     /**
      * @author : lixu
      * @date   : 2022/06/15
@@ -29,7 +31,8 @@ public interface UserService extends IService<User> {
      * @return : boolean
      * @description : 修改用户信息
      */
-    boolean modUserInfo(User user);
+    boolean updatePersonInfo(User user);
+
 
     /**
      * @author : lixu
@@ -74,5 +77,8 @@ public interface UserService extends IService<User> {
     * @Description: 获取用户当月签到记录
     */
     List<String > getCheckDateList(User user);
+
+
+
 
 }
