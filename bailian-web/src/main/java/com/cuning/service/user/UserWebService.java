@@ -17,7 +17,7 @@ import java.util.Map;
  * @Description TODO
  * @createTime 2022年06月11日 17:30:00
  */
-@FeignClient(value = "balian-user")
+@FeignClient(value = "bailian-user")
 public interface UserWebService {
 
     @GetMapping("/user/register")

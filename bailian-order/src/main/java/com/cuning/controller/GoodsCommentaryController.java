@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 /*
  * @Created on : 2022/6/13 0013
  * <p>
@@ -26,6 +27,7 @@ public class GoodsCommentaryController {
 
     @Autowired
     private GoodsCommentaryService goodsCommentaryService;
+
 
 
     /***
@@ -50,10 +52,12 @@ public class GoodsCommentaryController {
     @PostMapping("/saveGoodsCommentary")
     public boolean saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam String goodsId,
                                                       @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl){
-        Boolean flag = goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl,userName,userHeadImg,goodsId,userId,orderNo);
-        if (flag){
-            if(goodsCommentaryService.updateOrderItemCommentaryType(userId,orderNo,goodsId)){
-                return true;
+        if (goodsCommentaryService.queryOrderItem(userId,orderNo,goodsId)){
+            Boolean flag = goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl,userName,userHeadImg,goodsId,userId,orderNo);
+            if (flag){
+                if(goodsCommentaryService.updateOrderItemCommentaryType(userId,orderNo,goodsId)){
+                    return true;
+                }
             }
         }
         return false;
@@ -67,8 +71,8 @@ public class GoodsCommentaryController {
      * @description : 删除评论
      */
     @GetMapping("/deleteGoodsCommentary")
-    public boolean deleteGoodsCommentary(@RequestParam String commentaryId){
-        return goodsCommentaryService.deleteGoodsCommentary(commentaryId);
+    public boolean deleteGoodsCommentary(@RequestParam String userId,@RequestParam String orderNo,@RequestParam String goodsId,@RequestParam String commentaryId){
+        return goodsCommentaryService.deleteGoodsCommentary(userId,orderNo,goodsId,commentaryId);
     }
 
     /***

@@ -18,9 +18,11 @@ public interface GoodsCommentaryService extends IService<BailianGoodsCommentary>
 
     boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary, String commentaryUrl, String userName, String userHeadImg, String goodsId,String userId,String orderNo);
 
-    Boolean deleteGoodsCommentary(String commentaryId);
+    Boolean deleteGoodsCommentary(String userId,String orderNo,String goodsId,String commentaryId);
 
     Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo,Integer pageSize,Integer commentaryType,String userId);
 
     Boolean updateOrderItemCommentaryType(String userId,String orderNo,String goodsId);
+
+    Boolean queryOrderItem(String userId,String orderNo,String goodsId);
 }

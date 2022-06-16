@@ -50,36 +50,37 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, String goodsId,String userId,String orderNo) {
         BailianGoodsCommentary goodsCommentary1 = new BailianGoodsCommentary();
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
-        if (bailianOrder.getOrderStatus() == 4){
+        if (bailianOrder.getOrderStatus() == 3){
             BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
-            if (bailianOrderItem.getOrderItemId()!=null){
-                if (userHeadImg != null){
-                    goodsCommentary1.setUserImg(userHeadImg);
-                }
+            if (bailianOrderItem != null){
+                goodsCommentary1.setUserImg(userHeadImg);
                 goodsCommentary1.setUserName(userName);
-                goodsCommentary1.setUserImg("https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epBORvJHTictQOt1bUGW2os3MLrZRicNhoRvKUMlXycQhPyFYoRQuwL9pwtQO5nY6LgqSHN8obIUmlA/132");
                 goodsCommentary1.setGoodsId(goodsId);
+                if (commentaryLevel <= 0 || commentaryLevel >5){
+                    return false;
+                }
+                if (commentaryLevel <= 2){
+                    goodsCommentary1.setCommentaryType(1);
+                } else if(commentaryLevel <4){
+                    goodsCommentary1.setCommentaryType(2);
+                } else {
+                    goodsCommentary1.setCommentaryType(3);
+                }
+                goodsCommentary1.setCommentaryLevel(commentaryLevel);
+                goodsCommentary1.setGoodsCommentary(goodsCommentary);
+                goodsCommentary1.setCommentaryUrl(commentaryUrl);
+                goodsCommentary1.setCommentaryTime(new Date());
             }
         }
-        if (commentaryLevel <= 0 || commentaryLevel >5){
-            return false;
-        }
-        if (commentaryLevel <= 2){
-            goodsCommentary1.setCommentaryType(1);
-        } else if(commentaryLevel <4){
-            goodsCommentary1.setCommentaryType(2);
-        } else {
-            goodsCommentary1.setCommentaryType(3);
-        }
-        goodsCommentary1.setCommentaryLevel(commentaryLevel);
-        goodsCommentary1.setGoodsCommentary(goodsCommentary);
-        goodsCommentary1.setCommentaryUrl(commentaryUrl);
-        goodsCommentary1.setCommentaryTime(new Date());
         return goodsCommentaryMapper.insert(goodsCommentary1) > 0;
     }
 
     @Override
-    public Boolean deleteGoodsCommentary(String commentaryId) {
+    public Boolean deleteGoodsCommentary(String userId,String orderNo,String goodsId,String commentaryId) {
+        BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
+        BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId));
+        bailianOrderItem.setCommentaryType(2);
+        int tag = shoppingOrderItemMapper.updateById(bailianOrderItem);
         return this.removeById(commentaryId);
     }
 
@@ -87,7 +88,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     public Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo, Integer pageSize, Integer commentaryType,String userId) {
         Page<BailianOrderItem> page = new Page<>(pageNo, pageSize);
         QueryWrapper<BailianOrder> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id", userId).eq("order_status", 4);
+        queryWrapper.eq("user_id", userId).eq("order_status", 3);
         List<BailianOrder> bailianOrders = shoppingOrderMapper.selectList(queryWrapper);
         if (!bailianOrders.isEmpty()) {
             List<BailianOrderItem> bailianOrderItemList = new ArrayList<>();
@@ -97,7 +98,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
                 List<BailianOrderItem> bailianOrderItems = shoppingOrderItemMapper.selectList(wrapper);
                 bailianOrderItemList.addAll(bailianOrderItems);
             });
-            List<Integer> idList = bailianOrderItemList.stream().map(item -> item.getGoodsId()).collect(Collectors.toList());
+            List<String> idList = bailianOrderItemList.stream().map(item -> item.getGoodsId()).collect(Collectors.toList());
             QueryWrapper<BailianOrderItem> orderItemQueryWrapper = new QueryWrapper<>();
             return shoppingOrderItemMapper.selectPage(page, orderItemQueryWrapper.in("goods_id", idList).eq("commentary_type", commentaryType).orderByDesc("create_time"));
         }
@@ -110,7 +111,20 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
         BailianOrder bailianOrder1 = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder1.getOrderId()).eq("goods_id",goodsId));
         bailianOrderItem.setCommentaryType(bailianOrderItem.getCommentaryType()+1);
+        if (bailianOrderItem.getCommentaryType() > 2){
+            return false;
+        }
         return shoppingOrderItemMapper.updateById(bailianOrderItem) > 0;
+    }
+
+    @Override
+    public Boolean queryOrderItem(String userId, String orderNo, String goodsId) {
+        BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
+        BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId));
+        if (bailianOrderItem.getCommentaryType()>2){
+            return false;
+        }
+        return true;
     }
 
 

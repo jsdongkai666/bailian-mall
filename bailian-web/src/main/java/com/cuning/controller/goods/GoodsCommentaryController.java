@@ -12,6 +12,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,7 +54,11 @@ public class GoodsCommentaryController {
         if (goodsCommentaryFeignService.seneitiveWord(goodsCommentary)){
             return ResultBuildUtil.fail("评价内容包含敏感词，评论失败！");
         }
-        Boolean flag  = goodsCommentaryFeignService.saveGoodsCommentary(user.getUserId(), user.getUserName(), user.getUserHeadImg(), orderNo,goodsId,commentaryLevel,goodsCommentary,commentaryUrl);
+        String img = user.getUserHeadImg();
+        if (StringUtils.isEmpty(img)){
+            img = "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epBORvJHTictQOt1bUGW2os3MLrZRicNhoRvKUMlXycQhPyFYoRQuwL9pwtQO5nY6LgqSHN8obIUmlA/132";
+        }
+        Boolean flag  = goodsCommentaryFeignService.saveGoodsCommentary(user.getUserId(), user.getUserName(), img, orderNo,goodsId,commentaryLevel,goodsCommentary,commentaryUrl);
         if (flag){
             return ResultBuildUtil.success("评论成功!");
         }
@@ -62,8 +67,9 @@ public class GoodsCommentaryController {
 
     @GetMapping("/deleteGoodsCommentary")
     @ApiOperation(value = "删除评价")
-    public RequestResult<String> deleteGoodsCommentary(@RequestParam String commentaryId){
-        if (goodsCommentaryFeignService.deleteGoodsCommentary(commentaryId)){
+    public RequestResult<String> deleteGoodsCommentary(HttpServletRequest request,@RequestParam String orderNo,@RequestParam String goodsId,@RequestParam String commentaryId) throws Exception{
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        if (goodsCommentaryFeignService.deleteGoodsCommentary(user.getUserId(),orderNo,goodsId, commentaryId)){
             return ResultBuildUtil.success("评论删除成功!");
         }
         return ResultBuildUtil.success("评论删失败!");

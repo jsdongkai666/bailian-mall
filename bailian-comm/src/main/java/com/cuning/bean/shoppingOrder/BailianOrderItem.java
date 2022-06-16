@@ -1,5 +1,6 @@
 package com.cuning.bean.shoppingOrder;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,13 +21,14 @@ import java.util.Date;
 public class BailianOrderItem {
 
     @ApiModelProperty("订单关联购物项主键id")
+    @TableId
     private Integer orderItemId;
 
     @ApiModelProperty("订单主键id")
     private Integer orderId;
 
     @ApiModelProperty("关联商品id")
-    private Integer goodsId;
+    private String goodsId;
 
     @ApiModelProperty("下单时商品的名称")
     private String goodsName;
