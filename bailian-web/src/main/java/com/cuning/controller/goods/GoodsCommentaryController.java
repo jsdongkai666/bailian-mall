@@ -72,7 +72,7 @@ public class GoodsCommentaryController {
         if (goodsCommentaryFeignService.deleteGoodsCommentary(user.getUserId(),orderNo,goodsId)){
             return ResultBuildUtil.success("评论删除成功!");
         }
-        return ResultBuildUtil.success("评论删失败!");
+        return ResultBuildUtil.success("评论删除失败!");
     }
 
     @GetMapping("/queryGoodsCommentaryType")
