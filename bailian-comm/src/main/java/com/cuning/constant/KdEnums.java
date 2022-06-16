@@ -19,11 +19,11 @@ public enum KdEnums {
         this.msg = msg;
     }
 
-    private String getCode() {
+    public String getCode() {
         return code;
     }
 
-    private String getMsg() {
+    public String getMsg() {
         return msg;
     }
 

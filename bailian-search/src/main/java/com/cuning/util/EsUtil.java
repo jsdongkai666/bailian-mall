@@ -3,11 +3,6 @@ package com.cuning.util;
 import com.alibaba.fastjson.JSON;
 import com.cuning.bean.BailianGoodsInfo;
 import com.cuning.mapper.EsMapper;
-import com.cuning.util.SensitiveWordFilterUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -15,7 +10,6 @@ import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
@@ -23,29 +17,17 @@ import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.indices.CreateIndexRequest;
-import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
-
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.TermQueryBuilder;
-import org.elasticsearch.index.reindex.BulkByScrollResponse;
-import org.elasticsearch.index.reindex.DeleteByQueryAction;
-import org.elasticsearch.index.reindex.DeleteByQueryRequestBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +65,7 @@ public class EsUtil {
         DeleteIndexRequest request = new DeleteIndexRequest("goods_index");
         AcknowledgedResponse response = restHighLevelClient.indices().delete(request, RequestOptions.DEFAULT);
         System.out.println(response.isAcknowledged());// 是否删除成功
-        restHighLevelClient.close();
+        // restHighLevelClient.close();
     }
 
     /**
@@ -100,9 +82,15 @@ public class EsUtil {
         return exists;
 
     }
-
-    public void deleteBulk(Integer id) throws IOException {
-        DeleteRequest deleteRequest = new DeleteRequest("goods_index",id.toString());
+    /**
+     * @author : wangdefeng
+     * @date   : 2022/6/15
+     * @param  : [java.lang.Integer]
+     * @return : void
+     * @description : 删除数据
+     */
+    public void deleteBulk(String id) throws IOException {
+        DeleteRequest deleteRequest = new DeleteRequest("goods_index",id);
         deleteRequest.timeout("1s");
         DeleteResponse response = restHighLevelClient.delete(deleteRequest, RequestOptions.DEFAULT);
         System.out.println(response.status());// ok
@@ -125,16 +113,22 @@ public class EsUtil {
             bulkRequest.add(
                     // 这里是数据信息
                     new IndexRequest("goods_index")
-                            .id(users.get(i).getGoodsId().toString())// 没有设置id 会自定生成一个随机id
+                            .id(users.get(i).getGoodsId())// 没有设置id 会自定生成一个随机id
                             .source(JSON.toJSONString(users.get(i)),XContentType.JSON)
             );
         }
         BulkResponse bulk = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
         System.out.println(bulk.status());// ok
     }
-
+    /**
+     * @author : wangdefeng
+     * @date   : 2022/6/15
+     * @param  : [com.cuning.bean.BailianGoodsInfo]
+     * @return : void
+     * @description : 更新数据
+     */
     public void updateDocument(BailianGoodsInfo bailianGoodsInfo) throws IOException {
-        UpdateRequest request = new UpdateRequest("goods_index", bailianGoodsInfo.getGoodsId().toString());
+        UpdateRequest request = new UpdateRequest("goods_index", bailianGoodsInfo.getGoodsId());
         BailianGoodsInfo info = esMapper.selectById(bailianGoodsInfo.getGoodsId());
         log.info("--info:{}--",info);
         if(bailianGoodsInfo.getGoodsName()==null||bailianGoodsInfo.getGoodsName()==""){
@@ -199,13 +193,9 @@ public class EsUtil {
 
         //2.1 循环goodsList，创建IndexRequest添加数据
         for (BailianGoodsInfo goods : goodsList) {
-
-
-
             String jsonString = JSON.toJSONString(goods);
-
             //新增添加数据对象                                                                          //记得给他指定你传入的格式
-            IndexRequest indexRequest = new IndexRequest("goods_index").id(goods.getGoodsId().toString()).source(jsonString, XContentType.JSON);
+            IndexRequest indexRequest = new IndexRequest("goods_index").id(goods.getGoodsId()).source(jsonString, XContentType.JSON);
             //批量存入
             bulkRequest.add(indexRequest);
         }

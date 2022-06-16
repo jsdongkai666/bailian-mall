@@ -99,6 +99,16 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
     @Override
     public boolean updateAddress(BailianConsignee bailianConsignee) {
 
+        BailianConsignee bailianConsignee2 = addressMapper.selectById(bailianConsignee.getConsigneeId());
+        if (bailianConsignee.getConsigneeAddress() != null) {
+            bailianConsignee2.setConsigneeAddress(bailianConsignee.getConsigneeAddress());
+        }
+        if (bailianConsignee.getConsigneeName() != null) {
+            bailianConsignee2.setConsigneeName(bailianConsignee.getConsigneeName());
+        }
+        if (bailianConsignee.getConsigneeTel() != null) {
+            bailianConsignee2.setConsigneeTel(bailianConsignee.getConsigneeTel());
+        }
         // 修改用户地址信息
         if (bailianConsignee.getIsDefault() == 1) {
             QueryWrapper<BailianConsignee> queryWrapper = new QueryWrapper<>();
@@ -111,26 +121,14 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
 
         }
 
-        return addressMapper.updateById(bailianConsignee) > 0;
+        return addressMapper.updateById(bailianConsignee2) > 0;
     }
 
-    @Override
-    public List<BailianConsignee> selectAddress() {
-        return addressMapper.selectList(null);
-    }
 
     @Override
-    public boolean insertAddressList() {
-        List<BailianConsignee> bailianConsigneeList = selectAddress();
-        ArrayList<String> ids = new ArrayList<>();
-        bailianConsigneeList.forEach(bailianConsignee -> {
-            ids.add(bailianConsignee.getConsigneeId());
-        });
-        addressMapper.deleteBatchIds(ids);
-        bailianConsigneeList.forEach(bailianConsignee -> {
-            bailianConsignee.setConsigneeId("51" + Long.toString(snowFlake.nextId()).substring(9,19));
-            addressMapper.insert(bailianConsignee);
-        });
-        return true;
+    public BailianConsignee selectDefaultAddressByUserId(String userId) {
+        QueryWrapper<BailianConsignee> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("is_default",1).eq("user_id",userId);
+        return addressMapper.selectOne(queryWrapper);
     }
 }

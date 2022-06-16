@@ -22,8 +22,25 @@ public interface UserService extends IService<User> {
 
     Map<String, Object> executeTelLogin(String tel, String captcha);
 
-    boolean modUserInfo(User user);
+    User selectPersonInfoByUserId(String userId);
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.user.User]
+     * @return : boolean
+     * @description : 修改用户信息
+     */
+    boolean updatePersonInfo(User user);
+
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.user.User, java.lang.String, java.lang.String, java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 修改密码
+     */
     RequestResult<String> modPassword(User user, String password, String newPassword, String newPasswordAgain);
     /**
     * @Param: [java.lang.String]
@@ -60,5 +77,8 @@ public interface UserService extends IService<User> {
     * @Description: 获取用户当月签到记录
     */
     List<String > getCheckDateList(User user);
+
+
+
 
 }

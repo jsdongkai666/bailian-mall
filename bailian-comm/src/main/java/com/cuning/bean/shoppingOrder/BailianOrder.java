@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class BailianOrder {
     private String orderNo;
 
     @ApiModelProperty("用户主键")
-    private Integer userId;
+    private String  userId;
 
     @ApiModelProperty("订单总价")
     private Integer totalPrice;

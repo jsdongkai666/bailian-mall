@@ -29,6 +29,13 @@ public class GoodsHotWordController {
     @Autowired
     private RedisUtils redisUtils;
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : []
+     * @return : com.cuning.util.RequestResult<java.util.List<java.lang.Object>>
+     * @description : 查询热词
+     */
     @GetMapping("/printHotWord")
     @ApiOperation(value = "热词",notes = "展示十条热词记录")
     public RequestResult<List<Object>> printHotWord(){

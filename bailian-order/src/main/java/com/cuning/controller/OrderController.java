@@ -6,7 +6,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,6 +59,20 @@ public class OrderController {
     public Boolean updateOrder(@RequestParam("orderNo")List<String> orderNos){
         return shoppingOrderService.deleteListOrder(orderNos);
     }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/16
+     * @param  : [java.lang.String]
+     * @return : java.lang.Integer
+     * @description : 根据商品id，查询商品的销量
+     */
+    @GetMapping("/selectOrderCount")
+    @ApiOperation(value = "查询商品销量", notes = "根据商品id，查询商品的销量")
+    public Integer selectOrderCount(@RequestParam("goodsId") String goodsId){
+        return shoppingOrderService.selectCount(goodsId);
+    }
+
 
 
 }

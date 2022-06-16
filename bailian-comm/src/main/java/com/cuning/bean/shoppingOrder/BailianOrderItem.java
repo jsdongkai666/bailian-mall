@@ -20,14 +20,15 @@ import java.util.Date;
 @Data
 public class BailianOrderItem {
 
+    @TableId
     @ApiModelProperty("订单关联购物项主键id")
-    private Integer orderItemId;
+    private String orderItemId;
 
     @ApiModelProperty("订单主键id")
     private Integer orderId;
 
     @ApiModelProperty("关联商品id")
-    private Integer goodsId;
+    private String goodsId;
 
     @ApiModelProperty("下单时商品的名称")
     private String goodsName;
@@ -45,4 +46,17 @@ public class BailianOrderItem {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createTime;
+
+    @ApiModelProperty("商品评价情况")
+    private Integer commentaryType;
+
+    @ApiModelProperty("优惠券id")
+    private String couponId;
+
+    @ApiModelProperty("总价")
+    private Double totalPrice;
+
+    @ApiModelProperty("使用优惠券后总价")
+    private Double priceAfterDiscount;
+
 }
