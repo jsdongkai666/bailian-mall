@@ -30,7 +30,7 @@ public interface GoodsCommentaryFeignService {
 
     @GetMapping("/deleteGoodsCommentary")
     boolean deleteGoodsCommentary(@RequestParam("userId") String userId,@RequestParam("orderNo") String orderNo,
-                                  @RequestParam("goodsId") String goodsId,@RequestParam("commentaryId") String commentaryId);
+                                  @RequestParam("goodsId") String goodsId);
 
     @GetMapping("/queryGoodsCommentaryType")
     Page<BailianOrderItem> queryGoodsCommentaryType(@RequestParam("userId") String userId, @RequestParam("pageNo") Integer pageNo,

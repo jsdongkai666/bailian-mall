@@ -26,6 +26,7 @@ public class OrderController {
     @Autowired
     private ShoppingOrderService shoppingOrderService;
 
+
     @GetMapping("/selectOrder")
     @ApiOperation(value = "查询订单", notes = "订单号查询")
     @ApiImplicitParams({
@@ -57,6 +58,19 @@ public class OrderController {
     })
     public Boolean updateOrder(@RequestParam("orderNo")List<String> orderNos){
         return shoppingOrderService.deleteListOrder(orderNos);
+    }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/16
+     * @param  : [java.lang.String]
+     * @return : java.lang.Integer
+     * @description : 根据商品id，查询商品的销量
+     */
+    @GetMapping("/selectOrderCount")
+    @ApiOperation(value = "查询商品销量", notes = "根据商品id，查询商品的销量")
+    public Integer selectOrderCount(@RequestParam("goodsId") String goodsId){
+        return shoppingOrderService.selectCount(goodsId);
     }
 
 

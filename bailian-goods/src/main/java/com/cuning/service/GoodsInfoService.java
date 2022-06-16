@@ -10,6 +10,7 @@ package com.cuning.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.util.PageSupport;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
     Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo,String userId);
 
     Boolean deleteGoodsInfo(String goodsId);
+
+    Boolean updateGoodsSellStatus(String goodsId,Byte goodsSellStatus);
 
     /**
      * @author : lixu
@@ -94,7 +97,7 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
     * @Date: 2022/6/13
     * @Description: 根据用户编号获取用户的收藏列表
     */
-    List<Object> getCollectListByUserId(String userId);
+    PageSupport getCollectListByUserId(String userId,String pageNo,String pageSize);
 
 
 
