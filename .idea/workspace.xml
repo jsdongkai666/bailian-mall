@@ -5,94 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="111">
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/SensitiveWord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCommentary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckillUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/CouponEnums.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/CouponUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/OrderItemMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/OrderItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/OrderItemServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-goods/src/main/resources/com/cuning/mapper/CouponUserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/config/SensitiveWordCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/GoodsCommentaryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/GoodsCommentaryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/SeckillMappper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/SensitiveWordMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/GoodsCommentaryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/SeckillService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/SensitiveWordService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/GoodsCommentaryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SeckillServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SensitiveWordServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/util/RedisKeyUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/util/SensitiveWordFilterUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/goods/GoodsCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/goods/GoodsCommentaryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/goods/GoodsInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/GoodsCategoryFeignService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/GoodsCommentaryFeignService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/GoodsInfoFeignService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/coupon/BailianCoupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/coupon/BailianCoupon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/coupon/BailianCouponUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/coupon/BailianCouponUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckill.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckillUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/seckill/BailianSeckillUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/KdEnums.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/constant/KdEnums.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/SnowFlake.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/util/SnowFlake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-eureka/src/main/java/com/cuning/BailianEurekaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-eureka/src/main/java/com/cuning/BailianEurekaApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/CouponController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/CouponController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsArriveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsArriveController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsCagetoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsCagetoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsHotWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsHotWordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsSearchHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/GoodsSearchHistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/listener/GoodsArriveListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/listener/GoodsArriveListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/CouponUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/CouponUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/CouponService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/CouponService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/CouponUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/CouponUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsCategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/GoodsInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/CouponServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/CouponServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/CouponUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/CouponUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsCategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/GoodsInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/CarouselController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/controller/CarouselController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/CarouselService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/CarouselService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/CarouselServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-homepage/src/main/java/com/cuning/service/impl/CarouselServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/ShoppingOrderItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/mapper/ShoppingOrderItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/CartsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/CartsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/CartsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/CartsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/util/WechatPayXmlUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/util/WechatPayXmlUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/BailianSearchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/BailianSearchApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/ConsigneeAddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/ConsigneeAddressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/PersonalInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/controller/PersonalInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/AddressService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-user/src/main/java/com/cuning/service/impl/AddressServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/goods/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/goods/GoodsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/homepage/HomePageWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/homepage/HomePageWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/order/ShoppingCartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/order/ShoppingCartsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/user/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/user/UserInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/user/UserInfoWebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/controller/user/UserInfoWebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/homePage/HomePageFeignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/homePage/HomePageFeignService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/order/CartsFeignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/order/CartsFeignService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/order/CartsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/order/CartsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/order/impl/CartsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/order/impl/CartsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/user/UserFeignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-web/src/main/java/com/cuning/service/user/UserFeignService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/SeckillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/SeckillService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,7 +209,7 @@
       <workItem from="1655254051709" duration="21239000" />
       <workItem from="1655284186486" duration="10731000" />
       <workItem from="1655304811603" duration="846000" />
-      <workItem from="1655339834230" duration="10562000" />
+      <workItem from="1655339834230" duration="17628000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -392,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655352596974</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="111">
+      <created>1655354354060</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1655354354060</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

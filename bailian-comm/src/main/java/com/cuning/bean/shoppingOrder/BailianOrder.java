@@ -74,4 +74,16 @@ public class BailianOrder {
 
     @TableField(exist = false)
     private List<BailianOrderItem> bailianOrders;
+
+    /**
+     * 物流运单号
+     */
+    @ApiModelProperty("物流运单号")
+    private String logisticCode;
+
+    /**
+     * 快递公司编码
+     */
+    @ApiModelProperty("快递公司编码")
+    private String shipperCode;
 }

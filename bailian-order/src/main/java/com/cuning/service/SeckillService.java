@@ -12,4 +12,10 @@ import com.cuning.bean.seckill.BailianSeckill;
 public interface SeckillService {
 
     Boolean insertSeckillShop(BailianSeckill bailianSeckill);
+
+    Boolean deleteSeckillShop(String goodsId);
+
+    Boolean updateSeckillShop(BailianSeckill bailianSeckill);
+
+    BailianSeckill selectSeckillShop(String goodsName);
 }
