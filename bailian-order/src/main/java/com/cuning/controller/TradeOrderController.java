@@ -61,15 +61,15 @@ public class TradeOrderController {
     }
 
     @GetMapping("/payTradeOrder")
-    public Map<String, String> secKillPayOrder(@RequestParam String userId, @RequestParam String prodId, @RequestParam String orderId) throws Exception {
-        Map<String, String> orderMap = tradeOrderService.payTradeOrder(userId, prodId, orderId);
+    public Map<String, String> secKillPayOrder(@RequestParam String userId, @RequestParam Integer totalFee, @RequestParam String orderId) throws Exception {
+        Map<String, String> orderMap = tradeOrderService.payTradeOrder(userId, totalFee, orderId);
 
         return orderMap;
     }
 
     @GetMapping("/aliPayTradeOrder")
-    public String secKillAliPayOrder(@RequestParam String userId, @RequestParam String prodId, @RequestParam String orderId) throws Exception {
-        String orderMap = tradeOrderService.aliPayTradeOrder(userId, prodId, orderId);
+    public String secKillAliPayOrder(@RequestParam String userId, @RequestParam String  totalFee, @RequestParam String orderId) throws Exception {
+        String orderMap = tradeOrderService.aliPayTradeOrder(userId, totalFee, orderId);
 
         return orderMap;
     }

@@ -194,11 +194,19 @@ public class OrderController {
 
     @ApiOperation(value = "微信订单支付")
     @GetMapping("/wechatPayOrder")
-    public RequestResult<Map<String, String>> wechatPayOrderInfo(@RequestParam String userId, @RequestParam String prodId,
-                                                                  @RequestParam String tradeOrderNo) {
+    @CheckToken
+    public RequestResult wechatPayOrderInfo( @RequestParam String tradeOrderNo,HttpServletRequest request) throws Exception {
 
-        //调用业务接口，支付订单（订单数据唉订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
-        Map<String,String> payOrderMap = seckillService.payOrder(userId, prodId, tradeOrderNo);
+        String token = request.getHeader("token");
+        User user = JwtUtil.parseJWT(token);
+        //校验用户数目
+        if (user.getUserId() == null || user.getUserId() == ""){
+            return ResultBuildUtil.fail("用户数据错误");
+        }
+        //TODO  根据订单获取价格
+        Integer totalFee = 0;
+        //调用业务接口，支付订单（订单数据订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
+        Map<String,String> payOrderMap = seckillService.payOrder(user.getUserId(),totalFee, tradeOrderNo);
 
         return ResultBuildUtil.success(payOrderMap);
 
@@ -207,11 +215,17 @@ public class OrderController {
     @ApiOperation(value = "支付宝订单支付")
     @GetMapping("/aliPayOrder")
     @CheckToken
-    public String aliPayOrderInfo(@RequestParam String userId, @RequestParam String prodId,
-                                                                  @RequestParam String tradeOrderNo) {
-
+    public String  aliPayOrderInfo( @RequestParam String tradeOrderNo,HttpServletRequest request) throws Exception {
+        //获取用户信息
+        String token = request.getHeader("token");
+        User user = JwtUtil.parseJWT(token);
+        //校验用户数目
+        if (user.getUserId() == null || user.getUserId() == ""){
+            return "用户数据错误";
+        }
+        String totalFee = "1000";
         //调用业务接口，支付订单（订单数据唉订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
-        String payOrderMap = seckillService.AliPayOrder(userId, prodId, tradeOrderNo);
+        String payOrderMap = seckillService.AliPayOrder(user.getUserId(), totalFee, tradeOrderNo);
 
         return payOrderMap;
 

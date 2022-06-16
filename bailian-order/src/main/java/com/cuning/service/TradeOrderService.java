@@ -12,8 +12,8 @@ public interface TradeOrderService {
 
     Map<String,String> findTradeOrder(String userId,String orderId);
 //    payTradeOrder
-    Map<String,String> payTradeOrder(String userId,String prodId,String orderId) throws Exception;
+    Map<String,String> payTradeOrder(String userId,Integer totalFee,String orderId) throws Exception;
 
-    String aliPayTradeOrder(String userId, String prodId, String orderId) throws Exception;
+    String aliPayTradeOrder(String userId, String  totalFee, String orderId) throws Exception;
 
 }
