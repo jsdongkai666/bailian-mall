@@ -1,4 +1,4 @@
-package com.cuning.service.impl;
+package com.cuning.service.Impl;
 
 import com.cuning.bean.SensitiveWord;
 import com.cuning.mapper.SensitiveWordMapper;

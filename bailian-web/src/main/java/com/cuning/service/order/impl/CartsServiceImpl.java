@@ -44,4 +44,14 @@ public class CartsServiceImpl implements CartsService {
     public boolean addCartsDetail(BailianCartProducts bailianCartProducts) {
         return cartsFeignService.addCartsDetail(bailianCartProducts);
     }
+
+    @Override
+    public boolean batchDeleteCarts(List<String> ids) {
+        return cartsFeignService.deleteCartsByIds(ids);
+    }
+
+    @Override
+    public boolean updateCartsInfo(Integer buyCount, String id) {
+        return cartsFeignService.updateCartsInfo(id,buyCount);
+    }
 }

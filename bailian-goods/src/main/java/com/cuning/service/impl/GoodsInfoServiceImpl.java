@@ -67,6 +67,13 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
+    public Boolean updateGoodsSellStatus(String goodsId, Byte goodsSellStatus) {
+        BailianGoodsInfo bailianGoodsInfo = goodsInfoMapper.selectById(goodsId);
+        bailianGoodsInfo.setGoodsSellStatus(goodsSellStatus);
+        return goodsInfoMapper.updateById(bailianGoodsInfo) > 0;
+    }
+
+    @Override
     public List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId) {
         QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("goods_category_id",categoryId);

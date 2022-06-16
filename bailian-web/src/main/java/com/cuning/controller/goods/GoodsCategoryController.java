@@ -71,7 +71,7 @@ public class GoodsCategoryController {
     public RequestResult<Page<BailianGoodsCategory>> queryGoodsCategoryByCategoryLevelAndParentId(@RequestParam Integer pageNo, @RequestParam Integer pageSize,
                                                                                                   @RequestParam Integer categoryLevel, @RequestParam Integer parentId){
         Page<BailianGoodsCategory> page = goodsCategoryService.queryGoodsCategoryByCategoryLevelAndParentId(pageNo,pageSize,categoryLevel,parentId);
-        if (page != null){
+        if (page.getTotal()>0){
             return ResultBuildUtil.success(page);
         }
         return ResultBuildUtil.fail(page);
@@ -93,7 +93,7 @@ public class GoodsCategoryController {
     public RequestResult<Page<BailianGoodsInfo>> queryGoodsInfoByCategory(@RequestParam Integer pageNo, @RequestParam Integer pageSize,
                                                     @RequestParam String categoryName, @RequestParam Boolean flag){
         Page<BailianGoodsInfo> page = goodsCategoryService.queryGoodsInfoByCategory(pageNo,pageSize,categoryName,flag);
-        if (page != null){
+        if (page.getTotal()>0){
             return ResultBuildUtil.success(page);
         }
         return ResultBuildUtil.fail(page);

@@ -1,6 +1,9 @@
 package com.cuning.controller.goods;
 
+import com.cuning.annotation.CheckToken;
+import com.cuning.bean.user.User;
 import com.cuning.service.GoodsFeignService;
+import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -28,10 +32,12 @@ public class GoodsController {
     @Autowired
     private GoodsFeignService goodsFeignService;
 
+    @CheckToken
     @ApiOperation(value = "用户设置到货提醒",notes = "传入用户id和商品id为用户设置该商品的到货提醒，商品补货时，会发送到货提醒")
     @GetMapping("/setArrivalReminders")
-    public RequestResult<Map<String, String>> setArrivalRemindersByUserId(@RequestParam("userId") String userId,@RequestParam("goodsId") String goodsId){
-        Map<String, String> map = goodsFeignService.setArrivalReminders(userId, goodsId);
+    public RequestResult<Map<String, String>> setArrivalRemindersByUserId(HttpServletRequest request, @RequestParam("goodsId") String goodsId) throws Exception {
+        User token = JwtUtil.parseJWT(request.getHeader("token"));
+        Map<String, String> map = goodsFeignService.setArrivalReminders(token.getUserId(), goodsId);
         return ResultBuildUtil.success(map);
     }
 
