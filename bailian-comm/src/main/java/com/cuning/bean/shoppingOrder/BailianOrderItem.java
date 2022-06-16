@@ -21,7 +21,7 @@ import java.util.Date;
 public class BailianOrderItem {
 
     @ApiModelProperty("订单关联购物项主键id")
-    private Integer orderItemId;
+    private String orderItemId;
 
     @ApiModelProperty("订单主键id")
     private Integer orderId;

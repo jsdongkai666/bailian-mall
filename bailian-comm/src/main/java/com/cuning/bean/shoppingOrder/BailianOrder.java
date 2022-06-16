@@ -29,7 +29,7 @@ public class BailianOrder {
     private String orderNo;
 
     @ApiModelProperty("用户主键")
-    private Integer userId;
+    private String  userId;
 
     @ApiModelProperty("订单总价")
     private Integer totalPrice;

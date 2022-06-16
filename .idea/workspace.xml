@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="分词和敏感词">
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="优惠卷">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/coupon/BailianCoupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/coupon/BailianCoupon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/CouponController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/controller/CouponController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/CouponMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/mapper/CouponMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/CouponService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/CouponService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/CouponServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/java/com/cuning/service/impl/CouponServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/bean/BailianGoodsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/bean/BailianGoodsInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/EsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/EsUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/CartsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +62,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -86,6 +81,8 @@
       <recent name="D:\kh93\cuning-bailian\bailian-homepage\src\main\java\com\cuning\service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\kh93\cuning-bailian\bailian-order\src\main\java\com\cuning\service" />
+      <recent name="D:\kh93\cuning-bailian\bailian-comm\src\main\java\com\cuning\bean\seckill" />
       <recent name="D:\kh93\cuning-bailian\bailian-search\src\main\java\com\cuning\config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -103,7 +100,18 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianGoodsApplication">
+  <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -199,7 +207,8 @@
       <workItem from="1655166552786" duration="26759000" />
       <workItem from="1655254051709" duration="21239000" />
       <workItem from="1655284186486" duration="10731000" />
-      <workItem from="1655304811603" duration="631000" />
+      <workItem from="1655304811603" duration="846000" />
+      <workItem from="1655339834230" duration="8112000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -271,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655256875527</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="优惠卷">
+      <created>1655305567181</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655305567181</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +442,8 @@
     <MESSAGE value="订单和敏感词" />
     <MESSAGE value="11" />
     <MESSAGE value="分词和敏感词" />
-    <option name="LAST_COMMIT_MESSAGE" value="分词和敏感词" />
+    <MESSAGE value="优惠卷" />
+    <option name="LAST_COMMIT_MESSAGE" value="优惠卷" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
