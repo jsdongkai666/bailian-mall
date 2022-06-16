@@ -16,11 +16,11 @@ import java.util.Map;
 
 public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
-    BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo);
+    BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo,String userId);
 
-    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName);
+    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize);
 
-    Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
+    Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo,String userId);
 
     Boolean deleteGoodsInfo(String goodsId);
 
