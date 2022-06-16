@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created On : 2022/6/9.
@@ -57,7 +58,9 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
             orderWrapper.eq("order_no", orderNo);
             BailianOrder bailianOrders = shoppingOrderMapper.selectOne(orderWrapper);
             orderItemQueryWrapper.eq("order_id", bailianOrders.getOrderId());
-            shoppingOrderItemMapper.delete(orderItemQueryWrapper);
+            if(shoppingOrderItemMapper.delete(orderItemQueryWrapper)<=0){
+                return false;
+            }
         }
         QueryWrapper<BailianOrder> orderWrapper = new QueryWrapper<>();
         orderWrapper.in("order_no", orderNos);
@@ -98,6 +101,19 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
 
         updateWrapper.eq("order_id", bailianOrder.getOrderId());
         return shoppingOrderMapper.update(null, updateWrapper) > 0;
+    }
+
+    @Override
+    public Integer selectCount(String goodsId) {
+        QueryWrapper<BailianOrderItem> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("goods_id",goodsId);
+        List<BailianOrderItem> bailianOrderItems = shoppingOrderItemMapper.selectList(queryWrapper);
+        Integer sales = 0;
+        for (BailianOrderItem bailianOrderItem : bailianOrderItems) {
+            sales += bailianOrderItem.getGoodsCount();
+        }
+
+        return sales;
     }
 
 

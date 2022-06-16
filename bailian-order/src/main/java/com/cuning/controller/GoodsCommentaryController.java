@@ -38,7 +38,10 @@ public class GoodsCommentaryController {
      * @description : 根据商品id和评论类型对商品评论进行分页查询
      */
     @GetMapping("/queryGoodsCommentary")
-    public Page<BailianGoodsCommentary> queryGoodsCommentary(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam String goodsId, @RequestParam Integer commentaryType){
+    public Page<BailianGoodsCommentary> queryGoodsCommentary(@RequestParam("pageNo") Integer pageNo,
+                                                             @RequestParam("pageSize") Integer pageSize,
+                                                             @RequestParam("goodsId") String goodsId,
+                                                             @RequestParam("commentaryType") Integer commentaryType){
         return goodsCommentaryService.queryGoodsCommentary(pageNo,pageSize,goodsId,commentaryType);
     }
 
@@ -97,6 +100,18 @@ public class GoodsCommentaryController {
     @GetMapping("/SensitiveWord")
     public Boolean seneitiveWord(@RequestParam String goodsCommentary) {
         return sensitiveWordFilterUtil.isContainSensitiveWord(goodsCommentary);
+    }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/16
+     * @param  : [java.lang.String]
+     * @return : java.lang.Integer
+     * @description : 根据商品id，查询商品的评价数
+     */
+    @GetMapping("/queryCommentaryCount")
+    public Integer queryCommentaryCount(@RequestParam("goodsId") String goodsId){
+        return goodsCommentaryService.selectCommentaryCount(goodsId);
     }
 
 }
