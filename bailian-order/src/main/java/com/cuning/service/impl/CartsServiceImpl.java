@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -92,5 +93,14 @@ public class CartsServiceImpl  implements CartsService {
         bailianCartProducts.setUpdatedAt(new Date());
         bailianCartProducts.setBuyNum(buyCount);
         return cartProductsMapper.updateById(bailianCartProducts) > 0;
+    }
+
+    @Override
+    public List<BailianCartProducts> getCartProductByIds(List<String> ids) {
+        List<BailianCartProducts> productsList = new ArrayList<>();
+        for (String id:ids){
+            productsList.add(cartProductsMapper.selectById(id));
+        }
+        return productsList;
     }
 }

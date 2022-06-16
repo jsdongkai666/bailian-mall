@@ -1,0 +1,18 @@
+package com.cuning.service.order.impl;
+
+import com.cuning.bean.shoppingOrder.BailianOrder;
+import com.cuning.service.order.OrderFeignService;
+import com.cuning.service.order.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+    @Autowired
+    OrderFeignService orderFeignService;
+
+    @Override
+    public boolean insertOrder(BailianOrder bailianOrder) {
+        return orderFeignService.insertOrder(bailianOrder);
+    }
+}

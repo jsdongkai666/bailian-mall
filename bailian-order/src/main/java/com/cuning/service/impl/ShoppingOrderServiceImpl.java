@@ -24,8 +24,6 @@ import java.util.List;
  */
 @Service
 public class ShoppingOrderServiceImpl implements ShoppingOrderService {
-
-
     @Autowired(required = false)
     private ShoppingOrderMapper shoppingOrderMapper;
 
@@ -85,7 +83,7 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
 
         UpdateWrapper<BailianOrder> updateWrapper = new UpdateWrapper<>();
         if (!bailianOrder.getOrderNo().isEmpty()) updateWrapper.set("order_no",bailianOrder.getOrderNo());
-        if (bailianOrder.getUserId() !=0) updateWrapper.set("user_id",bailianOrder.getUserId());
+        if (bailianOrder.getUserId().equals("0")) updateWrapper.set("user_id",bailianOrder.getUserId());
         if (bailianOrder.getTotalPrice()!=0) updateWrapper.set("total_price",bailianOrder.getTotalPrice());
         if (bailianOrder.getPayStatus()!=0) updateWrapper.set("pay_status",bailianOrder.getPayStatus());
         if (bailianOrder.getPayType()!=0) updateWrapper.set("pay_type",bailianOrder.getPayType());

@@ -1,12 +1,10 @@
 package com.cuning.service.order;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.shoppingcarts.BailianCartProducts;
 import com.cuning.bean.shoppingcarts.BailianCarts;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface CartsService{
@@ -23,4 +21,6 @@ public interface CartsService{
     boolean batchDeleteCarts(List<String> ids);
 
     boolean updateCartsInfo(Integer buyCount,String id);
+
+    List<BailianCartProducts> getCartProductByIds(List<String> cartsId);
 }

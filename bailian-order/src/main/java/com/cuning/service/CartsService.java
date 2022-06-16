@@ -24,4 +24,6 @@ public interface CartsService {
     boolean addCartsDetail(BailianCartProducts bailianCartProducts);
 
     boolean modifyCartsById(String id,Integer buyCount);
+
+    List<BailianCartProducts> getCartProductByIds(List<String> ids);
 }

@@ -54,4 +54,9 @@ public class CartsServiceImpl implements CartsService {
     public boolean updateCartsInfo(Integer buyCount, String id) {
         return cartsFeignService.updateCartsInfo(id,buyCount);
     }
+
+    @Override
+    public List<BailianCartProducts> getCartProductByIds(List<String> cartsId) {
+        return cartsFeignService.getCartProductByIds(cartsId);
+    }
 }
