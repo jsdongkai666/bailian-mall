@@ -50,4 +50,13 @@ public interface ShoppingOrderService {
      * @description : 修改订单
      */
     Boolean updateOrder(BailianOrder bailianOrder);
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/16
+     * @param  : []
+     * @return : java.lang.Integer
+     * @description : 根据商品id，查询订单数量
+     */
+    Integer selectCount(String goodsId);
 }
