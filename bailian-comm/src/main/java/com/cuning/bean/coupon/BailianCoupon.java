@@ -25,8 +25,8 @@ import java.util.Date;
 @ApiModel("优惠券实体")
 public class BailianCoupon {
 
-    @ApiModelProperty("id")
     @TableId
+    @ApiModelProperty("id")
     private String id;
 
     @ApiModelProperty("优惠券名称")
@@ -70,6 +70,6 @@ public class BailianCoupon {
     @ApiModelProperty("每人可重复领取数量")
     private Integer repeatQuantity;
 
-    @ApiModelProperty("商品分类id")
+    @ApiModelProperty("对应分类 0表示通用，其余对应商品id")
     private Integer categoryId;
 }

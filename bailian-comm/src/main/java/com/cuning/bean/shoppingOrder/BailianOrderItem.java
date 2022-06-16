@@ -20,9 +20,9 @@ import java.util.Date;
 @Data
 public class BailianOrderItem {
 
-    @ApiModelProperty("订单关联购物项主键id")
     @TableId
-    private Integer orderItemId;
+    @ApiModelProperty("订单关联购物项主键id")
+    private String orderItemId;
 
     @ApiModelProperty("订单主键id")
     private Integer orderId;
@@ -49,4 +49,14 @@ public class BailianOrderItem {
 
     @ApiModelProperty("商品评价情况")
     private Integer commentaryType;
+
+    @ApiModelProperty("优惠券id")
+    private String couponId;
+
+    @ApiModelProperty("总价")
+    private Double totalPrice;
+
+    @ApiModelProperty("使用优惠券后总价")
+    private Double priceAfterDiscount;
+
 }
