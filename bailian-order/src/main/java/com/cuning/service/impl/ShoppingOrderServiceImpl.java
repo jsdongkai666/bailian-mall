@@ -38,6 +38,7 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         bailianOrder.setCreateTime(new Date());
         for(BailianOrderItem bailianOrderItem: bailianOrder.getBailianOrders()){
             bailianOrderItem.setCreateTime(new Date());
+            bailianOrderItem.setTotalPrice(Double.valueOf(bailianOrderItem.getSellingPrice() * bailianOrderItem.getGoodsCount()));
             shoppingOrderItemMapper.insert(bailianOrderItem);
         }
         return shoppingOrderMapper.insert(bailianOrder)>0;

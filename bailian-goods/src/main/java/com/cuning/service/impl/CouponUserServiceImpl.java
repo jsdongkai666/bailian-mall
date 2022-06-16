@@ -49,14 +49,18 @@ public class CouponUserServiceImpl extends ServiceImpl<CouponUserMapper, Bailian
     private GoodsInfoService goodsInfoService;
 
 
+
     @Override
     public boolean getCoupon(String userId, String couponId) {
         BailianCoupon coupon = couponService.getById(couponId);
         BailianCouponUser userCoupon = new BailianCouponUser();
+        // id字段名相同，id重新赋值
         BeanUtils.copyProperties(coupon,userCoupon);
+        userCoupon.setId(Long.toString(snowFlake.nextId()));
         userCoupon.setUserId(userId);
         userCoupon.setStatus("2");
         userCoupon.setCodeNo(Long.toString(snowFlake.nextId()));
+        userCoupon.setCouponTempId(couponId);
 
         return this.save(userCoupon);
     }
@@ -91,9 +95,11 @@ public class CouponUserServiceImpl extends ServiceImpl<CouponUserMapper, Bailian
 
         // 优惠券
         QueryWrapper<BailianCouponUser> couponUserQueryWrapper = new QueryWrapper<>();
-        couponUserQueryWrapper.lambda().eq(BailianCouponUser::getUserId,userId).eq(BailianCouponUser::getStatus,CouponEnums.USED.getCode());
+        couponUserQueryWrapper.lambda().eq(BailianCouponUser::getUserId,userId).eq(BailianCouponUser::getStatus,CouponEnums.UNUSED.getCode());
         List<BailianCouponUser> couponUserList = this.list(couponUserQueryWrapper);
 
+
+        //double totalPrice = orderItem.getSellingPrice() * orderItem.getGoodsCount();
 
         List<BailianCouponUser> result = new ArrayList<>();
         for (BailianCouponUser couponUser : couponUserList) {
@@ -101,34 +107,34 @@ public class CouponUserServiceImpl extends ServiceImpl<CouponUserMapper, Bailian
             // 通用券
             if (coupon.getCategoryId() == 0){
                 // 直减券
-                if (coupon.getCouponType().equals("1")) {
+                if (coupon.getCouponType() == 1) {
                     result.add(couponUser);
                     //orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() - coupon.getCouponAmount());
                 }
                 // 满减券，商品价格需要大于满减的价格
-                if (coupon.getCouponType().equals("2") && orderItem.getTotalPrice() > coupon.getFullAmount()) {
+                if (coupon.getCouponType() == 2 && orderItem.getTotalPrice() > coupon.getFullAmount()) {
                     result.add(couponUser);
                     //orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() - coupon.getCouponAmount());
                 }
                 // 打折券，商品价格需要大于使用条件
-                if (coupon.getCouponType().equals("3") && orderItem.getTotalPrice() > coupon.getFullAmount()) {
+                if (coupon.getCouponType() == 3 && orderItem.getTotalPrice() > coupon.getFullAmount()) {
                     result.add(couponUser);
                     //orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() * coupon.getCouponAmount());
                 }
             }// 类券
             else if (goodsInfo.getGoodsCategoryId().equals(coupon.getCategoryId())){
                 // 直减券
-                if (coupon.getCouponType().equals("1")) {
+                if (coupon.getCouponType() == 1) {
                     result.add(couponUser);
                     //orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() - coupon.getCouponAmount());
                 }
                 // 满减券，商品价格需要大于满减的价格
-                if (coupon.getCouponType().equals("2") && orderItem.getTotalPrice() > coupon.getFullAmount()) {
+                if (coupon.getCouponType() == 2 && orderItem.getTotalPrice() > coupon.getFullAmount()) {
                     result.add(couponUser);
                     //orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() - coupon.getCouponAmount());
                 }
                 // 打折券，商品价格需要大于使用条件
-                if (coupon.getCouponType().equals("3") && orderItem.getTotalPrice() > coupon.getFullAmount()) {
+                if (coupon.getCouponType() == 3 && orderItem.getTotalPrice() > coupon.getFullAmount()) {
                     result.add(couponUser);
                     //orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() * coupon.getCouponAmount());
                 }
@@ -147,17 +153,17 @@ public class CouponUserServiceImpl extends ServiceImpl<CouponUserMapper, Bailian
 
         boolean flag = false;
         // 直减券
-        if (coupon.getCouponType().equals("1")) {
+        if (coupon.getCouponType() == 1 ) {
             flag = true;
             orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() - coupon.getCouponAmount());
         }
         // 满减券，商品价格需要大于满减的价格
-        if (coupon.getCouponType().equals("2") && orderItem.getTotalPrice() > coupon.getFullAmount()) {
+        if (coupon.getCouponType() == 2 && orderItem.getTotalPrice() > coupon.getFullAmount()) {
             flag = true;
             orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() - coupon.getCouponAmount());
         }
         // 打折券，商品价格需要大于使用条件
-        if (coupon.getCouponType().equals("3") && orderItem.getTotalPrice() > coupon.getFullAmount()) {
+        if (coupon.getCouponType() == 3  && orderItem.getTotalPrice() > coupon.getFullAmount()) {
             flag = true;
             orderItem.setPriceAfterDiscount(orderItem.getTotalPrice() * coupon.getCouponAmount());
         }

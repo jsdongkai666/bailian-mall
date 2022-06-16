@@ -20,6 +20,7 @@ import java.util.Date;
 @Data
 public class BailianOrderItem {
 
+    @TableId
     @ApiModelProperty("订单关联购物项主键id")
     private Integer orderItemId;
 

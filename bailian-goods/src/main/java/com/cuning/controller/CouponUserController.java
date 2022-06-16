@@ -47,6 +47,7 @@ public class CouponUserController {
     * @Date: 2022/6/15
     * @Description: 用户获取优惠券
     */
+    @ApiOperation(value = "用户领取优惠券",notes = "输入用户id和优惠券id领取优惠券")
     @GetMapping("/getCoupon")
     public Map<String, String> getCoupon(@RequestParam("userId")String userId,@RequestParam("couponId")String couponId){
         Map<String, String> result = new HashMap<>();
@@ -99,6 +100,7 @@ public class CouponUserController {
     * @Date: 2022/6/15
     * @Description: 获取商品可用的优惠券
     */
+    @ApiOperation(value = "获取当前商品可用优惠券列表",notes = "输入用户id和订单商品编号编获取可用优惠券列表信息")
     @GetMapping("/getGoodsCoupon")
     public List<BailianCouponUser> getGoodsCoupon(@RequestParam("userId")String userId,@RequestParam("orderItemid")String orderItemid){
         List<BailianCouponUser> userCouponList = couponUserService.getUserCouponListByGoods(userId, orderItemid);
@@ -112,6 +114,7 @@ public class CouponUserController {
     * @Date: 2022/6/15
     * @Description: 用户使用优惠券
     */
+    @ApiOperation(value = "用户使用优惠券",notes = "输入用户id和订单商品编号，优惠券编号确认使用优惠券")
     @GetMapping("/userCoupon")
     public Map<String, String> useCoupon(@RequestParam("userId")String userId,@RequestParam("orderItemid")String orderItemid,@RequestParam("couponId")String couponId){
         return couponUserService.useCoupon(userId, orderItemid, couponId);
