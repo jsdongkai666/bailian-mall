@@ -83,6 +83,22 @@ public class UserInfoWebController {
     }
 
     /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.bean.BailianConsignee
+     * @description : 根据用户id，查询该用户的默认地址
+     */
+    @GetMapping("/queryDefaultAddress")
+    @ApiOperation(value = "收货人默认地址查询",notes = "根据用户id，查询用户的默认地址")
+    public BailianConsignee queryDefaultAddressByUserId(HttpServletRequest request) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
+        return  userFeignService.queryDefaultAddressByUserId(userId);
+    }
+
+    /**
      * Created On : 2022/06/14.
      * <p>
      * Author     : lixu

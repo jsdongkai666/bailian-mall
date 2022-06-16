@@ -52,6 +52,13 @@ public class PersonalInfoController {
         return ResultBuildUtil.fail("修改失败！");
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.user.User, java.lang.String, java.lang.String, java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 修改密码
+     */
     @PostMapping("/modPwd")
     @ApiOperation(value = "修改密码",notes = "用户修改密码，必须有旧密码，新密码和确认新密码")
     public RequestResult<String> modPassword(@RequestBody User user,

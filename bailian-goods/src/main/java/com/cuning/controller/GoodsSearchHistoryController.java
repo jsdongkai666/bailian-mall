@@ -1,7 +1,5 @@
 package com.cuning.controller;
 
-import com.cuning.bean.goods.BailianGoodsInfo;
-import com.cuning.constant.CommonConstant;
 import com.cuning.constant.GoodsConstant;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.RequestResult;
@@ -15,13 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -39,9 +32,15 @@ public class GoodsSearchHistoryController {
     @Autowired
     private RedisUtils redisUtils;
 
-
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.util.List<java.lang.Object>>
+     * @description : 查询搜索记录
+     */
     @GetMapping("/SearchHistory")
-    @ApiOperation(value = "商品搜索记录",notes = "将商品搜索记录存入redis中，再次搜索将靠前显示，一共展示十条数据")
+    @ApiOperation(value = "查询搜索记录",notes = "从redis中取出存好的搜索记录，一共展示十条数据")
     public RequestResult<List<Object>> searchHistory(@RequestParam("userId") String userId){
 
         // 搜索记录列表
@@ -52,6 +51,13 @@ public class GoodsSearchHistoryController {
         return ResultBuildUtil.success(searchHistoryList);
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 删除搜索记录
+     */
     @PostMapping("/delSearchHistory")
     @ApiOperation(value = "删除搜索记录",notes = "将搜索记录清空")
     public RequestResult<String> delSearchHistory(@RequestParam("userId")String userId){
