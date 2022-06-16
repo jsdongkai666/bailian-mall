@@ -23,6 +23,7 @@ import java.util.Date;
 
 public class BailianSeckill {
 
+    @TableId
     @ApiModelProperty("商品id")
     private String goodsId;
 
@@ -31,6 +32,9 @@ public class BailianSeckill {
 
     @ApiModelProperty("商品库存")
     private Integer goodsNum;
+
+    @ApiModelProperty("商品名")
+    private String goodsName;
 
     @ApiModelProperty("商品创建时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
