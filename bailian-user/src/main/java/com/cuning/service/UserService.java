@@ -22,8 +22,22 @@ public interface UserService extends IService<User> {
 
     Map<String, Object> executeTelLogin(String tel, String captcha);
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.user.User]
+     * @return : boolean
+     * @description : 修改用户信息
+     */
     boolean modUserInfo(User user);
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.user.User, java.lang.String, java.lang.String, java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 修改密码
+     */
     RequestResult<String> modPassword(User user, String password, String newPassword, String newPasswordAgain);
     /**
     * @Param: [java.lang.String]

@@ -30,7 +30,7 @@ public interface CarouselService extends IService<BailianCarousel>{
      * @return : java.lang.Boolean
      * @description : 添加轮播图
      */
-    boolean addCarousel(BailianCarousel bailianCarousel);
+    boolean addCarousel(BailianCarousel bailianCarousel,String userId);
 
     /**
      * @author : lixu
@@ -48,6 +48,6 @@ public interface CarouselService extends IService<BailianCarousel>{
      * @return : boolean
      * @description : 修改轮播图
      */
-    boolean updateCarousel(BailianCarousel bailianCarousel);
+    boolean updateCarousel(BailianCarousel bailianCarousel,String userId);
 
 }
