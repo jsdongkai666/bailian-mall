@@ -1,4 +1,4 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -10,6 +10,7 @@ import com.cuning.mapper.GoodsCommentaryMapper;
 import com.cuning.mapper.ShoppingOrderItemMapper;
 import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
+import com.cuning.util.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,10 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     @Autowired(required = false)
     private ShoppingOrderItemMapper shoppingOrderItemMapper;
 
+    @Autowired
+    private SnowFlake snowFlake;
+
+
     @Override
     public Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo, Integer pageSize, String goodsId, Integer commentaryType) {
         Page<BailianGoodsCommentary> page = new Page<>(pageNo,pageSize);
@@ -53,6 +58,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
         if (bailianOrder.getOrderStatus() == 4){
             BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
             if (bailianOrderItem != null){
+                goodsCommentary1.setCommentaryId("11"+ Long.toString(snowFlake.nextId()).substring(9,19));
                 goodsCommentary1.setUserImg(userHeadImg);
                 goodsCommentary1.setUserName(userName);
                 goodsCommentary1.setGoodsId(goodsId);
