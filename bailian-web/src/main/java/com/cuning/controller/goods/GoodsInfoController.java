@@ -1,5 +1,6 @@
 package com.cuning.controller.goods;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.user.User;
@@ -40,6 +41,15 @@ public class GoodsInfoController {
         return ResultBuildUtil.fail("商品添加失败！");
     }
 
+    @GetMapping("/queryGoodsById")
+    @ApiOperation(value = "根据id查询商品")
+    public RequestResult<BailianGoodsInfo> queryGoodsById(@RequestParam String goodsId){
+        BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsById(goodsId);
+        if (bailianGoodsInfo != null){
+            return ResultBuildUtil.success(bailianGoodsInfo);
+        }
+        return ResultBuildUtil.fail(bailianGoodsInfo);
+    }
 
     @PostMapping("/updateGoods")
     @ApiOperation(value = "修改商品")
@@ -52,6 +62,7 @@ public class GoodsInfoController {
     }
 
     @PostMapping("/updateStatus")
+    @ApiOperation(value = "商品上下架")
     public RequestResult<String > updateGoodsSellStatus(@RequestParam String  goodsId, @RequestParam Byte goodsSellStatus) {
         if (goodsInfoService.updateGoodsSellStatus(goodsId,goodsSellStatus)){
             return ResultBuildUtil.success("商品上架状态修改成功！");
@@ -72,7 +83,7 @@ public class GoodsInfoController {
     @ApiOperation(value = "分页查询商品")
     public RequestResult<Page<BailianGoodsInfo>> queryGoodsInfoPage(@RequestParam Integer pageNo, @RequestParam Integer pageSize){
         Page<BailianGoodsInfo> page = goodsInfoService.queryGoodsInfoPage(pageNo,pageSize);
-        if (page != null){
+        if (page.getTotal()>0){
             return ResultBuildUtil.success(page);
         }
         return ResultBuildUtil.fail(page);

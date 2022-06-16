@@ -6,7 +6,7 @@ spring:
   application:
     name: bailian-web
   redis:
-    host: 120.78.163.160
+    host: 127.0.0.1
     port: 6379
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
