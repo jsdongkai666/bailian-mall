@@ -1,6 +1,8 @@
 package com.cuning.controller.user;
 
+import com.cuning.bean.user.User;
 import com.cuning.service.UserInfoFeignService;
+import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -38,10 +41,10 @@ public class UserInfoController {
     * @Description: 用户签到
     */
     @ApiOperation("用户签到")
-    @ApiImplicitParam(name = "userId",value = "用户id",paramType = "query")
     @GetMapping("/checkIn")
-    public RequestResult<Map<String, String>> checkIn(@RequestParam("userId")String userId){
-        Map<String, String> map = userInfoFeignService.checkIn(userId);
+    public RequestResult<Map<String, String>> checkIn(HttpServletRequest request) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        Map<String, String> map = userInfoFeignService.checkIn(user.getUserId());
         return ResultBuildUtil.success(map);
     }
 
@@ -52,11 +55,11 @@ public class UserInfoController {
      * @Date: 2022/6/14
      * @Description: 用户当月签到记录
      */
-    @ApiOperation("用户当月签到记")
-    @ApiImplicitParam(name = "userId",value = "用户id",paramType = "query")
+    @ApiOperation("用户当月签到记录")
     @GetMapping("/userCheckList")
-    public RequestResult<Map<String, Object>> userCheckList(@RequestParam("userId")String userId){
-        Map<String, Object> map = userInfoFeignService.getUserCheckList(userId);
+    public RequestResult<Map<String, Object>> userCheckList(HttpServletRequest request) throws Exception {
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        Map<String, Object> map = userInfoFeignService.getUserCheckList(user.getUserId());
         return ResultBuildUtil.success(map);
     }
 

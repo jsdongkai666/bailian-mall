@@ -1,4 +1,4 @@
-package com.cuning.service.impl;
+package com.cuning.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -66,6 +66,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
                 } else {
                     goodsCommentary1.setCommentaryType(3);
                 }
+                goodsCommentary1.setOrderId(bailianOrderItem.getOrderId());
                 goodsCommentary1.setCommentaryLevel(commentaryLevel);
                 goodsCommentary1.setGoodsCommentary(goodsCommentary);
                 goodsCommentary1.setCommentaryUrl(commentaryUrl);
@@ -76,12 +77,20 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     }
 
     @Override
-    public Boolean deleteGoodsCommentary(String userId,String orderNo,String goodsId,String commentaryId) {
+    public Boolean deleteGoodsCommentary(String userId,String orderNo,String goodsId) {
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
         BailianOrderItem bailianOrderItem  = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId));
         bailianOrderItem.setCommentaryType(2);
         int tag = shoppingOrderItemMapper.updateById(bailianOrderItem);
-        return this.removeById(commentaryId);
+        List<BailianGoodsCommentary> list = goodsCommentaryMapper.selectList(new QueryWrapper<BailianGoodsCommentary>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId));
+        if (list.isEmpty()){
+            return false;
+        }
+        List<String> ids = new ArrayList<>();
+        list.stream().forEach(item ->{
+            ids.add(item.getCommentaryId());
+        });
+        return this.removeByIds(ids);
     }
 
     @Override
@@ -125,6 +134,13 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Integer selectCommentaryCount(String goodsId) {
+        QueryWrapper<BailianGoodsCommentary> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("goods_id",goodsId);
+        return goodsCommentaryMapper.selectCount(queryWrapper);
     }
 
 

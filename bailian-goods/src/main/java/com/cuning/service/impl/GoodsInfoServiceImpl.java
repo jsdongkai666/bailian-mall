@@ -10,15 +10,14 @@ package com.cuning.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cuning.bean.BailianConsignee;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.constant.CommonConstant;
 import com.cuning.mapper.GoodsInfoMapper;
 import com.cuning.service.GoodsInfoService;
+import com.cuning.util.PageSupport;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -64,6 +63,13 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     @Override
     public Boolean deleteGoodsInfo(String goodsId) {
         return this.removeById(goodsId);
+    }
+
+    @Override
+    public Boolean updateGoodsSellStatus(String goodsId, Byte goodsSellStatus) {
+        BailianGoodsInfo bailianGoodsInfo = goodsInfoMapper.selectById(goodsId);
+        bailianGoodsInfo.setGoodsSellStatus(goodsSellStatus);
+        return goodsInfoMapper.updateById(bailianGoodsInfo) > 0;
     }
 
     @Override
@@ -158,9 +164,28 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
-    public List<Object> getCollectListByUserId(String userId) {
+    public PageSupport getCollectListByUserId(String userId,String pageNo,String pageSize) {
+
+        Integer pageNoInt = Integer.valueOf(pageNo);
+        Integer pageSizeInt = Integer.valueOf(pageSize);
+
+        PageSupport<BailianGoodsInfo> pageSupport = new PageSupport<>();
+        pageSupport.setPageNo(pageNoInt);
+        pageSupport.setPageSize(pageSizeInt);
+
         List<Object> objects = redisUtils.lGet(userId + ":collect", 0, -1);
-        return objects;
+
+        pageSupport.setTotalCount(objects.size());
+
+        List<Object> idListObj = redisUtils.lGet(userId + ":collect", (pageSupport.getPageNo() - 1) * pageSupport.getPageSize(), (pageSupport.getPageNo() * pageSupport.getPageSize()) - 1);
+
+        List<String> collect = idListObj.stream().map(item -> item.toString()).collect(Collectors.toList());
+
+        pageSupport.setPageData(this.listByIds(collect));
+
+
+
+        return pageSupport;
     }
 
 

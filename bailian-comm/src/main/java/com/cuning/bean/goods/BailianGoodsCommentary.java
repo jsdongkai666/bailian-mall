@@ -18,6 +18,8 @@ public class BailianGoodsCommentary {
     @TableId
     private String commentaryId;
 
+    private Integer orderId;
+
     private String goodsId;
 
     private String userName;

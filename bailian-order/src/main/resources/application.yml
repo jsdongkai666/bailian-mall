@@ -17,6 +17,9 @@ spring:
     password: admin
     packages:
       trust-all: true # 信任所有包，确保消息队列在消息传输过程中，可以正确执行序列化
+  redis:
+    host: 127.0.0.1
+    port: 6379
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
