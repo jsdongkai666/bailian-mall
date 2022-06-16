@@ -17,7 +17,7 @@ import java.util.List;
  * <p>
  * @Author     : Administrator
  * <p>
- * @Description: 商品详情
+ * @Description: 商品详情，命名规则：10+
  **/
 @Data
 @AllArgsConstructor

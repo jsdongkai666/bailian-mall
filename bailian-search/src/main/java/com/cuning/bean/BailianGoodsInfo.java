@@ -26,7 +26,7 @@ public class BailianGoodsInfo implements Serializable {
 
     private static final long serialVersionUID = 5473302609274012318L;
     @TableId
-    private Integer goodsId;
+    private String goodsId;
 
     /**
      * 商品名称
@@ -82,6 +82,5 @@ public class BailianGoodsInfo implements Serializable {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
-
 
 }

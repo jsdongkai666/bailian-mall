@@ -2,6 +2,7 @@ package com.cuning.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cuning.bean.BailianCarousel;
 import com.cuning.bean.BailianConsignee;
 import com.cuning.util.RequestResult;
 
@@ -62,4 +63,8 @@ public interface AddressService extends IService<BailianConsignee> {
      * @description : 修改收货地址
      */
     boolean updateAddress(BailianConsignee bailianConsignee);
+
+    List<BailianConsignee> selectAddress();
+
+    boolean insertAddressList();
 }

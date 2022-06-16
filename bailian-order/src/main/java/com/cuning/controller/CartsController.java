@@ -1,5 +1,7 @@
 package com.cuning.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cuning.bean.shoppingcarts.BailianCartProducts;
 import com.cuning.bean.shoppingcarts.BailianCarts;
 import com.cuning.service.CartsService;
 import io.swagger.annotations.Api;
@@ -18,8 +20,8 @@ public class CartsController {
 
     @ApiOperation(value = "查询购物车列表")
     @GetMapping("/getCartsList")
-    public List<BailianCarts> getCartsList(){
-        return cartsService.getCartsList();
+    public List<BailianCarts> getCartsList(@RequestParam Integer pageNo,@RequestParam Integer pageSize,@RequestParam String userId){
+        return cartsService.getCartsList(pageNo,pageSize,userId);
     }
 
     @ApiOperation(value = "新增购物车信息")
@@ -35,8 +37,20 @@ public class CartsController {
     }
 
     @ApiOperation(value = "修改购物车信息")
-    @PostMapping("modCarts")
+    @PostMapping("/modCarts")
     public boolean modifyCarts(@RequestBody BailianCarts bailianCarts){
         return cartsService.modifyCarts(bailianCarts);
+    }
+
+    @ApiOperation("根据用户id查询购物车详情")
+    @GetMapping("/getCartsById")
+    public BailianCarts getCartsDetailById(@RequestParam String userId){
+        return cartsService.getCartsDetailByUserId(userId);
+    }
+
+    @ApiOperation(("新增购物车详情"))
+    @PostMapping("/addCartsDetail")
+    public boolean addCartsDetail(@RequestBody BailianCartProducts bailianCartProducts){
+        return cartsService.addCartsDetail(bailianCartProducts);
     }
 }

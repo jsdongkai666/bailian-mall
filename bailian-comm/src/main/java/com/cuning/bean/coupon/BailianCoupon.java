@@ -4,7 +4,11 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.swing.*;
@@ -29,7 +33,7 @@ public class BailianCoupon {
     private String name;
 
     @ApiModelProperty("优惠券类型")
-    private String couponType;
+    private Integer couponType;
 
     @ApiModelProperty("优惠金额")
     private Double couponAmount;

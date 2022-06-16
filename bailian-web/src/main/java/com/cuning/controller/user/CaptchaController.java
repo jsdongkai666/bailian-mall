@@ -3,11 +3,13 @@ package com.cuning.controller.user;
 
 import com.cuning.util.RedisUtils;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
@@ -27,6 +29,7 @@ import java.util.UUID;
 @RestController
 @Slf4j
 @RequestMapping("/web")
+@Api(tags = "验证码管理")
 public class CaptchaController {
 
     @Autowired
@@ -81,7 +84,7 @@ public class CaptchaController {
 
     @ApiOperation("手机验证码")
     @GetMapping(value = "/tel/captcha")
-    public String telCaptcha(String tel) {
+    public String telCaptcha(@RequestParam("tel") String tel) {
 
         //-------------------生成验证码 begin --------------------------
         //获取验证码文本内容

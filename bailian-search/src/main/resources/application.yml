@@ -1,7 +1,7 @@
 server:
   port: 8100
 
-elasticsearch:    #ESµÄµØÖ·¼°¶Ë¿Ú
+elasticsearch:    #ESï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½Ë¿ï¿½
   host: 127.0.0.1
   port: 9200
 spring:
@@ -10,3 +10,6 @@ spring:
     url: jdbc:mysql://120.78.163.160:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379

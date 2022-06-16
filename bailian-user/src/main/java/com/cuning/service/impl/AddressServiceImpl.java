@@ -3,17 +3,21 @@ package com.cuning.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cuning.bean.BailianCarousel;
 import com.cuning.bean.BailianConsignee;
 import com.cuning.constant.CommonConstant;
 import com.cuning.mapper.AddressMapper;
 import com.cuning.service.AddressService;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
+import com.cuning.util.SnowFlake;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +33,9 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
 
     @Autowired(required = false)
     private AddressMapper addressMapper;
+
+    @Autowired
+    private SnowFlake snowFlake;
 
     @Override
     public Page<BailianConsignee> selectAddressListByPage(Integer pageNo,Integer pageSize,String userId) {
@@ -85,6 +92,7 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
                 addressMapper.updateById(bailianConsignee1);
             }
         }
+        bailianConsignee.setConsigneeId("51" + Long.toString(snowFlake.nextId()).substring(9,19));
         return addressMapper.insert(bailianConsignee) > 0;
     }
 
@@ -104,5 +112,25 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
         }
 
         return addressMapper.updateById(bailianConsignee) > 0;
+    }
+
+    @Override
+    public List<BailianConsignee> selectAddress() {
+        return addressMapper.selectList(null);
+    }
+
+    @Override
+    public boolean insertAddressList() {
+        List<BailianConsignee> bailianConsigneeList = selectAddress();
+        ArrayList<String> ids = new ArrayList<>();
+        bailianConsigneeList.forEach(bailianConsignee -> {
+            ids.add(bailianConsignee.getConsigneeId());
+        });
+        addressMapper.deleteBatchIds(ids);
+        bailianConsigneeList.forEach(bailianConsignee -> {
+            bailianConsignee.setConsigneeId("51" + Long.toString(snowFlake.nextId()).substring(9,19));
+            addressMapper.insert(bailianConsignee);
+        });
+        return true;
     }
 }
