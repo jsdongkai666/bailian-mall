@@ -40,7 +40,7 @@ public class GoodsCommentaryController {
     @ApiOperation(value = "分页查询商品评价")
     public RequestResult<Page<BailianGoodsCommentary>> queryGoodsCommentary(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam String goodsId, @RequestParam Integer commentaryType){
         Page<BailianGoodsCommentary> page = goodsCommentaryFeignService.queryGoodsCommentary(pageNo,pageSize,goodsId,commentaryType);
-        if (page != null){
+        if (page.getTotal() >0){
             return ResultBuildUtil.success(page);
         }
         return ResultBuildUtil.fail(page);
@@ -67,9 +67,9 @@ public class GoodsCommentaryController {
 
     @GetMapping("/deleteGoodsCommentary")
     @ApiOperation(value = "删除评价")
-    public RequestResult<String> deleteGoodsCommentary(HttpServletRequest request,@RequestParam String orderNo,@RequestParam String goodsId,@RequestParam String commentaryId) throws Exception{
+    public RequestResult<String> deleteGoodsCommentary(HttpServletRequest request,@RequestParam String orderNo,@RequestParam String goodsId) throws Exception{
         User user = JwtUtil.parseJWT(request.getHeader("token"));
-        if (goodsCommentaryFeignService.deleteGoodsCommentary(user.getUserId(),orderNo,goodsId, commentaryId)){
+        if (goodsCommentaryFeignService.deleteGoodsCommentary(user.getUserId(),orderNo,goodsId)){
             return ResultBuildUtil.success("评论删除成功!");
         }
         return ResultBuildUtil.success("评论删失败!");
@@ -80,7 +80,7 @@ public class GoodsCommentaryController {
     public RequestResult<Page<BailianOrderItem>> queryGoodsCommentaryType(HttpServletRequest request, @RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam Integer commentaryType) throws Exception{
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         Page<BailianOrderItem> page = goodsCommentaryFeignService.queryGoodsCommentaryType(user.getUserId(), pageNo,pageSize,commentaryType);
-        if (page != null){
+        if (page.getTotal() > 0){
             return ResultBuildUtil.success(page);
         }
         return ResultBuildUtil.fail(page);

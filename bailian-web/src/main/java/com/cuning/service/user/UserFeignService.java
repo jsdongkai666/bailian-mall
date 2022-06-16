@@ -23,6 +23,9 @@ import java.util.Map;
 @FeignClient(name = "bailian-user")
 public interface UserFeignService {
 
+    @GetMapping("/queryPersonInfo")
+    RequestResult<User> queryPersonInfo(@RequestParam("userId") String userId);
+
     @PostMapping("/modPersonInfo")
     RequestResult<String> modPersonInfo(@RequestBody User user);
 
@@ -37,7 +40,7 @@ public interface UserFeignService {
                                                                 @RequestParam("pageSize") Integer pageSize,
                                                                 @RequestParam("userId") String userId);
 
-    @GetMapping("/queryAddress")
+    @GetMapping("/queryDefaultAddress")
     BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId);
 
     @PostMapping("/delAddress")
