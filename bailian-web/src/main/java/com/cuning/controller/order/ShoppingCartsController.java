@@ -12,6 +12,7 @@ import com.cuning.util.ResultBuildUtil;
 import com.cuning.util.SnowFlake;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -126,6 +127,37 @@ public class ShoppingCartsController {
                 return ResultBuildUtil.fail("添加购物车失败，请检查购物信息！");
             }
         }
+    }
+
+    @ApiOperation("批量删除购物车")
+    @PostMapping("/deleteCartsByIds")
+    public RequestResult batchDeleteCarts(@RequestParam List<String> ids){
+        if (cartsService.batchDeleteCarts(ids)) {
+            return ResultBuildUtil.success("删除成功");
+        } else {
+            return ResultBuildUtil.fail("删除失败");
+        }
+    }
+
+
+    @ApiOperation("修改购物车信息（修改物品数量）")
+    @PostMapping("/updateCartsInfo")
+    @CheckToken
+    public RequestResult updateCarts(@RequestParam Integer buyCount,@RequestParam String id) {
+
+        //判断购买数量
+        if (buyCount <= 0){
+            return ResultBuildUtil.fail("购买数量最小不能小于1！");
+        }
+
+        if (cartsService.updateCartsInfo(buyCount,id)){
+            return ResultBuildUtil.success("修改成功");
+        }
+        else {
+            return ResultBuildUtil.fail("购买失败");
+        }
+
+
     }
 
 }
