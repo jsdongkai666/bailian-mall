@@ -31,6 +31,13 @@ public class ConsigneeAddressController {
     @Autowired
     private AddressService addressService;
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.Integer, java.lang.Integer, java.lang.String]
+     * @return : com.cuning.util.RequestResult<com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.cuning.bean.BailianConsignee>>
+     * @description : 根据用户id，查询收货人的地址
+     */
     @GetMapping("/queryAddress")
     @ApiOperation(value = "收货人地址查询",notes = "根据用户id，查询收货人的地址")
     public RequestResult<Page<BailianConsignee>> queryConsigneeAddress(@RequestParam("pageNo") Integer pageNo,
@@ -49,6 +56,29 @@ public class ConsigneeAddressController {
         return ResultBuildUtil.success(bailianConsigneeList);
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.util.RequestResult<com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.cuning.bean.BailianConsignee>>
+     * @description : 根据用户id，查询用户的默认地址
+     */
+    @GetMapping("/queryDefaultAddress")
+    @ApiOperation(value = "收货人默认地址查询",notes = "根据用户id，查询收货人的默认地址")
+    public BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId){
+
+        // 根据用户id,调用接口查询默认地址
+        return addressService.selectDefaultAddressByUserId(userId);
+    }
+
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.util.RequestResult<java.util.Map<java.lang.String,java.lang.String>>
+     * @description : 根据地址id列表，批量删除收货人的地址
+     */
     @PostMapping("/delAddress")
     @ApiOperation(value = "收货人地址批量删除",notes = "根据地址id列表，批量删除收货人的地址")
     public RequestResult<Map<String,String>> delConsigneeAddress(@RequestParam("consigneeId") String consigneeId) {
@@ -57,6 +87,13 @@ public class ConsigneeAddressController {
         return addressService.delAddress(consigneeId);
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.BailianConsignee]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 添加收货人的地址
+     */
     @PostMapping("/addAddress")
     @ApiOperation(value = "添加收货人地址",notes = "添加收货人的地址")
     public RequestResult<String> addConsigneeAddress(@RequestBody BailianConsignee bailianConsignee) {
@@ -76,6 +113,13 @@ public class ConsigneeAddressController {
         return ResultBuildUtil.fail("添加失败！");
     }
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [com.cuning.bean.BailianConsignee]
+     * @return : com.cuning.util.RequestResult<java.lang.String>
+     * @description : 修改收货人的地址
+     */
     @PostMapping("/modAddress")
     @ApiOperation(value = "修改收货人地址",notes = "修改收货人的地址")
     public RequestResult<String> modConsigneeAddress(@RequestBody BailianConsignee bailianConsignee) {
@@ -88,12 +132,4 @@ public class ConsigneeAddressController {
         return ResultBuildUtil.fail("修改失败！");
     }
 
-    @PostMapping("/addAddresslList")
-    public String addAddresslList() {
-
-        if (addressService.insertAddressList()){
-            return "添加成功！";
-        }
-        return "添加失败！";
-    }
 }

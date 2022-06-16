@@ -59,11 +59,11 @@ public class CarouselController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
-    public RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel){
+    public RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId){
 
 
         // 调用接口添加轮播图
-        if (carouselService.addCarousel(bailianCarousel)){
+        if (carouselService.addCarousel(bailianCarousel,userId)){
             return ResultBuildUtil.success("添加成功！");
         }
 
@@ -101,10 +101,10 @@ public class CarouselController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
-    public RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel){
+    public RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId){
 
         // 调用接口修改轮播图
-        if (carouselService.updateCarousel(bailianCarousel)){
+        if (carouselService.updateCarousel(bailianCarousel,userId)){
 
             return ResultBuildUtil.success("修改成功！");
         }

@@ -4,8 +4,6 @@ package com.cuning.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
-import com.cuning.util.RequestResult;
-import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,6 +116,7 @@ public class GoodsInfoController {
     public BailianGoodsInfo queryGoodsById(@RequestParam String goodsId){
        return goodsInfoService.queryGoodsInfoById(goodsId);
     }
+
 
 
 }
