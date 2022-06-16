@@ -38,17 +38,17 @@ public class SnowFlake {
 
 
 
-//    public SnowFlake(long workerIdShift, long datacenterIdShift){
-//        if (workerIdShift < 0 ||
-//                datacenterIdShift < 0 ||
-//                workerIdShift + datacenterIdShift > 22) {
-//            throw new IllegalArgumentException("参数不匹配");
-//        }
-//        this.workerIdShift = workerIdShift;
-//        this.datacenterIdShift = datacenterIdShift;
-//        this.randomShift = 22 - datacenterIdShift - workerIdShift;
-//        this.maxRandom = (long) Math.pow(2, randomShift);
-//    }
+    public SnowFlake(long workerIdShift, long datacenterIdShift){
+        if (workerIdShift < 0 ||
+                datacenterIdShift < 0 ||
+                workerIdShift + datacenterIdShift > 22) {
+            throw new IllegalArgumentException("参数不匹配");
+        }
+        this.workerIdShift = workerIdShift;
+        this.datacenterIdShift = datacenterIdShift;
+        this.randomShift = 22 - datacenterIdShift - workerIdShift;
+        this.maxRandom = (long) Math.pow(2, randomShift);
+    }
 
     //获取雪花的ID
     private long getId() {
