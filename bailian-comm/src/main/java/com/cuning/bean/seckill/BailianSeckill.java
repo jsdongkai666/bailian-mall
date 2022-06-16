@@ -23,11 +23,8 @@ import java.util.Date;
 
 public class BailianSeckill {
 
-    @TableId(type = IdType.AUTO)
-    private Integer id;
-
     @ApiModelProperty("商品id")
-    private Long goodsId;
+    private String goodsId;
 
     @ApiModelProperty("商品价格")
     private Double goodsPrice;

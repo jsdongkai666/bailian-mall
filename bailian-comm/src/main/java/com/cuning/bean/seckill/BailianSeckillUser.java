@@ -24,7 +24,7 @@ public class BailianSeckillUser {
     private String userId;
 
     @ApiModelProperty("商品id")
-    private Long goodsId;
+    private String goodsId;
 
     @ApiModelProperty("抢购状态")
     private Boolean seckillStatus;
