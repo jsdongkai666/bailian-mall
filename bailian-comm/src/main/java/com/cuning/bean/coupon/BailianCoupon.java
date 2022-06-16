@@ -1,5 +1,6 @@
 package com.cuning.bean.coupon;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,6 +21,7 @@ import java.util.Date;
 @ApiModel("优惠券实体")
 public class BailianCoupon {
 
+    @TableId
     @ApiModelProperty("id")
     private String id;
 
@@ -63,4 +65,7 @@ public class BailianCoupon {
 
     @ApiModelProperty("每人可重复领取数量")
     private Integer repeatQuantity;
+
+    @ApiModelProperty("对应分类 0表示通用，其余对应商品id")
+    private Integer categoryId;
 }

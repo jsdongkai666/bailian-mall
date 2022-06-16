@@ -27,7 +27,7 @@ public class BailianGoodsInfo implements Serializable {
 
     private static final long serialVersionUID = 5473302609274012318L;
     @TableId
-    private Integer goodsId;
+    private String goodsId;
 
     /**
      * 商品名称

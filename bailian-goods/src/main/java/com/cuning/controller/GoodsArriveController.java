@@ -1,5 +1,6 @@
 package com.cuning.controller;
 
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.constant.CommonConstant;
 import com.cuning.constant.GoodsConstant;
 import com.cuning.producer.GoodsArriveProducer;
@@ -49,6 +50,13 @@ public class GoodsArriveController {
     public Map<String, String> setArrivalReminders(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
         Map<String, String> result = new HashMap<>();
 
+        BailianGoodsInfo byId = goodsInfoService.getById(goodsId);
+        if (byId == null) {
+            result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            result.put("msg","商品不存在！！！");
+            return  result;
+        }
+
         redisUtils.incr(goodsId+":"+userId,1);
         redisUtils.expire(goodsId+":"+userId,60);
         if (Integer.valueOf(redisUtils.get(goodsId+":"+userId).toString()) > 4){
@@ -72,6 +80,13 @@ public class GoodsArriveController {
     @GetMapping("/replenishment")
     public Map<String, String> replenishment(@RequestParam("goodsId") String goodsId, @RequestParam("stockNum") Integer stockNum){
         Map<String, String> result = new HashMap<>();
+
+        BailianGoodsInfo byId = goodsInfoService.getById(goodsId);
+        if (byId == null) {
+            result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            result.put("msg","商品不存在！！！");
+            return  result;
+        }
 
         if (goodsInfoService.replenishment(goodsId, stockNum)) {
             goodsArriveProducer.sendMessageToGoodsQueue(GoodsConstant.GOODS_ARRIVE_REMIND_QUEUE_NAME,goodsId);
