@@ -10,25 +10,45 @@ package com.cuning.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.goods.BailianGoodsInfo;
-import io.swagger.models.auth.In;
 
 import java.util.List;
 import java.util.Map;
 
 public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
-    BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo);
+    BailianGoodsInfo saveGoods (BailianGoodsInfo goodsInfo,String userId);
 
-    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize,String goodsName);
+    Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize);
 
-    Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo);
+    Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo,String userId);
 
     Boolean deleteGoodsInfo(String goodsId);
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.Integer]
+     * @return : java.util.List<com.cuning.bean.goods.BailianGoodsInfo>
+     * @description : 根据分类id，查询该分类的所有商品
+     */
     List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId);
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : []
+     * @return : java.util.List<java.lang.Integer>
+     * @description : 查询所有的分类id
+     */
     List<Integer> selectGoodsCategoryIds();
 
+    /**
+     * @author : lixu
+     * @date   : 2022/06/15
+     * @param  : [java.lang.String]
+     * @return : com.cuning.bean.goods.BailianGoodsInfo
+     * @description : 根据id，查询商品
+     */
     BailianGoodsInfo queryGoodsInfoById(String goodsId);
 
     /**

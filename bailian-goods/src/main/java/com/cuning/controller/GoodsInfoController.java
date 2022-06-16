@@ -4,8 +4,6 @@ package com.cuning.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.service.GoodsInfoService;
-import com.cuning.util.RequestResult;
-import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +33,8 @@ public class GoodsInfoController {
      * @description : 新增商品
      */
     @PostMapping("/addGoods")
-    public BailianGoodsInfo saveGoods(@RequestBody BailianGoodsInfo goodsInfo){
-        return goodsInfoService.saveGoods(goodsInfo);
+    public BailianGoodsInfo saveGoods(@RequestBody BailianGoodsInfo goodsInfo,@RequestParam String userId){
+        return goodsInfoService.saveGoods(goodsInfo,userId);
     }
 
     /***
@@ -47,9 +45,10 @@ public class GoodsInfoController {
      * @description : 后台分页查询
      */
     @GetMapping("/queryGoodsPage")
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize, @RequestParam("goodsName") String goodsName){
-        return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize,goodsName);
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize){
+        return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize);
     }
+
 
     /***
      * @author : Administrator
@@ -59,8 +58,8 @@ public class GoodsInfoController {
      * @description : 修改商品详情
      */
     @PostMapping("/updateGoods")
-    public BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo){
-        Boolean flag = goodsInfoService.updateGoodsInfo(goodsInfo);
+    public BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo,@RequestParam String userId){
+        Boolean flag = goodsInfoService.updateGoodsInfo(goodsInfo,userId);
         if (flag){
             return  goodsInfo;
         }
@@ -117,6 +116,7 @@ public class GoodsInfoController {
     public BailianGoodsInfo queryGoodsById(@RequestParam String goodsId){
        return goodsInfoService.queryGoodsInfoById(goodsId);
     }
+
 
 
 }
