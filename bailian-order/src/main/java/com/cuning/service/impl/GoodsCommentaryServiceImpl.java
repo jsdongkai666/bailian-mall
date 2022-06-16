@@ -50,7 +50,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, String goodsId,String userId,String orderNo) {
         BailianGoodsCommentary goodsCommentary1 = new BailianGoodsCommentary();
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
-        if (bailianOrder.getOrderStatus() == 4){
+        if (bailianOrder.getOrderStatus() == 3){
             BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
             if (bailianOrderItem != null){
                 goodsCommentary1.setUserImg(userHeadImg);
@@ -97,7 +97,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     public Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo, Integer pageSize, Integer commentaryType,String userId) {
         Page<BailianOrderItem> page = new Page<>(pageNo, pageSize);
         QueryWrapper<BailianOrder> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id", userId).eq("order_status", 4);
+        queryWrapper.eq("user_id", userId).eq("order_status", 3);
         List<BailianOrder> bailianOrders = shoppingOrderMapper.selectList(queryWrapper);
         if (!bailianOrders.isEmpty()) {
             List<BailianOrderItem> bailianOrderItemList = new ArrayList<>();
