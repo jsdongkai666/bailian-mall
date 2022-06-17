@@ -32,4 +32,10 @@ public interface GoodsCategoryService extends IService<BailianGoodsCategory> {
 
     Page<BailianGoodsInfo> queryGoodsInfoByCategory(Integer pageNo,Integer pageSize,String categoryName,Boolean flag);
 
+    BailianGoodsCategory queryCategoryById(Integer categoryId);
+
+    List<BailianGoodsCategory> queryGoodsCategory();
+
+    List<Integer> queryCategoryByLevel(Integer categoryLevel);
+
 }

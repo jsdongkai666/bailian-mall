@@ -43,4 +43,13 @@ public interface GoodsCategoryFeignService {
     @GetMapping("/queryGoodsInfoByCategory")
     Page<BailianGoodsInfo> queryGoodsInfoByCategory(@RequestParam("pageNo") Integer pageNo,@RequestParam("pageSize") Integer pageSize,
                                                     @RequestParam("categoryName") String categoryName,@RequestParam("flag") Boolean flag);
+
+    @GetMapping("/queryCategoryById")
+    BailianGoodsCategory queryCategoryById(@RequestParam("categoryId") Integer categoryId);
+
+    @PostMapping("/queryGoodsCategoryAll")
+    List<BailianGoodsCategory> queryGoodsCategory();
+
+    @GetMapping("/queryCategoryByLevel")
+    List<Integer> queryCategoryByLevel(@RequestParam("categoryLevel") Integer categoryLevel);
 }

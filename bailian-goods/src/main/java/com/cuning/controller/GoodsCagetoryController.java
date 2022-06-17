@@ -99,4 +99,40 @@ public class GoodsCagetoryController {
     public Page<BailianGoodsInfo> queryGoodsInfoByCategory(@RequestParam Integer pageNo,@RequestParam Integer pageSize,@RequestParam String categoryName,@RequestParam Boolean flag){
         return goodsCategoryService.queryGoodsInfoByCategory(pageNo,pageSize,categoryName,flag);
     }
+
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/17 0017
+     * @param  : [java.lang.Integer]
+     * @return : com.cuning.bean.goods.BailianGoodsCategory
+     * @description : 根据分类id查询分类表
+     */
+    @GetMapping("/queryCategoryById")
+    public BailianGoodsCategory queryCategoryById(@RequestParam Integer categoryId){
+        return goodsCategoryService.queryCategoryById(categoryId);
+    }
+
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/17 0017
+     * @param  : []
+     * @return : java.util.List<com.cuning.bean.goods.BailianGoodsCategory>
+     * @description : 查询分类表中所有数据
+     */
+    @PostMapping("/queryGoodsCategoryAll")
+    public List<BailianGoodsCategory> queryGoodsCategory(){
+        return goodsCategoryService.queryGoodsCategory();
+    }
+
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/17 0017
+     * @param  : [java.lang.Integer]
+     * @return : java.util.List<com.cuning.bean.goods.BailianGoodsCategory>
+     * @description : 根据分类等级查询分类表
+     */
+    @GetMapping("/queryCategoryByLevel")
+    public List<Integer> queryCategoryByLevel(@RequestParam Integer categoryLevel){
+        return goodsCategoryService.queryCategoryByLevel(categoryLevel);
+    }
 }

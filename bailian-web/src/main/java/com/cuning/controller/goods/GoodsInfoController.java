@@ -43,12 +43,12 @@ public class GoodsInfoController {
 
     @GetMapping("/queryGoodsById")
     @ApiOperation(value = "根据id查询商品")
-    public RequestResult<BailianGoodsInfo> queryGoodsById(@RequestParam String goodsId){
+    public RequestResult queryGoodsById(@RequestParam String goodsId){
         BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsById(goodsId);
         if (bailianGoodsInfo != null){
             return ResultBuildUtil.success(bailianGoodsInfo);
         }
-        return ResultBuildUtil.fail(bailianGoodsInfo);
+        return ResultBuildUtil.fail("商品不存在！");
     }
 
     @PostMapping("/updateGoods")
@@ -64,6 +64,20 @@ public class GoodsInfoController {
     @PostMapping("/updateStatus")
     @ApiOperation(value = "商品上下架")
     public RequestResult<String > updateGoodsSellStatus(@RequestParam String  goodsId, @RequestParam Byte goodsSellStatus) {
+        BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsById(goodsId);
+        if (bailianGoodsInfo == null){
+            return ResultBuildUtil.fail("商品不存在！");
+        }
+        if (goodsSellStatus<0||goodsSellStatus>1){
+            return ResultBuildUtil.fail("商品状态码值只能为0或1");
+        }
+
+        if (bailianGoodsInfo.getGoodsSellStatus().equals(goodsSellStatus)){
+            if (goodsSellStatus ==0){
+                return ResultBuildUtil.fail("商品已下架，不能重复操作！");
+            }
+            return ResultBuildUtil.fail("商品已上架，不能重复操作！");
+        }
         if (goodsInfoService.updateGoodsSellStatus(goodsId,goodsSellStatus)){
             return ResultBuildUtil.success("商品上架状态修改成功！");
         }
@@ -73,7 +87,10 @@ public class GoodsInfoController {
     @GetMapping("/deleteGoods")
     @ApiOperation(value = "删除商品")
     public RequestResult<String> deleteGoodsInfo(@RequestParam String goodsId){
-        if (goodsInfoService.deleteGoodsInfo(goodsId) != null){
+        if (goodsInfoService.queryGoodsById(goodsId) == null){
+            return ResultBuildUtil.fail("商品不存在，无法删除！");
+        }
+        if (goodsInfoService.deleteGoodsInfo(goodsId)){
             return ResultBuildUtil.success("商品删除成功！");
         }
         return ResultBuildUtil.fail("商品删除失败！");

@@ -131,4 +131,24 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
         return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().eq("goods_category_id",goodsCategory.getCategoryId()).orderByDesc("selling_price"));
     }
 
+    @Override
+    public BailianGoodsCategory queryCategoryById(Integer categoryId) {
+        return goodsCategoryMapper.selectById(categoryId);
+    }
+
+    @Override
+    public List<BailianGoodsCategory> queryGoodsCategory() {
+        return goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>());
+    }
+
+    @Override
+    public List<Integer> queryCategoryByLevel(Integer categoryLevel) {
+        List<BailianGoodsCategory> list = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>().eq("category_id",categoryLevel));
+        List<Integer> list1 = new ArrayList<>();
+        for(BailianGoodsCategory item : list){
+            list1.add(item.getParentId());
+        }
+        return list1;
+    }
+
 }
