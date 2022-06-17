@@ -2,8 +2,11 @@ package com.cuning.service;
 
 import com.cuning.bean.logistics.LogisticsInfo;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @author dengteng
@@ -15,7 +18,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "bailian-logistics")
 public interface LogisticsFeignService {
 
+    /** 
+    * @Param: [java.lang.String, java.lang.String] 
+    * @return: com.cuning.bean.logistics.LogisticsInfo 
+    * @Author: dengteng
+    * @Date: 2022/6/17 
+    * @Description: 查询物流信息 
+    */
     @PostMapping("/getlogisticsInfo")
-    public LogisticsInfo getlogisticsInfoByTrackingNumber(@RequestParam("logisticCode") String logisticCode, @RequestParam("shipperCode") String shipperCode);
+    LogisticsInfo getlogisticsInfoByTrackingNumber(@RequestParam("logisticCode") String logisticCode, @RequestParam("shipperCode") String shipperCode);
 
+    /** 
+    * @Param: [java.lang.String] 
+    * @return: java.util.Map<java.lang.String,java.lang.String> 
+    * @Author: dengteng
+    * @Date: 2022/6/17 
+    * @Description: 发货 
+    */
+    @GetMapping("/ship")
+    Map<String, String> ship(@RequestParam("orderId")String orderNo);
+    
 }
