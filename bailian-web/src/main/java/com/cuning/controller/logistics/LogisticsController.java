@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * @author dengteng
  * @title: LogisticsController
@@ -38,6 +40,24 @@ public class LogisticsController {
     public RequestResult<LogisticsInfo> getLogisticsInfo(@RequestParam("logisticCode") String logisticCode, @RequestParam("shipperCode") String shipperCode){
         LogisticsInfo logisticsInfo = logisticsFeignService.getlogisticsInfoByTrackingNumber(logisticCode, shipperCode);
         return ResultBuildUtil.success(logisticsInfo);
+    }
+
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: com.cuning.util.RequestResult<java.util.Map<java.lang.String,java.lang.String>>
+    * @Author: dengteng
+    * @Date: 2022/6/17
+    * @Description: 商品发货
+    */
+    @ApiOperation(value = "商品发货",notes = "商品发货返回快递单号和快递公司编码")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "orderNo", value = "订单编号",paramType = "query")
+    })
+    @GetMapping("/goodsShipped")
+    public RequestResult<Map<String,String>> goodsShipped(@RequestParam String orderNo){
+        Map<String, String> ship = logisticsFeignService.ship(orderNo);
+        return ResultBuildUtil.success(ship);
     }
 
 
