@@ -1,14 +1,18 @@
 package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.BailianCarousel;
 import com.cuning.mapper.CarouselMapper;
 import com.cuning.service.CarouselService;
 import com.cuning.util.SnowFlake;
+import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -56,10 +60,20 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, BailianCaro
 
     @Override
     public boolean updateCarousel(BailianCarousel bailianCarousel,String userId) {
-
-        bailianCarousel.setUpdateTime(new Date());
+        BailianCarousel bailianCarousel1 = carouselMapper.selectById(bailianCarousel.getCarouselId());
+        if (StringUtils.isEmpty(bailianCarousel.getCarouselUrl())) {
+            bailianCarousel.setCarouselUrl(bailianCarousel1.getCarouselUrl());
+        }
+        if (StringUtils.isEmpty(bailianCarousel.getRedirectUrl())) {
+            bailianCarousel.setRedirectUrl(bailianCarousel1.getRedirectUrl());
+        }
+        if (bailianCarousel.getCarouselRank() == null){
+            bailianCarousel.setCarouselRank(bailianCarousel1.getCarouselRank());
+        }
         bailianCarousel.setUpdateUser(userId);
+        bailianCarousel.setUpdateTime(new Date());
         return carouselMapper.updateById(bailianCarousel) > 0;
     }
+
 
 }

@@ -627,12 +627,10 @@ public class RedisUtils {
      * @return : void
      * @description : zset方法，根据key值和value值，删除
      */
-    public void zrem(String key, String value) {
-        try {
-            redisTemplate.opsForZSet().remove(key, value);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public Long zrem(String key, String value) {
+
+            return redisTemplate.opsForZSet().remove(key, value);
+
     }
 
 

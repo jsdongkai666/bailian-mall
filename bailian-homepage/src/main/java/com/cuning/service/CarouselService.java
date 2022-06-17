@@ -50,4 +50,5 @@ public interface CarouselService extends IService<BailianCarousel>{
      */
     boolean updateCarousel(BailianCarousel bailianCarousel,String userId);
 
+
 }

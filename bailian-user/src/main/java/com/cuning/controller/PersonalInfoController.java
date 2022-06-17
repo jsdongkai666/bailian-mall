@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,10 +45,11 @@ public class PersonalInfoController {
      */
     @GetMapping("/queryPersonInfo")
     @ApiOperation(value = "查看个人资料",notes = "用户个人资料展示")
-    public RequestResult<User> queryPersonInfo(@RequestParam("userId") String userId){
+    public User queryPersonInfo(@RequestParam("userId") String userId){
 
         User user = userService.selectPersonInfoByUserId(userId);
-        return ResultBuildUtil.success(user);
+        user.setUserPassword(null);
+        return user;
 
     }
 
@@ -60,14 +62,13 @@ public class PersonalInfoController {
      */
     @PostMapping("/modPersonInfo")
     @ApiOperation(value = "修改个人资料",notes = "用户个人资料修改，性别，生日，昵称等")
-    public RequestResult<String> modPersonInfo(@RequestBody User user){
-
+    public boolean modPersonInfo(@RequestBody User user){
 
         if (userService.updatePersonInfo(user)) {
-            return ResultBuildUtil.success("修改成功！");
+            return true;
         }
 
-        return ResultBuildUtil.fail("修改失败！");
+        return false;
     }
 
     /**

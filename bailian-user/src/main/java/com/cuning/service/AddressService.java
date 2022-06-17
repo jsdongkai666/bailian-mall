@@ -72,4 +72,5 @@ public interface AddressService extends IService<BailianConsignee> {
      * @description : 根据用户id，查询用户的默认地址
      */
     BailianConsignee selectDefaultAddressByUserId(String userId);
+
 }

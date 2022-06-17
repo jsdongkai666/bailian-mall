@@ -222,6 +222,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public boolean updatePersonInfo(User user) {
+        User user1 = userMapper.selectById(user.getUserId());
+        if (StringUtils.isEmpty(user.getUserName())) {
+            user.setUserName(user1.getUserName());
+        }
+        if (StringUtils.isEmpty(user.getUserSex())) {
+            user.setUserSex(user1.getUserSex());
+        }
+        if (StringUtils.isEmpty(user.getUserBirth())) {
+            user.setUserBirth(user1.getUserBirth());
+        }
+        if (StringUtils.isEmpty(user.getUserMail())) {
+            user.setUserMail(user1.getUserMail());
+        }
+        if (StringUtils.isEmpty(user.getUserTel())) {
+            user.setUserTel(user1.getUserTel());
+        }
         return userMapper.updateById(user) > 0;
     }
 

@@ -8,6 +8,8 @@ import com.cuning.service.goods.GoodsFeignService;
 import com.cuning.service.homePage.HomePageFeignService;
 import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
+import com.cuning.util.ResultBuildUtil;
+import com.cuning.vo.GoodsDetailsVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -16,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,8 +48,16 @@ public class HomePageWebController {
      */
     @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
-    public RequestResult<List<BailianCarousel>> queryCarouselList(@ApiParam(name = "rank",value = "排序",defaultValue = "0")@RequestParam(name = "rank",required = false,defaultValue = "0") Integer rank){
-        return homePageFeignService.queryCarousel(rank);
+    public RequestResult queryCarouselList(@ApiParam(name = "rank",value = "排序",defaultValue = "0")@RequestParam(name = "rank",required = false,defaultValue = "0") Integer rank){
+
+        // 查询轮播图列表
+        List<BailianCarousel> bailianCarousels = homePageFeignService.queryCarousel(rank);
+
+        // 判断轮播图是否为空
+        if (bailianCarousels.isEmpty()) {
+            return ResultBuildUtil.fail("没有查询到轮播图！");
+        }
+        return ResultBuildUtil.success(bailianCarousels);
     }
 
     /**
@@ -58,13 +69,33 @@ public class HomePageWebController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
-    public RequestResult<String> addCarousel(HttpServletRequest request,@RequestBody BailianCarousel bailianCarousel) throws Exception {
+    public RequestResult<String> addCarousel(HttpServletRequest request,
+                                     @ApiParam(name = "carouselUrl",value = "轮播图图片地址")@RequestParam(value = "carouselUrl",required = false) String carouselUrl,
+                                     @ApiParam(name = "redirectUrl",value = "跳转地址")@RequestParam(value = "redirectUrl",required = false) String redirectUrl,
+                                     @ApiParam(name = "carouselRank",value = "轮播图排序规则 0-升序，1-降序")@RequestParam(value = "carouselRank",required = false,defaultValue = "0") Integer carouselRank) throws Exception {
 
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
 
-        return homePageFeignService.addCarousel(bailianCarousel,userId);
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        // 新建一个实体，添加轮播图信息
+        BailianCarousel bailianCarousel = new BailianCarousel();
+        bailianCarousel.setCarouselUrl(carouselUrl);
+        bailianCarousel.setRedirectUrl(redirectUrl);
+        bailianCarousel.setCarouselRank(carouselRank);
+
+        // 判断轮播图是否添加成功
+        if (homePageFeignService.addCarousel(bailianCarousel, userId)) {
+            return ResultBuildUtil.success("添加成功！");
+        }
+
+        return ResultBuildUtil.fail("添加失败");
     }
 
     /**
@@ -77,7 +108,14 @@ public class HomePageWebController {
     @PostMapping("/delCarousel")
     @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
     public RequestResult<String> delCarousel(@ApiParam(name = "ids",value = "轮播图id")@RequestParam("ids") List<String> ids){
-        return homePageFeignService.delCarousel(ids);
+
+        // 判断轮播图是否删除成功
+        if (homePageFeignService.delCarousel(ids)) {
+            return ResultBuildUtil.success("删除成功！");
+        }
+
+        return ResultBuildUtil.fail("删除失败");
+
     }
 
     /**
@@ -89,13 +127,35 @@ public class HomePageWebController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
-    public RequestResult<String> modCarousel(HttpServletRequest request,@RequestBody BailianCarousel bailianCarousel) throws Exception {
+    public RequestResult<String> modCarousel(HttpServletRequest request,
+                                             @ApiParam(name = "carouselId",value = "轮播图id")@RequestParam(value = "carouselId",required = false) String carouselId,
+                                             @ApiParam(name = "carouselUrl",value = "轮播图图片地址")@RequestParam(value = "carouselUrl",required = false) String carouselUrl,
+                                             @ApiParam(name = "redirectUrl",value = "跳转地址")@RequestParam(value = "redirectUrl",required = false) String redirectUrl,
+                                             @ApiParam(name = "carouselRank",value = "轮播图排序")@RequestParam(value = "carouselRank",required = false) Integer carouselRank) throws Exception {
 
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
 
-        return homePageFeignService.modCarousel(bailianCarousel,userId);
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        // 新建一个实体，修改轮播图信息
+        BailianCarousel bailianCarousel = new BailianCarousel();
+        bailianCarousel.setCarouselId(carouselId);
+        bailianCarousel.setCarouselUrl(carouselUrl);
+        bailianCarousel.setRedirectUrl(redirectUrl);
+        bailianCarousel.setCarouselRank(carouselRank);
+
+        // // 判断轮播图是否修改成功
+        if (homePageFeignService.modCarousel(bailianCarousel,userId)) {
+            return ResultBuildUtil.success("修改成功！");
+        }
+
+        return ResultBuildUtil.fail("修改失败");
     }
 
     /**
@@ -107,13 +167,25 @@ public class HomePageWebController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
-    @CheckToken
-    public RequestResult<BailianGoodsInfo> goodsDetailsMap(HttpServletRequest request,
-                                                           @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") String goodsId) throws Exception {
+    public RequestResult goodsDetailsMap(HttpServletRequest request,
+                                         @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") String goodsId) throws Exception {
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
-        return goodsFeignService.goodsDetailsMap(userId,goodsId);
+
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        // 判断商品详情是否存在
+        GoodsDetailsVO goodsDetailsVO = goodsFeignService.goodsDetailsMap(userId, goodsId);
+        if (goodsDetailsVO == null) {
+            return ResultBuildUtil.fail("该商品不存在");
+        }
+
+        return ResultBuildUtil.success(goodsDetailsVO);
     }
 
     /**
@@ -126,11 +198,23 @@ public class HomePageWebController {
     @GetMapping("/queryGoodsFootPrint")
     @ApiOperation(value = "用户足迹查询",notes = "根据用户名，查询该用户的足迹")
     @CheckToken
-    public List<BailianGoodsInfo> queryGoodsFootPrint(HttpServletRequest request) throws Exception {
+    public RequestResult queryGoodsFootPrint(HttpServletRequest request) throws Exception {
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
-        return goodsFeignService.queryGoodsFootPrint(userId);
+
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        // 判断用户足迹是否存在
+        List<BailianGoodsInfo> bailianGoodsInfos = goodsFeignService.queryGoodsFootPrint(userId);
+        if (bailianGoodsInfos.isEmpty()) {
+            return ResultBuildUtil.fail("该用户没有足迹");
+        }
+        return ResultBuildUtil.success(bailianGoodsInfos);
     }
 
     /**
@@ -145,10 +229,21 @@ public class HomePageWebController {
     @CheckToken
     public RequestResult<String> delGoodsFootPrint(HttpServletRequest request,
                                                    @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") List<String> goodsId) throws Exception {
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
-        return goodsFeignService.delGoodsFootPrint(userId, goodsId);
+
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        // 判断用户足迹是否删除成功
+        if (goodsFeignService.delGoodsFootPrint(userId, goodsId)) {
+            return ResultBuildUtil.success("删除用户足迹成功！");
+        }
+        return ResultBuildUtil.success("删除用户足迹失败！");
     }
 
 
@@ -162,11 +257,24 @@ public class HomePageWebController {
     @GetMapping("/goodsRelated")
     @ApiOperation(value = "猜你喜欢",notes = "根据用户的足迹，猜你喜欢")
     @CheckToken
-    public RequestResult<List<BailianGoodsInfo>> GoodsRelated(HttpServletRequest request) throws Exception {
+    public RequestResult GoodsRelated(HttpServletRequest request) throws Exception {
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
-        return homePageFeignService.GoodsRelated(userId);
+
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        // 判断猜你喜欢的商品是否为空
+        List<BailianGoodsInfo> bailianGoodsInfos = homePageFeignService.GoodsRelated(userId);
+        if (bailianGoodsInfos.isEmpty()) {
+            return ResultBuildUtil.fail("商品未加载成功！");
+        }
+
+        return ResultBuildUtil.success(bailianGoodsInfos);
     }
 
     /**
@@ -179,11 +287,24 @@ public class HomePageWebController {
     @GetMapping("/SearchHistory")
     @ApiOperation(value = "商品搜索记录",notes = "将商品搜索记录存入redis中，再次搜索将靠前显示，一共展示十条数据")
     @CheckToken
-    public RequestResult<List<Object>> searchHistory(HttpServletRequest request) throws Exception {
+    public RequestResult searchHistory(HttpServletRequest request) throws Exception {
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
-        return goodsFeignService.searchHistory(userId);
+
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        //判断搜索记录是否存在
+        List<Object> objects = goodsFeignService.searchHistory(userId);
+        if (objects.isEmpty()) {
+            return ResultBuildUtil.fail("搜索记录不存在!");
+        }
+
+        return ResultBuildUtil.success(objects);
     }
 
     /**
@@ -197,10 +318,22 @@ public class HomePageWebController {
     @ApiOperation(value = "删除搜索记录",notes = "将搜索记录清空")
     @CheckToken
     public RequestResult<String> delSearchHistory(HttpServletRequest request) throws Exception {
+        // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
-        return goodsFeignService.delSearchHistory(userId);
+
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        // 判断删除搜索记录是否成功
+        if (goodsFeignService.delSearchHistory(userId)){
+            return ResultBuildUtil.success("删除搜索记录成功！");
+        }
+
+        return ResultBuildUtil.success("删除搜索记录失败！");
     }
 
     /**
@@ -212,8 +345,14 @@ public class HomePageWebController {
      */
     @GetMapping("/printHotWord")
     @ApiOperation(value = "热词",notes = "展示十条热词记录")
-    RequestResult<List<Object>> printHotWord(){
-        return goodsFeignService.printHotWord();
+    public RequestResult printHotWord(){
+
+        List<Object> objects = goodsFeignService.printHotWord();
+        if (objects.isEmpty()) {
+            return ResultBuildUtil.fail("热词不存在！");
+        }
+
+        return ResultBuildUtil.success(objects);
     }
 
 
