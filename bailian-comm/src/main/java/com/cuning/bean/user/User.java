@@ -43,7 +43,7 @@ public class User implements Serializable {
     private String userTel;
 
     @ApiModelProperty("用户生日")
-    private String userBirth;
+    private Date userBirth;
 
     @ApiModelProperty("用户唯一标识")
     private String userOpenid;
