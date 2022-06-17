@@ -34,12 +34,25 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, BailianCaro
 
     @Override
     public List<BailianCarousel> selectCarouselList(Integer rank) {
+
         QueryWrapper<BailianCarousel> queryWrapper = new QueryWrapper<>();
         queryWrapper.last("order by carousel_rank");
         if (rank == 1){
             queryWrapper.last("order by carousel_rank desc");
         }
-        return carouselMapper.selectList(queryWrapper);
+
+        List<BailianCarousel> bailianCarouselList = carouselMapper.selectList(queryWrapper);
+
+        // 未删除的轮播图
+        List<BailianCarousel> newBailianCarouselList = new ArrayList<>();
+
+        for (BailianCarousel bailianCarousel : bailianCarouselList) {
+            if (bailianCarousel.getIsDeleted() == 0) {
+                newBailianCarouselList.add(bailianCarousel);
+            }
+        }
+
+        return newBailianCarouselList;
     }
 
     @Override
@@ -69,6 +82,9 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, BailianCaro
         }
         if (bailianCarousel.getCarouselRank() == null){
             bailianCarousel.setCarouselRank(bailianCarousel1.getCarouselRank());
+        }
+        if (bailianCarousel.getIsDeleted() == null) {
+            bailianCarousel.setIsDeleted(bailianCarousel1.getIsDeleted());
         }
         bailianCarousel.setUpdateUser(userId);
         bailianCarousel.setUpdateTime(new Date());

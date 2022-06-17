@@ -23,7 +23,7 @@ import java.util.Map;
 public interface GoodsFeignService {
 
     @GetMapping("/goodsDetails")
-    GoodsDetailsVO goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId);
+    Map<String,Object> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId);
 
     @PostMapping("/delGoodsFootPrint")
     boolean delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId);
