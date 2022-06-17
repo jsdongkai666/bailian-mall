@@ -2,6 +2,7 @@ package com.cuning.controller;
 
 
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.constant.CommonConstant;
 import com.cuning.constant.GoodsConstant;
 import com.cuning.service.OrderFeignService;
 import com.cuning.service.GoodsInfoService;
@@ -56,10 +57,18 @@ public class GoodsDetailsController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
-    public GoodsDetailsVO goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
+    public Map<String,Object> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
+
+        Map<String,Object> resultMap = new HashMap<>();
 
         // 调用接口查询商品详情
         BailianGoodsInfo goodsDetail = goodsInfoService.queryGoodsInfoById(goodsId);
+
+        if (goodsDetail.getGoodsSellStatus() == 1) {
+            resultMap.put("errCode", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            resultMap.put("errMsg","该商品已下架！");
+            return resultMap;
+        }
 
         // 将时间设为权重值
         String score = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
@@ -91,7 +100,10 @@ public class GoodsDetailsController {
         log.info("------ 商品详情：{} ------",goodsDetailsVO);
 
         // 返回商品详情实体
-        return goodsDetailsVO;
+
+        resultMap.put("code",CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+        resultMap.put("Msg",goodsDetailsVO);
+        return resultMap;
     }
 
     /**

@@ -20,8 +20,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created On : 2022/06/14.
@@ -60,6 +62,7 @@ public class HomePageWebController {
         if (bailianCarousels.isEmpty()) {
             return ResultBuildUtil.fail("没有查询到轮播图！");
         }
+
         return ResultBuildUtil.success(bailianCarousels);
     }
 
@@ -136,7 +139,8 @@ public class HomePageWebController {
                                              @ApiParam(name = "carouselId",value = "轮播图id")@RequestParam(value = "carouselId",required = false) String carouselId,
                                              @ApiParam(name = "carouselUrl",value = "轮播图图片地址")@RequestParam(value = "carouselUrl",required = false) String carouselUrl,
                                              @ApiParam(name = "redirectUrl",value = "跳转地址")@RequestParam(value = "redirectUrl",required = false) String redirectUrl,
-                                             @ApiParam(name = "carouselRank",value = "轮播图排序")@RequestParam(value = "carouselRank",required = false) Integer carouselRank) throws Exception {
+                                             @ApiParam(name = "carouselRank",value = "轮播图排序")@RequestParam(value = "carouselRank",required = false) Integer carouselRank,
+                                             @ApiParam(name = "isDeleted",value = "删除标识字段(0-未删除 1-已删除)")@RequestParam(value = "isDeleted",required = false) Integer isDeleted) throws Exception {
 
         // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
@@ -153,6 +157,7 @@ public class HomePageWebController {
         bailianCarousel.setCarouselId(carouselId);
         bailianCarousel.setCarouselUrl(carouselUrl);
         bailianCarousel.setRedirectUrl(redirectUrl);
+        bailianCarousel.setIsDeleted(isDeleted);
         bailianCarousel.setCarouselRank(carouselRank);
 
         // // 判断轮播图是否修改成功
@@ -198,7 +203,14 @@ public class HomePageWebController {
             return ResultBuildUtil.fail("该商品不存在！");
         }
 
-        return ResultBuildUtil.success(goodsFeignService.goodsDetailsMap(userId, goodsId));
+        // 判断返回的是否是失败的信息，如果是，则返回fail
+        Map<String, Object> stringObjectMap = goodsFeignService.goodsDetailsMap(userId, goodsId);
+        if (stringObjectMap.containsKey("errCode")) {
+            return ResultBuildUtil.fail(stringObjectMap);
+        }
+
+        // 否则返回正确的信息
+        return ResultBuildUtil.success(stringObjectMap);
     }
 
     /**
