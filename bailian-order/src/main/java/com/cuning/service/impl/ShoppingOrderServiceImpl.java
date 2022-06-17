@@ -1,4 +1,4 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -58,7 +58,9 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
             orderWrapper.eq("order_no", orderNo);
             BailianOrder bailianOrders = shoppingOrderMapper.selectOne(orderWrapper);
             orderItemQueryWrapper.eq("order_id", bailianOrders.getOrderId());
-            shoppingOrderItemMapper.delete(orderItemQueryWrapper);
+            if(shoppingOrderItemMapper.delete(orderItemQueryWrapper)<=0){
+                return false;
+            }
         }
         QueryWrapper<BailianOrder> orderWrapper = new QueryWrapper<>();
         orderWrapper.in("order_no", orderNos);

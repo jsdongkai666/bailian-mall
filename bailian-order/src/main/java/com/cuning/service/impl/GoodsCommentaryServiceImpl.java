@@ -1,4 +1,4 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -10,6 +10,7 @@ import com.cuning.mapper.GoodsCommentaryMapper;
 import com.cuning.mapper.ShoppingOrderItemMapper;
 import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.GoodsCommentaryService;
+import com.cuning.util.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,10 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     @Autowired(required = false)
     private ShoppingOrderItemMapper shoppingOrderItemMapper;
 
+    @Autowired
+    private SnowFlake snowFlake;
+
+
     @Override
     public Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo, Integer pageSize, String goodsId, Integer commentaryType) {
         Page<BailianGoodsCommentary> page = new Page<>(pageNo,pageSize);
@@ -50,9 +55,10 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     public boolean saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary,String commentaryUrl, String userName, String userHeadImg, String goodsId,String userId,String orderNo) {
         BailianGoodsCommentary goodsCommentary1 = new BailianGoodsCommentary();
         BailianOrder bailianOrder = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("user_id",userId).eq("order_no",orderNo));
-        if (bailianOrder.getOrderStatus() == 3){
+        if (bailianOrder.getOrderStatus() == 4){
             BailianOrderItem bailianOrderItem = shoppingOrderItemMapper.selectOne(new QueryWrapper<BailianOrderItem>().eq("order_id",bailianOrder.getOrderId()).eq("goods_id",goodsId).ne("commentary_type",2));
             if (bailianOrderItem != null){
+                goodsCommentary1.setCommentaryId("11"+ Long.toString(snowFlake.nextId()).substring(9,19));
                 goodsCommentary1.setUserImg(userHeadImg);
                 goodsCommentary1.setUserName(userName);
                 goodsCommentary1.setGoodsId(goodsId);
@@ -97,7 +103,7 @@ public class GoodsCommentaryServiceImpl extends ServiceImpl<GoodsCommentaryMappe
     public Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo, Integer pageSize, Integer commentaryType,String userId) {
         Page<BailianOrderItem> page = new Page<>(pageNo, pageSize);
         QueryWrapper<BailianOrder> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id", userId).eq("order_status", 3);
+        queryWrapper.eq("user_id", userId).eq("order_status", 4);
         List<BailianOrder> bailianOrders = shoppingOrderMapper.selectList(queryWrapper);
         if (!bailianOrders.isEmpty()) {
             List<BailianOrderItem> bailianOrderItemList = new ArrayList<>();

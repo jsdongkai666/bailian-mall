@@ -77,8 +77,8 @@ public class WeChatPayController {
         }
 
         // 统一返回支付失败结果
-        resultMap.put("errCode",unifiedOrderResultMap.get("return_code"));
-        resultMap.put("errMsg",unifiedOrderResultMap.get("return_msg"));
+        resultMap.put("errCode",unifiedOrderResultMap.get("result_code"));
+        resultMap.put("errMsg",unifiedOrderResultMap.get("err_code_des"));
 
         // 返回支付失败结果
         return resultMap;

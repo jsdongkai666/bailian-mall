@@ -90,6 +90,9 @@ public class CouponUserServiceImpl extends ServiceImpl<CouponUserMapper, Bailian
     public List<BailianCouponUser> getUserCouponListByGoods(String userId, String orderItemId) {
 
         BailianOrderItem orderItem = orderItemService.getById(orderItemId);
+        if (orderItem.getTotalPrice() == null || orderItem.getTotalPrice() == 0) {
+            orderItem.setTotalPrice(Double.valueOf(orderItem.getSellingPrice() * orderItem.getGoodsCount()));
+        }
         // 商品
         BailianGoodsInfo goodsInfo = goodsInfoService.getById(orderItem.getGoodsId());
 
@@ -146,9 +149,25 @@ public class CouponUserServiceImpl extends ServiceImpl<CouponUserMapper, Bailian
 
     @Override
     public Map<String, String> useCoupon(String userId, String orderItemId, String couponId) {
-
+        Map<String, String> result = new HashMap<>();
         BailianOrderItem orderItem = orderItemService.getById(orderItemId);
+        if (orderItem.getTotalPrice() == null || orderItem.getTotalPrice() == 0) {
+            orderItem.setTotalPrice(Double.valueOf(orderItem.getSellingPrice() * orderItem.getGoodsCount()));
+        }
+        if (orderItem == null) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "订单商品信息不存在");
+            return result;
+        }
+
         BailianCouponUser couponUser = this.getById(couponId);
+
+        if (couponUser == null || !(couponUser.getStatus().equals(CouponEnums.UNUSED.getCode()))) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "优惠券不存在或已使用");
+            return result;
+        }
+
         BailianCoupon coupon = couponService.getById(couponUser.getCouponTempId());
 
         boolean flag = false;
@@ -170,7 +189,7 @@ public class CouponUserServiceImpl extends ServiceImpl<CouponUserMapper, Bailian
         orderItem.setCouponId(couponId);
         couponUser.setUseTime(new Date());
         couponUser.setStatus("3");
-        Map<String, String> result = new HashMap<>();
+
         if (flag && orderItemService.updateById(orderItem) && this.updateById(couponUser)) {
             result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
             result.put("msg","使用成功");
