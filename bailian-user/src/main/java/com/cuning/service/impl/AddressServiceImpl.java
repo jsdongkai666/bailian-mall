@@ -135,4 +135,9 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
         return addressMapper.selectOne(queryWrapper);
     }
 
+    @Override
+    public BailianConsignee selectAddressByConsigneeId(String consigneeId) {
+        return addressMapper.selectById(consigneeId);
+    }
+
 }
