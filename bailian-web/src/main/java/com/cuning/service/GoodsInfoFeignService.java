@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /*
  * @Created on : 2022/6/14 0014
  * <p>
@@ -33,4 +35,5 @@ public interface GoodsInfoFeignService {
 
     @GetMapping("/queryGoodsById")
     BailianGoodsInfo queryGoodsById(@RequestParam("goodsId") String goodsId);
+
 }

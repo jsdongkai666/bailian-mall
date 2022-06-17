@@ -27,8 +27,8 @@ public class RelatedFeignServiceImpl implements RelatedFeignService {
                 .goodsCoverImg("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
                 .goodsCarousel("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
                 .goodsDetailContent("<p>商品介绍加载中...</p>").originalPrice(100).sellingPrice(100).stockNum(1007)
-                .goodsSellStatus(Byte.parseByte("1")).createUser(0).createTime(new Date("2019-09-18 13:18:47"))
-                .updateUser(0).updateTime(new Date("2020-10-13 10:41:59")).build();
+                .goodsSellStatus(Byte.parseByte("1")).createUser("0").createTime(new Date("2019-09-18 13:18:47"))
+                .updateUser("0").updateTime(new Date("2020-10-13 10:41:59")).build();
         bailianGoodsInfoList.add(bailianGoodsInfo);
 
         return bailianGoodsInfoList;
@@ -42,8 +42,8 @@ public class RelatedFeignServiceImpl implements RelatedFeignService {
                 .goodsCoverImg("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
                 .goodsCarousel("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
                 .goodsDetailContent("<p>商品介绍加载中...</p>").originalPrice(100).sellingPrice(100).stockNum(1007)
-                .goodsSellStatus(Byte.parseByte("1")).createUser(0).createTime(new Date("2019-09-18 13:18:47"))
-                .updateUser(0).updateTime(new Date("2020-10-13 10:41:59")).build();
+                .goodsSellStatus(Byte.parseByte("1")).createUser("0").createTime(new Date("2019-09-18 13:18:47"))
+                .updateUser("0").updateTime(new Date("2020-10-13 10:41:59")).build();
         bailianGoodsInfoList.add(bailianGoodsInfo);
 
         return bailianGoodsInfoList;
@@ -63,7 +63,7 @@ public class RelatedFeignServiceImpl implements RelatedFeignService {
                 .goodsCoverImg("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
                 .goodsCarousel("http://localhost:8093/uploadPic/87446ec4-e534-4b49-9f7d-9bea34665284.jpg")
                 .goodsDetailContent("<p>商品介绍加载中...</p>").originalPrice(100).sellingPrice(100).stockNum(1007)
-                .goodsSellStatus(Byte.parseByte("1")).createUser(0).createTime(new Date("2019-09-18 13:18:47"))
-                .updateUser(0).updateTime(new Date("2020-10-13 10:41:59")).build();
+                .goodsSellStatus(Byte.parseByte("1")).createUser("0").createTime(new Date("2019-09-18 13:18:47"))
+                .updateUser("0").updateTime(new Date("2020-10-13 10:41:59")).build();
     }
 }
