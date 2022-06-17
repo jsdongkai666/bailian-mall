@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created On : 2022/06/13.
  * <p>
@@ -14,8 +16,9 @@ import lombok.Data;
  */
 @Data
 @ApiModel(value = "收货人信息",description = "对应数据库bailianmall中的bailian_consignee")
-public class BailianConsignee {
+public class BailianConsignee implements Serializable {
 
+    private static final long serialVersionUID = -7771537176974371148L;
     /**
      * 收货id
      */

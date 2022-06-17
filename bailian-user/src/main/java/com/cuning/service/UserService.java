@@ -42,6 +42,7 @@ public interface UserService extends IService<User> {
      * @description : 修改密码
      */
     RequestResult<String> modPassword(User user, String password, String newPassword, String newPasswordAgain);
+
     /**
     * @Param: [java.lang.String]
     * @return: boolean

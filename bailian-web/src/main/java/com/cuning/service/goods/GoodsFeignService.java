@@ -2,6 +2,7 @@ package com.cuning.service.goods;
 
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.util.RequestResult;
+import com.cuning.vo.GoodsDetailsVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,20 +23,23 @@ import java.util.Map;
 public interface GoodsFeignService {
 
     @GetMapping("/goodsDetails")
-    RequestResult<BailianGoodsInfo> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId);
+    Map<String,Object> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId);
 
     @PostMapping("/delGoodsFootPrint")
-    RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId);
+    boolean delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId);
 
     @GetMapping("/queryGoodsFootPrint")
     List<BailianGoodsInfo> queryGoodsFootPrint(@RequestParam("userId") String userId);
 
     @GetMapping("/SearchHistory")
-    RequestResult<List<Object>> searchHistory(@RequestParam("userId") String userId);
+    List<Object> searchHistory(@RequestParam("userId") String userId);
 
     @PostMapping("/delSearchHistory")
-    RequestResult<String> delSearchHistory(@RequestParam("userId")String userId);
+    boolean delSearchHistory(@RequestParam("userId")String userId);
 
     @GetMapping("/printHotWord")
-    RequestResult<List<Object>> printHotWord();
+    List<Object> printHotWord();
+
+    @GetMapping("/queryGoodsIdList")
+    List<String> queryGoodsIdList();
 }

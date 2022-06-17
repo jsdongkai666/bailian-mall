@@ -2,6 +2,7 @@ package com.cuning.controller;
 
 
 import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.constant.CommonConstant;
 import com.cuning.constant.GoodsConstant;
 import com.cuning.service.OrderFeignService;
 import com.cuning.service.GoodsInfoService;
@@ -12,6 +13,7 @@ import com.cuning.vo.GoodsDetailsVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,10 +57,18 @@ public class GoodsDetailsController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
-    public RequestResult<GoodsDetailsVO> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
+    public Map<String,Object> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId){
+
+        Map<String,Object> resultMap = new HashMap<>();
 
         // 调用接口查询商品详情
         BailianGoodsInfo goodsDetail = goodsInfoService.queryGoodsInfoById(goodsId);
+
+        if (goodsDetail.getGoodsSellStatus() == 1) {
+            resultMap.put("errCode", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            resultMap.put("errMsg","该商品已下架！");
+            return resultMap;
+        }
 
         // 将时间设为权重值
         String score = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
@@ -90,6 +100,23 @@ public class GoodsDetailsController {
         log.info("------ 商品详情：{} ------",goodsDetailsVO);
 
         // 返回商品详情实体
-        return ResultBuildUtil.success(goodsDetailsVO);
+
+        resultMap.put("code",CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+        resultMap.put("Msg",goodsDetailsVO);
+        return resultMap;
     }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/10
+     * @param  : [javax.servlet.http.HttpServletRequest, java.lang.Integer]
+     * @return : com.cuning.bean.BailianGoodsInfo
+     * @description : 商品所有id查询
+     */
+    @ApiOperation(value = "商品id查询",notes = "查询所有商品id")
+    @GetMapping("/queryGoodsIdList")
+    public List<String> queryGoodsIdList() {
+        return goodsInfoService.queryGoodsIds();
+    }
+
 }

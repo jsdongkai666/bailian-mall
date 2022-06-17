@@ -46,7 +46,7 @@ public class UserWebController {
     @GetMapping("/user/register")
     @ApiOperation("用户注册")
     public RequestResult<String>  RegisterUser(@RequestParam("userName") String userName,
-                                                          @RequestParam("userPassword") String userPassword){
+                                               @RequestParam("userPassword") String userPassword){
         Map<String, Object> map = userWebService.RegisterUser(userName, userPassword);
         if (map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG) != null){
             return ResultBuildUtil.success("注册成功");
@@ -74,6 +74,9 @@ public class UserWebController {
             if (user.get("userTel") != null){
                 build.setUserTel(user.get("userTel").toString());
             }
+            if (user.get("userBirth") != null){
+                build.setUserBirth(user.get("userBirth").toString());
+            }
             if (user.get("userOpenid") != null){
                 build.setUserOpenid(user.get("userOpenid").toString());
             }
@@ -81,7 +84,7 @@ public class UserWebController {
                 build.setUserMail(user.get("userMail").toString());
             }
             if (user.get("userSex") != null){
-                build.setUserSex(user.get("userSex").toString());
+                build.setUserSex(Integer.valueOf(user.get("userSex").toString()));
             }
             if (user.get("userHeadImg") != null){
                 build.setUserHeadImg(user.get("userHeadImg").toString());
@@ -115,10 +118,6 @@ public class UserWebController {
             LinkedHashMap user = (LinkedHashMap) map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG);
             User build = User.builder().userId(user.get("userId").toString())
                     .userPoints((Integer) user.get("userPoints")).vipLevel((Integer) user.get("vipLevel")).build();
-//            .userName(user.get("userName").toString())
-//                    .userPassword(user.get("userPassword").toString()).userTel(user.get("userTel").toString())
-//                    .userOpenid(user.get("userOpenid").toString()).userMail(user.get("userMail").toString())
-//                    .userSex(user.get("userSex").toString()).userHeadImg(user.get("userHeadImg").toString())
             if (user.get("userName") != null){
                 build.setUserName(user.get("userName").toString());
             }
@@ -128,6 +127,9 @@ public class UserWebController {
             if (user.get("userTel") != null){
                 build.setUserTel(user.get("userTel").toString());
             }
+            if (user.get("userBirth") != null){
+                build.setUserBirth(user.get("userBirth").toString());
+            }
             if (user.get("userOpenid") != null){
                 build.setUserOpenid(user.get("userOpenid").toString());
             }
@@ -135,7 +137,7 @@ public class UserWebController {
                 build.setUserMail(user.get("userMail").toString());
             }
             if (user.get("userSex") != null){
-                build.setUserSex(user.get("userSex").toString());
+                build.setUserSex(Integer.valueOf(user.get("userSex").toString()));
             }
             if (user.get("userHeadImg") != null){
                 build.setUserHeadImg(user.get("userHeadImg").toString());

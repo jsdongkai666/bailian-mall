@@ -42,7 +42,7 @@ public class RelatedController {
      */
     @GetMapping("/goodsRelated")
     @ApiOperation(value = "猜你喜欢",notes = "根据用户的足迹，猜你喜欢")
-    public RequestResult<List<BailianGoodsInfo>> GoodsRelated(@RequestParam("userId") String userId){
+    public List<BailianGoodsInfo> GoodsRelated(@RequestParam("userId") String userId){
 
         // 查询足迹中的商品
         List<BailianGoodsInfo> bailianGoodsInfoList = relatedFeignService.selectFootPrintGoods(userId);
@@ -75,7 +75,7 @@ public class RelatedController {
             }
             log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
 
-            return ResultBuildUtil.success(relatedInfos);
+            return relatedInfos;
         }
 
         // 当足迹为1时
@@ -90,7 +90,7 @@ public class RelatedController {
                 }
             }
             log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
-            return ResultBuildUtil.success(relatedInfos);
+            return relatedInfos;
         }
 
         // 当足迹大于1时
@@ -126,7 +126,7 @@ public class RelatedController {
             }
         }
         log.info("------ 用户：{}，猜你喜欢：{} ------",userId,relatedInfos);
-        return ResultBuildUtil.success(relatedInfos);
+        return relatedInfos;
     }
 
 
