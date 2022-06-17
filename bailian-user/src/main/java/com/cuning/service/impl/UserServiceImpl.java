@@ -1,8 +1,10 @@
 package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
 import com.cuning.util.*;
@@ -16,6 +18,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author tengjiaozhai
@@ -265,6 +268,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         return ResultBuildUtil.success("密码修改成功！");
     }
+
     public boolean isChecked(User user) {
 
         if (user.getCheckStatus() == 1) {

@@ -39,4 +39,7 @@ public interface GoodsFeignService {
 
     @GetMapping("/printHotWord")
     List<Object> printHotWord();
+
+    @GetMapping("/queryGoodsIdList")
+    List<String> queryGoodsIdList();
 }
