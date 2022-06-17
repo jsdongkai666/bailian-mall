@@ -1,13 +1,15 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.seckill.BailianSeckill;
 import com.cuning.bean.seckill.BailianSeckillUser;
 import com.cuning.bean.shoppingOrder.BailianOrder;
 import com.cuning.mapper.SeckillMappper;
 import com.cuning.mapper.SeckillUserMapper;
 import com.cuning.service.SeckillService;
+import com.cuning.util.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ import org.springframework.stereotype.Service;
  * Description: SeckillServiceImpl
  */
 @Service
-public class SeckillServiceImpl implements SeckillService {
+public class SeckillServiceImpl extends ServiceImpl<SeckillMappper,BailianSeckill> implements SeckillService {
 
     @Autowired
     private SeckillMappper seckillMappper;
@@ -27,8 +29,12 @@ public class SeckillServiceImpl implements SeckillService {
     @Autowired
     private SeckillUserMapper seckillUserMapper;
 
+    @Autowired
+    private SnowFlake snowFlake;
+
     @Override
     public Boolean insertSeckillShop(BailianSeckill bailianSeckill) {
+        bailianSeckill.setGoodsId("60"+Long.toString(snowFlake.nextId()).substring(9,19));
         if (bailianSeckill.getGoodsNum() <= 0) {
             return false;
         }

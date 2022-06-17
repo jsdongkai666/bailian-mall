@@ -61,7 +61,7 @@ public class MemberController {
         else {
             // 等级高的必须过期后才能购买等级低的 等级低的升级后之前作废重新计算
             // 续费正常延期
-            if (vipLevel == vipMember.getVipLevel()){
+            if (vipLevel == user.getVipLevel()){
                 // 正常续费
                 LocalDateTime localDateTime = user.getVipDate().toInstant()
                         .atZone(TimeZone.TIMEZONE).toLocalDateTime().plusMonths(1L);

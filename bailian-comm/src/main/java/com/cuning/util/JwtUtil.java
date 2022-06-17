@@ -36,6 +36,7 @@ public class JwtUtil {
         builder.withClaim("userId", user.getUserId())
                 .withClaim("userName", user.getUserName())
                 .withClaim("useTel", user.getUserTel())
+                .withClaim("useBirth",user.getUserMail())
                 .withClaim("userOpenid", user.getUserOpenid())
                 .withClaim("userMail",user.getUserMail())
                 .withClaim("userSex",user.getUserSex())
@@ -79,6 +80,9 @@ public class JwtUtil {
 
             if (claims.get("userTel")!=null){
                 user.setUserTel(claims.get("userTel").asString());
+            }
+            if (claims.get("useBirth")!=null){
+                user.setUserBirth(claims.get("useBirth").asString());
             }
             if (claims.get("userOpenid")!=null){
                 user.setUserOpenid(claims.get("userOpenid").asString());
