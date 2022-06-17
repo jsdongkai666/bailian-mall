@@ -93,6 +93,14 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
+    public List<String> queryGoodsIds() {
+        QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("goods_id");
+        List<BailianGoodsInfo> goodsInfoList = goodsInfoMapper.selectList(queryWrapper);
+        return goodsInfoList.stream().map(BailianGoodsInfo::getGoodsId).collect(Collectors.toList());
+    }
+
+    @Override
     public Map<String, String> setArrivalReminders(String userId, String goodsId) {
 
         List<Object> objects = redisUtils.lGet(goodsId + ":reminder", 0, -1);
@@ -179,10 +187,14 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
         List<Object> idListObj = redisUtils.lGet(userId + ":collect", (pageSupport.getPageNo() - 1) * pageSupport.getPageSize(), (pageSupport.getPageNo() * pageSupport.getPageSize()) - 1);
 
+
         List<String> collect = idListObj.stream().map(item -> item.toString()).collect(Collectors.toList());
 
-        pageSupport.setPageData(this.listByIds(collect));
-
+        if (collect.size() > 0) {
+            pageSupport.setPageData(this.listByIds(collect));
+        }else {
+            pageSupport.setPageData(new ArrayList<>());
+        }
 
 
         return pageSupport;

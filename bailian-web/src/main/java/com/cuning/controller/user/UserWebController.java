@@ -46,7 +46,7 @@ public class UserWebController {
     @GetMapping("/user/register")
     @ApiOperation("用户注册")
     public RequestResult<String>  RegisterUser(@RequestParam("userName") String userName,
-                                                          @RequestParam("userPassword") String userPassword){
+                                               @RequestParam("userPassword") String userPassword){
         Map<String, Object> map = userWebService.RegisterUser(userName, userPassword);
         if (map.get(CommonConstant.UNIFY_RETURN_SUCCESS_MSG) != null){
             return ResultBuildUtil.success("注册成功");
@@ -84,7 +84,7 @@ public class UserWebController {
                 build.setUserMail(user.get("userMail").toString());
             }
             if (user.get("userSex") != null){
-                build.setUserSex(user.get("userSex").toString());
+                build.setUserSex(Integer.valueOf(user.get("userSex").toString()));
             }
             if (user.get("userHeadImg") != null){
                 build.setUserHeadImg(user.get("userHeadImg").toString());
@@ -137,7 +137,7 @@ public class UserWebController {
                 build.setUserMail(user.get("userMail").toString());
             }
             if (user.get("userSex") != null){
-                build.setUserSex(user.get("userSex").toString());
+                build.setUserSex(Integer.valueOf(user.get("userSex").toString()));
             }
             if (user.get("userHeadImg") != null){
                 build.setUserHeadImg(user.get("userHeadImg").toString());

@@ -38,13 +38,13 @@ public class GoodsHotWordController {
      */
     @GetMapping("/printHotWord")
     @ApiOperation(value = "热词",notes = "展示十条热词记录")
-    public RequestResult<List<Object>> printHotWord(){
+    public List<Object> printHotWord(){
 
         // 从redis中取出十条热词
         ArrayList<Object> hotWordList = new ArrayList<>(redisUtils.zrevrange(GoodsConstant.GOODS_HOT_WORDS, 0, 9));
         log.info("------ 热词：{} ------",hotWordList);
 
         // 返回热词列表
-        return ResultBuildUtil.success(hotWordList);
+        return hotWordList;
     }
 }
