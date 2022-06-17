@@ -24,19 +24,19 @@ import java.util.Map;
 public interface HomePageFeignService {
 
     @GetMapping("/queryCarousel")
-    RequestResult<List<BailianCarousel>> queryCarousel(@RequestParam(name = "rank",required = false,defaultValue = "0") Integer rank);
+    List<BailianCarousel> queryCarousel(@RequestParam(name = "rank",required = false,defaultValue = "0") Integer rank);
 
     @PostMapping("/addCarousel")
-    RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId);
+    boolean addCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId);
 
     @PostMapping("/delCarousel")
-    RequestResult<String> delCarousel(@RequestParam("ids") List<String> id);
+    boolean delCarousel(@RequestParam("ids") List<String> id);
 
     @PostMapping("/modCarousel")
-    RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId);
+    boolean modCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId);
 
     @GetMapping("/goodsRelated")
-    RequestResult<List<BailianGoodsInfo>> GoodsRelated(@RequestParam("userId") String userId);
+    List<BailianGoodsInfo> GoodsRelated(@RequestParam("userId") String userId);
 
 
 }

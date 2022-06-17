@@ -10,6 +10,7 @@ import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.experimental.var;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,18 +80,18 @@ public class GoodsFootPrintController {
      */
     @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
-    public RequestResult<String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId) {
+    public boolean delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId) {
 
 
         // 删除商品足迹
-        try {
-            goodsId.forEach(id -> redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id));
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (String id : goodsId) {
+            if(redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id) < 0) {
+                log.info("------ 用户足迹删除失败 ------");
+                return false;
+            }
         }
 
         log.info("------ 用户足迹删除成功 ------");
-
-        return ResultBuildUtil.success("删除成功！");
+        return true;
     }
 }

@@ -87,7 +87,7 @@ public class JwtUtil {
                 user.setUserMail(claims.get("userMail").asString());
             }
             if (claims.get("userSex")!=null){
-                user.setUserSex(claims.get("userSex").asString());
+                user.setUserSex(claims.get("userSex").asInt());
             }
             if (claims.get("userHeadImg")!=null){
                 user.setUserHeadImg(claims.get("userHeadImg").asString());
