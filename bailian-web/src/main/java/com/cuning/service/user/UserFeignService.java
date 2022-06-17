@@ -44,6 +44,10 @@ public interface UserFeignService {
     @GetMapping("/queryDefaultAddress")
     BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId);
 
+    @GetMapping("/queryAddressByConsigneeId")
+    @ApiOperation(value = "查询收货地址",notes = "根据收货地址id，查询收货地址详情")
+    BailianConsignee queryAddressByConsigneeId(@RequestParam("consigneeId") String consigneeId);
+
     @PostMapping("/delAddress")
     RequestResult<Map<String,String>> delConsigneeAddress(@RequestParam("consigneeId") String consigneeId);
 

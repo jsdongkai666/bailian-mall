@@ -204,6 +204,19 @@ public class UserInfoWebController {
     }
 
     /**
+     * @author : lixu
+     * @date   : 2022/06/17
+     * @param  : [java.lang.String]
+     * @return : com.cuning.bean.BailianConsignee
+     * @description : 根据收货地址id，查询收货地址详情
+     */
+    @GetMapping("/queryAddressByConsigneeId")
+    @ApiOperation(value = "查询收货地址",notes = "根据收货地址id，查询收货地址详情")
+    public BailianConsignee queryAddressByConsigneeId(@RequestParam("consigneeId") String consigneeId){
+        return userFeignService.queryAddressByConsigneeId(consigneeId);
+    }
+
+    /**
      * Created On : 2022/06/14.
      * <p>
      * Author     : lixu
