@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,7 +33,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-@Api(tags = "用户前端操作入口")
+@Api(tags = "用户信息及收货地址操作入口")
 public class UserInfoWebController {
 
     @Autowired(required = false)
@@ -47,6 +48,7 @@ public class UserInfoWebController {
      */
     @GetMapping("/queryPersonInfo")
     @ApiOperation(value = "查看个人资料",notes = "用户个人资料展示")
+    @CheckToken
     public RequestResult queryPersonInfo(HttpServletRequest request) throws Exception {
 
         // 从token中获取用户信息
@@ -59,12 +61,8 @@ public class UserInfoWebController {
             return ResultBuildUtil.fail("用户数据异常，请重新登录！");
         }
 
-        User user1 = userFeignService.queryPersonInfo(userId);
-        if (user1 == null) {
-            return ResultBuildUtil.fail("该用户信息不存在！");
-        }
 
-        return ResultBuildUtil.success(user1);
+        return ResultBuildUtil.success(userFeignService.queryPersonInfo(userId));
     }
 
     /**
@@ -184,6 +182,7 @@ public class UserInfoWebController {
      */
     @GetMapping("/queryDefaultAddress")
     @ApiOperation(value = "收货人默认地址查询",notes = "根据用户id，查询用户的默认地址")
+    @CheckToken
     public RequestResult queryDefaultAddressByUserId(HttpServletRequest request) throws Exception {
 
         // 从token中获取用户信息

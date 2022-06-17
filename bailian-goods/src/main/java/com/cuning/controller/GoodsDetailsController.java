@@ -12,6 +12,7 @@ import com.cuning.vo.GoodsDetailsVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -92,4 +93,18 @@ public class GoodsDetailsController {
         // 返回商品详情实体
         return goodsDetailsVO;
     }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/10
+     * @param  : [javax.servlet.http.HttpServletRequest, java.lang.Integer]
+     * @return : com.cuning.bean.BailianGoodsInfo
+     * @description : 商品所有id查询
+     */
+    @ApiOperation(value = "商品id查询",notes = "查询所有商品id")
+    @GetMapping("/queryGoodsIdList")
+    public List<String> queryGoodsIdList() {
+        return goodsInfoService.queryGoodsIds();
+    }
+
 }

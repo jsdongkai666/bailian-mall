@@ -4,6 +4,7 @@ import com.cuning.annotation.CheckToken;
 import com.cuning.bean.BailianCarousel;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.user.User;
+import com.cuning.service.GoodsInfoFeignService;
 import com.cuning.service.goods.GoodsFeignService;
 import com.cuning.service.homePage.HomePageFeignService;
 import com.cuning.util.JwtUtil;
@@ -14,6 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +32,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@Api(tags = "首页前端操作入口")
+@Api(tags = "首页操作入口")
 public class HomePageWebController {
 
     @Autowired(required = false)
@@ -48,6 +50,7 @@ public class HomePageWebController {
      */
     @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
+
     public RequestResult queryCarouselList(@ApiParam(name = "rank",value = "排序",defaultValue = "0")@RequestParam(name = "rank",required = false,defaultValue = "0") Integer rank){
 
         // 查询轮播图列表
@@ -69,6 +72,7 @@ public class HomePageWebController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
+    @CheckToken
     public RequestResult<String> addCarousel(HttpServletRequest request,
                                      @ApiParam(name = "carouselUrl",value = "轮播图图片地址")@RequestParam(value = "carouselUrl",required = false) String carouselUrl,
                                      @ApiParam(name = "redirectUrl",value = "跳转地址")@RequestParam(value = "redirectUrl",required = false) String redirectUrl,
@@ -127,6 +131,7 @@ public class HomePageWebController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
+    @CheckToken
     public RequestResult<String> modCarousel(HttpServletRequest request,
                                              @ApiParam(name = "carouselId",value = "轮播图id")@RequestParam(value = "carouselId",required = false) String carouselId,
                                              @ApiParam(name = "carouselUrl",value = "轮播图图片地址")@RequestParam(value = "carouselUrl",required = false) String carouselUrl,
@@ -167,6 +172,7 @@ public class HomePageWebController {
      */
     @ApiOperation(value = "商品详情查询",notes = "根据id，查询商品详情，将结果存入redis")
     @GetMapping("/goodsDetails")
+    @CheckToken
     public RequestResult goodsDetailsMap(HttpServletRequest request,
                                          @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") String goodsId) throws Exception {
         // 从token中获取用户信息
@@ -179,13 +185,20 @@ public class HomePageWebController {
             return ResultBuildUtil.fail("用户数据异常，请重新登录！");
         }
 
-        // 判断商品详情是否存在
-        GoodsDetailsVO goodsDetailsVO = goodsFeignService.goodsDetailsMap(userId, goodsId);
-        if (goodsDetailsVO == null) {
-            return ResultBuildUtil.fail("该商品不存在");
+        // 判断商品id是否存在
+        List<String> goodsIdList = goodsFeignService.queryGoodsIdList();
+        boolean flag = false;
+        for (String s : goodsIdList) {
+            if (s.equals(goodsId)) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            return ResultBuildUtil.fail("该商品不存在！");
         }
 
-        return ResultBuildUtil.success(goodsDetailsVO);
+        return ResultBuildUtil.success(goodsFeignService.goodsDetailsMap(userId, goodsId));
     }
 
     /**
@@ -333,7 +346,7 @@ public class HomePageWebController {
             return ResultBuildUtil.success("删除搜索记录成功！");
         }
 
-        return ResultBuildUtil.success("删除搜索记录失败！");
+        return ResultBuildUtil.fail("删除搜索记录失败！");
     }
 
     /**
