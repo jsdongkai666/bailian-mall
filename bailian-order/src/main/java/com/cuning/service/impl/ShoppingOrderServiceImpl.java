@@ -1,4 +1,4 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -12,6 +12,8 @@ import com.cuning.service.ShoppingOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Wrapper;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -112,6 +114,14 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         }
 
         return sales;
+    }
+
+    @Override
+    public BailianOrder getOrderDetail(String orderNo) {
+        BailianOrder order = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("order_no", orderNo));
+        List<BailianOrderItem> list = shoppingOrderItemMapper.selectList(new QueryWrapper<BailianOrderItem>().eq("order_id",order.getOrderNo()));
+        order.setBailianOrders(list);
+        return order;
     }
 
 

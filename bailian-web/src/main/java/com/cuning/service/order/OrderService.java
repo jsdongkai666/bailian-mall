@@ -11,4 +11,6 @@ import com.cuning.bean.shoppingOrder.BailianOrder;
  */
 public interface OrderService {
     boolean insertOrder(BailianOrder bailianOrder);
+
+    BailianOrder getOrderDetail(String orderNo);
 }

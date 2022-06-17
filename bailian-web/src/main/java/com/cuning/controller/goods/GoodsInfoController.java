@@ -33,9 +33,9 @@ public class GoodsInfoController {
 
     @PostMapping("/addGoods")
     @ApiOperation(value = "新增商品")
-    public RequestResult<String> saveGoods (HttpServletRequest request, @RequestBody BailianGoodsInfo goodsInfo) throws Exception{
+    public RequestResult<String> saveGoods(HttpServletRequest request, @RequestBody BailianGoodsInfo goodsInfo) throws Exception {
         User user = JwtUtil.parseJWT(request.getHeader("token"));
-        if (goodsInfoService.saveGoods(goodsInfo, user.getUserId()) != null){
+        if (goodsInfoService.saveGoods(goodsInfo, user.getUserId()) != null) {
             return ResultBuildUtil.success("商品添加成功！");
         }
         return ResultBuildUtil.fail("商品添加失败！");
@@ -43,9 +43,9 @@ public class GoodsInfoController {
 
     @GetMapping("/queryGoodsById")
     @ApiOperation(value = "根据id查询商品")
-    public RequestResult<BailianGoodsInfo> queryGoodsById(@RequestParam String goodsId){
+    public RequestResult<BailianGoodsInfo> queryGoodsById(@RequestParam String goodsId) {
         BailianGoodsInfo bailianGoodsInfo = goodsInfoService.queryGoodsById(goodsId);
-        if (bailianGoodsInfo != null){
+        if (bailianGoodsInfo != null) {
             return ResultBuildUtil.success(bailianGoodsInfo);
         }
         return ResultBuildUtil.fail(bailianGoodsInfo);
@@ -53,9 +53,9 @@ public class GoodsInfoController {
 
     @PostMapping("/updateGoods")
     @ApiOperation(value = "修改商品")
-    public RequestResult<String> updateGoodsInfo(HttpServletRequest request,@RequestBody BailianGoodsInfo goodsInfo) throws Exception{
+    public RequestResult<String> updateGoodsInfo(HttpServletRequest request, @RequestBody BailianGoodsInfo goodsInfo) throws Exception {
         User user = JwtUtil.parseJWT(request.getHeader("token"));
-        if (goodsInfoService.updateGoodsInfo(goodsInfo, user.getUserId()) != null){
+        if (goodsInfoService.updateGoodsInfo(goodsInfo, user.getUserId()) != null) {
             return ResultBuildUtil.success("商品修改成功！");
         }
         return ResultBuildUtil.fail("商品修改失败！");
@@ -63,8 +63,8 @@ public class GoodsInfoController {
 
     @PostMapping("/updateStatus")
     @ApiOperation(value = "商品上下架")
-    public RequestResult<String > updateGoodsSellStatus(@RequestParam String  goodsId, @RequestParam Byte goodsSellStatus) {
-        if (goodsInfoService.updateGoodsSellStatus(goodsId,goodsSellStatus)){
+    public RequestResult<String> updateGoodsSellStatus(@RequestParam String goodsId, @RequestParam Byte goodsSellStatus) {
+        if (goodsInfoService.updateGoodsSellStatus(goodsId, goodsSellStatus)) {
             return ResultBuildUtil.success("商品上架状态修改成功！");
         }
         return ResultBuildUtil.success("商品上架状态修改失败！");
@@ -72,8 +72,8 @@ public class GoodsInfoController {
 
     @GetMapping("/deleteGoods")
     @ApiOperation(value = "删除商品")
-    public RequestResult<String> deleteGoodsInfo(@RequestParam String goodsId){
-        if (goodsInfoService.deleteGoodsInfo(goodsId) != null){
+    public RequestResult<String> deleteGoodsInfo(@RequestParam String goodsId) {
+        if (goodsInfoService.deleteGoodsInfo(goodsId) != null) {
             return ResultBuildUtil.success("商品删除成功！");
         }
         return ResultBuildUtil.fail("商品删除失败！");
@@ -81,9 +81,9 @@ public class GoodsInfoController {
 
     @GetMapping("/queryGoodsPage")
     @ApiOperation(value = "分页查询商品")
-    public RequestResult<Page<BailianGoodsInfo>> queryGoodsInfoPage(@RequestParam Integer pageNo, @RequestParam Integer pageSize){
-        Page<BailianGoodsInfo> page = goodsInfoService.queryGoodsInfoPage(pageNo,pageSize);
-        if (page.getTotal()>0){
+    public RequestResult<Page<BailianGoodsInfo>> queryGoodsInfoPage(@RequestParam Integer pageNo, @RequestParam Integer pageSize) {
+        Page<BailianGoodsInfo> page = goodsInfoService.queryGoodsInfoPage(pageNo, pageSize);
+        if (page.getTotal() > 0) {
             return ResultBuildUtil.success(page);
         }
         return ResultBuildUtil.fail(page);

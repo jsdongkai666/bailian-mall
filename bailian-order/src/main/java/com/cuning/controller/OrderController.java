@@ -73,6 +73,13 @@ public class OrderController {
         return shoppingOrderService.selectCount(goodsId);
     }
 
+    @GetMapping("/getOrderDetail")
+    @ApiOperation(("/getOrderDetail"))
+    public BailianOrder getOrderDetail(@RequestParam("orderNo") String orderNo){
+        return shoppingOrderService.getOrderDetail(orderNo);
+    }
+
+
 
 
 }

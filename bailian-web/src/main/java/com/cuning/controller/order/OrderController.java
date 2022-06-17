@@ -19,6 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +52,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @ApiOperation("/统一下单，创建订单")
+    @ApiOperation("统一下单/创建订单")
     @CheckToken
     @PostMapping("/createOrder")
     public RequestResult createOrder(@RequestParam("list") List<String> cartsIds, HttpServletRequest request) throws Exception {
@@ -97,16 +98,26 @@ public class OrderController {
         }else{
             return ResultBuildUtil.fail("插入失败");
         }
-
-
-
-
-
-
-
-
-
     }
+
+
+
+
+    /**
+     * 查看订单详情
+     */
+    @CheckToken
+    @GetMapping("/getOrderDetail")
+    @ApiOperation("查看订单详情")
+    public RequestResult getOrderDetail(@RequestParam String orderNo){
+        orderService.getOrderDetail(orderNo);
+        return null;
+    }
+
+
+
+
+
 
 
     @PostMapping("/seckillBuy")
