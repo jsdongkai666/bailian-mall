@@ -137,13 +137,18 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
     }
 
     @Override
-    public List<BailianGoodsCategory> queryGoodsCategory() {
-        return goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>());
+    public List<String> queryGoodsCategory() {
+        List<BailianGoodsCategory> list =goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>());
+        List<String> list1 = new ArrayList<>();
+        for(BailianGoodsCategory item : list){
+            list1.add(item.getCategoryName());
+        }
+        return list1;
     }
 
     @Override
     public List<Integer> queryCategoryByLevel(Integer categoryLevel) {
-        List<BailianGoodsCategory> list = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>().eq("category_id",categoryLevel));
+        List<BailianGoodsCategory> list = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>().eq("category_level",categoryLevel));
         List<Integer> list1 = new ArrayList<>();
         for(BailianGoodsCategory item : list){
             list1.add(item.getParentId());

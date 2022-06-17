@@ -44,7 +44,7 @@ public class GoodsCategoryController {
             return ResultBuildUtil.fail("分类只有三级，超出取值范围！");
         }
         if (categoryLevel ==1 && parentId !=0){
-            return ResultBuildUtil.fail("一级分类的父类id必须为0");
+            return ResultBuildUtil.fail("父分类id无效");
         }
         if (!goodsCategoryService.queryCategoryByLevel(categoryLevel).contains(parentId)){
             return ResultBuildUtil.fail("父分类id无效！");
@@ -89,7 +89,7 @@ public class GoodsCategoryController {
             return ResultBuildUtil.fail("分类只有三级，超出取值范围！");
         }
         if (categoryLevel ==1 && parentId !=0){
-            return ResultBuildUtil.fail("一级分类的父类id必须为0");
+            return ResultBuildUtil.fail("父分类id无效");
         }
         if (!goodsCategoryService.queryCategoryByLevel(categoryLevel).contains(parentId)){
             return ResultBuildUtil.fail("父分类id无效！");

@@ -48,7 +48,7 @@ public interface GoodsCategoryFeignService {
     BailianGoodsCategory queryCategoryById(@RequestParam("categoryId") Integer categoryId);
 
     @PostMapping("/queryGoodsCategoryAll")
-    List<BailianGoodsCategory> queryGoodsCategory();
+    List<String> queryGoodsCategory();
 
     @GetMapping("/queryCategoryByLevel")
     List<Integer> queryCategoryByLevel(@RequestParam("categoryLevel") Integer categoryLevel);

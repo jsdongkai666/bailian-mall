@@ -34,7 +34,7 @@ public interface GoodsCategoryService extends IService<BailianGoodsCategory> {
 
     BailianGoodsCategory queryCategoryById(Integer categoryId);
 
-    List<BailianGoodsCategory> queryGoodsCategory();
+    List<String> queryGoodsCategory();
 
     List<Integer> queryCategoryByLevel(Integer categoryLevel);
 

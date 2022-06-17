@@ -117,10 +117,10 @@ public class GoodsCagetoryController {
      * @date   : 2022/6/17 0017
      * @param  : []
      * @return : java.util.List<com.cuning.bean.goods.BailianGoodsCategory>
-     * @description : 查询分类表中所有数据
+     * @description : 查询分类表中所有分类名
      */
     @PostMapping("/queryGoodsCategoryAll")
-    public List<BailianGoodsCategory> queryGoodsCategory(){
+    public List<String> queryGoodsCategory(){
         return goodsCategoryService.queryGoodsCategory();
     }
 

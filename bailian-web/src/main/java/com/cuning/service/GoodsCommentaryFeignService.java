@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 /*
  * @Created on : 2022/6/15 0015
  * <p>
@@ -23,13 +25,13 @@ public interface GoodsCommentaryFeignService {
                                                       @RequestParam("goodsId") String goodsId, @RequestParam("commentaryType") Integer commentaryType);
 
     @PostMapping("/saveGoodsCommentary")
-    boolean saveGoodsCommentary(@RequestParam("userId") String userId,@RequestParam("userName") String userName,
-                                @RequestParam("userHeadImg") String userHeadImg,@RequestParam("orderNo") String orderNo,
-                                @RequestParam("goodsId") String goodsId, @RequestParam("commentaryLevel") Integer commentaryLevel,
-                                @RequestParam("goodsCommentary") String goodsCommentary, @RequestParam("commentaryUrl") String commentaryUrl);
+    Map<String,String> saveGoodsCommentary(@RequestParam("userId") String userId, @RequestParam("userName") String userName,
+                                           @RequestParam("userHeadImg") String userHeadImg, @RequestParam("orderNo") String orderNo,
+                                           @RequestParam("goodsId") String goodsId, @RequestParam("commentaryLevel") Integer commentaryLevel,
+                                           @RequestParam("goodsCommentary") String goodsCommentary, @RequestParam("commentaryUrl") String commentaryUrl);
 
     @GetMapping("/deleteGoodsCommentary")
-    boolean deleteGoodsCommentary(@RequestParam("userId") String userId,@RequestParam("orderNo") String orderNo,
+    Map<String,String> deleteGoodsCommentary(@RequestParam("userId") String userId,@RequestParam("orderNo") String orderNo,
                                   @RequestParam("goodsId") String goodsId);
 
     @GetMapping("/queryGoodsCommentaryType")
