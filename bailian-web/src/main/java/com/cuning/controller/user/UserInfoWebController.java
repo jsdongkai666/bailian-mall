@@ -173,48 +173,6 @@ public class UserInfoWebController {
         return ResultBuildUtil.success(bailianConsigneePage);
     }
 
-    /**
-     * @author : lixu
-     * @date   : 2022/06/15
-     * @param  : [java.lang.String]
-     * @return : com.cuning.bean.BailianConsignee
-     * @description : 根据用户id，查询该用户的默认地址
-     */
-    @GetMapping("/queryDefaultAddress")
-    @ApiOperation(value = "收货人默认地址查询",notes = "根据用户id，查询用户的默认地址")
-    @CheckToken
-    public RequestResult queryDefaultAddressByUserId(HttpServletRequest request) throws Exception {
-
-        // 从token中获取用户信息
-        User user = JwtUtil.parseJWT(request.getHeader("token"));
-        assert user != null;
-        String userId = user.getUserId();
-
-        // 判断用户是否异常
-        if (userId == null || userId.equals("")) {
-            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
-        }
-
-        // 判断该用户是否存在默认收货地址
-        BailianConsignee bailianConsignee = userFeignService.queryDefaultAddressByUserId(userId);
-        if (bailianConsignee == null) {
-            return ResultBuildUtil.fail("该用户没有默认地址！");
-        }
-        return  ResultBuildUtil.success(bailianConsignee);
-    }
-
-    /**
-     * @author : lixu
-     * @date   : 2022/06/17
-     * @param  : [java.lang.String]
-     * @return : com.cuning.bean.BailianConsignee
-     * @description : 根据收货地址id，查询收货地址详情
-     */
-    @GetMapping("/queryAddressByConsigneeId")
-    @ApiOperation(value = "查询收货地址",notes = "根据收货地址id，查询收货地址详情")
-    public BailianConsignee queryAddressByConsigneeId(@RequestParam("consigneeId") String consigneeId){
-        return userFeignService.queryAddressByConsigneeId(consigneeId);
-    }
 
     /**
      * Created On : 2022/06/14.

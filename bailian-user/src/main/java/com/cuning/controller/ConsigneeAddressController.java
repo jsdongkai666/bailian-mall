@@ -60,37 +60,6 @@ public class ConsigneeAddressController {
      * @author : lixu
      * @date   : 2022/06/15
      * @param  : [java.lang.String]
-     * @return : com.cuning.util.RequestResult<com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.cuning.bean.BailianConsignee>>
-     * @description : 根据用户id，查询用户的默认地址
-     */
-    @GetMapping("/queryDefaultAddress")
-    @ApiOperation(value = "收货人默认地址查询",notes = "根据用户id，查询收货人的默认地址")
-    public BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId){
-
-        // 根据用户id,调用接口查询默认地址
-        return addressService.selectDefaultAddressByUserId(userId);
-    }
-
-    /**
-     * @author : lixu
-     * @date   : 2022/06/15
-     * @param  : [java.lang.String]
-     * @return : com.cuning.util.RequestResult<com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.cuning.bean.BailianConsignee>>
-     * @description : 根据收货地址id，查询收货地址详情
-     */
-    @GetMapping("/queryAddressByConsigneeId")
-    @ApiOperation(value = "查询收货地址",notes = "根据收货地址id，查询收货地址详情")
-    public BailianConsignee queryAddressByConsigneeId(@RequestParam("consigneeId") String consigneeId){
-
-        // 根据收货地址id,调用接口查询收货地址
-        return addressService.selectAddressByConsigneeId(consigneeId);
-    }
-
-
-    /**
-     * @author : lixu
-     * @date   : 2022/06/15
-     * @param  : [java.lang.String]
      * @return : com.cuning.util.RequestResult<java.util.Map<java.lang.String,java.lang.String>>
      * @description : 根据地址id列表，批量删除收货人的地址
      */
