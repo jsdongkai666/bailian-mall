@@ -64,6 +64,9 @@ public class PageSupport<T> {
         if (totalCount > 0) {
             this.totalCount = totalCount;
             this.totalPage = this.totalCount % this.pageSize == 0 ? this.totalCount / this.pageSize : this.totalCount / this.pageSize + 1;
+        }else {
+            this.totalCount = 0;
+            this.totalPage = 0;
         }
     }
 }

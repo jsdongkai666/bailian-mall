@@ -22,6 +22,15 @@ public interface CouponService extends IService<BailianCoupon> {
      * @Description: 判断优惠券是否有效
      */
     String couponIsEfficient(String couponId);
+    
+    /** 
+    * @Param: [java.lang.String] 
+    * @return: boolean 
+    * @Author: dengteng
+    * @Date: 2022/6/17 
+    * @Description: 判断用户领取的数量是否超过可重复领取的数量 
+    */
+    boolean repeatPick(String couponId);
 
 
     /**

@@ -65,6 +65,11 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
     /**
      * @param : [java.lang.Integer]
      * @return : java.util.List<com.cuning.bean.goods.BailianGoodsInfo>
+     * @description : 根据分类id，查询该分类的所有商品
+     */
+    List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId);
+
+    /**
      * @author : lixu
      * @date : 2022/06/15
      * @description : 根据分类id，查询该分类的所有商品
@@ -88,6 +93,15 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
      * @description : 根据id，查询商品
      */
     BailianGoodsInfo queryGoodsInfoById(String goodsId);
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/17
+     * @param  : []
+     * @return : java.util.List<java.lang.String>
+     * @description : 查询所有商品id
+     */
+    List<String> queryGoodsIds();
 
     /**
      * @Param: [java.lang.String, java.lang.String]

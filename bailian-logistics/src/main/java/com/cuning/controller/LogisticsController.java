@@ -2,6 +2,7 @@ package com.cuning.controller;
 
 import com.cuning.bean.logistics.LogisticsCode;
 import com.cuning.bean.logistics.LogisticsInfo;
+import com.cuning.constant.CommonConstant;
 import com.cuning.service.KdService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,6 +27,44 @@ public class LogisticsController {
 
     @Autowired
     private KdService kdService;
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: java.util.Map<java.lang.String,java.lang.String>
+    * @Author: dengteng
+    * @Date: 2022/6/17
+    * @Description: 商品发货
+    */
+    @GetMapping("/ship")
+    public Map<String, String> ship(@RequestParam("orderId")String orderNo){
+        Map<String, String> result = new HashMap<>();
+
+        try {
+            Map<String, String> map = kdService.queryOrderStatus(orderNo);
+            if (!map.get("code").equals(CommonConstant.UNIFY_RETURN_FAIL_CODE)) {
+               return map;
+            }
+        } catch (Exception e) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "订单不存在");
+            return result;
+        }
+
+        // 发货
+        LogisticsCode logisticsCode = kdService.orderShip(orderNo);
+        if (logisticsCode != null) {
+            result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            result.put("msg", "商品发货成功");
+            result.put("logisticCode", logisticsCode.getLogisticCode());
+            result.put("shipperCode", logisticsCode.getShipperCode());
+            return result;
+        }
+
+        result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        result.put("msg", "商品发货失败！");
+        return result;
+    }
+
 
     /**
      * @Param: [java.lang.String, java.lang.String]

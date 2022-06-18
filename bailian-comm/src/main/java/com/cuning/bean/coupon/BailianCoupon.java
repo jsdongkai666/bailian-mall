@@ -18,7 +18,7 @@ import java.util.Date;
  * @author dengteng
  * @title: BailianCoupon
  * @projectName cuning-bailian
- * @description: TODO
+ * @description: 优惠券实体
  * @date 2022/6/14
  */
 @Data
