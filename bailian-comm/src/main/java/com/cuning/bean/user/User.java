@@ -43,6 +43,8 @@ public class User implements Serializable {
     private String userTel;
 
     @ApiModelProperty("用户生日")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date userBirth;
 
     @ApiModelProperty("用户唯一标识")
