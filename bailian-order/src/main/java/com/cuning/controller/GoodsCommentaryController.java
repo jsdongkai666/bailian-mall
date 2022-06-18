@@ -1,4 +1,6 @@
 package com.cuning.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsCommentary;
 import com.cuning.bean.shoppingOrder.BailianOrderItem;
@@ -10,6 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.awt.geom.QuadCurve2D;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
  * @Created on : 2022/6/13 0013
@@ -29,7 +35,6 @@ public class GoodsCommentaryController {
     private GoodsCommentaryService goodsCommentaryService;
 
 
-
     /***
      * @author : Administrator
      * @date   : 2022/6/13 0013
@@ -41,8 +46,8 @@ public class GoodsCommentaryController {
     public Page<BailianGoodsCommentary> queryGoodsCommentary(@RequestParam("pageNo") Integer pageNo,
                                                              @RequestParam("pageSize") Integer pageSize,
                                                              @RequestParam("goodsId") String goodsId,
-                                                             @RequestParam("commentaryType") Integer commentaryType){
-        return goodsCommentaryService.queryGoodsCommentary(pageNo,pageSize,goodsId,commentaryType);
+                                                             @RequestParam("commentaryType") Integer commentaryType) {
+        return goodsCommentaryService.queryGoodsCommentary(pageNo, pageSize, goodsId, commentaryType);
     }
 
     /***
@@ -53,17 +58,15 @@ public class GoodsCommentaryController {
      * @description : 对已完成订单中的商品进行评论或者追评
      */
     @PostMapping("/saveGoodsCommentary")
-    public boolean saveGoodsCommentary(@RequestParam String userId,@RequestParam String userName,@RequestParam String userHeadImg,@RequestParam String orderNo,@RequestParam String goodsId,
-                                                      @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl){
-        if (goodsCommentaryService.queryOrderItem(userId,orderNo,goodsId)){
-            Boolean flag = goodsCommentaryService.saveGoodsCommentary(commentaryLevel,goodsCommentary,commentaryUrl,userName,userHeadImg,goodsId,userId,orderNo);
-            if (flag){
-                if(goodsCommentaryService.updateOrderItemCommentaryType(userId,orderNo,goodsId)){
-                    return true;
-                }
-            }
+    public Map<String, String> saveGoodsCommentary(@RequestParam String userId, @RequestParam String userName, @RequestParam String userHeadImg, @RequestParam String orderNo, @RequestParam String goodsId,
+                                                   @RequestParam Integer commentaryLevel, @RequestParam String goodsCommentary, @RequestParam String commentaryUrl) {
+        Map<String, String> map = goodsCommentaryService.queryOrderItem(userId, orderNo, goodsId);
+        if (map.get("code").equals("500")) {
+            return map;
         }
-        return false;
+        map = goodsCommentaryService.saveGoodsCommentary(commentaryLevel, goodsCommentary, commentaryUrl, userName, userHeadImg, goodsId, userId, orderNo);
+        goodsCommentaryService.updateOrderItemCommentaryType(userId, orderNo, goodsId);
+        return map;
     }
 
     /***
@@ -74,8 +77,8 @@ public class GoodsCommentaryController {
      * @description : 删除评论
      */
     @GetMapping("/deleteGoodsCommentary")
-    public boolean deleteGoodsCommentary(@RequestParam String userId,@RequestParam String orderNo,@RequestParam String goodsId){
-        return goodsCommentaryService.deleteGoodsCommentary(userId,orderNo,goodsId);
+    public Map<String, String> deleteGoodsCommentary(@RequestParam String userId, @RequestParam String orderNo, @RequestParam String goodsId) {
+        return goodsCommentaryService.deleteGoodsCommentary(userId, orderNo, goodsId);
     }
 
     /***
@@ -86,8 +89,8 @@ public class GoodsCommentaryController {
      * @description :  分页查看待评价和已评价
      */
     @GetMapping("/queryGoodsCommentaryType")
-    public Page<BailianOrderItem> queryGoodsCommentaryType(@RequestParam String userId,@RequestParam Integer pageNo,@RequestParam Integer pageSize,@RequestParam Integer commentaryType){
-        return goodsCommentaryService.queryGoodsCommentaryType(pageNo,pageSize,commentaryType,userId);
+    public Page<BailianOrderItem> queryGoodsCommentaryType(@RequestParam String userId, @RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam Integer commentaryType) {
+        return goodsCommentaryService.queryGoodsCommentaryType(pageNo, pageSize, commentaryType, userId);
     }
 
     /***
@@ -103,14 +106,14 @@ public class GoodsCommentaryController {
     }
 
     /**
-     * @author : lixu
-     * @date   : 2022/06/16
-     * @param  : [java.lang.String]
+     * @param : [java.lang.String]
      * @return : java.lang.Integer
+     * @author : lixu
+     * @date : 2022/06/16
      * @description : 根据商品id，查询商品的评价数
      */
     @GetMapping("/queryCommentaryCount")
-    public Integer queryCommentaryCount(@RequestParam("goodsId") String goodsId){
+    public Integer queryCommentaryCount(@RequestParam("goodsId") String goodsId) {
         return goodsCommentaryService.selectCommentaryCount(goodsId);
     }
 

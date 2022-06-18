@@ -74,11 +74,11 @@ public class CarouselController {
      * @description : 删除轮播图
      */
     @PostMapping("/delCarousel")
-    @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
-    public boolean delCarousel(@RequestParam List<String> ids){
+    @ApiOperation(value = "删除轮播图",notes = "删除轮播图详情")
+    public boolean delCarousel(@RequestBody BailianCarousel bailianCarousel){
 
         // 调用接口删除轮播图
-        return carouselService.deleteCarousel(ids);
+        return carouselService.deleteCarousel(bailianCarousel);
     }
 
     /**

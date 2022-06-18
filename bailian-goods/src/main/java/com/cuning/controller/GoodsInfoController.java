@@ -33,8 +33,8 @@ public class GoodsInfoController {
      * @description : 新增商品
      */
     @PostMapping("/addGoods")
-    public BailianGoodsInfo saveGoods(@RequestBody BailianGoodsInfo goodsInfo,@RequestParam String userId){
-        return goodsInfoService.saveGoods(goodsInfo,userId);
+    public BailianGoodsInfo saveGoods(@RequestBody BailianGoodsInfo goodsInfo, @RequestParam String userId) {
+        return goodsInfoService.saveGoods(goodsInfo, userId);
     }
 
     /***
@@ -45,8 +45,8 @@ public class GoodsInfoController {
      * @description : 后台分页查询
      */
     @GetMapping("/queryGoodsPage")
-    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize){
-        return  goodsInfoService.queryGoodsInfoPage(pageNo,pageSize);
+    public Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize) {
+        return goodsInfoService.queryGoodsInfoPage(pageNo, pageSize);
     }
 
 
@@ -58,12 +58,12 @@ public class GoodsInfoController {
      * @description : 修改商品详情
      */
     @PostMapping("/updateGoods")
-    public BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo,@RequestParam String userId){
-        Boolean flag = goodsInfoService.updateGoodsInfo(goodsInfo,userId);
-        if (flag){
-            return  goodsInfo;
+    public BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo, @RequestParam String userId) {
+        Boolean flag = goodsInfoService.updateGoodsInfo(goodsInfo, userId);
+        if (flag) {
+            return goodsInfo;
         }
-       return null;
+        return null;
     }
 
     /***
@@ -74,8 +74,8 @@ public class GoodsInfoController {
      * @description : 商品上下架
      */
     @PostMapping("/updateStatus")
-    public Boolean updateGoodsSellStatus(@RequestParam String  goodsId,@RequestParam Byte goodsSellStatus){
-        return goodsInfoService.updateGoodsSellStatus(goodsId,goodsSellStatus);
+    public Boolean updateGoodsSellStatus(@RequestParam String goodsId, @RequestParam Byte goodsSellStatus) {
+        return goodsInfoService.updateGoodsSellStatus(goodsId, goodsSellStatus);
     }
 
     /***
@@ -86,49 +86,48 @@ public class GoodsInfoController {
      * @description :删除商品
      */
     @RequestMapping("/deleteGoods")
-    public boolean deleteGoodsInfo(@RequestParam String goodsId){
+    public boolean deleteGoodsInfo(@RequestParam String goodsId) {
         return goodsInfoService.deleteGoodsInfo(goodsId);
     }
 
     /**
-     * @author : lixu
-     * @date   : 2022/06/14
-     * @param  : [java.lang.Integer]
+     * @param : [java.lang.Integer]
      * @return : java.util.List<com.cuning.bean.goods.BailianGoodsInfo>
+     * @author : lixu
+     * @date : 2022/06/14
      * @description : 根据分类id，查询商品
      */
     @GetMapping("/queryGoodsByGoodsCategoryId")
-    @ApiOperation(value = "查询商品",notes = "根据分类id，查询商品")
-    public List<BailianGoodsInfo> queryGoodsByGoodCategoryId(@RequestParam Integer categoryId){
+    @ApiOperation(value = "查询商品", notes = "根据分类id，查询商品")
+    public List<BailianGoodsInfo> queryGoodsByGoodCategoryId(@RequestParam Integer categoryId) {
         return goodsInfoService.selectGoodsByGoodsCategoryId(categoryId);
     }
 
     /**
-     * @author : lixu
-     * @date   : 2022/06/14
-     * @param  : []
+     * @param : []
      * @return : java.util.List<java.lang.Integer>
+     * @author : lixu
+     * @date : 2022/06/14
      * @description : 查询商品的所有分类id
      */
     @GetMapping("/queryGoodsCategoryIds")
-    @ApiOperation(value = "查询分类id",notes = "查询商品的所有分类id")
-    public List<Integer> queryGoodsCategoryIds(){
+    @ApiOperation(value = "查询分类id", notes = "查询商品的所有分类id")
+    public List<Integer> queryGoodsCategoryIds() {
         return goodsInfoService.selectGoodsCategoryIds();
     }
 
     /**
-     * @author : lixu
-     * @date   : 2022/06/14
-     * @param  : [java.lang.Integer]
+     * @param : [java.lang.Integer]
      * @return : com.cuning.bean.goods.BailianGoodsInfo
+     * @author : lixu
+     * @date : 2022/06/14
      * @description : 根据id查询商品
      */
     @GetMapping("/queryGoodsById")
-    @ApiOperation(value = "查询商品",notes = "根据id查询商品")
-    public BailianGoodsInfo queryGoodsById(@RequestParam String goodsId){
-       return goodsInfoService.queryGoodsInfoById(goodsId);
+    @ApiOperation(value = "查询商品", notes = "根据id查询商品")
+    public BailianGoodsInfo queryGoodsById(@RequestParam String goodsId) {
+        return goodsInfoService.queryGoodsInfoById(goodsId);
     }
-
 
 
 }

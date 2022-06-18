@@ -1,7 +1,6 @@
 package com.cuning.service;
 
 
-
 import com.cuning.bean.SensitiveWord;
 
 import java.util.List;
@@ -16,10 +15,10 @@ import java.util.List;
 public interface SensitiveWordService {
 
     /**
-     * @author : zhukang
-     * @date   : 2022/4/28
-     * @param  : []
+     * @param : []
      * @return : java.util.Set<java.lang.String>
+     * @author : zhukang
+     * @date : 2022/4/28
      * @description : 查询所有的敏感词
      */
     List<SensitiveWord> getSensitiveWords();
