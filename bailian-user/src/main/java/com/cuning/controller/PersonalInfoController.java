@@ -6,6 +6,7 @@ import com.cuning.service.UserService;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
 import com.cuning.util.SnowFlake;
+import com.cuning.vo.UserInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -33,8 +34,6 @@ public class PersonalInfoController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private SnowFlake snowFlake;
 
     /**
      * @author : lixu
@@ -45,11 +44,37 @@ public class PersonalInfoController {
      */
     @GetMapping("/queryPersonInfo")
     @ApiOperation(value = "查看个人资料",notes = "用户个人资料展示")
-    public User queryPersonInfo(@RequestParam("userId") String userId){
+    public UserInfoVO queryPersonInfo(@RequestParam("userId") String userId){
 
         User user = userService.selectPersonInfoByUserId(userId);
-        user.setUserPassword(null);
-        return user;
+        String sex = "";
+        if (user.getUserSex() == 0) {
+            sex = "男";
+        }else {
+            sex= "女";
+        }
+        String checkStatus = "";
+        if (user.getCheckStatus() == 0) {
+            checkStatus = "未签到";
+        }else {
+            checkStatus = "已签到";
+        }
+        UserInfoVO userInfoVO = UserInfoVO.builder()
+                .userName(user.getUserName())
+                .userSex(sex)
+                .userBirth(user.getUserBirth())
+                .userMail(user.getUserMail())
+                .userHeadImg(user.getUserHeadImg())
+                .userPoints(user.getUserPoints())
+                .checkCounts(user.getCheckCounts())
+                .checkStatus(checkStatus)
+                .vipLevel(user.getVipLevel())
+                .vipDate(user.getVipDate())
+                .lastCheckDate(user.getLastCheckDate())
+                .userTel(user.getUserTel()).build();
+
+
+        return userInfoVO;
 
     }
 
