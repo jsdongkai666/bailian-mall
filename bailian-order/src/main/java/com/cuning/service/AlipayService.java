@@ -9,6 +9,6 @@ package com.cuning.service;
  */
 public interface AlipayService {
 
-    void sendMsgToQueue();
+    void sendMsgToQueue(String orderId);
 
 }

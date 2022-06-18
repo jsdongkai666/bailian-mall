@@ -117,7 +117,7 @@ public class AliPayController {
             System.out.println(b);
             if (b){
                 //这里可以更新订单的状态等等。。
-                alipayService.sendMsgToQueue();
+                alipayService.sendMsgToQueue(map.get("out_trade_no"));
             }else {
                 return "fail";
             }

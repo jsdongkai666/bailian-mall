@@ -59,4 +59,11 @@ public interface ShoppingOrderService {
      * @description : 根据商品id，查询订单数量
      */
     Integer selectCount(String goodsId);
+
+
+    /**
+     * 根据订单号获取详情
+     */
+    BailianOrder getOrderDetail(String orderNo);
+
 }

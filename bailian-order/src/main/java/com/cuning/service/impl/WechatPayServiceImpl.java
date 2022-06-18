@@ -105,6 +105,7 @@ public class WechatPayServiceImpl implements WechatPayService {
 
                 // TODO 业务处理
                 // 发送支付成功地响应结果，给订单中心该状态，此处应该发的是topic消息，方便测试，使用队列
+                wxpayNotifyResltMap.put("order_id",wxpayNotifyResltMap.get("out_trade_no"));
                 accountPayResultProducer.payOrderResultNotify(PaymentConstant.PAYMENT_MESSAGE_QUEUE_NAME,wxpayNotifyResltMap);
 
                 return WechatPayConstant.WECHT_PAY_NOTIFY_RESULT_RESPONSE_SUCCES;

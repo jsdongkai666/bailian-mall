@@ -26,11 +26,11 @@ public interface SeckillTradeOrderFeignService {
 
     @GetMapping("/payTradeOrder")
     Map<String, String> invokePayTradeOrderFeign(@RequestParam("userId") String userId,
-                                                   @RequestParam("prodId") String prodId,
+                                                   @RequestParam("totalFee") Integer totalFee,
                                                    @RequestParam("orderId") String orderId);
 
     @GetMapping("/aliPayTradeOrder")
     String invokeAliPayTradeOrderFeign(@RequestParam("userId") String userId,
-                                                 @RequestParam("prodId") String prodId,
+                                                 @RequestParam("totalFee") String  totalFee,
                                                  @RequestParam("orderId") String orderId);
 }

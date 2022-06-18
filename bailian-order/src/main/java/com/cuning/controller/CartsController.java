@@ -66,5 +66,11 @@ public class CartsController {
         return cartsService.modifyCartsById(id,buyCount);
     }
 
+    @ApiOperation("根据id列表获取购物车详情")
+    @GetMapping("/getCartProductByIds")
+    public List<BailianCartProducts> getCartProductByIds(@RequestParam List<String> ids){
+        return cartsService.getCartProductByIds(ids);
+    }
+
 
 }

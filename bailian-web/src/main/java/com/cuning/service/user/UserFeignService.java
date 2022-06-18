@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.BailianConsignee;
 import com.cuning.bean.user.User;
 import com.cuning.util.RequestResult;
+import com.cuning.vo.UserInfoVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ import java.util.Map;
 public interface UserFeignService {
 
     @GetMapping("/queryPersonInfo")
-    User queryPersonInfo(@RequestParam("userId") String userId);
+    UserInfoVO queryPersonInfo(@RequestParam("userId") String userId);
 
     @PostMapping("/modPersonInfo")
     boolean modPersonInfo(@RequestBody User user);

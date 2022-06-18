@@ -1,13 +1,15 @@
 package com.cuning.listener;
 
+import com.cuning.bean.shoppingOrder.BailianOrder;
 import com.cuning.constant.PaymentConstant;
+import com.cuning.service.ShoppingOrderService;
 import com.cuning.util.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -23,6 +25,9 @@ public class TradeOrderPayListener {
     @Autowired
     private RedisUtils redisUtils;
 
+    @Autowired
+    private ShoppingOrderService shoppingOrderService;
+
     @JmsListener(destination = PaymentConstant.PAYMENT_MESSAGE_QUEUE_NAME)
     public void saveTradeorderFromQueue(Map<String, String> resultMap){
         log.info("+++++ 订单支付结果：{},开始更新订单状态 ++++++",resultMap);
@@ -31,6 +36,14 @@ public class TradeOrderPayListener {
 
         // 模拟订单状态的改变，将redis中订单状态给为2，已支付
         //redisUtils.set(resultMap.get("out_trade_no"),2);
+        log.info(resultMap.toString());
+        BailianOrder order = shoppingOrderService.getOrderDetail(resultMap.get("order_id"));
+        order.setPayStatus(1);
+        order.setPayStatus(1);
+        order.setOrderStatus(1);
+        order.setPayTime(new Date());
+        order.setPayType(resultMap.get("pay_type")=="Alipay"?1:2);
+        shoppingOrderService.updateOrder(order);
 
         log.info("+++++ 收到订单支付结果,更新订单状态成功 ++++++");
     }

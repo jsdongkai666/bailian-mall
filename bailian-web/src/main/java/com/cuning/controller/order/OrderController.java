@@ -1,16 +1,34 @@
 package com.cuning.controller.order;
 
 
+import com.cuning.annotation.CheckToken;
+import com.cuning.bean.BailianConsignee;
+import com.cuning.bean.goods.BailianGoodsInfo;
+import com.cuning.bean.shoppingOrder.BailianOrder;
+import com.cuning.bean.shoppingOrder.BailianOrderItem;
+import com.cuning.bean.shoppingcarts.BailianCartProducts;
+import com.cuning.bean.user.User;
+import com.cuning.service.order.CartsService;
+import com.cuning.service.order.OrderService;
 import com.cuning.service.order.SeckillService;
+import com.cuning.service.user.UserFeignService;
+import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
+import com.cuning.util.SnowFlake;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @Api(tags = "订单模块")
@@ -19,11 +37,120 @@ import java.util.Map;
 public class OrderController {
 
     /**
-     * 创建订单 需要递：购物车信息，用户信息
+     * 创建订单 需要递：购物车信息，用户信息 -- List<BailianCartProducts>,HttpServletRequest
+     * 订单号：自动生成 订单no，自动生成，
      */
+    //引入雪花算法
+    @Autowired
+    SnowFlake snowFlake;
+
 
     @Autowired
     private SeckillService seckillService;
+
+    @Autowired
+    private CartsService cartsService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private UserFeignService userFeignService;
+
+    @ApiOperation("统一下单/创建订单")
+    @CheckToken
+    @PostMapping("/createOrder")
+    public RequestResult createOrder(@RequestParam("list") List<String> cartsIds, HttpServletRequest request) throws Exception {
+        //TODO 字段未完善 待修改
+        BailianOrder order = new BailianOrder();
+
+        //获取用户信息
+        String token = request.getHeader("token");
+        User user = JwtUtil.parseJWT(token);
+        //校验用户数目
+        if (user.getUserId() == null || user.getUserId() == ""){
+            return ResultBuildUtil.fail("用户数据错误");
+        }
+
+        //获取默认收货地址
+//        BailianConsignee bailianConsignee = userFeignService.queryDefaultAddressByUserId(user.getUserId());
+//        if (bailianConsignee == null) {
+//            return ResultBuildUtil.fail("该用户没有默认地址！请先设置默认地址");
+//        }
+
+        //设置id
+//        order.setOrderId("40"+String.valueOf(snowFlake.nextYourId()));
+        //设置订单号
+        order.setOrderNo("41"+(snowFlake.nextId()+"").substring(9,19));
+        //设置用户名
+        order.setUserName(user.getUserName());
+        //设置用户id
+        order.setUserId(user.getUserId());
+        //设置订单状态默认为0
+        order.setOrderStatus(0);
+        //设置删除
+        order.setIsDeleted(0);
+        //设置支付状态默认为0
+        order.setPayStatus(0);
+
+        //设置默认地址
+        order.setUserAddress("邓滕家");
+//        order.setUserAddress(bailianConsignee.getConsigneeAddress());
+
+        //获取购物车信息
+        List<BailianCartProducts> bailianCarts = cartsService.getCartProductByIds(cartsIds);
+        log.info(bailianCarts.toString());
+
+        //获取到下单的商品后 通过购物车列表 获取商品详情
+        double totalPrice = 0;
+        List<BailianOrderItem> bailianOrders = new ArrayList<>();
+        for (BailianCartProducts products:bailianCarts){
+            BailianGoodsInfo goodsDetail = cartsService.getGoodsDetail(products.getProductId());
+            BailianOrderItem bailianOrderItem = new BailianOrderItem();
+            bailianOrderItem.setOrderId(order.getOrderNo());
+            bailianOrderItem.setGoodsCount(products.getBuyNum());
+            BeanUtils.copyProperties(goodsDetail,bailianOrderItem);
+            bailianOrderItem.setTotalPrice(bailianOrderItem.getSellingPrice()*bailianOrderItem.getGoodsCount().doubleValue());
+            bailianOrderItem.setPriceAfterDiscount(bailianOrderItem.getTotalPrice());
+            bailianOrders.add(bailianOrderItem);
+            totalPrice += bailianOrderItem.getTotalPrice();
+        }
+        order.setBailianOrders(bailianOrders);
+        order.setTotalPrice((int) totalPrice);
+
+
+        //将订单插入数据库
+        if (orderService.insertOrder(order)){
+            return ResultBuildUtil.success(order);
+        }else{
+            return ResultBuildUtil.fail("插入失败");
+        }
+    }
+
+
+
+
+    /**
+     * 查看订单详情
+     */
+    @CheckToken
+    @GetMapping("/getOrderDetail")
+    @ApiOperation("查看订单详情")
+    public RequestResult getOrderDetail(@RequestParam String orderNo){
+        BailianOrder orderDetail = orderService.getOrderDetail(orderNo);
+        if (null != orderDetail){
+            return ResultBuildUtil.success(orderDetail);
+        }
+        else {
+            return ResultBuildUtil.fail("查询失败");
+        }
+    }
+
+
+
+
+
+
 
     @PostMapping("/seckillBuy")
     @ApiOperation(value = "开始秒杀", notes = "有序秒杀抢购")
@@ -109,24 +236,63 @@ public class OrderController {
     }
 
     @ApiOperation(value = "微信订单支付")
-    @GetMapping("/seckillPayOrder")
-    public RequestResult<Map<String, String>> secKillPayOrderInfo(@RequestParam String userId, @RequestParam String prodId,
-                                                                  @RequestParam String tradeOrderNo) {
+    @GetMapping("/wechatPayOrder")
+    @CheckToken
+    public RequestResult wechatPayOrderInfo( @RequestParam String tradeOrderNo,HttpServletRequest request) throws Exception {
 
-        //调用业务接口，支付订单（订单数据唉订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
-        Map<String,String> payOrderMap = seckillService.payOrder(userId, prodId, tradeOrderNo);
+        String token = request.getHeader("token");
+        User user = JwtUtil.parseJWT(token);
+        //校验用户数目
+        if (user.getUserId() == null || user.getUserId() == ""){
+            return ResultBuildUtil.fail("用户数据错误");
+        }
+        //TODO  根据订单获取价格
+        BailianOrder orderDetail = orderService.getOrderDetail(tradeOrderNo);
+        if (null == orderDetail){
+            return ResultBuildUtil.fail("订单有误，请检查您的订单");
+        }
+        List<BailianOrderItem> bailianOrders = orderDetail.getBailianOrders();
+        double sum = bailianOrders.stream().mapToDouble(BailianOrderItem::getPriceAfterDiscount).sum();
+        orderDetail.setTotalPrice((int) sum);
+
+        //更新订单价格
+        orderService.updateOrder(orderDetail);
+        //调用业务接口，支付订单（订单数据订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
+        Map<String,String> payOrderMap = seckillService.payOrder(user.getUserId(), (int) sum, tradeOrderNo);
 
         return ResultBuildUtil.success(payOrderMap);
 
     }
 
     @ApiOperation(value = "支付宝订单支付")
-    @GetMapping("/aliSeckillPayOrder")
-    public String aliSecKillPayOrderInfo(@RequestParam String userId, @RequestParam String prodId,
-                                                                  @RequestParam String tradeOrderNo) {
+    @GetMapping("/aliPayOrder")
+    @CheckToken
+    public String  aliPayOrderInfo( @RequestParam String tradeOrderNo,HttpServletRequest request) throws Exception {
+        //获取用户信息
+        String token = request.getHeader("token");
+        User user = JwtUtil.parseJWT(token);
+        //校验用户数目
+        if (user.getUserId() == null || user.getUserId() == ""){
+            return "用户数据错误";
+        }
 
+        //通过订单获取打折后的订单价格
+        BailianOrder orderDetail = orderService.getOrderDetail(tradeOrderNo);
+        if (null == orderDetail){
+            return "订单有误，请检查您的订单";
+        }
+        List<BailianOrderItem> bailianOrders = orderDetail.getBailianOrders();
+        double sum = bailianOrders.stream().mapToDouble(BailianOrderItem::getPriceAfterDiscount).sum();
+        orderDetail.setTotalPrice((int) sum);
+
+        //更新订单价格
+        orderService.updateOrder(orderDetail);
+
+
+
+        String totalFee = String.valueOf(sum);
         //调用业务接口，支付订单（订单数据唉订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
-        String payOrderMap = seckillService.AliPayOrder(userId, prodId, tradeOrderNo);
+        String payOrderMap = seckillService.AliPayOrder(user.getUserId(), totalFee, tradeOrderNo);
 
         return payOrderMap;
 
