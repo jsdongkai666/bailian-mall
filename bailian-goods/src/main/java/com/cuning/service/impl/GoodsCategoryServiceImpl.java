@@ -21,6 +21,7 @@ import com.cuning.vo.GoodsCategoryVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
     private GoodsInfoMapper goodsInfoMapper;
 
     @Override
-    public BailianGoodsCategory saveGoodsCategory(String categoryName,Integer categoryRank,Integer categoryLevel,Integer parentId,String userId) {
+    public BailianGoodsCategory saveGoodsCategory(String categoryName, Integer categoryRank, Integer categoryLevel, Integer parentId, String userId) {
         BailianGoodsCategory bailianGoodsCategory = new BailianGoodsCategory();
 
         bailianGoodsCategory.setCategoryName(categoryName);
@@ -50,7 +51,7 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
     }
 
     @Override
-    public Boolean updateGoodsCategory(Integer categoryId,String categoryName,Integer categoryRank,String userId) {
+    public Boolean updateGoodsCategory(Integer categoryId, String categoryName, Integer categoryRank, String userId) {
         BailianGoodsCategory bailianGoodsCategory = goodsCategoryMapper.selectById(categoryId);
         bailianGoodsCategory.setCategoryName(categoryName);
         bailianGoodsCategory.setCategoryRank(categoryRank);
@@ -62,31 +63,31 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
     @Override
     public Boolean deleteGoodsCategory(Integer categoryId) {
         List<Integer> idsList = new ArrayList<>();
-        this.queryIdsList(categoryId,idsList);
+        this.queryIdsList(categoryId, idsList);
         idsList.add(categoryId);
         return this.removeByIds(idsList);
     }
 
     @Override
     public Page<BailianGoodsCategory> queryGoodsCategoryByCategoryLevelAndParentId(Integer pageNo, Integer pageSize, Integer categoryLevel, Integer parentId) {
-        Page<BailianGoodsCategory> page = new Page<>(pageNo,pageSize);
-        return goodsCategoryMapper.selectPage(page,new QueryWrapper<BailianGoodsCategory>().eq("category_level",categoryLevel).eq("parent_id",parentId).orderByAsc("category_rank"));
+        Page<BailianGoodsCategory> page = new Page<>(pageNo, pageSize);
+        return goodsCategoryMapper.selectPage(page, new QueryWrapper<BailianGoodsCategory>().eq("category_level", categoryLevel).eq("parent_id", parentId).orderByAsc("category_rank"));
     }
 
     @Override
     public void queryIdsList(Integer categoryId, List<Integer> ids) {
-       QueryWrapper<BailianGoodsCategory> wrapper =new QueryWrapper<>();
-       wrapper.eq("parent_id",categoryId).select("category_id");
-       List<BailianGoodsCategory> list = goodsCategoryMapper.selectList(wrapper);
-       list.stream().forEach(item ->{
-           ids.add(item.getCategoryId());
-           this.queryIdsList(item.getCategoryId(),ids);
-       });
+        QueryWrapper<BailianGoodsCategory> wrapper = new QueryWrapper<>();
+        wrapper.eq("parent_id", categoryId).select("category_id");
+        List<BailianGoodsCategory> list = goodsCategoryMapper.selectList(wrapper);
+        list.stream().forEach(item -> {
+            ids.add(item.getCategoryId());
+            this.queryIdsList(item.getCategoryId(), ids);
+        });
     }
 
     @Override
     public List<GoodsCategoryVO> queryCategory() {
-        List<BailianGoodsCategory> firstGoodsCategory = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>().eq("category_level",1).orderByDesc("category_rank").last("limit 0,10"));
+        List<BailianGoodsCategory> firstGoodsCategory = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>().eq("category_level", 1).orderByDesc("category_rank").last("limit 0,10"));
         List<GoodsCategoryVO> first = new ArrayList<>();
         if (!firstGoodsCategory.isEmpty()) {
             for (BailianGoodsCategory bailianGoodsCategory : firstGoodsCategory) {
@@ -118,17 +119,42 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
             }
             return first;
         }
-        return  null;
+        return null;
     }
 
     @Override
-    public Page<BailianGoodsInfo> queryGoodsInfoByCategory(Integer pageNo, Integer pageSize, String  categoryName,Boolean flag) {
-        Page<BailianGoodsInfo> page = new Page<>(pageNo,pageSize);
-        BailianGoodsCategory goodsCategory = goodsCategoryMapper.selectOne(new QueryWrapper<BailianGoodsCategory>().eq("category_name",categoryName).select("category_id"));
-        if (flag){
-            return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().eq("goods_category_id",goodsCategory.getCategoryId()).orderByAsc("selling_price"));
+    public Page<BailianGoodsInfo> queryGoodsInfoByCategory(Integer pageNo, Integer pageSize, String categoryName, Boolean flag) {
+        Page<BailianGoodsInfo> page = new Page<>(pageNo, pageSize);
+        BailianGoodsCategory goodsCategory = goodsCategoryMapper.selectOne(new QueryWrapper<BailianGoodsCategory>().eq("category_name", categoryName).select("category_id"));
+        if (flag) {
+            return goodsInfoMapper.selectPage(page, new QueryWrapper<BailianGoodsInfo>().eq("goods_category_id", goodsCategory.getCategoryId()).orderByAsc("selling_price"));
         }
-        return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>().eq("goods_category_id",goodsCategory.getCategoryId()).orderByDesc("selling_price"));
+        return goodsInfoMapper.selectPage(page, new QueryWrapper<BailianGoodsInfo>().eq("goods_category_id", goodsCategory.getCategoryId()).orderByDesc("selling_price"));
+    }
+
+    @Override
+    public BailianGoodsCategory queryCategoryById(Integer categoryId) {
+        return goodsCategoryMapper.selectById(categoryId);
+    }
+
+    @Override
+    public List<String> queryGoodsCategory() {
+        List<BailianGoodsCategory> list = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>());
+        List<String> list1 = new ArrayList<>();
+        for (BailianGoodsCategory item : list) {
+            list1.add(item.getCategoryName());
+        }
+        return list1;
+    }
+
+    @Override
+    public List<Integer> queryCategoryByLevel(Integer categoryLevel) {
+        List<BailianGoodsCategory> list = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>().eq("category_level", categoryLevel));
+        List<Integer> list1 = new ArrayList<>();
+        for (BailianGoodsCategory item : list) {
+            list1.add(item.getParentId());
+        }
+        return list1;
     }
 
 }
