@@ -1,4 +1,4 @@
-package com.cuning.service.impl;
+package com.cuning.service.Impl;
 
 import com.alipay.easysdk.factory.Factory;
 import com.alipay.easysdk.payment.page.models.AlipayTradePagePayResponse;
