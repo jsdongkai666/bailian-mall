@@ -82,7 +82,7 @@ public class JwtUtil {
                 user.setUserTel(claims.get("userTel").asString());
             }
             if (claims.get("useBirth")!=null){
-                user.setUserBirth(claims.get("useBirth").asString());
+                user.setUserBirth(claims.get("useBirth").asDate());
             }
             if (claims.get("userOpenid")!=null){
                 user.setUserOpenid(claims.get("userOpenid").asString());

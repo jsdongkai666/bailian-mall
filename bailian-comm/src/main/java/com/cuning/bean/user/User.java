@@ -25,7 +25,6 @@ import java.util.Date;
 @TableName("bailian_user")
 @ToString
 public class User implements Serializable {
-    private static final long serialVersionUID = -7771537176974371148L;
 
     @TableId
     @ApiModelProperty("用户id")
@@ -44,8 +43,8 @@ public class User implements Serializable {
     private String userTel;
 
     @ApiModelProperty("用户生日")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date userBirth;
 
     @ApiModelProperty("用户唯一标识")
