@@ -108,4 +108,14 @@ public interface GoodsCategoryService extends IService<BailianGoodsCategory> {
      */
     List<Integer> queryCategoryByLevel(Integer categoryLevel);
 
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/18 0018
+     * @param  : [java.lang.Integer, java.lang.Integer]
+     * @return : java.util.List<com.cuning.bean.goods.BailianGoodsCategory>
+     * @description : 根据分类等级和父分类id查询所有分类
+     */
+    List<String> queryCategoryByCategoryLevelAndParentId(Integer categoryLevel, Integer parentId);
+
+
 }

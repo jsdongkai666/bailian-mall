@@ -21,7 +21,7 @@ public class BailianGoodsCommentary {
     private String commentaryId;
 
     @ApiModelProperty("订单表主键")
-    private Integer orderId;
+    private String  orderId;
 
     @ApiModelProperty("商品编号")
     private String goodsId;

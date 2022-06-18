@@ -39,13 +39,19 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
     public BailianGoodsCategory saveGoodsCategory(String categoryName, Integer categoryRank, Integer categoryLevel, Integer parentId, String userId) {
         BailianGoodsCategory bailianGoodsCategory = new BailianGoodsCategory();
 
+        List<String> list = this.queryCategoryByCategoryLevelAndParentId(categoryLevel,parentId);
+        if (!list.isEmpty()){
+            if (list.contains(categoryName)){
+                return null;
+            }
+        }
         bailianGoodsCategory.setCategoryName(categoryName);
         bailianGoodsCategory.setCategoryRank(categoryRank);
         bailianGoodsCategory.setCreateTime(new Date());
         bailianGoodsCategory.setCreateUser(userId);
         bailianGoodsCategory.setCategoryLevel(categoryLevel);
         bailianGoodsCategory.setParentId(parentId);
-        Integer insert = goodsCategoryMapper.insert(bailianGoodsCategory);
+        goodsCategoryMapper.insert(bailianGoodsCategory);
 
         return bailianGoodsCategory;
     }
@@ -154,6 +160,16 @@ public class GoodsCategoryServiceImpl extends ServiceImpl<GoodsCategoryMapper, B
         for (BailianGoodsCategory item : list) {
             list1.add(item.getParentId());
         }
+        return list1;
+    }
+
+    @Override
+    public List<String> queryCategoryByCategoryLevelAndParentId(Integer categoryLevel, Integer parentId) {
+        List<BailianGoodsCategory> list  = goodsCategoryMapper.selectList(new QueryWrapper<BailianGoodsCategory>().eq("category_level",categoryLevel).eq("parent_id",parentId));
+        List<String> list1 = new ArrayList<>();
+        list.stream().forEach(item -> {
+            list1.add(item.getCategoryName());
+        });
         return list1;
     }
 
