@@ -2,6 +2,7 @@ package com.cuning.controller.order;
 
 
 import com.cuning.annotation.CheckToken;
+import com.cuning.bean.BailianConsignee;
 import com.cuning.bean.goods.BailianGoodsInfo;
 import com.cuning.bean.shoppingOrder.BailianOrder;
 import com.cuning.bean.shoppingOrder.BailianOrderItem;
@@ -10,6 +11,7 @@ import com.cuning.bean.user.User;
 import com.cuning.service.order.CartsService;
 import com.cuning.service.order.OrderService;
 import com.cuning.service.order.SeckillService;
+import com.cuning.service.user.UserFeignService;
 import com.cuning.util.JwtUtil;
 import com.cuning.util.RequestResult;
 import com.cuning.util.ResultBuildUtil;
@@ -52,6 +54,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private UserFeignService userFeignService;
+
     @ApiOperation("统一下单/创建订单")
     @CheckToken
     @PostMapping("/createOrder")
@@ -67,30 +72,52 @@ public class OrderController {
             return ResultBuildUtil.fail("用户数据错误");
         }
 
-        order.setOrderId(Integer.valueOf(String.valueOf(snowFlake.nextId()).substring(13,19)));
-        order.setOrderNo(String.valueOf(snowFlake.nextId()));
+        //获取默认收货地址
+//        BailianConsignee bailianConsignee = userFeignService.queryDefaultAddressByUserId(user.getUserId());
+//        if (bailianConsignee == null) {
+//            return ResultBuildUtil.fail("该用户没有默认地址！请先设置默认地址");
+//        }
+
+        //设置id
+//        order.setOrderId("40"+String.valueOf(snowFlake.nextYourId()));
+        //设置订单号
+        order.setOrderNo("41"+(snowFlake.nextId()+"").substring(9,19));
+        //设置用户名
         order.setUserName(user.getUserName());
+        //设置用户id
         order.setUserId(user.getUserId());
-        order.setUserAddress("江苏省南京市江宁区淳化街道格致路99号");
+        //设置订单状态默认为0
         order.setOrderStatus(0);
+        //设置删除
         order.setIsDeleted(0);
+        //设置支付状态默认为0
         order.setPayStatus(0);
+
+        //设置默认地址
+        order.setUserAddress("邓滕家");
+//        order.setUserAddress(bailianConsignee.getConsigneeAddress());
 
         //获取购物车信息
         List<BailianCartProducts> bailianCarts = cartsService.getCartProductByIds(cartsIds);
         log.info(bailianCarts.toString());
 
         //获取到下单的商品后 通过购物车列表 获取商品详情
+        double totalPrice = 0;
         List<BailianOrderItem> bailianOrders = new ArrayList<>();
         for (BailianCartProducts products:bailianCarts){
             BailianGoodsInfo goodsDetail = cartsService.getGoodsDetail(products.getProductId());
             BailianOrderItem bailianOrderItem = new BailianOrderItem();
-            bailianOrderItem.setOrderId(order.getOrderId());
+            bailianOrderItem.setOrderId(order.getOrderNo());
             bailianOrderItem.setGoodsCount(products.getBuyNum());
             BeanUtils.copyProperties(goodsDetail,bailianOrderItem);
+            bailianOrderItem.setTotalPrice(bailianOrderItem.getSellingPrice()*bailianOrderItem.getGoodsCount().doubleValue());
+            bailianOrderItem.setPriceAfterDiscount(bailianOrderItem.getTotalPrice());
             bailianOrders.add(bailianOrderItem);
+            totalPrice += bailianOrderItem.getTotalPrice();
         }
         order.setBailianOrders(bailianOrders);
+        order.setTotalPrice((int) totalPrice);
+
 
         //将订单插入数据库
         if (orderService.insertOrder(order)){
@@ -110,8 +137,13 @@ public class OrderController {
     @GetMapping("/getOrderDetail")
     @ApiOperation("查看订单详情")
     public RequestResult getOrderDetail(@RequestParam String orderNo){
-        orderService.getOrderDetail(orderNo);
-        return null;
+        BailianOrder orderDetail = orderService.getOrderDetail(orderNo);
+        if (null != orderDetail){
+            return ResultBuildUtil.success(orderDetail);
+        }
+        else {
+            return ResultBuildUtil.fail("查询失败");
+        }
     }
 
 
@@ -215,9 +247,18 @@ public class OrderController {
             return ResultBuildUtil.fail("用户数据错误");
         }
         //TODO  根据订单获取价格
-        Integer totalFee = 0;
+        BailianOrder orderDetail = orderService.getOrderDetail(tradeOrderNo);
+        if (null == orderDetail){
+            return ResultBuildUtil.fail("订单有误，请检查您的订单");
+        }
+        List<BailianOrderItem> bailianOrders = orderDetail.getBailianOrders();
+        double sum = bailianOrders.stream().mapToDouble(BailianOrderItem::getPriceAfterDiscount).sum();
+        orderDetail.setTotalPrice((int) sum);
+
+        //更新订单价格
+        orderService.updateOrder(orderDetail);
         //调用业务接口，支付订单（订单数据订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
-        Map<String,String> payOrderMap = seckillService.payOrder(user.getUserId(),totalFee, tradeOrderNo);
+        Map<String,String> payOrderMap = seckillService.payOrder(user.getUserId(), (int) sum, tradeOrderNo);
 
         return ResultBuildUtil.success(payOrderMap);
 
@@ -234,7 +275,22 @@ public class OrderController {
         if (user.getUserId() == null || user.getUserId() == ""){
             return "用户数据错误";
         }
-        String totalFee = "1000";
+
+        //通过订单获取打折后的订单价格
+        BailianOrder orderDetail = orderService.getOrderDetail(tradeOrderNo);
+        if (null == orderDetail){
+            return "订单有误，请检查您的订单";
+        }
+        List<BailianOrderItem> bailianOrders = orderDetail.getBailianOrders();
+        double sum = bailianOrders.stream().mapToDouble(BailianOrderItem::getPriceAfterDiscount).sum();
+        orderDetail.setTotalPrice((int) sum);
+
+        //更新订单价格
+        orderService.updateOrder(orderDetail);
+
+
+
+        String totalFee = String.valueOf(sum);
         //调用业务接口，支付订单（订单数据唉订单中心，保存了订单的商品，价格等信息，支付要先到订单中心，由订单中心发起对账务支付的调用）
         String payOrderMap = seckillService.AliPayOrder(user.getUserId(), totalFee, tradeOrderNo);
 

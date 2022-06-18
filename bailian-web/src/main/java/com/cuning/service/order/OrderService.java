@@ -13,4 +13,6 @@ public interface OrderService {
     boolean insertOrder(BailianOrder bailianOrder);
 
     BailianOrder getOrderDetail(String orderNo);
+
+    boolean updateOrder(BailianOrder order);
 }

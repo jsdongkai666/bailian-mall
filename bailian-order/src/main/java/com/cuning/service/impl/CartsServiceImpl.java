@@ -9,6 +9,7 @@ import com.cuning.mapper.CartProductsMapper;
 import com.cuning.mapper.CartsMapper;
 import com.cuning.service.CartsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,7 +64,6 @@ public class CartsServiceImpl  implements CartsService {
 
     @Override
     public boolean modifyCarts(BailianCarts bailianCarts){
-        bailianCarts.setUpdatedAt(new Date());
         if (bailianCarts.getProductsList()!=null) {
             for (BailianCartProducts bailianCartsProducts : bailianCarts.getProductsList()) {
                 bailianCartsProducts.setUpdatedAt(new Date());
@@ -76,10 +76,13 @@ public class CartsServiceImpl  implements CartsService {
 
     @Override
     public BailianCarts getCartsDetailByUserId(String userId) {
-        BailianCarts carts = cartsMapper.selectOne(new QueryWrapper<BailianCarts>().eq("user_id", userId));
-        List<BailianCartProducts> productsList = cartProductsMapper.selectList(new QueryWrapper<BailianCartProducts>().eq("cart_id",carts.getId()));
-        carts.setProductsList(productsList);
-        return carts;
+        List<BailianCarts> carts = cartsMapper.selectList(new QueryWrapper<BailianCarts>().eq("user_id", userId));
+        if (carts.size()==0){
+            return null;
+        }
+        List<BailianCartProducts> productsList = cartProductsMapper.selectList(new QueryWrapper<BailianCartProducts>().eq("cart_id",carts.get(0).getId()));
+        carts.get(0).setProductsList(productsList);
+        return carts.get(0);
     }
 
     @Override

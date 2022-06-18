@@ -15,4 +15,7 @@ public interface OrderFeignService {
 
     @GetMapping("/getOrderDetail")
     BailianOrder getOrderDetail(@RequestParam("orderNo") String orderNo);
+
+    @PostMapping("/updateOrder")
+    Boolean updateOrder(@RequestBody BailianOrder bailianOrder);
 }

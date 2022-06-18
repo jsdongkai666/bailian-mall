@@ -97,6 +97,7 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         if (!bailianOrder.getUserPhone().isEmpty()) updateWrapper.set("user_phone", bailianOrder.getUserPhone());
         if (!bailianOrder.getUserAddress().isEmpty()) updateWrapper.set("user_address", bailianOrder.getUserAddress());
         if (bailianOrder.getIsDeleted() != 0) updateWrapper.set("is_deleted", bailianOrder.getIsDeleted());
+        if (bailianOrder.getPayTime() != null) updateWrapper.set("pay_time", bailianOrder.getPayTime());
 
 
         updateWrapper.eq("order_id", bailianOrder.getOrderId());

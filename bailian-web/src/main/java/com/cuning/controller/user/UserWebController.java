@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -75,7 +76,7 @@ public class UserWebController {
                 build.setUserTel(user.get("userTel").toString());
             }
             if (user.get("userBirth") != null){
-                build.setUserBirth(user.get("userBirth").toString());
+                build.setUserBirth(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.get("userBirth").toString()) );
             }
             if (user.get("userOpenid") != null){
                 build.setUserOpenid(user.get("userOpenid").toString());
@@ -128,7 +129,7 @@ public class UserWebController {
                 build.setUserTel(user.get("userTel").toString());
             }
             if (user.get("userBirth") != null){
-                build.setUserBirth(user.get("userBirth").toString());
+                build.setUserBirth(new SimpleDateFormat("yyyy-MM-dd").parse(user.get("userBirth").toString()));
             }
             if (user.get("userOpenid") != null){
                 build.setUserOpenid(user.get("userOpenid").toString());

@@ -36,8 +36,11 @@ public class TradeOrderPayListener {
 
         // 模拟订单状态的改变，将redis中订单状态给为2，已支付
         //redisUtils.set(resultMap.get("out_trade_no"),2);
-        BailianOrder order = new BailianOrder();
-        order.setOrderId(Integer.valueOf(resultMap.get("order_no")));
+        log.info(resultMap.toString());
+        BailianOrder order = shoppingOrderService.getOrderDetail(resultMap.get("order_id"));
+        order.setPayStatus(1);
+        order.setPayStatus(1);
+        order.setOrderStatus(1);
         order.setPayTime(new Date());
         order.setPayType(resultMap.get("pay_type")=="Alipay"?1:2);
         shoppingOrderService.updateOrder(order);

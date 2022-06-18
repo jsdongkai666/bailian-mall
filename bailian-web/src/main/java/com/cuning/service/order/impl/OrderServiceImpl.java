@@ -20,4 +20,9 @@ public class OrderServiceImpl implements OrderService {
     public BailianOrder getOrderDetail(String orderNo) {
         return orderFeignService.getOrderDetail(orderNo);
     }
+
+    @Override
+    public boolean updateOrder(BailianOrder order) {
+        return orderFeignService.updateOrder(order);
+    }
 }

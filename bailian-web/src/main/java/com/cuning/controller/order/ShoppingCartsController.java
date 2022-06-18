@@ -155,7 +155,7 @@ public class ShoppingCartsController {
             return ResultBuildUtil.success("修改成功");
         }
         else {
-            return ResultBuildUtil.fail("购买失败");
+            return ResultBuildUtil.fail("修改失败");
         }
 
 

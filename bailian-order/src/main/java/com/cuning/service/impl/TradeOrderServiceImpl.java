@@ -96,6 +96,7 @@ public class TradeOrderServiceImpl implements TradeOrderService {
             // 二维码链接code_url
             resultMap.put("code_url", unifiedOrderResultMap.get("code_url"));
 
+
             return resultMap;
         }
 
