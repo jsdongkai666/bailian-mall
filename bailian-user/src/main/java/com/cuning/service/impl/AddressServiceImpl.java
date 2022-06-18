@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.BailianCarousel;
 import com.cuning.bean.BailianConsignee;
+import com.cuning.bean.user.User;
 import com.cuning.constant.CommonConstant;
 import com.cuning.mapper.AddressMapper;
 import com.cuning.service.AddressService;
@@ -14,11 +15,9 @@ import com.cuning.util.SnowFlake;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created On : 2022/06/13.
@@ -100,15 +99,19 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
     public boolean updateAddress(BailianConsignee bailianConsignee) {
 
         BailianConsignee bailianConsignee2 = addressMapper.selectById(bailianConsignee.getConsigneeId());
-        if (bailianConsignee.getConsigneeAddress() != null) {
-            bailianConsignee2.setConsigneeAddress(bailianConsignee.getConsigneeAddress());
+        if (StringUtils.isEmpty(bailianConsignee.getConsigneeName())) {
+            bailianConsignee.setConsigneeName(bailianConsignee2.getConsigneeName());
         }
-        if (bailianConsignee.getConsigneeName() != null) {
-            bailianConsignee2.setConsigneeName(bailianConsignee.getConsigneeName());
+        if (StringUtils.isEmpty(bailianConsignee.getConsigneeAddress())) {
+            bailianConsignee.setConsigneeAddress(bailianConsignee2.getConsigneeAddress());
         }
-        if (bailianConsignee.getConsigneeTel() != null) {
-            bailianConsignee2.setConsigneeTel(bailianConsignee.getConsigneeTel());
+        if (StringUtils.isEmpty(bailianConsignee.getConsigneeTel())) {
+            bailianConsignee.setConsigneeTel(bailianConsignee2.getConsigneeTel());
         }
+        if (StringUtils.isEmpty(bailianConsignee.getIsDefault())) {
+            bailianConsignee.setIsDefault(bailianConsignee2.getIsDefault());
+        }
+
         // 修改用户地址信息
         if (bailianConsignee.getIsDefault() == 1) {
             QueryWrapper<BailianConsignee> queryWrapper = new QueryWrapper<>();
@@ -121,14 +124,9 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
 
         }
 
-        return addressMapper.updateById(bailianConsignee2) > 0;
+        return addressMapper.updateById(bailianConsignee) > 0;
     }
 
 
-    @Override
-    public BailianConsignee selectDefaultAddressByUserId(String userId) {
-        QueryWrapper<BailianConsignee> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("is_default",1).eq("user_id",userId);
-        return addressMapper.selectOne(queryWrapper);
-    }
+
 }

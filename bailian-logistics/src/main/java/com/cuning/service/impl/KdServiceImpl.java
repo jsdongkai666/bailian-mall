@@ -3,9 +3,14 @@ package com.cuning.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.cuning.bean.logistics.LogisticsCode;
 import com.cuning.bean.logistics.LogisticsInfo;
+import com.cuning.bean.shoppingOrder.BailianOrder;
+import com.cuning.constant.CommonConstant;
 import com.cuning.constant.KdConstant;
 import com.cuning.constant.KdEnums;
 import com.cuning.service.KdService;
+import com.cuning.service.OrderFeignService;
+import com.netflix.discovery.converters.Auto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -27,6 +32,9 @@ import static com.cuning.util.KdUtils.urlEncoder;
  */
 @Service
 public class KdServiceImpl implements KdService {
+
+    @Autowired
+    private OrderFeignService orderFeignService;
 
     @Override
     public LogisticsInfo queryLogisticsInfo(String ShipperCode, String LogisticCode) throws Exception {
@@ -65,6 +73,67 @@ public class KdServiceImpl implements KdService {
         LogisticsCode logisticsCode = TRACKINGNUMBERLIST.get(new Random().nextInt(TRACKINGNUMBERLIST.size()));
         logisticsCode.setOrderNo(orderNo);
         return logisticsCode;
+    }
+
+    @Override
+    public Map<String, String> queryOrderStatus(String orderNo) {
+
+        Map<String, String> result = new HashMap<>();
+        BailianOrder bailianOrder = orderFeignService.selectOrder(orderNo);
+        if (bailianOrder == null) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "订单不存在");
+            return result;
+        }
+
+        if (bailianOrder.getPayStatus() != 1 ) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "订单未支付");
+            return result;
+        }
+
+        if (bailianOrder.getOrderStatus() < 1 ) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "订单未支付");
+            return result;
+        }
+
+        if (bailianOrder.getOrderStatus() > 1 ) {
+            result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            result.put("msg", "订单已发货");
+            return result;
+        }
+
+        // 支付成功
+        if (bailianOrder.getPayStatus() == 1 && bailianOrder.getOrderStatus() == 1) {
+            result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            result.put("msg", "订单已发货");
+            return result;
+        }
+
+        result.put("code", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        result.put("msg", "订单信息有误");
+        return result;
+
+    }
+
+    @Override
+    public LogisticsCode orderShip(String orderNo) {
+
+        BailianOrder bailianOrder = orderFeignService.selectOrder(orderNo);
+
+        LogisticsCode logisticsCode = TRACKINGNUMBERLIST.get(new Random().nextInt(TRACKINGNUMBERLIST.size()));
+        //logisticsCode.setOrderNo(bailianOrder.getOrderNo());
+
+        bailianOrder.setLogisticCode(logisticsCode.getLogisticCode());
+        bailianOrder.setShipperCode(logisticsCode.getShipperCode());
+        // 已发货
+        bailianOrder.setOrderStatus(3);
+
+        if (orderFeignService.updateOrder(bailianOrder)) {
+            return logisticsCode;
+        }
+        return null;
     }
 
 }

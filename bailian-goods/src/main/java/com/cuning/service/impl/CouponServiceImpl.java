@@ -1,9 +1,12 @@
 package com.cuning.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.coupon.BailianCoupon;
+import com.cuning.bean.coupon.BailianCouponUser;
 import com.cuning.mapper.CouponMapper;
 import com.cuning.service.CouponService;
+import com.cuning.service.CouponUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,9 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, BailianCoupon> 
     @Autowired(required = false)
     private CouponMapper couponMapper;
 
+    @Autowired
+    private CouponUserService couponUserService;
+
     @Override
     public String couponIsEfficient(String couponId) {
 
@@ -55,6 +61,22 @@ public class CouponServiceImpl extends ServiceImpl<CouponMapper, BailianCoupon> 
         }
 
         return "true";
+    }
+
+    @Override
+    public boolean repeatPick(String couponId) {
+
+        BailianCoupon coupon = this.getById(couponId);
+
+        QueryWrapper<BailianCouponUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(BailianCouponUser::getCouponTempId,couponId);
+        int count = couponUserService.count(queryWrapper);
+
+        if (count >= coupon.getRepeatQuantity()) {
+            return true;
+        }
+
+        return false;
     }
 
     @Override

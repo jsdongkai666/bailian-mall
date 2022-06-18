@@ -1,5 +1,6 @@
 package com.cuning.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.seckill.BailianSeckill;
 
 /**
@@ -9,7 +10,7 @@ import com.cuning.bean.seckill.BailianSeckill;
  * <p>
  * Description: SeckillService
  */
-public interface SeckillService {
+public interface SeckillService extends IService<BailianSeckill> {
     /**
      * @author : wangdefeng
      * @date   : 2022/6/17

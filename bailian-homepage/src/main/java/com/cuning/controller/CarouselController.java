@@ -41,13 +41,13 @@ public class CarouselController {
      */
     @ApiOperation(value = "查询轮播图",notes = "根据id，查询轮播图详情")
     @GetMapping("/queryCarousel")
-    public RequestResult<List<BailianCarousel>> queryCarousel(@RequestParam(required = false,defaultValue = "0") Integer rank){
+    public List<BailianCarousel> queryCarousel(@RequestParam(required = false,defaultValue = "0") Integer rank){
 
         // 调用接口查询轮播图详情
         List<BailianCarousel> carouselList = carouselService.selectCarouselList(rank);
         log.info("------ 轮播图详情：{} ------",carouselList);
 
-        return ResultBuildUtil.success(carouselList);
+        return carouselList;
     }
 
     /**
@@ -59,15 +59,11 @@ public class CarouselController {
      */
     @PostMapping("/addCarousel")
     @ApiOperation(value = "添加轮播图",notes = "添加轮播图详情")
-    public RequestResult<String> addCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId){
+    public boolean addCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId){
 
 
         // 调用接口添加轮播图
-        if (carouselService.addCarousel(bailianCarousel,userId)){
-            return ResultBuildUtil.success("添加成功！");
-        }
-
-        return ResultBuildUtil.fail("添加失败！");
+        return  carouselService.addCarousel(bailianCarousel,userId);
     }
 
     /**
@@ -79,17 +75,10 @@ public class CarouselController {
      */
     @PostMapping("/delCarousel")
     @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
-    public RequestResult<String> delCarousel(@RequestParam List<String> ids){
-
-        // 返回结果Map集合
-        Map<String,String> resultMap = new HashMap<>();
+    public boolean delCarousel(@RequestParam List<String> ids){
 
         // 调用接口删除轮播图
-        if (carouselService.deleteCarousel(ids)){
-            return ResultBuildUtil.success("删除成功！");
-        }
-
-        return ResultBuildUtil.fail("删除失败！");
+        return carouselService.deleteCarousel(ids);
     }
 
     /**
@@ -101,15 +90,11 @@ public class CarouselController {
      */
     @PostMapping("/modCarousel")
     @ApiOperation(value = "修改轮播图",notes = "根据id，修改轮播图详情")
-    public RequestResult<String> modCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId){
+    public boolean modCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId){
 
         // 调用接口修改轮播图
-        if (carouselService.updateCarousel(bailianCarousel,userId)){
+        return carouselService.updateCarousel(bailianCarousel,userId);
 
-            return ResultBuildUtil.success("修改成功！");
-        }
-
-        return ResultBuildUtil.fail("修改失败！");
     }
 
 

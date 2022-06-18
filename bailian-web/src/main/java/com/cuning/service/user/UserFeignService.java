@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,24 +25,21 @@ import java.util.Map;
 public interface UserFeignService {
 
     @GetMapping("/queryPersonInfo")
-    RequestResult<User> queryPersonInfo(@RequestParam("userId") String userId);
+    User queryPersonInfo(@RequestParam("userId") String userId);
 
     @PostMapping("/modPersonInfo")
-    RequestResult<String> modPersonInfo(@RequestBody User user);
+    boolean modPersonInfo(@RequestBody User user);
 
     @PostMapping("/modPwd")
-    RequestResult<Map<String,String>> modPassword(@RequestBody User user,
+    RequestResult<String> modPassword(@RequestBody User user,
                                                   @RequestParam("password") String password,
                                                   @RequestParam("newPassword") String newPassword,
                                                   @RequestParam("newPasswordAgain") String newPasswordAgain);
 
     @GetMapping("/queryAddress")
-    RequestResult<Page<BailianConsignee>> queryConsigneeAddress(@RequestParam("pageNo") Integer pageNo,
+    Page<BailianConsignee> queryConsigneeAddress(@RequestParam("pageNo") Integer pageNo,
                                                                 @RequestParam("pageSize") Integer pageSize,
                                                                 @RequestParam("userId") String userId);
-
-    @GetMapping("/queryDefaultAddress")
-    BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId);
 
     @PostMapping("/delAddress")
     RequestResult<Map<String,String>> delConsigneeAddress(@RequestParam("consigneeId") String consigneeId);
@@ -50,6 +48,6 @@ public interface UserFeignService {
     RequestResult<String> addConsigneeAddress(@RequestBody BailianConsignee bailianConsignee);
 
     @PostMapping("/modAddress")
-    RequestResult<String> modConsigneeAddress(@RequestBody BailianConsignee bailianConsignee);
+    boolean modConsigneeAddress(@RequestBody BailianConsignee bailianConsignee);
 
 }

@@ -93,6 +93,14 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
+    public List<String> queryGoodsIds() {
+        QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("goods_id");
+        List<BailianGoodsInfo> goodsInfoList = goodsInfoMapper.selectList(queryWrapper);
+        return goodsInfoList.stream().map(BailianGoodsInfo::getGoodsId).collect(Collectors.toList());
+    }
+
+    @Override
     public Map<String, String> setArrivalReminders(String userId, String goodsId) {
 
         List<Object> objects = redisUtils.lGet(goodsId + ":reminder", 0, -1);
