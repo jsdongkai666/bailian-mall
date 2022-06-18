@@ -1,4 +1,5 @@
 package com.cuning.controller;
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cuning.bean.goods.BailianGoodsCategory;
 import com.cuning.bean.goods.BailianGoodsInfo;
@@ -32,10 +33,10 @@ public class GoodsCagetoryController {
      * @description : 新增分类
      */
     @PostMapping("/saveGoodsCategory")
-    public BailianGoodsCategory saveGoodsCategory(@RequestParam String categoryName,@RequestParam Integer categoryRank,
-                                                  @RequestParam Integer categoryLevel,@RequestParam Integer parentId,
-                                                  @RequestParam String userId){
-        return goodsCategoryService.saveGoodsCategory(categoryName,categoryRank,categoryLevel,parentId,userId);
+    public BailianGoodsCategory saveGoodsCategory(@RequestParam String categoryName, @RequestParam Integer categoryRank,
+                                                  @RequestParam Integer categoryLevel, @RequestParam Integer parentId,
+                                                  @RequestParam String userId) {
+        return goodsCategoryService.saveGoodsCategory(categoryName, categoryRank, categoryLevel, parentId, userId);
     }
 
     /***
@@ -46,9 +47,9 @@ public class GoodsCagetoryController {
      * @description : 修改分类
      */
     @PostMapping("/updateGoodsCategory")
-    public Boolean updateGoodsCategory(@RequestParam Integer categoryId,@RequestParam String categoryName,
-                                                    @RequestParam Integer categoryRank,@RequestParam String userId){
-        return goodsCategoryService.updateGoodsCategory(categoryId,categoryName,categoryRank,userId);
+    public Boolean updateGoodsCategory(@RequestParam Integer categoryId, @RequestParam String categoryName,
+                                       @RequestParam Integer categoryRank, @RequestParam String userId) {
+        return goodsCategoryService.updateGoodsCategory(categoryId, categoryName, categoryRank, userId);
     }
 
     /***
@@ -59,7 +60,7 @@ public class GoodsCagetoryController {
      * @description : 删除分类
      */
     @PostMapping("/deleteGoodsCategory")
-    public boolean deleteGoodsCategory(@RequestParam Integer categoryId){
+    public boolean deleteGoodsCategory(@RequestParam Integer categoryId) {
         return goodsCategoryService.deleteGoodsCategory(categoryId);
     }
 
@@ -71,9 +72,9 @@ public class GoodsCagetoryController {
      * @description : 分页查询分类
      */
     @GetMapping("/queryGoodsCategory")
-    public Page<BailianGoodsCategory> queryGoodsCategoryPage(@RequestParam Integer pageNo,@RequestParam Integer pageSize,
-                                                             @RequestParam Integer categoryLevel,@RequestParam Integer parentId){
-        return goodsCategoryService.queryGoodsCategoryByCategoryLevelAndParentId(pageNo,pageSize,categoryLevel,parentId);
+    public Page<BailianGoodsCategory> queryGoodsCategoryPage(@RequestParam Integer pageNo, @RequestParam Integer pageSize,
+                                                             @RequestParam Integer categoryLevel, @RequestParam Integer parentId) {
+        return goodsCategoryService.queryGoodsCategoryByCategoryLevelAndParentId(pageNo, pageSize, categoryLevel, parentId);
     }
 
     /***
@@ -84,8 +85,8 @@ public class GoodsCagetoryController {
      * @description : 首页分类显示
      */
     @GetMapping("/queryCategory")
-    public List<GoodsCategoryVO> queryCategory(){
-        return  goodsCategoryService.queryCategory();
+    public List<GoodsCategoryVO> queryCategory() {
+        return goodsCategoryService.queryCategory();
     }
 
     /***
@@ -96,8 +97,8 @@ public class GoodsCagetoryController {
      * @description : 根据分类名分页查询商品详情
      */
     @GetMapping("/queryGoodsInfoByCategory")
-    public Page<BailianGoodsInfo> queryGoodsInfoByCategory(@RequestParam Integer pageNo,@RequestParam Integer pageSize,@RequestParam String categoryName,@RequestParam Boolean flag){
-        return goodsCategoryService.queryGoodsInfoByCategory(pageNo,pageSize,categoryName,flag);
+    public Page<BailianGoodsInfo> queryGoodsInfoByCategory(@RequestParam Integer pageNo, @RequestParam Integer pageSize, @RequestParam String categoryName, @RequestParam Boolean flag) {
+        return goodsCategoryService.queryGoodsInfoByCategory(pageNo, pageSize, categoryName, flag);
     }
 
     /***
@@ -108,7 +109,7 @@ public class GoodsCagetoryController {
      * @description : 根据分类id查询分类表
      */
     @GetMapping("/queryCategoryById")
-    public BailianGoodsCategory queryCategoryById(@RequestParam Integer categoryId){
+    public BailianGoodsCategory queryCategoryById(@RequestParam Integer categoryId) {
         return goodsCategoryService.queryCategoryById(categoryId);
     }
 
@@ -120,7 +121,7 @@ public class GoodsCagetoryController {
      * @description : 查询分类表中所有分类名
      */
     @PostMapping("/queryGoodsCategoryAll")
-    public List<String> queryGoodsCategory(){
+    public List<String> queryGoodsCategory() {
         return goodsCategoryService.queryGoodsCategory();
     }
 
@@ -132,7 +133,7 @@ public class GoodsCagetoryController {
      * @description : 根据分类等级查询分类表
      */
     @GetMapping("/queryCategoryByLevel")
-    public List<Integer> queryCategoryByLevel(@RequestParam Integer categoryLevel){
+    public List<Integer> queryCategoryByLevel(@RequestParam Integer categoryLevel) {
         return goodsCategoryService.queryCategoryByLevel(categoryLevel);
     }
 }

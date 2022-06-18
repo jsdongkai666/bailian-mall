@@ -16,23 +16,23 @@ import java.util.Map;
 
 public interface GoodsCommentaryService extends IService<BailianGoodsCommentary> {
 
-    Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo,Integer pageSize,String goodsId,Integer commentaryType);
+    Page<BailianGoodsCommentary> queryGoodsCommentary(Integer pageNo, Integer pageSize, String goodsId, Integer commentaryType);
 
-    Map<String,String> saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary, String commentaryUrl, String userName, String userHeadImg, String goodsId, String userId, String orderNo);
+    Map<String, String> saveGoodsCommentary(Integer commentaryLevel, String goodsCommentary, String commentaryUrl, String userName, String userHeadImg, String goodsId, String userId, String orderNo);
 
-    Map<String ,String> deleteGoodsCommentary(String userId,String orderNo,String goodsId);
+    Map<String, String> deleteGoodsCommentary(String userId, String orderNo, String goodsId);
 
-    Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo,Integer pageSize,Integer commentaryType,String userId);
+    Page<BailianOrderItem> queryGoodsCommentaryType(Integer pageNo, Integer pageSize, Integer commentaryType, String userId);
 
-    void updateOrderItemCommentaryType(String userId,String orderNo,String goodsId);
+    void updateOrderItemCommentaryType(String userId, String orderNo, String goodsId);
 
-    Map<String,String> queryOrderItem(String userId,String orderNo,String goodsId);
+    Map<String, String> queryOrderItem(String userId, String orderNo, String goodsId);
 
     /**
-     * @author : lixu
-     * @date   : 2022/06/16
-     * @param  : [java.lang.String]
+     * @param : [java.lang.String]
      * @return : java.lang.Integer
+     * @author : lixu
+     * @date : 2022/06/16
      * @description : 根据商品id，查询商品的评价数
      */
     Integer selectCommentaryCount(String goodsId);

@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.*;
  * <p>
  * @Description: GoodsInfoService
  **/
-@FeignClient(name="bailian-goods")
+@FeignClient(name = "bailian-goods")
 public interface GoodsInfoFeignService {
 
     @PostMapping("/addGoods")
-    BailianGoodsInfo saveGoods (@RequestBody BailianGoodsInfo goodsInfo,@RequestParam("userId") String userId);
+    BailianGoodsInfo saveGoods(@RequestBody BailianGoodsInfo goodsInfo, @RequestParam("userId") String userId);
 
     @GetMapping("/queryGoodsPage")
     Page<BailianGoodsInfo> queryGoodsInfoPage(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize);
 
     @PostMapping("/updateGoods")
-    BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo,@RequestParam("userId") String userId);
+    BailianGoodsInfo updateGoodsInfo(@RequestBody BailianGoodsInfo goodsInfo, @RequestParam("userId") String userId);
 
     @GetMapping("/deleteGoods")
     Boolean deleteGoodsInfo(@RequestParam("goodsId") String goodsId);
 
     @PostMapping("/updateStatus")
-    Boolean updateGoodsSellStatus(@RequestParam("goodsId") String  goodsId,@RequestParam("goodsSellStatus") Byte goodsSellStatus);
+    Boolean updateGoodsSellStatus(@RequestParam("goodsId") String goodsId, @RequestParam("goodsSellStatus") Byte goodsSellStatus);
 
     @GetMapping("/queryGoodsById")
     BailianGoodsInfo queryGoodsById(@RequestParam("goodsId") String goodsId);

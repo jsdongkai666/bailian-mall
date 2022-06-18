@@ -18,31 +18,31 @@ import java.util.List;
  * <p>
  * @Description: GoodsCategoryService
  **/
-@FeignClient(name="bailian-goods")
+@FeignClient(name = "bailian-goods")
 public interface GoodsCategoryFeignService {
 
     @PostMapping("/saveGoodsCategory")
-    BailianGoodsCategory saveGoodsCategory(@RequestParam("categoryName") String categoryName,@RequestParam("categoryRank") Integer categoryRank,
-                                           @RequestParam("categoryLevel") Integer categoryLevel,@RequestParam("parentId") Integer parentId,
+    BailianGoodsCategory saveGoodsCategory(@RequestParam("categoryName") String categoryName, @RequestParam("categoryRank") Integer categoryRank,
+                                           @RequestParam("categoryLevel") Integer categoryLevel, @RequestParam("parentId") Integer parentId,
                                            @RequestParam("userId") String userId);
 
     @PostMapping("/updateGoodsCategory")
     Boolean updateGoodsCategory(@RequestParam("categoryId") Integer categoryId, @RequestParam("categoryName") String categoryName,
-                                @RequestParam("categoryRank") Integer categoryRank,@RequestParam("userId") String userId);
+                                @RequestParam("categoryRank") Integer categoryRank, @RequestParam("userId") String userId);
 
     @PostMapping("/deleteGoodsCategory")
     Boolean deleteGoodsCategory(@RequestParam("categoryId") Integer categoryId);
 
     @GetMapping("/queryGoodsCategory")
-    Page<BailianGoodsCategory> queryGoodsCategoryByCategoryLevelAndParentId(@RequestParam("pageNo") Integer pageNo,@RequestParam("pageSize") Integer pageSize,
-                                                                            @RequestParam("categoryLevel") Integer categoryLevel,@RequestParam("parentId") Integer parentId);
+    Page<BailianGoodsCategory> queryGoodsCategoryByCategoryLevelAndParentId(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize,
+                                                                            @RequestParam("categoryLevel") Integer categoryLevel, @RequestParam("parentId") Integer parentId);
 
     @GetMapping("/queryCategory")
     List<GoodsCategoryVO> queryCategory();
 
     @GetMapping("/queryGoodsInfoByCategory")
-    Page<BailianGoodsInfo> queryGoodsInfoByCategory(@RequestParam("pageNo") Integer pageNo,@RequestParam("pageSize") Integer pageSize,
-                                                    @RequestParam("categoryName") String categoryName,@RequestParam("flag") Boolean flag);
+    Page<BailianGoodsInfo> queryGoodsInfoByCategory(@RequestParam("pageNo") Integer pageNo, @RequestParam("pageSize") Integer pageSize,
+                                                    @RequestParam("categoryName") String categoryName, @RequestParam("flag") Boolean flag);
 
     @GetMapping("/queryCategoryById")
     BailianGoodsCategory queryCategoryById(@RequestParam("categoryId") Integer categoryId);

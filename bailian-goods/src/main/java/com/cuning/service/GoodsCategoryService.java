@@ -18,19 +18,19 @@ import java.util.List;
 
 public interface GoodsCategoryService extends IService<BailianGoodsCategory> {
 
-    BailianGoodsCategory saveGoodsCategory(String categoryName,Integer categoryRank,Integer categoryLevel,Integer parentId,String userId);
+    BailianGoodsCategory saveGoodsCategory(String categoryName, Integer categoryRank, Integer categoryLevel, Integer parentId, String userId);
 
-    Boolean updateGoodsCategory(Integer categoryId,String categoryName,Integer categoryRank,String userId);
+    Boolean updateGoodsCategory(Integer categoryId, String categoryName, Integer categoryRank, String userId);
 
     Boolean deleteGoodsCategory(Integer categoryId);
 
-    Page<BailianGoodsCategory> queryGoodsCategoryByCategoryLevelAndParentId(Integer pageNo,Integer pageSize,Integer categoryLevel, Integer parentId);
+    Page<BailianGoodsCategory> queryGoodsCategoryByCategoryLevelAndParentId(Integer pageNo, Integer pageSize, Integer categoryLevel, Integer parentId);
 
-    void queryIdsList(Integer categoryId,List<Integer> ids);
+    void queryIdsList(Integer categoryId, List<Integer> ids);
 
     List<GoodsCategoryVO> queryCategory();
 
-    Page<BailianGoodsInfo> queryGoodsInfoByCategory(Integer pageNo,Integer pageSize,String categoryName,Boolean flag);
+    Page<BailianGoodsInfo> queryGoodsInfoByCategory(Integer pageNo, Integer pageSize, String categoryName, Boolean flag);
 
     BailianGoodsCategory queryCategoryById(Integer categoryId);
 
