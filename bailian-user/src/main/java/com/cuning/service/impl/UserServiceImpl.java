@@ -241,6 +241,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (StringUtils.isEmpty(user.getUserTel())) {
             user.setUserTel(user1.getUserTel());
         }
+        if (StringUtils.isEmpty(user.getUserHeadImg())) {
+            user.setUserHeadImg(user1.getUserHeadImg());
+        }
         return userMapper.updateById(user) > 0;
     }
 
