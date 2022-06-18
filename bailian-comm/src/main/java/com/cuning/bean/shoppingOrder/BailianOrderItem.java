@@ -25,7 +25,7 @@ public class BailianOrderItem {
     private String orderItemId;
 
     @ApiModelProperty("订单主键id")
-    private String  orderId;
+    private String orderId;
 
     @ApiModelProperty("关联商品id")
     private String goodsId;

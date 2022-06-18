@@ -76,7 +76,6 @@ public class UserInfoWebController {
     @ApiOperation(value = "修改个人资料",notes = "用户个人资料修改，性别，生日，昵称等")
     @CheckToken
     public RequestResult<String> modPersonInfo(HttpServletRequest request,
-                                               @ApiParam(name = "userName",value = "昵称")@RequestParam(value = "userName",required = false) String userName,
                                                @ApiParam(name = "userSex",value = "性别")@RequestParam(value = "userSex",required = false) Integer userSex,
                                                @ApiParam(name = "userTel",value = "手机号码")@RequestParam(value = "userTel",required = false) String userTel,
                                                @ApiParam(name = "userBirth",value = "生日")@RequestParam(value = "userBirth",required = false) String userBirth,
@@ -96,7 +95,6 @@ public class UserInfoWebController {
 
         // 新建一个实体，修改用户信息
         user.setUserId(userId);
-        user.setUserName(userName);
         user.setUserSex(userSex);
         user.setUserTel(userTel);
         if (!StringUtils.isEmpty(userBirth)) {
@@ -173,35 +171,6 @@ public class UserInfoWebController {
         return ResultBuildUtil.success(bailianConsigneePage);
     }
 
-    /**
-     * @author : lixu
-     * @date   : 2022/06/15
-     * @param  : [java.lang.String]
-     * @return : com.cuning.bean.BailianConsignee
-     * @description : 根据用户id，查询该用户的默认地址
-     */
-    @GetMapping("/queryDefaultAddress")
-    @ApiOperation(value = "收货人默认地址查询",notes = "根据用户id，查询用户的默认地址")
-    @CheckToken
-    public RequestResult queryDefaultAddressByUserId(HttpServletRequest request) throws Exception {
-
-        // 从token中获取用户信息
-        User user = JwtUtil.parseJWT(request.getHeader("token"));
-        assert user != null;
-        String userId = user.getUserId();
-
-        // 判断用户是否异常
-        if (userId == null || userId.equals("")) {
-            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
-        }
-
-        // 判断该用户是否存在默认收货地址
-        BailianConsignee bailianConsignee = userFeignService.queryDefaultAddressByUserId(userId);
-        if (bailianConsignee == null) {
-            return ResultBuildUtil.fail("该用户没有默认地址！");
-        }
-        return  ResultBuildUtil.success(bailianConsignee);
-    }
 
     /**
      * Created On : 2022/06/14.

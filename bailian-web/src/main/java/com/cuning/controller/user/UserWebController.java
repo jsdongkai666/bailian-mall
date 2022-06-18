@@ -76,7 +76,7 @@ public class UserWebController {
                 build.setUserTel(user.get("userTel").toString());
             }
             if (user.get("userBirth") != null){
-                build.setUserBirth(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.get("userBirth").toString()) );
+                build.setUserBirth(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.get("userBirth").toString()));
             }
             if (user.get("userOpenid") != null){
                 build.setUserOpenid(user.get("userOpenid").toString());
@@ -129,7 +129,7 @@ public class UserWebController {
                 build.setUserTel(user.get("userTel").toString());
             }
             if (user.get("userBirth") != null){
-                build.setUserBirth(new SimpleDateFormat("yyyy-MM-dd").parse(user.get("userBirth").toString()));
+                build.setUserBirth(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.get("userBirth").toString()));
             }
             if (user.get("userOpenid") != null){
                 build.setUserOpenid(user.get("userOpenid").toString());

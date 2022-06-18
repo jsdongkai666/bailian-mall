@@ -3,6 +3,9 @@ package com.cuning.service;
 
 import com.cuning.bean.logistics.LogisticsCode;
 import com.cuning.bean.logistics.LogisticsInfo;
+import com.cuning.bean.shoppingOrder.BailianOrder;
+
+import java.util.Map;
 
 /**
  * @author dengteng
@@ -30,5 +33,23 @@ public interface KdService {
      * @Description: 从常量类中存储的快递单号随机获取一个快递单号
      */
     LogisticsCode getCodeFromConstantList(String orderNo);
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: java.lang.Boolean
+    * @Author: dengteng
+    * @Date: 2022/6/17
+    * @Description: 查询订单是否有效，是否已支付
+    */
+    Map<String, String> queryOrderStatus(String orderNo);
+
+    /**
+    * @Param: [java.lang.String]
+    * @return: java.lang.Boolean
+    * @Author: dengteng
+    * @Date: 2022/6/17
+    * @Description: 订单发货
+    */
+    LogisticsCode orderShip(String orderNo);
 
 }

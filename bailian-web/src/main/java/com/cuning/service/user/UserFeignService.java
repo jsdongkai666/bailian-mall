@@ -41,9 +41,6 @@ public interface UserFeignService {
                                                                 @RequestParam("pageSize") Integer pageSize,
                                                                 @RequestParam("userId") String userId);
 
-    @GetMapping("/queryDefaultAddress")
-    BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId);
-
     @PostMapping("/delAddress")
     RequestResult<Map<String,String>> delConsigneeAddress(@RequestParam("consigneeId") String consigneeId);
 

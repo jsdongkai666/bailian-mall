@@ -11,6 +11,7 @@ import com.cuning.mapper.ShoppingOrderMapper;
 import com.cuning.service.ShoppingOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.sql.Wrapper;
 import java.util.ArrayList;
@@ -97,7 +98,12 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         if (!bailianOrder.getUserPhone().isEmpty()) updateWrapper.set("user_phone", bailianOrder.getUserPhone());
         if (!bailianOrder.getUserAddress().isEmpty()) updateWrapper.set("user_address", bailianOrder.getUserAddress());
         if (bailianOrder.getIsDeleted() != 0) updateWrapper.set("is_deleted", bailianOrder.getIsDeleted());
-        if (bailianOrder.getPayTime() != null) updateWrapper.set("pay_time", bailianOrder.getPayTime());
+        if (!StringUtils.isEmpty(bailianOrder.getLogisticCode())) {
+            updateWrapper.set("logistic_code", bailianOrder.getLogisticCode());
+        }
+        if (!StringUtils.isEmpty(bailianOrder.getShipperCode())) {
+            updateWrapper.set("shipper_code", bailianOrder.getShipperCode());
+        }
 
 
         updateWrapper.eq("order_id", bailianOrder.getOrderId());

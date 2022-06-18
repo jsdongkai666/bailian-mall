@@ -67,8 +67,10 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, BailianCaro
     }
 
     @Override
-    public boolean deleteCarousel(List<String> ids) {
-        return carouselMapper.deleteBatchIds(ids) > 0;
+    public boolean deleteCarousel(BailianCarousel bailianCarousel) {
+        UpdateWrapper<BailianCarousel> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("carousel_id",bailianCarousel.getCarouselId()).set("is_deleted",1);
+        return carouselMapper.update(bailianCarousel,updateWrapper) > 0;
     }
 
     @Override

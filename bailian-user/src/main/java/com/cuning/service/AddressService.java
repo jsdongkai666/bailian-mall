@@ -64,13 +64,5 @@ public interface AddressService extends IService<BailianConsignee> {
      */
     boolean updateAddress(BailianConsignee bailianConsignee);
 
-    /**
-     * @author : lixu
-     * @date   : 2022/06/15
-     * @param  : [java.lang.String]
-     * @return : com.cuning.bean.BailianConsignee
-     * @description : 根据用户id，查询用户的默认地址
-     */
-    BailianConsignee selectDefaultAddressByUserId(String userId);
 
 }

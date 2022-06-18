@@ -39,7 +39,7 @@ public class ConsigneeAddressController {
      * @description : 根据用户id，查询收货人的地址
      */
     @GetMapping("/queryAddress")
-    @ApiOperation(value = "收货人地址查询",notes = "根据用户id，查询收货人的地址")
+    @ApiOperation(value = "用户收货地址查询",notes = "根据用户id，查询收货人的地址")
     public Page<BailianConsignee> queryConsigneeAddress(@RequestParam("pageNo") Integer pageNo,
                                                                        @RequestParam("pageSize") Integer pageSize,
                                                                        @RequestParam("userId") String userId){
@@ -55,22 +55,6 @@ public class ConsigneeAddressController {
         // 返回用户地址列表
         return bailianConsigneeList;
     }
-
-    /**
-     * @author : lixu
-     * @date   : 2022/06/15
-     * @param  : [java.lang.String]
-     * @return : com.cuning.util.RequestResult<com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.cuning.bean.BailianConsignee>>
-     * @description : 根据用户id，查询用户的默认地址
-     */
-    @GetMapping("/queryDefaultAddress")
-    @ApiOperation(value = "收货人默认地址查询",notes = "根据用户id，查询收货人的默认地址")
-    public BailianConsignee queryDefaultAddressByUserId(@RequestParam("userId") String userId){
-
-        // 根据用户id,调用接口查询默认地址
-        return addressService.selectDefaultAddressByUserId(userId);
-    }
-
 
     /**
      * @author : lixu

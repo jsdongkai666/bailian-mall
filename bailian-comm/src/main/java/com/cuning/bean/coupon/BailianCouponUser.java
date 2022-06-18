@@ -11,11 +11,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * @author dengteng
- * @title: BailinCouponUser
- * @projectName cuning-bailian
- * @description: TODO
- * @date 2022/6/14
+ * Created On : 2022/5/13.
+ * <p>
+ * Author : zhukang
+ * <p>
+ * Description: 统一返回结果实体类
  */
 @Data
 @ApiModel("用户优惠券实体")

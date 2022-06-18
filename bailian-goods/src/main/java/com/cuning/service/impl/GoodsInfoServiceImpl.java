@@ -36,28 +36,33 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     private SnowFlake snowFlake;
 
     @Override
-    public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo,String userId) {
-        goodsInfo.setGoodsId("10" + Long.toString(snowFlake.nextId()).substring(9,19));
+    public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo, String userId) {
+
+        //雪花算法生成商品id
+        goodsInfo.setGoodsId("10" + Long.toString(snowFlake.nextId()).substring(9, 19));
+
         goodsInfo.setCreateTime(new Date());
         goodsInfo.setCreateUser(userId);
-        Integer insert = goodsInfoMapper.insert(goodsInfo);
+
+        goodsInfoMapper.insert(goodsInfo);
         return goodsInfo;
     }
 
     @Override
     public Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize) {
-        Page<BailianGoodsInfo> page = new Page<>(pageNo,pageSize);
-        return goodsInfoMapper.selectPage(page,new QueryWrapper<BailianGoodsInfo>());
+        Page<BailianGoodsInfo> page = new Page<>(pageNo, pageSize);
+        return goodsInfoMapper.selectPage(page, new QueryWrapper<BailianGoodsInfo>());
     }
 
 
-
-
     @Override
-    public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo,String usreId) {
+    public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo, String usreId) {
+
         goodsInfo.setUpdateTime(new Date());
+
         goodsInfo.setUpdateUser(usreId);
-        return goodsInfoMapper.updateById(goodsInfo) > 0 ;
+
+        return goodsInfoMapper.updateById(goodsInfo) > 0;
     }
 
     @Override
@@ -67,23 +72,33 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
     @Override
     public Boolean updateGoodsSellStatus(String goodsId, Byte goodsSellStatus) {
+
         BailianGoodsInfo bailianGoodsInfo = goodsInfoMapper.selectById(goodsId);
+
         bailianGoodsInfo.setGoodsSellStatus(goodsSellStatus);
+
         return goodsInfoMapper.updateById(bailianGoodsInfo) > 0;
     }
 
     @Override
     public List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId) {
+
         QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("goods_category_id",categoryId);
+
+        queryWrapper.eq("goods_category_id", categoryId);
+
         return goodsInfoMapper.selectList(queryWrapper);
     }
 
     @Override
     public List<Integer> selectGoodsCategoryIds() {
+
         QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
+
         queryWrapper.select("goods_category_id");
+
         List<BailianGoodsInfo> goodsInfoList = goodsInfoMapper.selectList(queryWrapper);
+
         return goodsInfoList.stream().map(BailianGoodsInfo::getGoodsCategoryId).collect(Collectors.toList());
     }
 
@@ -119,7 +134,7 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
         }
 
-        redisUtils.lSet(goodsId + ":reminder" ,userId );
+        redisUtils.lSet(goodsId + ":reminder", userId);
 
         result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
         result.put("msg", "设置到货提醒成功！");
@@ -152,7 +167,7 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
             String userIdStr = (String) object;
 
             if (userIdStr.equals(goodsId)) {
-                redisUtils.lRemove(userId + ":collect", 1,goodsId);
+                redisUtils.lRemove(userId + ":collect", 1, goodsId);
                 result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
                 result.put("msg", "取消收藏成功！");
                 return result;
@@ -161,10 +176,10 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
         }
         // 收藏商品大于100，默认移除最早收藏的
         if (objects.size() > 100) {
-            redisUtils.lGet(userId + ":collect",objects.size()-1,objects.size());
+            redisUtils.lGet(userId + ":collect", objects.size() - 1, objects.size());
         }
 
-        redisUtils.lSet(userId + ":collect" ,goodsId );
+        redisUtils.lSet(userId + ":collect", goodsId);
 
         result.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
         result.put("msg", "收藏成功！");
@@ -172,7 +187,7 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
     }
 
     @Override
-    public PageSupport getCollectListByUserId(String userId,String pageNo,String pageSize) {
+    public PageSupport getCollectListByUserId(String userId, String pageNo, String pageSize) {
 
         Integer pageNoInt = Integer.valueOf(pageNo);
         Integer pageSizeInt = Integer.valueOf(pageSize);
@@ -195,7 +210,6 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
         }else {
             pageSupport.setPageData(new ArrayList<>());
         }
-
 
         return pageSupport;
     }

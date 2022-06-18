@@ -2,7 +2,6 @@ package com.cuning.controller;
 
 
 import com.cuning.bean.BailianGoodsInfo;
-import com.cuning.constant.GoodsConstant;
 import com.cuning.util.EsUtil;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.SensitiveWordFilterUtil;
@@ -102,28 +101,6 @@ public class SensitiveWordController {
             // return "搜索失败，命中敏感词";
         }
         shopSearch = esUtil.search(searchKey, 1, 20);
-
-        // 将时间设为权重值
-        String score = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-
-        // 将该用户的搜索记录存入redis中，并设置权重
-        redisUtils.zadd(GoodsConstant.GOODS_SEARCH_HISTORY + userId,searchKey, Double.parseDouble(score));
-
-        // 无视用户，将搜索记录存入热词中
-        redisUtils.zadd(GoodsConstant.GOODS_HOT_WORDS,searchKey, redisUtils.zincrby(GoodsConstant.GOODS_HOT_WORDS,searchKey,1));
-
-        // 搜索记录列表
-        List<Object> searchHistoryList = new ArrayList<>(redisUtils.zrevrange(GoodsConstant.GOODS_SEARCH_HISTORY + userId, 0, -1));
-
-
-        // zcard返回成员个数
-        if(redisUtils.zcard(GoodsConstant.GOODS_SEARCH_HISTORY + userId) > 10) {
-            // 数量满10，将权重值最低的删除
-            redisUtils.zremoveRange(GoodsConstant.GOODS_SEARCH_HISTORY + userId, 0, 0);
-            searchHistoryList.remove(searchHistoryList.size() - 1);
-        }
-
-        log.info("------ 用户：{}，搜索记录：{} ------",userId,searchHistoryList);
 
         return shopSearch;
     }

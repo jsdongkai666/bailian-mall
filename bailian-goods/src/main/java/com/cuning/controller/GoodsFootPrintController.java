@@ -80,18 +80,69 @@ public class GoodsFootPrintController {
      */
     @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
-    public boolean delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId) {
+    public Map<String,String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") String goodsId) {
 
 
-        // 删除商品足迹
-        for (String id : goodsId) {
-            if(redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, id) < 0) {
-                log.info("------ 用户足迹删除失败 ------");
-                return false;
-            }
+        // 返回结果集合
+        Map<String,String> resultMap = new HashMap<>();
+
+        // 判断该用户是否有足迹可清除
+        if (redisUtils.zcard(GoodsConstant.USER_FOOT_PRINT + userId) == 0) {
+            log.info("------ 暂无用户足迹可清除 ------");
+            resultMap.put("errCode", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            resultMap.put("errMsg","暂无用户足迹可清除");
+            return resultMap;
         }
 
-        log.info("------ 用户足迹删除成功 ------");
-        return true;
+        // 删除商品足迹
+        if(redisUtils.zrem(GoodsConstant.USER_FOOT_PRINT + userId, goodsId) >+ 0) {
+            log.info("------ 用户足迹删除成功 ------");
+            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            resultMap.put("msg","用户足迹删除成功");
+            return resultMap;
+        }
+
+        // 删除失败
+        log.info("------ 用户足迹删除失败 ------");
+        resultMap.put("errCode", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        resultMap.put("errMsg","用户足迹删除失败");
+        return resultMap;
+    }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/18
+     * @param  : [java.lang.String]
+     * @return : java.util.Map<java.lang.String,java.lang.String>
+     * @description : 一键清空用户足迹
+     */
+    @PostMapping("/clearGoodsFootPrint")
+    @ApiOperation(value = "清除用户足迹",notes = "将所有的用户足迹清除")
+    public Map<String,String> clearGoodsFootPrint(@RequestParam("userId")String userId) {
+
+        // 返回结果集合
+        Map<String,String> resultMap = new HashMap<>();
+
+        // 判断该用户是否有足迹可清除
+        if (redisUtils.zcard(GoodsConstant.USER_FOOT_PRINT + userId) == 0) {
+            log.info("------ 暂无用户足迹可清除 ------");
+            resultMap.put("errCode", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+            resultMap.put("errMsg","暂无用户足迹可清除");
+            return resultMap;
+        }
+
+        // 清除该用户所有的足迹
+        if (redisUtils.zremoveRange(GoodsConstant.USER_FOOT_PRINT + userId,0,-1) > 0) {
+            log.info("------ 用户足迹清除成功 ------");
+            resultMap.put("code", CommonConstant.UNIFY_RETURN_SUCCESS_CODE);
+            resultMap.put("msg","用户足迹清除成功");
+            return resultMap;
+        }
+
+        // 清除失败
+        log.info("------ 用户足迹清除失败 ------");
+        resultMap.put("errCode", CommonConstant.UNIFY_RETURN_FAIL_CODE);
+        resultMap.put("errMsg","用户足迹清除失败");
+        return resultMap;
     }
 }
