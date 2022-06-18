@@ -37,7 +37,7 @@ public class User implements Serializable {
     private String userPassword;
 
     @ApiModelProperty("用户性别")
-    private String userSex;
+    private Integer userSex;
 
     @ApiModelProperty("用户电话")
     private String userTel;
