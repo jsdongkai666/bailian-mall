@@ -22,7 +22,7 @@ import java.util.List;
 public class BailianOrder {
     @ApiModelProperty("订单主键")
     @TableId
-    private Integer orderId;
+    private String orderId;
 
     @ApiModelProperty("订单号")
     private String orderNo;

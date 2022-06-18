@@ -1,11 +1,10 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.seckill.BailianSeckill;
 import com.cuning.bean.seckill.BailianSeckillUser;
-import com.cuning.bean.shoppingOrder.BailianOrder;
 import com.cuning.mapper.SeckillMappper;
 import com.cuning.mapper.SeckillUserMapper;
 import com.cuning.service.SeckillService;

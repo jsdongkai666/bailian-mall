@@ -1,5 +1,6 @@
-package com.cuning.service.Impl;
+package com.cuning.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cuning.bean.SensitiveWord;
 import com.cuning.mapper.SensitiveWordMapper;
 import com.cuning.service.SensitiveWordService;
@@ -16,13 +17,16 @@ import java.util.List;
  * Description: SensitiveWordServiceImpl
  */
 @Service
-public class SensitiveWordServiceImpl implements SensitiveWordService {
+public class SensitiveWordServiceImpl extends ServiceImpl<SensitiveWordMapper,SensitiveWord> implements SensitiveWordService {
 
-    @Autowired(required = false)
+    @Autowired
     private SensitiveWordMapper sensitiveWordMapper;
 
     @Override
     public List<SensitiveWord> getSensitiveWords() {
         return sensitiveWordMapper.selectList(null);
     }
+
+
+
 }

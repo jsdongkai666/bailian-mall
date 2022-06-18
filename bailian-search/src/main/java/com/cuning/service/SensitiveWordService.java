@@ -2,6 +2,7 @@ package com.cuning.service;
 
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.cuning.bean.SensitiveWord;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * <p>
  * Description: 敏感词业务接口
  */
-public interface SensitiveWordService {
+public interface SensitiveWordService extends IService<SensitiveWord> {
 
     /**
      * @author : zhukang
@@ -23,4 +24,5 @@ public interface SensitiveWordService {
      * @description : 查询所有的敏感词
      */
     List<SensitiveWord> getSensitiveWords();
+
 }

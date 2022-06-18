@@ -6,6 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="抢购">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCommentary.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCommentary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/ShoppingOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/ShoppingOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SeckillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SeckillServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/TradeOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/TradeOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/bean/SensitiveWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/bean/SensitiveWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/config/SensitiveWordCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/config/SensitiveWordCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/mapper/SensitiveWordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/mapper/SensitiveWordMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/Impl/SensitiveWordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/impl/SensitiveWordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/SensitiveWordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/SensitiveWordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/SensitiveWordFilterUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/SensitiveWordFilterUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +114,18 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BailianOrderApplication">
+  <component name="RunManager" selected="Spring Boot.BailianEurekaApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BailianCommApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bailian-comm" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cuning.BailianCommApplication" />
@@ -197,6 +225,7 @@
       <workItem from="1655339834230" duration="17804000" />
       <workItem from="1655380558012" duration="2104000" />
       <workItem from="1655395693364" duration="825000" />
+      <workItem from="1655513177770" duration="14595000" />
     </task>
     <task id="LOCAL-00001" summary="商品">
       <created>1654765586729</created>
@@ -324,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655396223954</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="抢购">
+      <created>1655513288461</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1655513288461</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

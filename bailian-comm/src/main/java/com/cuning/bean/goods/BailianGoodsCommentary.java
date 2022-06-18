@@ -18,7 +18,7 @@ public class BailianGoodsCommentary {
     @TableId
     private String commentaryId;
 
-    private Integer orderId;
+    private String orderId;
 
     private String goodsId;
 

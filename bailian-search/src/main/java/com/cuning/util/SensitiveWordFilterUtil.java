@@ -2,6 +2,7 @@ package com.cuning.util;
 
 
 import com.cuning.config.SensitiveWordCache;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -24,6 +25,9 @@ public class SensitiveWordFilterUtil {
     // 最大匹配规则
     public static final int MAX_MATCH_TYPE = 2;
 
+    @Autowired
+    private SensitiveWordCache sensitiveWordCache;
+
     /**
      * @param : [java.lang.String, int, int]
      * @return : int
@@ -37,6 +41,7 @@ public class SensitiveWordFilterUtil {
         // 匹配标识数默认为0
         int matchFlag = 0;
         // 从内存中，获取敏感词库
+        sensitiveWordCache.judgeSensitiveWord();
         Map nowMap = SensitiveWordCache.sensitiveWordMap;
         for (int i = beginIndex; i < txt.length(); i++) {
             char word = txt.charAt(i);

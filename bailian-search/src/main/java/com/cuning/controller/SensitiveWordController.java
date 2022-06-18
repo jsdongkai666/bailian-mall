@@ -2,7 +2,9 @@ package com.cuning.controller;
 
 
 import com.cuning.bean.BailianGoodsInfo;
+import com.cuning.bean.SensitiveWord;
 import com.cuning.constant.GoodsConstant;
+import com.cuning.service.SensitiveWordService;
 import com.cuning.util.EsUtil;
 import com.cuning.util.RedisUtils;
 import com.cuning.util.SensitiveWordFilterUtil;
@@ -40,6 +42,9 @@ public class SensitiveWordController {
 
     @Autowired
     private RedisUtils redisUtils;
+
+    @Autowired
+    private SensitiveWordService sensitiveWordService;
 
 
     @PostMapping("/delEs")
@@ -125,8 +130,24 @@ public class SensitiveWordController {
 
         log.info("------ 用户：{}，搜索记录：{} ------",userId,searchHistoryList);
 
+
         return shopSearch;
     }
+
+    @PostMapping("/insertSensitiveWords")
+    @ApiOperation(value = "插入敏感词")
+    public Map<String,Object> insertSensitiveWords(@RequestBody SensitiveWord sensitiveWords) {
+        Map<String,Object> map = new HashMap<>();
+        if(sensitiveWordService.save(sensitiveWords)){
+            map.put("code",200);
+            map.put("msg","插入成功");
+            return map;
+        }
+        map.put("code",500);
+        map.put("msg","插入失败");
+        return map;
+    }
+
 
 
 }

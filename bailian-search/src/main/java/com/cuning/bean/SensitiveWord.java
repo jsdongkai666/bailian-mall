@@ -1,5 +1,7 @@
 package com.cuning.bean;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**
@@ -10,14 +12,14 @@ import lombok.Data;
  * Description: 敏感词
  */
 @Data
-public class
-SensitiveWord {
+public class SensitiveWord {
 
     // 编号
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     // 类型
-    private String tid;
+    private Integer tid;
 
     // 敏感词
     private String word;

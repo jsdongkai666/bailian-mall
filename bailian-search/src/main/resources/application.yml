@@ -1,15 +1,15 @@
 server:
   port: 8100
 
-elasticsearch:    #ES�ĵ�ַ���˿�
+elasticsearch:
   host: 127.0.0.1
   port: 9200
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://120.78.163.160:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/bailian_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    password: root
+    password: 123456
   redis:
     host: 127.0.0.1
     port: 6379
