@@ -37,10 +37,14 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
     @Override
     public BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo, String userId) {
+
+        //雪花算法生成商品id
         goodsInfo.setGoodsId("10" + Long.toString(snowFlake.nextId()).substring(9, 19));
+
         goodsInfo.setCreateTime(new Date());
         goodsInfo.setCreateUser(userId);
-        Integer insert = goodsInfoMapper.insert(goodsInfo);
+
+        goodsInfoMapper.insert(goodsInfo);
         return goodsInfo;
     }
 
@@ -53,8 +57,11 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
     @Override
     public Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo, String usreId) {
+
         goodsInfo.setUpdateTime(new Date());
+
         goodsInfo.setUpdateUser(usreId);
+
         return goodsInfoMapper.updateById(goodsInfo) > 0;
     }
 
@@ -65,23 +72,33 @@ public class GoodsInfoServiceImpl extends ServiceImpl<GoodsInfoMapper, BailianGo
 
     @Override
     public Boolean updateGoodsSellStatus(String goodsId, Byte goodsSellStatus) {
+
         BailianGoodsInfo bailianGoodsInfo = goodsInfoMapper.selectById(goodsId);
+
         bailianGoodsInfo.setGoodsSellStatus(goodsSellStatus);
+
         return goodsInfoMapper.updateById(bailianGoodsInfo) > 0;
     }
 
     @Override
     public List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId) {
+
         QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
+
         queryWrapper.eq("goods_category_id", categoryId);
+
         return goodsInfoMapper.selectList(queryWrapper);
     }
 
     @Override
     public List<Integer> selectGoodsCategoryIds() {
+
         QueryWrapper<BailianGoodsInfo> queryWrapper = new QueryWrapper<>();
+
         queryWrapper.select("goods_category_id");
+
         List<BailianGoodsInfo> goodsInfoList = goodsInfoMapper.selectList(queryWrapper);
+
         return goodsInfoList.stream().map(BailianGoodsInfo::getGoodsCategoryId).collect(Collectors.toList());
     }
 

@@ -17,14 +17,49 @@ import java.util.Map;
 
 public interface GoodsInfoService extends IService<BailianGoodsInfo> {
 
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/18 0018
+     * @param  : [com.cuning.bean.goods.BailianGoodsInfo, java.lang.String]
+     * @return : com.cuning.bean.goods.BailianGoodsInfo
+     * @description : 新增商品
+     */
     BailianGoodsInfo saveGoods(BailianGoodsInfo goodsInfo, String userId);
 
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/18 0018
+     * @param  : [java.lang.Integer, java.lang.Integer]
+     * @return : com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.cuning.bean.goods.BailianGoodsInfo>
+     * @description : 分页查询商品
+     */
     Page<BailianGoodsInfo> queryGoodsInfoPage(Integer pageNo, Integer pageSize);
 
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/18 0018
+     * @param  : [com.cuning.bean.goods.BailianGoodsInfo, java.lang.String]
+     * @return : java.lang.Boolean
+     * @description : 修改商品详情
+     */
     Boolean updateGoodsInfo(BailianGoodsInfo goodsInfo, String userId);
 
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/18 0018
+     * @param  : [java.lang.String]
+     * @return : java.lang.Boolean
+     * @description : 删除商品
+     */
     Boolean deleteGoodsInfo(String goodsId);
 
+    /***
+     * @author : Administrator
+     * @date   : 2022/6/18 0018
+     * @param  : [java.lang.String, java.lang.Byte]
+     * @return : java.lang.Boolean
+     * @description : 上下架商品
+     */
     Boolean updateGoodsSellStatus(String goodsId, Byte goodsSellStatus);
 
     /**
