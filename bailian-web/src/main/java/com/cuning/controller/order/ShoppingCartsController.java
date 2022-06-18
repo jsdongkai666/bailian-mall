@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -154,7 +155,7 @@ public class ShoppingCartsController {
             return ResultBuildUtil.success("修改成功");
         }
         else {
-            return ResultBuildUtil.fail("购买失败");
+            return ResultBuildUtil.fail("修改失败");
         }
 
 

@@ -22,13 +22,13 @@ import java.util.List;
 public class BailianOrder {
     @ApiModelProperty("订单主键")
     @TableId
-    private Integer orderId;
+    private String orderId;
 
     @ApiModelProperty("订单号")
     private String orderNo;
 
     @ApiModelProperty("用户主键")
-    private String  userId;
+    private String userId;
 
     @ApiModelProperty("订单总价")
     private Integer totalPrice;

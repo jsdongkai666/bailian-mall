@@ -7,6 +7,8 @@ import com.cuning.service.AlipayService;
 import com.cuning.service.TradeOrderService;
 import com.cuning.service.WechatPayService;
 import com.cuning.util.RedisUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service
+@Api(tags = "订单支付模块")
 public class TradeOrderServiceImpl implements TradeOrderService {
 
     @Value("${alipay.returnUrl}")
@@ -60,15 +63,15 @@ public class TradeOrderServiceImpl implements TradeOrderService {
     }
 
     @Override
-    public Map<String, String> payTradeOrder(String userId, String prodId, String orderId) throws Exception {
+    public Map<String, String> payTradeOrder(String userId, Integer totalFee, String orderId) throws Exception {
         //TODO 调用账务支付前，封装接口参数，数据都是来源于抢购订单，查询到支付数据，再请求支付
         //模拟获取到支付数据，再发起支付请求
-        return this.wechatPayUnifiedorderOrder(orderId,1,prodId);
+        return this.wechatPayUnifiedorderOrder(orderId,1,"wechatService");
     }
 
     @Override
-    public String aliPayTradeOrder(String userId, String prodId, String orderId) throws Exception {
-        return this.pay(prodId,orderId,"1000");
+    public String aliPayTradeOrder(String userId, String totalFee, String orderId) throws Exception {
+        return this.pay("alipay",orderId,totalFee);
     }
 
 
@@ -92,6 +95,7 @@ public class TradeOrderServiceImpl implements TradeOrderService {
             resultMap.put("prepay_id", unifiedOrderResultMap.get("prepay_id"));
             // 二维码链接code_url
             resultMap.put("code_url", unifiedOrderResultMap.get("code_url"));
+
 
             return resultMap;
         }

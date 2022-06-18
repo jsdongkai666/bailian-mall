@@ -91,14 +91,14 @@ public class SeckillServiceImpl implements SeckillService {
     }
 
     @Override
-    public Map<String, String> payOrder(String userId, String prodId, String tradeOrderNo) {
+    public Map<String, String> payOrder(String userId, Integer totalFee, String tradeOrderNo) {
         //远程调用订单中心接口查询订单详情，使用service
-        return seckillTradeOrderFeignService.invokePayTradeOrderFeign(userId,prodId,tradeOrderNo);
+        return seckillTradeOrderFeignService.invokePayTradeOrderFeign(userId,totalFee,tradeOrderNo);
     }
 
     @Override
-    public String AliPayOrder(String userId, String prodId, String tradeOrderNo) {
-        return seckillTradeOrderFeignService.invokeAliPayTradeOrderFeign(userId,prodId,tradeOrderNo);
+    public String AliPayOrder(String userId, String  totalFee, String tradeOrderNo) {
+        return seckillTradeOrderFeignService.invokeAliPayTradeOrderFeign(userId,totalFee,tradeOrderNo);
     }
 
 //    查询订单状态 1为true 0为false

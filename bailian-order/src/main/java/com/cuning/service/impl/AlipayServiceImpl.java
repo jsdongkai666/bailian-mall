@@ -23,9 +23,11 @@ public class AlipayServiceImpl implements AlipayService {
     private AccountPayResultProducer accountPayResultProducer;
 
     @Override
-    public void sendMsgToQueue() {
+    public void sendMsgToQueue(String orderId) {
 
         Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("order_id",orderId);
+        resultMap.put("pay_type","Alipay");
         resultMap.put("success","true");
         accountPayResultProducer.payOrderResultNotify(PaymentConstant.PAYMENT_MESSAGE_QUEUE_NAME,resultMap);
     }

@@ -53,7 +53,7 @@ public interface SeckillService {
     Map<String,String> getOrderNoInfo(String userId, String tradeOrderNo);
 
     //支付抢购订单
-    Map<String,String> payOrder(String userId,String prodId,String tradeOrderNo);
+    Map<String,String> payOrder(String userId,Integer totalFee,String tradeOrderNo);
 
-    String AliPayOrder(String userId, String prodId, String tradeOrderNo);
+    String AliPayOrder(String userId, String  totalFee, String tradeOrderNo);
 }

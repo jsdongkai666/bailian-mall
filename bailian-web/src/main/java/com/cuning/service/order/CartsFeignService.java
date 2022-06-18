@@ -34,4 +34,7 @@ public interface CartsFeignService {
 
     @PostMapping("/updateCartsInfo")
     boolean updateCartsInfo(@RequestParam("id") String id,@RequestParam("buyCount") Integer buyCount);
+
+    @GetMapping("/getCartProductByIds")
+    List<BailianCartProducts> getCartProductByIds(@RequestParam("ids") List<String> ids);
 }

@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.sql.Wrapper;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -59,9 +61,7 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
             orderWrapper.eq("order_no", orderNo);
             BailianOrder bailianOrders = shoppingOrderMapper.selectOne(orderWrapper);
             orderItemQueryWrapper.eq("order_id", bailianOrders.getOrderId());
-            if(shoppingOrderItemMapper.delete(orderItemQueryWrapper)<=0){
-                return false;
-            }
+            shoppingOrderItemMapper.delete(orderItemQueryWrapper);
         }
         QueryWrapper<BailianOrder> orderWrapper = new QueryWrapper<>();
         orderWrapper.in("order_no", orderNos);
@@ -121,6 +121,14 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
         }
 
         return sales;
+    }
+
+    @Override
+    public BailianOrder getOrderDetail(String orderNo) {
+        BailianOrder order = shoppingOrderMapper.selectOne(new QueryWrapper<BailianOrder>().eq("order_no", orderNo));
+        List<BailianOrderItem> list = shoppingOrderItemMapper.selectList(new QueryWrapper<BailianOrderItem>().eq("order_id",order.getOrderNo()));
+        order.setBailianOrders(list);
+        return order;
     }
 
 
