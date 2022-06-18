@@ -128,11 +128,5 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, BailianConsig
     }
 
 
-    @Override
-    public BailianConsignee selectDefaultAddressByUserId(String userId) {
-        QueryWrapper<BailianConsignee> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("is_default",1).eq("user_id",userId);
-        return addressMapper.selectOne(queryWrapper);
-    }
 
 }
