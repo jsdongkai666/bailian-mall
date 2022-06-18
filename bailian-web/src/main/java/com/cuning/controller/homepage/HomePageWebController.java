@@ -20,10 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created On : 2022/06/14.
@@ -252,8 +249,8 @@ public class HomePageWebController {
     @PostMapping("/delGoodsFootPrint")
     @ApiOperation(value = "删除用户足迹",notes = "根据用户以及商品id，删除用户足迹")
     @CheckToken
-    public RequestResult<String> delGoodsFootPrint(HttpServletRequest request,
-                                                   @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") List<String> goodsId) throws Exception {
+    public RequestResult delGoodsFootPrint(HttpServletRequest request,
+                                                   @ApiParam(name = "goodsId",value = "商品id")@RequestParam("goodsId") String goodsId) throws Exception {
         // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
@@ -264,11 +261,45 @@ public class HomePageWebController {
             return ResultBuildUtil.fail("用户数据异常，请重新登录！");
         }
 
-        // 判断用户足迹是否删除成功
-        if (goodsFeignService.delGoodsFootPrint(userId, goodsId)) {
-            return ResultBuildUtil.success("删除用户足迹成功！");
+        Map<String, String> map = goodsFeignService.delGoodsFootPrint(userId,goodsId);
+
+        // 判断清除用户足迹是否成功
+        if (map.containsKey("errCode")){
+            return ResultBuildUtil.fail(map);
         }
-        return ResultBuildUtil.success("删除用户足迹失败！");
+
+        return ResultBuildUtil.success(map);
+    }
+
+    /**
+     * @author : lixu
+     * @date   : 2022/06/18
+     * @param  : [java.lang.String]
+     * @return : java.util.Map<java.lang.String,java.lang.String>
+     * @description : 一键清空用户足迹
+     */
+    @PostMapping("/clearGoodsFootPrint")
+    @ApiOperation(value = "清除用户足迹",notes = "一键清空用户足迹")
+    public RequestResult clearGoodsFootPrint(HttpServletRequest request) throws Exception {
+
+        // 从token中获取用户信息
+        User user = JwtUtil.parseJWT(request.getHeader("token"));
+        assert user != null;
+        String userId = user.getUserId();
+
+        // 判断用户是否异常
+        if (userId == null || userId.equals("")) {
+            return ResultBuildUtil.fail("用户数据异常，请重新登录！");
+        }
+
+        Map<String, String> map = goodsFeignService.clearGoodsFootPrint(userId);
+        // 判断清除用户足迹是否成功
+        if (map.containsKey("errCode")){
+            return ResultBuildUtil.fail(map);
+        }
+
+        return ResultBuildUtil.success(map);
+
     }
 
 
@@ -309,10 +340,11 @@ public class HomePageWebController {
      * @return : com.cuning.util.RequestResult<java.util.List<java.lang.Object>>
      * @description : 搜索记录
      */
-    @GetMapping("/SearchHistory")
+    @GetMapping("/searchHistory")
     @ApiOperation(value = "商品搜索记录",notes = "将商品搜索记录存入redis中，再次搜索将靠前显示，一共展示十条数据")
     @CheckToken
-    public RequestResult searchHistory(HttpServletRequest request) throws Exception {
+    public RequestResult searchHistory(HttpServletRequest request,
+                                       @ApiParam(name = "searchKey",value = "搜索关键字")@RequestParam("searchKey") String searchKey) throws Exception {
         // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
@@ -324,9 +356,9 @@ public class HomePageWebController {
         }
 
         //判断搜索记录是否存在
-        List<Object> objects = goodsFeignService.searchHistory(userId);
+        List<Object> objects = goodsFeignService.searchHistory(userId, searchKey);
         if (objects.isEmpty()) {
-            return ResultBuildUtil.fail("搜索记录不存在!");
+            return ResultBuildUtil.fail("暂无搜索记录!");
         }
 
         return ResultBuildUtil.success(objects);
@@ -342,23 +374,25 @@ public class HomePageWebController {
     @PostMapping("/delSearchHistory")
     @ApiOperation(value = "删除搜索记录",notes = "将搜索记录清空")
     @CheckToken
-    public RequestResult<String> delSearchHistory(HttpServletRequest request) throws Exception {
+    public RequestResult delSearchHistory(HttpServletRequest request) throws Exception {
         // 从token中获取用户信息
         User user = JwtUtil.parseJWT(request.getHeader("token"));
         assert user != null;
         String userId = user.getUserId();
+
 
         // 判断用户是否异常
         if (userId == null || userId.equals("")) {
             return ResultBuildUtil.fail("用户数据异常，请重新登录！");
         }
 
+        Map<String, String> map = goodsFeignService.delSearchHistory(userId);
         // 判断删除搜索记录是否成功
-        if (goodsFeignService.delSearchHistory(userId)){
-            return ResultBuildUtil.success("删除搜索记录成功！");
+        if (map.containsKey("errCode")){
+            return ResultBuildUtil.fail(map);
         }
 
-        return ResultBuildUtil.fail("删除搜索记录失败！");
+        return ResultBuildUtil.success(map);
     }
 
     /**

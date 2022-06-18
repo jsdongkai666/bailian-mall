@@ -76,7 +76,6 @@ public class UserInfoWebController {
     @ApiOperation(value = "修改个人资料",notes = "用户个人资料修改，性别，生日，昵称等")
     @CheckToken
     public RequestResult<String> modPersonInfo(HttpServletRequest request,
-                                               @ApiParam(name = "userName",value = "昵称")@RequestParam(value = "userName",required = false) String userName,
                                                @ApiParam(name = "userSex",value = "性别")@RequestParam(value = "userSex",required = false) Integer userSex,
                                                @ApiParam(name = "userTel",value = "手机号码")@RequestParam(value = "userTel",required = false) String userTel,
                                                @ApiParam(name = "userBirth",value = "生日")@RequestParam(value = "userBirth",required = false) String userBirth,
@@ -96,7 +95,6 @@ public class UserInfoWebController {
 
         // 新建一个实体，修改用户信息
         user.setUserId(userId);
-        user.setUserName(userName);
         user.setUserSex(userSex);
         user.setUserTel(userTel);
         if (!StringUtils.isEmpty(userBirth)) {

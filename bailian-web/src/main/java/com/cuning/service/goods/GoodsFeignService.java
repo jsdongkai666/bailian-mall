@@ -26,16 +26,19 @@ public interface GoodsFeignService {
     Map<String,Object> goodsDetailsMap(@RequestParam("userId") String userId, @RequestParam("goodsId") String goodsId);
 
     @PostMapping("/delGoodsFootPrint")
-    boolean delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") List<String> goodsId);
+    Map<String,String> delGoodsFootPrint(@RequestParam("userId")String userId, @RequestParam("goodsId") String goodsId);
+
+    @PostMapping("/clearGoodsFootPrint")
+    Map<String,String> clearGoodsFootPrint(@RequestParam("userId")String userId);
 
     @GetMapping("/queryGoodsFootPrint")
     List<BailianGoodsInfo> queryGoodsFootPrint(@RequestParam("userId") String userId);
 
-    @GetMapping("/SearchHistory")
-    List<Object> searchHistory(@RequestParam("userId") String userId);
+    @GetMapping("/searchHistory")
+    List<Object> searchHistory(@RequestParam("userId") String userId,@RequestParam("searchKey") String searchKey);
 
     @PostMapping("/delSearchHistory")
-    boolean delSearchHistory(@RequestParam("userId")String userId);
+    Map<String,String> delSearchHistory(@RequestParam("userId")String userId);
 
     @GetMapping("/printHotWord")
     List<Object> printHotWord();
