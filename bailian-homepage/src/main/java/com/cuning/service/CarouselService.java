@@ -37,9 +37,9 @@ public interface CarouselService extends IService<BailianCarousel>{
      * @date   : 2022/06/09
      * @param  : [java.util.List<java.lang.Integer>]
      * @return : boolean
-     * @description : 批量删除轮播图
+     * @description : 删除轮播图
      */
-    boolean deleteCarousel(List<String> ids);
+    boolean deleteCarousel(BailianCarousel bailianCarousel);
 
     /**
      * @author : lixu

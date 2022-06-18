@@ -30,7 +30,7 @@ public interface HomePageFeignService {
     boolean addCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId);
 
     @PostMapping("/delCarousel")
-    boolean delCarousel(@RequestParam("ids") List<String> id);
+    boolean delCarousel(@RequestBody BailianCarousel bailianCarousel);
 
     @PostMapping("/modCarousel")
     boolean modCarousel(@RequestBody BailianCarousel bailianCarousel,@RequestParam("userId") String userId);
