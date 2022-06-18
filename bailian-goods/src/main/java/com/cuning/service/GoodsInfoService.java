@@ -62,12 +62,7 @@ public interface GoodsInfoService extends IService<BailianGoodsInfo> {
      */
     Boolean updateGoodsSellStatus(String goodsId, Byte goodsSellStatus);
 
-    /**
-     * @param : [java.lang.Integer]
-     * @return : java.util.List<com.cuning.bean.goods.BailianGoodsInfo>
-     * @description : 根据分类id，查询该分类的所有商品
-     */
-    List<BailianGoodsInfo> selectGoodsByGoodsCategoryId(Integer categoryId);
+
 
     /**
      * @author : lixu
