@@ -111,10 +111,12 @@ public class HomePageWebController {
      */
     @PostMapping("/delCarousel")
     @ApiOperation(value = "删除轮播图",notes = "批量删除轮播图详情")
-    public RequestResult<String> delCarousel(@ApiParam(name = "ids",value = "轮播图id")@RequestParam("ids") List<String> ids){
+    public RequestResult<String> delCarousel(@ApiParam(name = "carouselId",value = "轮播图id")@RequestParam("carouselId") String carouselId){
 
+        BailianCarousel bailianCarousel = new BailianCarousel();
+        bailianCarousel.setCarouselId(carouselId);
         // 判断轮播图是否删除成功
-        if (homePageFeignService.delCarousel(ids)) {
+        if (homePageFeignService.delCarousel(bailianCarousel)) {
             return ResultBuildUtil.success("删除成功！");
         }
 
