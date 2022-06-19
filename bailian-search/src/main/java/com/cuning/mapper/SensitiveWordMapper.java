@@ -2,6 +2,7 @@ package com.cuning.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cuning.bean.SensitiveWord;
+import org.apache.ibatis.annotations.Mapper;
 
 
 /**
@@ -11,5 +12,6 @@ import com.cuning.bean.SensitiveWord;
  * <p>
  * Description: 敏感词持久层接口，使用mybatis-plus
  */
+@Mapper
 public interface SensitiveWordMapper extends BaseMapper<SensitiveWord> {
 }

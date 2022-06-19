@@ -17,7 +17,7 @@ import java.sql.Wrapper;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
+
 
 /**
  * Created On : 2022/6/9.
@@ -69,18 +69,22 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
     }
 
     @Override
-    public BailianOrder selectOrderList(String orderNo) {
-        Page<BailianOrder> page = new Page<>(1, 3);
+    public List<BailianOrder> selectOrderList(String orderNo,Integer pageNo,Integer pageSize) {
+        Page<BailianOrder> page = new Page<>(pageNo, pageSize);
         QueryWrapper<BailianOrder> orderWrapper = new QueryWrapper<>();
         orderWrapper.like("order_no", orderNo);
         IPage<BailianOrder> pageParam = shoppingOrderMapper.selectPage(page, orderWrapper);
+        //获取订单列表
         List<BailianOrder> bailianOrderList = pageParam.getRecords();
 
         QueryWrapper<BailianOrderItem> orderItemQueryWrapper = new QueryWrapper<>();
-        orderItemQueryWrapper.eq("order_id", bailianOrderList.get(0).getOrderId());
-        List<BailianOrderItem> bailianOrderItemList = shoppingOrderItemMapper.selectList(orderItemQueryWrapper);
-        bailianOrderList.get(0).setBailianOrders(bailianOrderItemList);
-        return bailianOrderList.get(0);
+        //遍历获取每个订单下的订单详情
+        for(int i=0;i<bailianOrderList.size();i++){
+            orderItemQueryWrapper.eq("order_id", bailianOrderList.get(i).getOrderId());
+            List<BailianOrderItem> bailianOrderItemList = shoppingOrderItemMapper.selectList(orderItemQueryWrapper);
+            bailianOrderList.get(i).setBailianOrders(bailianOrderItemList);
+        }
+        return bailianOrderList;
     }
 
     @Override

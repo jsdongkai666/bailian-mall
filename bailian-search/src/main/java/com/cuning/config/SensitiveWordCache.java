@@ -33,7 +33,7 @@ public class SensitiveWordCache {
     public static Map sensitiveWordMap;
 
     // 敏感字在redis过期时间
-    private static final int EXPIRE_TIME = 3600;
+    private static final int EXPIRE_TIME = 60;
 
     @Autowired
     private RedisUtils redisUtils;
@@ -66,6 +66,20 @@ public class SensitiveWordCache {
         // 转换为敏感词库Map
         sensitiveWordMap = JSON.parseObject(sensitiveWordObj.toString(), Map.class);
     }
+
+    /**
+     * @author : wangdefeng
+     * @date   : 2022/6/18
+     * @param  : []
+     * @return : void
+     * @description : 判断敏感词redis是否存在
+     */
+    public  void judgeSensitiveWord(){
+        if(!redisUtils.hasKey(RedisKeyUtils.getSensitiveWordKey(SensitiveWordCache.class.getName()))){
+            initSensitiveWord();
+        }
+    }
+
 
     /**
      * @author : zhukang

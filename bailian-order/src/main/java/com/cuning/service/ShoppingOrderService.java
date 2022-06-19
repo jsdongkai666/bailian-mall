@@ -40,7 +40,7 @@ public interface ShoppingOrderService {
      * @return : com.cuning.bean.shoppingOrder.ShoppingOrder
      * @description : 查询订单
      */
-    BailianOrder selectOrderList(String orderNo);
+    List<BailianOrder>  selectOrderList(String orderNoInteger,Integer pageNo,Integer pageSize);
 
     /**
      * @author : wangdefeng
