@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="抢购">
+    <list default="true" id="2a39463a-c57c-4c1c-aaf4-3ef1e3f72400" name="Changes" comment="1111">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCommentary.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/goods/BailianGoodsCommentary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-comm/src/main/java/com/cuning/bean/shoppingOrder/BailianOrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/ShoppingOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/ShoppingOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SeckillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/SeckillServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/ShoppingOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/TradeOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/java/com/cuning/service/impl/TradeOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-goods/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-order/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/bean/SensitiveWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/bean/SensitiveWord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/config/SensitiveWordCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/config/SensitiveWordCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/config/ElasticSearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/config/ElasticSearchConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/controller/SensitiveWordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/mapper/SensitiveWordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/mapper/SensitiveWordMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/Impl/SensitiveWordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/impl/SensitiveWordServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/SensitiveWordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/service/SensitiveWordService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/SensitiveWordFilterUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/java/com/cuning/util/SensitiveWordFilterUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bailian-search/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +28,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -100,11 +90,11 @@
       <recent name="D:\kh93\cuning-bailian\bailian-search\src\main\java\com\cuning\config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.cuning.config" />
       <recent name="com.cuning.util" />
+      <recent name="com.cuning.bean" />
+      <recent name="com.cuning.constant" />
+      <recent name="com.cuning.config" />
       <recent name="com.cuning.controller" />
-      <recent name="com.cuning.mapper" />
-      <recent name="com.cuning.service.Impl" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -115,13 +105,15 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BailianEurekaApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

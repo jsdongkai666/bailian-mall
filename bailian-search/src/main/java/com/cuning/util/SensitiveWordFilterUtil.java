@@ -40,8 +40,9 @@ public class SensitiveWordFilterUtil {
         boolean flag = false;
         // 匹配标识数默认为0
         int matchFlag = 0;
-        // 从内存中，获取敏感词库
+        //判断敏感词redis是否存在
         sensitiveWordCache.judgeSensitiveWord();
+        // 从内存中，获取敏感词库
         Map nowMap = SensitiveWordCache.sensitiveWordMap;
         for (int i = beginIndex; i < txt.length(); i++) {
             char word = txt.charAt(i);
